@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { loginRequest } from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { checkStoredAuth } from '../../utils/checkStoredAuth';
 import { setStorageItems } from '../../utils/setStorageItems';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const LoginAccount = () => {
     const [erros,setErrors] = useState([]);
-    const [saveUser,setSaveUser] = useState(true);
+    const [saveUser,setSaveUser] = useState(false);
 
     const navigate = useNavigate();
+    const {setUser,setToken} = useContext(AuthContext);
 
     async function submitForm (event){
         event.preventDefault();
@@ -23,6 +25,9 @@ const LoginAccount = () => {
             }else{
                 setStorageItems(data);
             }
+
+            setUser(data.user);
+            setToken(data.token);
            
             return navigate('/app')
         } catch (error) {
@@ -34,14 +39,16 @@ const LoginAccount = () => {
     }
 
     useEffect(()=>{
+        const chekedAuth = checkStoredAuth();
 
-        const {userAuth} = checkStoredAuth();
+        if(chekedAuth.userAuth){
+            console.log(chekedAuth.userAuth);
+            setUser(chekedAuth.user);
+            setToken(chekedAuth.token);
 
-        if(userAuth){
-            return navigate('/app');
-        }
-    
-    },[navigate])
+            return navigate('/app')
+        };
+    },[navigate,setToken,setUser])
 
     return (
         <form 
@@ -59,18 +66,18 @@ const LoginAccount = () => {
             <div className="contentFieldsAuth">
                 <div className="userEmail">
                     <label htmlFor="email">Email</label>
-                    <input type="text" name="email" id="email" value={'demo@demo.com'}/>
+                    <input type="text" name="email" id="email" defaultValue={'demo@demo.com'}/>
                 </div>
                 <div className="userPassword">
                     <label htmlFor="password">Senha</label>
-                    <input type="password" name="password" id="password" value={'demo@123'}/>
+                    <input type="password" name="password" id="password" defaultValue={'demo@123'} />
                 </div>
                 <div className='checkBox'>
                     <label htmlFor="saveAuth">Manter logado</label>
                     <input 
                         type="checkbox" 
                         id="saveAuth" 
-                        onChange={(e)=> setSaveUser(e.target.value)}    
+                        onChange={()=> setSaveUser(!saveUser)}
                     />
                 </div>
             </div>

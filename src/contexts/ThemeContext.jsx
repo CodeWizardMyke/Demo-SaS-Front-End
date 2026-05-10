@@ -2,28 +2,30 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext();
 
-export function ThemeProvider ({children}) {
+export function ThemeProvider({ children }) {
 
-    const [theme,setTheme] = useState("dark");
+    const [theme, setTheme] = useState("dark");
 
-
-    function toggleTheme (){
-        setTheme((prev) => prev === "light" ? "dark" : "light")
+    function toggleTheme() {
+        setTheme((prev) => prev === "light" ? "dark" : "light");
     }
 
-
-    useEffect(()=>{
-        document.documentElement.setAttribute("data-theme",theme);
-    },[theme])
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+    }, [theme]);
 
     return (
-        <ThemeContext.Provider value={theme,toggleTheme} >
+        <ThemeContext.Provider
+            value={{
+                theme,
+                toggleTheme
+            }}
+        >
             {children}
         </ThemeContext.Provider>
-    )
-};
+    );
+}
 
-
-export function useTheme(){
+export function useTheme() {
     return useContext(ThemeContext);
 }

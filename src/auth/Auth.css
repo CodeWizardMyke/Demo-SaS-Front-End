@@ -3,13 +3,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     min-height: 100vh;
 }
 .contentAuth{
     background-color: #f0f0f0;
     max-width: 500px;width: 100%;
     min-height: 400px;
-    margin: auto;
     padding: 10px;
     border-radius: 5px;
     color: #363636;
@@ -90,6 +90,9 @@
     border: 2px solid #3586e2;
     background-color: #4A90E2;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #e0e0e0;
     cursor: pointer;
     transition: all 200ms ease;

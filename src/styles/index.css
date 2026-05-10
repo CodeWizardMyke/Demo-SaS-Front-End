@@ -10,15 +10,20 @@ main.container{
 
 :root {
     --background: #ffffff;
-    --text: #222222;
-    --button: #3b82f6;
+    --text: #6C757D;
+    --button: transparent;
     --border: #cccc;
+    --buttonTxtColor:#6C757D;
+    --buttonBorderColor:#6C757D
 }
 
 [data-theme="dark"] {
     --background: #222222;
     --text: #ffffff;
-    --button: #2563eb;
+    --button: #6C757D;
+    --buttonTxtColor:#ffff;
+    --border: #797979cc;
+    --buttonBorderColor:transparent
 }
 
 body {
@@ -30,9 +35,14 @@ body {
 
 button {
     background: var(--button);
-    color: white;
-    border: none;
+    color: var(--buttonTxtColor);
+    border: 1px solid var(--buttonBorderColor);
     padding: 10px 16px;
     border-radius: 6px;
     cursor: pointer;
+    justify-content: space-between;
+    transition: 200ms ease;
+}
+button:hover{
+    opacity: 0.8;
 }

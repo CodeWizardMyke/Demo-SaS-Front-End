@@ -18,10 +18,12 @@ const UserName = ({user}) => {
 
 const style = {
     text:{
-        padding:"0 15px",
+        margin:"0 15px",
         display:"flex",
         alignItems:"center",
-        cursor:"pointer"
+        cursor:"pointer",
+        maxWidth:"200px",
+        width:"100%",
     },
     svg:{
         fontSize:"14pt",

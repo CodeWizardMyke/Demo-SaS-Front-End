@@ -1,14 +1,29 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import UserName from './components/UserName';
+import ErrorPopUp from '../Errors/ErrorPopUp';
+import RigthContentTopBar from './components/RigthContentTopBar';
+
 
 const MainTopBar = () => {
 
-    const {user} = useContext(AuthContext)
+    const {
+            user,
+            errMsg,
+            setErrMsg,
+            logout
+    } = useContext(AuthContext)
 
     return (
         <div style={style.divBar}>
-            <UserName user={user} />
+            <ErrorPopUp 
+                errMsg={errMsg} 
+                setErrMsg={setErrMsg} 
+            />
+            <UserName 
+                user={user} 
+            />
+            <RigthContentTopBar logout={logout} />
         </div>
     );
 }
@@ -16,10 +31,11 @@ const MainTopBar = () => {
 const style = {
     divBar:{
         height:"35px",
-        borderBottom:"1px solid #dddd",
+        borderBottom:"1px solid  var(--border)",
         display:"flex",
         alignItems:"center",
-        justifyContent:"space-between"
+        justifyContent:"space-between",
+        position:"relative"
     }
 }
 

@@ -12,7 +12,7 @@ const Auth = () => {
             {
                 existisAcc ? 
                 
-                <LoginAccount data={false}/> 
+                <LoginAccount /> 
 
                 :
                 
