@@ -1,0 +1,103 @@
+.Auth{
+    background-color: #363636;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+.contentAuth{
+    background-color: #f0f0f0;
+    max-width: 500px;width: 100%;
+    min-height: 400px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 5px;
+    color: #363636;
+    position: relative;
+}
+.contentAuth h2{
+    position: absolute;
+    top: 10px;
+    left: 45%;
+    font-size: 18pt;
+}
+
+.resolveRequest{
+    border-radius: 5px;
+    height: 50px;
+    width: 100%;
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.resolveRequest span {
+    margin-bottom: 5px;
+    font-weight: bolder;
+    font-size: 12pt;
+    background-color: rgb(196, 40, 61);
+    width: 100%;
+    color: #ffff;
+    border-radius: 5px;
+}
+.contentFieldsAuth{
+    margin-top: 20px;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+}
+.contentFieldsAuth >div{
+    margin-bottom: 10px;
+}
+
+.contentFieldsAuth input{
+    height: 25px;
+    width: 100%;
+    background-color: #f5f5f5;
+    border: 1px solid #c1c1c1;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.contentAuth .checkBox{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.contentAuth .checkBox input{
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+}
+
+.contentBtnSubmit{
+    width: 100%;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+}
+.contentBtnSubmit button{
+    width: 100%;
+    height: 35px;
+    font-weight: bolder;
+    font-size: 14pt;
+    border: 2px solid #3586e2;
+    background-color: #4A90E2;
+    border-radius: 5px;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+.contentBtnSubmit button:hover{
+    opacity: 0.9;
+    border-color: #0086f3;
+    color: #FFFF;
+}
+
+
