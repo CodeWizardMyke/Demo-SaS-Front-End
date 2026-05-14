@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { loginRequest } from '../../services/authService';
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { checkStoredAuth } from '../../utils/checkStoredAuth';
-import { setStorageItems } from '../../utils/setStorageItems';
 import { AuthContext } from '../../contexts/AuthContext';
 
 const LoginAccount = () => {
@@ -15,34 +14,26 @@ const LoginAccount = () => {
     async function submitForm (event){
         event.preventDefault();
 
-        const formData = new FormData(event.target);
+        const payload = new FormData(event.target);
 
-        try {
-            const data = await loginRequest(formData) ;
+        const {data,error} = await loginRequest(payload, saveUser);
 
-            if(saveUser){
-                setStorageItems(data, "local");
-            }else{
-                setStorageItems(data);
-            }
-
-            setUser(data.user);
-            setToken(data.token);
-           
-            return navigate('/app')
-        } catch (error) {
-
-            console.log(error.response);
-
-            setErrors(error.response.data.errors);
+        if(error !== null){
+            setErrors(error.data);
+            return false;
         }
-    }
+    
+        setUser(data.user);
+        setToken(data.token);
+
+        navigate('/app')
+    };
 
     useEffect(()=>{
         const chekedAuth = checkStoredAuth();
 
         if(chekedAuth.userAuth){
-            console.log(chekedAuth.userAuth);
+
             setUser(chekedAuth.user);
             setToken(chekedAuth.token);
 
