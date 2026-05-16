@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box;
     padding: 0;
+    user-select: none;
     margin: 0;
 }
 
@@ -10,11 +11,23 @@ main.container{
 
 :root {
     --background: #ffffff;
+    --bgGradientColor1: #e4e4e46c;
+    --bgGradientColor2: #e4e4e4b7;
+    --bgGradientColor3:#16325B;
+
+    --txt-err: red;
     --text: #6C757D;
+    --text-hover:#184369;
+    --txt-strong: black;
+
     --button: transparent;
     --border: #cccc;
     --buttonTxtColor:#6C757D;
-    --buttonBorderColor:#6C757D
+    --buttonBorderColor:#6C757D;
+
+    --bg-default: #ffff;
+    --bt-primary: #487CFF;
+    --bt-txt-primary: #FFFF;
 }
 
 [data-theme="dark"] {
