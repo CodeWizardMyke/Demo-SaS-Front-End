@@ -12,8 +12,8 @@ main.container{
 :root {
     --background: #ffffff;
     --bgGradientColor1: #e4e4e46c;
-    --bgGradientColor2: #e4e4e4b7;
-    --bgGradientColor3:#16325B;
+    --bgGradientColor2: #72727200;
+    --bgGradientColor3:#79797960;
 
     --txt-err: red;
     --text: #6C757D;
