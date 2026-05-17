@@ -4,7 +4,6 @@ import UserName from './components/UserName';
 import ErrorPopUp from '../Errors/ErrorPopUp';
 import RigthContentTopBar from './components/RigthContentTopBar';
 
-
 const MainTopBar = () => {
 
     const {

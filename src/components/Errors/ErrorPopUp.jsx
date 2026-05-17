@@ -44,7 +44,8 @@ const style={
         margin:"0px auto",
         textAlign:"center",
         border:"1px solid #c1c1c1",
-        borderRadius:"5px"
+        borderRadius:"5px",
+        zIndex:"100"
     },
 
     spaceP:{

@@ -6,14 +6,23 @@ import { AuthContext } from '../contexts/AuthContext';
 import { createAccountRequest, loginRequest } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
 
+import ErrorPopUp from '../components/Errors/ErrorPopUp';
+import Loading from '../components/loading/Loading';
+
 const Auth = () => {
     const [authMode, setAuthMode] = useState("login");
     const [keepLogged,setKeepLogged] = useState(false);
     const [erros,setErrors] = useState([]);
+    const [errMsg,setErrMsg] = useState(null);
 
     const navigate = useNavigate()
 
-    const { isAuthenticated,setUser,setToken } = useContext(AuthContext);
+    const { 
+        isAuthenticated,
+        setUser,setToken, 
+        loading,setLoading 
+
+    } = useContext(AuthContext);
 
     async function submitAuthRequest(payload) {
         if(authMode === "login"){
@@ -25,31 +34,46 @@ const Auth = () => {
 
     async function handleSubmitForm(event){
         event.preventDefault();
+        setLoading(true);
         const payload = new FormData(event.target);
 
         let { response , error } = await submitAuthRequest(payload);
         
         if(error !== null ){
-            setErrors(error.data);
+
+            if(error.data){
+                setErrors(error.data);
+            }else{
+                setErrMsg(error.msg);
+            }
+            setLoading(false)
             return false;
         };
 
         setUser(response.data.user);
         setToken(response.data.token);
+
+        setLoading(false)
     };
 
-    useEffect(()=>{  setErrors([]);  },[authMode])
+    useEffect(()=>{  setErrors([]);  },[authMode]);
 
     useEffect(() => {
 
         if(isAuthenticated){
             navigate('/app');
-        }
+        };
 
     }, [isAuthenticated, navigate]);
 
     return (
        <main className='Auth'>
+        {
+            errMsg && <ErrorPopUp errMsg={errMsg} setErrMsg={setErrMsg} />
+        }
+        {
+            loading && <Loading />
+        }
 
         <div className="pre-box" >
 
