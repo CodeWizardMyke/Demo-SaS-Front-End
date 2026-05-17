@@ -7,7 +7,7 @@ const ItemList = ({
     path,
     iconArrow,
     opened,
-    onClick
+    onClick,
 }) => {
 
     const navigate = useNavigate();
@@ -18,18 +18,21 @@ const ItemList = ({
             onClick();
         }
 
-        if(path){
+        if(path && iconArrow === false){
             navigate(path);
         }
     }
 
     return (
-        <li onClick={handleClick} className={!iconArrow && "paddingList"}>
+        <li 
+            onClick={handleClick} 
+            className={iconArrow === false ? "paddingList" : ""}
+        >
 
             {
                 iconArrow && (
                     <IoIosArrowDown
-                        className={opened ? "rotateArrow" : ""}
+                        className={opened && "rotateArrow" }
                     />
                 )
             }

@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 import ErrorPopUp from '../components/Errors/ErrorPopUp';
 import Loading from '../components/loading/Loading';
 import { useTheme } from '../contexts/ThemeContext';
-import { CgDarkMode } from 'react-icons/cg';
 
 const Auth = () => {
     const [authMode, setAuthMode] = useState("login");

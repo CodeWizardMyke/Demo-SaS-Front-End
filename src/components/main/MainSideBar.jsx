@@ -49,6 +49,7 @@ const MainSideBar = () => {
                                                 module.children.map(item => (
 
                                                     <ItemList
+                                                        key={item.id}
                                                         text={item.text}
                                                         path={item.path}
                                                         iconArrow={false}
