@@ -83,7 +83,7 @@ const FormUserAuth = (
 
             <div className="switch-auth-form">
                 <span>
-                    { authMode === "login" ? "Já tenho uma conta?" : "Não tenho uma conta?"}
+                    { authMode === "create" ? "Já tenho uma conta?" : "Não tenho uma conta?"}
                 </span>
                 <strong
                     onClick={() => handdlerAuthMode()}
