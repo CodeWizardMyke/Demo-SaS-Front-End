@@ -2,7 +2,11 @@ import { logoutService } from "../services/logoutService";
 
 export async function logoutUser(){
 
-    const response = await logoutService();
+    const {response, error} = await logoutService();
+
+    if(error){
+        return {response ,error};
+    }
 
     localStorage.removeItem("user");
     localStorage.removeItem("token");
@@ -10,5 +14,5 @@ export async function logoutUser(){
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("token");
 
-    return response;
+    return {response, error:null};
 };

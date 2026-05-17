@@ -12,11 +12,15 @@ export function AuthProvider({ children }) {
     const [errMsg, setErrMsg] = useState(null);
 
     async function logout() {
-        await logoutUser();
+       const {error} =  await logoutUser();
+
+       if(error){
+          return setErrMsg(error.msg);
+       }
 
         setUser(null);
         setToken(null);
-    }
+    };
 
     useEffect(() => {
 
