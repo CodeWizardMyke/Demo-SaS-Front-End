@@ -1,0 +1,17 @@
+
+.searchFieldContent{
+    height: 25px;
+    margin: 5px 0;
+    max-width: 400px;
+}
+
+.searchFieldContent input {
+    height: 100%;
+    width: 100%;
+    padding-left: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--inptBg);
+    border: 1px solid var(--inptBorder);
+    color: var(--inptText);
+}

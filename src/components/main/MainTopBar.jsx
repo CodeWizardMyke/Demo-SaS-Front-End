@@ -31,6 +31,7 @@ const style = {
     divBar:{
         height:"35px",
         borderBottom:"1px solid  var(--border)",
+        backgroundColor: "var(--bgPanel)",
         display:"flex",
         alignItems:"center",
         justifyContent:"space-between",

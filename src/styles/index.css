@@ -10,33 +10,55 @@ main.container{
 }
 
 :root {
+    /*background principais da aplicação*/
     --background: #ffffff;
+    --bgPanel:#F4F4F4;
+    --bg-default: #ffff;
+
     --bgGradientColor1: #e4e4e46c;
     --bgGradientColor2: #72727200;
     --bgGradientColor3:#79797960;
 
+    /*principais cores de texto*/
     --txt-err: red;
     --text: #6C757D;
-    --text-hover:#184369;
     --txt-strong: black;
 
+    /*principais cores de texto açoes de usuario*/
+    --text-hover:#184369;
+    --textListHover: #184369; 
+
+    /*princiapais cores de input*/
+    --inptBg:#F4F4F4;
+    --inptBorder: #cccc; 
+    --inptText: #6c757d;
+
+    /*principais cores de botoes*/
     --button: transparent;
     --border: #cccc;
-    --buttonTxtColor:#6C757D;
+    --buttonTxtColor:#15181b;
     --buttonBorderColor:#6C757D;
-
-    --bg-default: #ffff;
     --bt-primary: #487CFF;
     --bt-txt-primary: #FFFF;
 }
 
 [data-theme="dark"] {
     --background: #222222;
-    --text: #ffffff;
+    --bgPanel:#272727;
+
+    --text: #e0e0e0;
+    --textListHover: #cccc; 
+
+
     --button: #6C757D;
     --buttonTxtColor:#ffff;
     --border: #797979cc;
-    --buttonBorderColor:transparent
+    --buttonBorderColor:transparent;
+    
+    /*princiapais cores de input*/
+    --inptBg: #222222;
+    --inptBorder: #797979cc; 
+    --inptText: #ffff;
 }
 
 body {
@@ -58,4 +80,15 @@ button {
 }
 button:hover{
     opacity: 0.8;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 100vw;
+}
+
+.content{
+    display: flex;
+    flex: 1;
 }
