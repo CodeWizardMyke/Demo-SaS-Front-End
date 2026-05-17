@@ -25,6 +25,9 @@
     z-index: -1;
 }
 
+.AuthDark::before{
+    background-image: url("../assets/auth/5667002.png");
+}
 
 .pre-box{
     background:linear-gradient(  var(--bgGradientColor1) , var(--bgGradientColor2),  var(--bgGradientColor3)) ;
@@ -38,7 +41,7 @@
 }
 
 .fixed-text{
-    color: var(--txt-strong);
+    color: var(--text);
     z-index: 0;
     max-width: 400px;
     margin-bottom: 0;
@@ -47,6 +50,13 @@
 .fixed-text h1{
     margin-bottom: 15px;
     font-size: 34pt;
+}
+
+.alocate{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
 }
 
 @media only screen and (max-width:780px ) {

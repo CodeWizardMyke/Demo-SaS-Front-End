@@ -1,12 +1,14 @@
 import React from 'react';
 import '../form.css'
+import { CgDarkMode } from 'react-icons/cg';
 
 const FormUserAuth = (
     {
         erros,
         setAuthMode,authMode,
         keepLogged, setKeepLogged,
-        submitForm
+        submitForm,
+        toggleTheme
     }
 ) => {
 
@@ -21,6 +23,12 @@ const FormUserAuth = (
 
     return (
         <div className='form-auth-content'>
+            <div className='alocate'>
+                <CgDarkMode
+                    onClick={toggleTheme}
+                    className='bt-theme'
+                />
+            </div>
             <div className="form-title">
                 <h2>
                     {authMode === "login" ? "Fazer login" : "Criar uma nova conta" }

@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 import ErrorPopUp from '../components/Errors/ErrorPopUp';
 import Loading from '../components/loading/Loading';
+import { useTheme } from '../contexts/ThemeContext';
+import { CgDarkMode } from 'react-icons/cg';
 
 const Auth = () => {
     const [authMode, setAuthMode] = useState("login");
@@ -15,6 +17,8 @@ const Auth = () => {
     const [erros,setErrors] = useState([]);
     const [errMsg,setErrMsg] = useState(null);
 
+    const {theme,toggleTheme} = useTheme()
+    
     const navigate = useNavigate()
 
     const { 
@@ -67,7 +71,7 @@ const Auth = () => {
     }, [isAuthenticated, navigate]);
 
     return (
-       <main className='Auth'>
+       <main className={`Auth ${theme === "dark" && "AuthDark"}`}>
         {
             errMsg && <ErrorPopUp errMsg={errMsg} setErrMsg={setErrMsg} />
         }
@@ -76,8 +80,8 @@ const Auth = () => {
         }
 
         <div className="pre-box" >
-
             <FormUserAuth 
+                toggleTheme={toggleTheme}
                 setAuthMode={setAuthMode} 
                 authMode={authMode}
                 setKeepLogged={setKeepLogged}
