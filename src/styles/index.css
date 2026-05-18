@@ -14,6 +14,7 @@ main.container{
     --background: #ffffff;
     --bgPanel:#F4F4F4;
     --bg-default: #ffff;
+    --panelBorder:#6C757D;
 
     --bgGradientColor1: #e4e4e46c;
     --bgGradientColor2: #72727200;
@@ -21,6 +22,7 @@ main.container{
 
     /*principais cores de texto*/
     --txt-err: red;
+    --txtDanger:rgb(255, 0, 64);
     --text: #6C757D;
     --txt-strong: black;
 
@@ -40,6 +42,9 @@ main.container{
     --buttonBorderColor:#6C757D;
     --bt-primary: #487CFF;
     --bt-txt-primary: #FFFF;
+
+    --textTab:#6C757D;
+    --btTab:#cccc;
 }
 
 [data-theme="dark"] {
@@ -59,6 +64,9 @@ main.container{
     --inptBg: #222222;
     --inptBorder: #797979cc; 
     --inptText: #ffff;
+
+    --textTab:#F4F4F4;
+    --btTab:#797979cc;
 }
 
 body {
@@ -91,4 +99,15 @@ button:hover{
 .content{
     display: flex;
     flex: 1;
+}
+
+.sectionAppContent{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.OutletContent{
+    flex: 1;
+    padding: 5px;
 }

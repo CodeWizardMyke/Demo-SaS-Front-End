@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
+
+import Loading from "../components/loading/Loading";
 import MainTopBar from '../components/main/MainTopBar';
 import MainSideBar from '../components/main/MainSideBar';
-import  Loading from "../components/loading/Loading";
-import { AuthContext } from '../contexts/AuthContext';
+import SectionTopBar from '../components/sectionTopBar/SectionTopBar';
 
 const LayoutMain = () => {
 
@@ -17,7 +19,12 @@ const LayoutMain = () => {
                     loading && <Loading/>
                 }
                 <MainSideBar/>
-                <Outlet/>
+                <section className='sectionAppContent'>
+                    <SectionTopBar />
+                    <div className="OutletContent">
+                        <Outlet/>
+                    </div>
+                </section>
             </section>
         </main>
     );

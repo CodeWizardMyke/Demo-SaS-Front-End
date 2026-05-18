@@ -54,7 +54,6 @@ const MainSideBar = () => {
                                                         path={item.path}
                                                         iconArrow={false}
                                                         opened={openedModule === module.id}
-                                                        onClick={() => handleToggle(module.id)}
                                                     />
 
                                                 ))

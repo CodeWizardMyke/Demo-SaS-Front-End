@@ -1,0 +1,45 @@
+.SectionTopBarContent{
+    background-color: var(--bgPanel);
+    border-bottom: 1px solid var(--panelBorder);
+    padding: 5px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.SectionTopBarContent ul{
+    list-style: none;
+    flex: 1;
+}
+.SectionTopBarContent ul li{
+    height: 25px;
+    max-width: 190px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 15px;
+    border-radius: 5px;
+    color: var(--textTab);
+    background-color: var(--btTab);
+    transition: all 200ms ease;
+}
+.closeSvg{
+    height: 20px;
+    width: 20px;
+    font-weight: bolder;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    transition: all 200ms ease;
+}
+
+.SectionTopBarContent ul li:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.closeSvg:hover{
+    border-color: var(--txtDanger);
+    color: var(--txtDanger);
+}
+
+

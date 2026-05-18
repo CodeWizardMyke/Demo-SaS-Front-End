@@ -4,6 +4,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Auth from '../auth/Auth';
 import PrivateRoute from '../routes/PrivateRoute';
 import Products from '../modules/Products';
+import CreateProduct from '../layouts/CreateProduct';
 
 export const router = createBrowserRouter([
     {
@@ -14,7 +15,8 @@ export const router = createBrowserRouter([
         path:'/app',
         element: <PrivateRoute />,
         children:[
-            {path:"products",element:<Products/>}
+            {path:"products",element:<Products/>},
+            {path:"products/create",element:<CreateProduct/>}
         ]
     }
 ]);
