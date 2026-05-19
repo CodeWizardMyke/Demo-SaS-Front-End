@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoIosArrowForward } from "react-icons/io";
 
-const UserName = ({ user }) => {
+const UserMenu = ({ user }) => {
 
     function capitalize(text = "") {
         return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
@@ -52,4 +52,4 @@ const style = {
     }
 }
 
-export default UserName;
+export default UserMenu;

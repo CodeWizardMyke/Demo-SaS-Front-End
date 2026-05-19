@@ -1,4 +1,8 @@
-.SectionTopBarContent{
+.workspace{
+    width: 100%;
+}
+
+.tabs-bar{
     background-color: var(--bgPanel);
     border-bottom: 1px solid var(--panelBorder);
     padding: 5px;
@@ -7,11 +11,11 @@
     align-items: center;
 }
 
-.SectionTopBarContent ul{
+.tabs-bar ul{
     list-style: none;
     flex: 1;
 }
-.SectionTopBarContent ul li{
+.tabs-bar ul li{
     height: 25px;
     max-width: 190px;
     width: 100%;
@@ -33,7 +37,7 @@
     transition: all 200ms ease;
 }
 
-.SectionTopBarContent ul li:hover{
+.tabs-bar ul li:hover{
     opacity: 0.8;
     cursor: pointer;
 }
@@ -41,5 +45,4 @@
     border-color: var(--txtDanger);
     color: var(--txtDanger);
 }
-
 

@@ -1,0 +1,60 @@
+
+:root {
+    /*background principais da aplicação*/
+    --background: #ffffff;
+    --bgPanel:#F4F4F4;
+    --bg-default: #ffff;
+    --panelBorder:#CDCDCD;
+
+    --bgGradientColor1: #e4e4e46c;
+    --bgGradientColor2: #72727200;
+    --bgGradientColor3:#79797960;
+
+    /*principais cores de texto*/
+    --txt-err: red;
+    --txtDanger:rgb(255, 0, 64);
+    --text: #6C757D;
+    --txt-strong: black;
+
+    /*principais cores de texto açoes de usuario*/
+    --text-hover:#184369;
+    --textListHover: #184369; 
+
+    /*princiapais cores de input*/
+    --inptBg:#F4F4F4;
+    --inptBorder: #cccc; 
+    --inptText: #6c757d;
+
+    /*principais cores de botoes*/
+    --button: transparent;
+    --border: #cccc;
+    --buttonTxtColor:#15181b;
+    --buttonBorderColor:#6C757D;
+    --bt-primary: #487CFF;
+    --bt-txt-primary: #FFFF;
+
+    --textTab:#6C757D;
+    --btTab:#D9D9D9;
+}
+
+[data-theme="dark"] {
+    --background: #222222;
+    --bgPanel:#272727;
+    --panelBorder:#797979cc;
+
+    --text: #e0e0e0;
+    --textListHover: #cccc; 
+
+    --button: #6C757D;
+    --buttonTxtColor:#ffff;
+    --border: #797979cc;
+    --buttonBorderColor:transparent;
+    
+    /*princiapais cores de input*/
+    --inptBg: #222222;
+    --inptBorder: #797979cc; 
+    --inptText: #ffff;
+
+    --textTab:#F4F4F4;
+    --btTab:#797979cc;
+}

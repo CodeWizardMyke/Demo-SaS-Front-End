@@ -1,11 +1,9 @@
 import { CgDarkMode } from "react-icons/cg";
 import { IoLogOut } from "react-icons/io5";
 
-import {useTheme} from '../../../contexts/ThemeContext'
+import {useTheme} from '../../contexts/ThemeContext'
 
-import "./RigthContentTopBar.css"
-
-const RigthContentTopBar = ({logout}) => {
+const HeaderActions = ({logout}) => {
 
     const {toggleTheme} = useTheme()
 
@@ -27,4 +25,4 @@ const RigthContentTopBar = ({logout}) => {
     );
 }
 
-export default RigthContentTopBar;
+export default HeaderActions;

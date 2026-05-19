@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const ErrorPopUp = ({errMsg,setErrMsg}) => {
+const ErrorPopup = ({errMsg,setErrMsg}) => {
     const [toggle,setToggle] = useState(false)
 
     useEffect(()=>{
@@ -54,4 +54,4 @@ const style={
     }
 }
 
-export default ErrorPopUp;
+export default ErrorPopup;

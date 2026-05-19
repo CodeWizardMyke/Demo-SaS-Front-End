@@ -1,8 +1,8 @@
 import React from 'react';
-import '../form.css'
+import './styles.css'
 import { CgDarkMode } from 'react-icons/cg';
 
-const FormUserAuth = (
+const AuthForm = (
     {
         erros,
         setAuthMode,authMode,
@@ -103,4 +103,4 @@ const FormUserAuth = (
     );
 }
 
-export default FormUserAuth;
+export default AuthForm;

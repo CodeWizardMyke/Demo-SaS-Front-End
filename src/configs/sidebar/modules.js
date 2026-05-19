@@ -13,12 +13,12 @@ const modules = [
                         {
                 id: 12,
                 text: 'Atualizar Produto',
-                path: '/app/products/create'
+                path: '/app/products/update'
             },
                         {
                 id: 13,
                 text: 'Deletar Produto',
-                path: '/app/products/create'
+                path: '/app/products/delete'
             },
         ]
     }

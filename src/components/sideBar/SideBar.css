@@ -5,6 +5,7 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
+    border-right: 1px solid var(--panelBorder);
 }
 .asideTopContent .services{
     height: 35px;

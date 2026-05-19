@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { Navigate } from "react-router-dom";
 
-import LayoutMain from "../layouts/LayoutMain";
+import IndexApp from "../layouts/AppLayout/IndexApp";
 
 export default function PrivateRoute(){
 
@@ -13,6 +13,6 @@ export default function PrivateRoute(){
     }
 
     return (
-        <LayoutMain/>
+        <IndexApp/>
     )
 };

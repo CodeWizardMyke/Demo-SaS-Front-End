@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
-import UserName from './components/UserName';
-import ErrorPopUp from '../Errors/ErrorPopUp';
-import RigthContentTopBar from './components/RigthContentTopBar';
 
-const MainTopBar = () => {
+import UserMenu from './UserMenu';
+import ErrorPopup from '../Error/ErrorPopup';
+import HeaderActions from './HeaderActions';
+
+import "./Header.css"
+
+const Header = () => {
 
     const {
             user,
@@ -15,14 +18,14 @@ const MainTopBar = () => {
 
     return (
         <div style={style.divBar}>
-            <ErrorPopUp 
+            <ErrorPopup 
                 errMsg={errMsg} 
                 setErrMsg={setErrMsg} 
             />
-            <UserName 
+            <UserMenu 
                 user={user} 
             />
-            <RigthContentTopBar logout={logout} />
+            <HeaderActions logout={logout} />
         </div>
     );
 }
@@ -39,4 +42,4 @@ const style = {
     }
 }
 
-export default MainTopBar;
+export default Header;

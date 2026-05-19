@@ -1,16 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
-
-import './Auth.css'
-import FormUserAuth from './components/FormUserAuth';
-import { AuthContext } from '../contexts/AuthContext';
-import { createAccountRequest, loginRequest } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
 
-import ErrorPopUp from '../components/Errors/ErrorPopUp';
-import Loading from '../components/loading/Loading';
-import { useTheme } from '../contexts/ThemeContext';
+import { createAccountRequest, loginRequest } from '../../services/authService';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
-const Auth = () => {
+import AuthForm from '../../components/auth/AuthForm';
+import ErrorPopup from '../../components/Error/ErrorPopup';
+import Loading from '../../components/loading/Loading';
+
+import './styles.css'
+
+const IndexAuth = () => {
     const [authMode, setAuthMode] = useState("login");
     const [keepLogged,setKeepLogged] = useState(false);
     const [erros,setErrors] = useState([]);
@@ -72,14 +73,14 @@ const Auth = () => {
     return (
        <main className={`Auth ${theme === "dark" && "AuthDark"}`}>
         {
-            errMsg && <ErrorPopUp errMsg={errMsg} setErrMsg={setErrMsg} />
+            errMsg && <ErrorPopup errMsg={errMsg} setErrMsg={setErrMsg} />
         }
         {
             loading && <Loading />
         }
 
         <div className="pre-box" >
-            <FormUserAuth 
+            <AuthForm 
                 toggleTheme={toggleTheme}
                 setAuthMode={setAuthMode} 
                 authMode={authMode}
@@ -116,4 +117,4 @@ const Auth = () => {
     );
 }
 
-export default Auth;
+export default IndexAuth;

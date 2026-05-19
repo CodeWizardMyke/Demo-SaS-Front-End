@@ -2,7 +2,7 @@ import React from 'react';
 import { IoIosArrowDown } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 
-const ItemList = ({
+const SideBarItem = ({
     text,
     path,
     iconArrow,
@@ -43,4 +43,4 @@ const ItemList = ({
     );
 }
 
-export default ItemList;
+export default SideBarItem;

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import './styles/MainSideBar.css'
+import './SideBar.css'
 import SearchField from '../search/SearchField';
-import ItemList from './components/ItemList';
+import ItemList from './SideBarItem';
 
 import modules from '../../configs/sidebar/modules'
 
-const MainSideBar = () => {
+const SideBar = () => {
     const [query, setQuery] = useState('');
     const [openedModule, setOpenedModule] = useState(null);
 
@@ -76,4 +76,4 @@ const MainSideBar = () => {
     );
 }
 
-export default MainSideBar;
+export default SideBar;
