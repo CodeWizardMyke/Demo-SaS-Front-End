@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import TabItem from './TabItem';
+import { WorkspaceContext } from '../../contexts/WorkspaceContext';
 
 const TabBar = () => {
+    const {openedTabs} = useContext(WorkspaceContext);
+
     return (
         <ul>
-            <TabItem/>
+            {
+                openedTabs.map(item => 
+                <TabItem
+                    item={item}
+                />
+            )
+            }
         </ul>
     );
 }

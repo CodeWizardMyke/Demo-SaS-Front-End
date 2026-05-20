@@ -4,7 +4,7 @@ const modules = [
         text: 'Produtos',
         path: '/app/products',
         visible: true,
-        children: [
+        routes: [
             {
                 id: 11,
                 text: 'Criar Produto',

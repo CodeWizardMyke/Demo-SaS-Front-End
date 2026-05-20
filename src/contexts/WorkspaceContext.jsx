@@ -6,41 +6,39 @@ export const WorkspaceContext = createContext();
 export function WorkspaceProvider({children}){
     const [openedTabs,setOpenedTabs] = useState([]);
     const [activeTab,setActiveTab] = useState(null);
-    const navitage = useNavigate();
+    const navigate = useNavigate();
 
 
     function openTab(tab){
-        
+
         const existisTab = openedTabs.find(
             item => item.path === tab.path
         );
-
+        
         if(!existisTab){
-            setActiveTab(prev => [...prev, tab]);
+            setOpenedTabs(prev => [...prev, tab]);
         };
-
         setActiveTab(tab.path);
 
         navigate(tab.path);
-
     };
 
     function closeTab(path){
-
+        
         const filtered = openedTabs.filter(
             item => item.path !== path
         );
-
-        setActiveTab(filtered);
+        
+        setOpenedTabs(filtered);
 
         if(activeTab === path){
             const lastTab = filtered[filtered.length -1];
 
             if(lastTab){
-                navitage(lastTab.path);
+                navigate(lastTab.path);
                 setActiveTab(lastTab.path);
             }else{
-                navitage('/app');
+                navigate('/app');
             };
         };
     };

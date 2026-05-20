@@ -18,6 +18,7 @@ const SideBar = () => {
         setOpenedModule(prev => prev === id ? null : id);
     };
 
+
     return (
         <aside className='aside'>
             <div className="asideTopContent">
@@ -46,9 +47,10 @@ const SideBar = () => {
                                         <ul className='listContent'>
 
                                             {
-                                                module.children.map(item => (
-
+                                                module.routes.map(item => (
+                                                    
                                                     <ItemList
+                                                        item={item}
                                                         key={item.id}
                                                         text={item.text}
                                                         path={item.path}

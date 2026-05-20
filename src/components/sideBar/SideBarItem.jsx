@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { WorkspaceContext } from '../../contexts/WorkspaceContext';
+
 import { IoIosArrowDown } from "react-icons/io";
-import { useNavigate } from 'react-router-dom';
 
 const SideBarItem = ({
     text,
@@ -8,18 +9,18 @@ const SideBarItem = ({
     iconArrow,
     opened,
     onClick,
+    item,
 }) => {
 
-    const navigate = useNavigate();
+    const {openTab} = useContext(WorkspaceContext)
 
     function handleClick(){
+        if(item){
+            openTab(item)
+        }
 
         if(onClick){
             onClick();
-        }
-
-        if(path && iconArrow === false){
-            navigate(path);
         }
     }
 

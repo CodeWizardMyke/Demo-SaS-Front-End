@@ -4,8 +4,8 @@ import { AuthContext } from '../../contexts/AuthContext';
 import Loading from "../../components/loading/Loading";
 import MainTopBar from '../../components/header/Header';
 import SideBar from '../../components/sideBar/SideBar';
-import SectionTopBar from '../../components/workspace/TabBar';
 import Workspace from '../../components/workspace/Workspace';
+import { WorkspaceProvider } from '../../contexts/WorkspaceContext';
 
 const IndexApp = () => {
     const {loading} = useContext(AuthContext);
@@ -17,8 +17,10 @@ const IndexApp = () => {
                 {
                     loading && <Loading/>
                 }
-                <SideBar/>
-                <Workspace/>
+                <WorkspaceProvider>
+                    <SideBar/>
+                    <Workspace/>
+                </WorkspaceProvider>
             </section>
         </main>
     );

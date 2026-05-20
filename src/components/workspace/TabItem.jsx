@@ -1,24 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { IoCloseOutline } from "react-icons/io5";
+import { WorkspaceContext } from '../../contexts/WorkspaceContext';
 
-const TabItem = ({onClick,text,close}) => {
-
-    function handlerOnClick(){
-        if(onClick){
-            onClick();
-        }
-    }
-
-    function handlerClose(){
-        if(close){
-            close();
-        }
-    }
+const TabItem = ({item}) => {
+    const {openTab,closeTab} = useContext(WorkspaceContext);
 
     return (
-        <li>
-            <span> {text ? text : "Default Tag"} </span>
-            <IoCloseOutline className='closeSvg'/>
+        <li
+            onClick={()=> openTab(item)}
+        >
+            <span>  {item.text} </span>
+            <IoCloseOutline 
+                onClick={()=> closeTab(item.path)}
+                className='closeSvg'
+            />
         </li>
     );
 }
