@@ -55,10 +55,19 @@
     padding-left: 15px;
 }
 
+
 @keyframes rotateArrow {
     from{
         transform: rotate(0deg);
     }to{
         transform: rotate(-90deg);
     }
+}
+
+@media (max-width:768px){
+
+    .secound{
+        display:none;
+    }
+
 }
