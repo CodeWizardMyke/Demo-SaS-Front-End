@@ -15,9 +15,8 @@ const SideBarItem = ({
     const {openTab} = useContext(WorkspaceContext)
     const splitText = text ? text.split(' ') : "";
 
-    const firstText =  splitText.length > 0 ? splitText[0] + " " : "";
-    const secoundText = splitText.length >= 1 ? splitText[1] + " " : "";
-    console.log(secoundText);
+    const firstText =  splitText[0] ? splitText[0] + " " : "";
+    const secoundText = splitText[1] ? splitText[1] : "";
 
     function handleClick(){
         if(item){

@@ -55,7 +55,6 @@
     padding-left: 15px;
 }
 
-
 @keyframes rotateArrow {
     from{
         transform: rotate(0deg);
