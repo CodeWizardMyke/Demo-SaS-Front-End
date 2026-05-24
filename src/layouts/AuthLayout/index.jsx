@@ -11,7 +11,7 @@ import Loading from '../../components/loading/Loading';
 
 import './styles.css'
 
-const IndexAuth = () => {
+const AuthLayout = () => {
     const [authMode, setAuthMode] = useState("login");
     const [keepLogged,setKeepLogged] = useState(false);
     const [erros,setErrors] = useState([]);
@@ -117,4 +117,4 @@ const IndexAuth = () => {
     );
 }
 
-export default IndexAuth;
+export default AuthLayout;

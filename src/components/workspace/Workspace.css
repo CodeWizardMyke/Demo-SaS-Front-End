@@ -1,7 +1,3 @@
-.workspace{
-    width: 100%;
-}
-
 .tabs-bar{
     background-color: var(--bgPanel);
     border-bottom: 1px solid var(--panelBorder);
@@ -51,3 +47,51 @@
     color: var(--txtDanger);
 }
 
+
+.workspace{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 380px;
+}
+
+.workspace-content{
+    flex: 1;
+    display: flex;
+    position: relative;
+}
+
+.workspace-aside{
+    top: 0; 
+    bottom: 0;
+    right: 0;
+    display: flex;
+    max-width: 460px; width: 100%;
+}
+.aside-elements{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: var(--bgPanel);
+    border-left: 1px solid var(--panelBorder);
+    padding: 5px;
+}
+
+.opened-module{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+@media only screen and (max-width:780px){
+    .workspace{
+        min-width: 80%;
+    }
+    .workspace-aside{
+        position: absolute;
+        max-width: 70%;
+    }
+}

@@ -1,0 +1,22 @@
+
+.aside-elements .buttons-content{
+    display: flex; justify-content: space-between;
+}
+.aside-elements button{
+    height: 35px;
+    min-width: 120px;
+    display: flex; align-items: center; justify-content: center;
+    border-color: var(--inptBorder);
+    color: var(--inptText);
+    background-color: var(--inptBg);
+    cursor: pointer;
+}
+
+.aside-elements button:hover{
+    opacity: 0.8;
+}
+
+.elements{
+    flex: 1;
+    padding: 25px 5px;
+}

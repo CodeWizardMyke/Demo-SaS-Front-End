@@ -6,8 +6,13 @@ import ErrorPopup from '../Error/ErrorPopup';
 import HeaderActions from './HeaderActions';
 
 import "./Header.css"
+import { TiThList } from "react-icons/ti";
 
-const Header = () => {
+
+const Header = ({
+    setToggleSideBar,
+    toggleSideBar
+}) => {
 
     const {
             user,
@@ -21,6 +26,10 @@ const Header = () => {
             <ErrorPopup 
                 errMsg={errMsg} 
                 setErrMsg={setErrMsg} 
+            />
+            <TiThList
+                onClick={ ( ) => setToggleSideBar(!toggleSideBar)}
+            className='bt-toggle-sidebar'
             />
             <UserMenu 
                 user={user} 

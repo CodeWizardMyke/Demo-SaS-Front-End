@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 
 import Loading from "../../components/loading/Loading";
@@ -7,18 +7,25 @@ import SideBar from '../../components/sideBar/SideBar';
 import Workspace from '../../components/workspace/Workspace';
 import { WorkspaceProvider } from '../../contexts/WorkspaceContext';
 
-const IndexApp = () => {
+
+const AppLayout = () => {
     const {loading} = useContext(AuthContext);
+    const [ toggleSideBar, setToggleSideBar] = useState(true);
 
     return (
         <main className="container">
-            <MainTopBar/>
+            <MainTopBar
+                setToggleSideBar={setToggleSideBar}
+                toggleSideBar={toggleSideBar}
+            />
             <section className="content">
                 {
                     loading && <Loading/>
                 }
                 <WorkspaceProvider>
-                    <SideBar/>
+                    {
+                        toggleSideBar && <SideBar/>
+                    }
                     <Workspace/>
                 </WorkspaceProvider>
             </section>
@@ -26,4 +33,4 @@ const IndexApp = () => {
     );
 }
 
-export default IndexApp;
+export default AppLayout;

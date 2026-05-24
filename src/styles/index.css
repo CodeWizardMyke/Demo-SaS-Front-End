@@ -39,15 +39,21 @@ button:hover{
 .content{
     display: flex;
     flex: 1;
+    position: relative;
+}
+
+.bt-toggle-sidebar{
+    cursor: pointer;
+    margin: 0px 10px;
+    width: 25px;
+    height: 25px;
+}
+.bt-toggle-sidebar:hover{
+    opacity: 0.5;
 }
 
 .sectionAppContent{
     flex: 1;
     display: flex;
     flex-direction: column;
-}
-
-.OutletContent{
-    flex: 1;
-    padding: 5px;
 }

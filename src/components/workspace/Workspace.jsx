@@ -10,9 +10,9 @@ const Workspace = () => {
             <section className="tabs-bar">
                 <TabBar/>
             </section>
-            <div className="workspace-content">
+            <section className="workspace-content">
                 <Outlet />
-            </div>
+            </section>
        </main>
     );
 }

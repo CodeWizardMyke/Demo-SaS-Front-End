@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
-import IndexAuth from '../layouts/AuthLayout/IndexAuth';
+import AuthLayout from '../layouts/AuthLayout';
 import PrivateRoute from '../routes/PrivateRoute';
 import Products from '../modules/Products';
 import CreateProduct from '../pages/products/CreateProduct';
@@ -11,7 +11,7 @@ import DeleteProduct from '../pages/products/DeleteProduct';
 export const router = createBrowserRouter([
     {
         path:'/',
-        element:<IndexAuth/>
+        element:<AuthLayout/>
     },
     {
         path:'/app',
