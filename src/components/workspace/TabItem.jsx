@@ -10,10 +10,13 @@ const TabItem = ({item}) => {
             onClick={()=> openTab(item)}
         >
             <span>  {item.text} </span>
-            <IoCloseOutline 
-                onClick={()=> closeTab(item.path)}
-                className='closeSvg'
-            />
+                <IoCloseOutline 
+                    onClick={(e)=>{
+                        e.stopPropagation();
+                        closeTab(item.path);
+                    }}
+                    className='closeSvg'
+                />
         </li>
     );
 }

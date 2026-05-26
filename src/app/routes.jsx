@@ -17,6 +17,7 @@ export const router = createBrowserRouter([
         path:'/app',
         element: <PrivateRoute />,
         children:[
+            {index:true, element: null },
             {path:"products",element:<Products/>},
             {path:"products/create",element:<CreateProduct/>},
             {path:"products/update",element:<UpdateProduct/>},
