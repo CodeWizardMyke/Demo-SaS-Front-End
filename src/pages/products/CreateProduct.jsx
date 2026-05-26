@@ -1,14 +1,18 @@
-import React from 'react';
-import WorkspaceAside from '../../components/workspace/WorkspaceAside';
-
+import React, { useContext } from 'react';
+import PanelAside from '../../components/PanelAside';
+import { WorkspaceContext } from '../../contexts/WorkspaceContext';
 
 const CreateProduct = () => {
+
+    const {activeSideBar} = useContext(WorkspaceContext)
+
     return (
         <div className="opened-module">
             <h2>cria novo produto</h2>
-         
-            <WorkspaceAside/>
-
+            
+            {
+                activeSideBar && <PanelAside /> 
+            }
         </div>
     );
 }

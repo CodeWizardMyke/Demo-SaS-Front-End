@@ -6,6 +6,7 @@ export const WorkspaceContext = createContext();
 export function WorkspaceProvider({children}){
     const [openedTabs,setOpenedTabs] = useState([]);
     const [activeTab,setActiveTab] = useState(null);
+    const [activeSideBar, setActiveSideBar] = useState(false);
     const navigate = useNavigate();
 
 
@@ -42,6 +43,10 @@ export function WorkspaceProvider({children}){
             };
         };
     };
+    
+    function togglePanelAside() {
+        setActiveSideBar(!activeSideBar);
+    }
 
     return(
         <WorkspaceContext.Provider
@@ -50,6 +55,8 @@ export function WorkspaceProvider({children}){
                 activeTab,
                 openTab,
                 closeTab,
+                togglePanelAside,
+                activeSideBar
             }}
         >
             {children}

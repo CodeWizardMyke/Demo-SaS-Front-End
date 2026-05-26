@@ -1,0 +1,152 @@
+.aside{
+    background-color: var(--bgPanel);
+
+    width: 260px;
+    min-width: 260px;
+
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-right: 1px solid var(--panelBorder);
+
+    overflow: hidden;
+
+    transition:
+        width 300ms ease,
+        min-width 300ms ease,
+        padding 300ms ease;
+}
+
+.aside.closed{
+    width: 45px;
+    min-width: 45px;
+    padding: 15px 5px;
+}
+
+.aside.closed h3,
+.aside.closed span,
+.aside.closed .listContent{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.aside h3,
+.aside span,
+.aside .listContent{
+    transition: opacity 150ms ease;
+}
+
+.asideTopContent .services{
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    width: 100%;
+}
+
+.asideMainBody h3{
+    margin: 10px 0;
+}
+
+.asideMainBody .openModule{
+    width: 120px;
+    display: block;
+    cursor: pointer;
+}
+
+.asideMainBody ul{
+    display: flex;
+    flex-direction: column;
+
+    list-style: none;
+}
+
+.asideMainBody ul li{
+    cursor: pointer;
+
+    height: 25px;
+    max-width: 220px;
+
+    display: flex;
+    align-items: center;
+
+    transition:
+        color 200ms ease,
+        opacity 200ms ease;
+}
+
+.asideMainBody ul li:hover{
+    color: var(--textListHover);
+}
+
+.asideMainBody .listContent{
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+.aside ul li svg{
+    margin-right: 5px;
+    min-width: 16px;
+}
+
+.bt-toggleAsideApp{
+    width: 25px;
+    height: 25px;
+
+    cursor: pointer;
+
+    transition:
+        transform 250ms ease,
+        color 200ms ease;
+}
+
+.bt-toggleAsideApp.active{
+    color: var(--text-hover);
+    transform: rotate(180deg);
+}
+
+.paddingList{
+    padding-left: 15px;
+}
+
+.rotateArrow{
+    animation: rotateArrow 100ms linear both;
+}
+
+@keyframes rotateArrow{
+    from{
+        transform: rotate(0deg);
+    }
+
+    to{
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes rotateArrow {
+    from{
+        transform: rotate(0deg);
+    }to{
+        transform: rotate(-90deg);
+    }
+}
+
+@media (max-width:768px){
+
+    .secound{
+        display:none;
+    }
+    .aside{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        max-width: 200px;
+    }
+
+}

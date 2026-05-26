@@ -1,0 +1,61 @@
+
+.panel-aside{
+    max-width: 400px; width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 5px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    flex: 1;
+    z-index: 50;
+    background-color: var(--bgPanel);
+}
+
+.panel-aside .content-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+.panel-aside .content-buttons button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 15px;
+    min-height: 25px;
+    min-width: 100px;
+}
+
+.panel-aside ul{
+    list-style: none;
+}
+
+.fieldProdDetailList{
+    padding: 5px 0;
+    flex: 1;
+    margin-bottom: 25px;
+}
+
+.panel-aside .step-name{
+    background-color:var(--bgPanel);
+    padding: 10px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    font-weight: 900;
+}
+.panel-aside .fieldSteped-values{
+    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.panel-aside .fieldSteped-values span{
+
+    margin-left: 15px;
+}
+.panel-aside .stFirst{
+    font-weight: 600;
+}

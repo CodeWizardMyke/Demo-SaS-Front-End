@@ -1,31 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import SideBarItem from './SideBarItem';
 
-import './SideBar.css'
-import SearchField from '../search/SearchField';
-import ItemList from './SideBarItem';
-
-import modules from '../../configs/sidebar/modules'
-
-const SideBar = () => {
-    const [query, setQuery] = useState('');
-    const [openedModule, setOpenedModule] = useState(null);
-
-    const filteredModules = modules.filter(module =>
-        module.text.toLowerCase().includes(query.toLowerCase())
-    );
-
-    const handleToggle = (id) => {
-        setOpenedModule(prev => prev === id ? null : id);
-    };
-
-
+const SideBarNav = ({
+    filteredModules,
+    modules,
+    openedModule,
+    handleToggleModule
+}) => {
     return (
-        <aside className='aside'>
-            <div className="asideTopContent">
-                <div className="services"></div>
-                <SearchField setQuery={setQuery} />
-            </div>
-           <nav className="asideMainBody">
+      <nav className="asideMainBody">
                 <h3>Modulos</h3>
                 {
                     filteredModules.map(module => (
@@ -34,11 +17,11 @@ const SideBar = () => {
 
                             <ul className="module" key={module.id}>
 
-                                <ItemList
+                                <SideBarItem
                                     text={module.text}
                                     path={module.path}
                                     iconArrow={true}
-                                    onClick={() => handleToggle(module.id)}
+                                    onClick={() => handleToggleModule(module.id)}
                                 />
 
                                 {
@@ -49,7 +32,7 @@ const SideBar = () => {
                                             {
                                                 module.routes.map(item => (
                                                     
-                                                    <ItemList
+                                                    <SideBarItem
                                                         item={item}
                                                         key={item.id}
                                                         text={item.text}
@@ -74,8 +57,7 @@ const SideBar = () => {
                 }
 
             </nav>
-        </aside>
     );
 }
 
-export default SideBar;
+export default SideBarNav;

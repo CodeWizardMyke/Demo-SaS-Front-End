@@ -3,7 +3,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 import Loading from "../../components/loading/Loading";
 import MainTopBar from '../../components/header/Header';
-import SideBar from '../../components/sideBar/SideBar';
+import SideBar from '../../components/SideBarApp/SideBar';
 import Workspace from '../../components/workspace/Workspace';
 import { WorkspaceProvider } from '../../contexts/WorkspaceContext';
 
@@ -23,9 +23,7 @@ const AppLayout = () => {
                     loading && <Loading/>
                 }
                 <WorkspaceProvider>
-                    {
-                        toggleSideBar && <SideBar/>
-                    }
+                    <SideBar/>
                     <Workspace/>
                 </WorkspaceProvider>
             </section>
