@@ -26,10 +26,12 @@ const TabBar = () => {
                 )
                 }
             </ul>
-            <GoSidebarExpand
+            <div className="bt-expandContent">
+                <GoSidebarExpand
                 className={`bt-sidebar-expand ${expanded ? "active" : ""}`}
                 onClick={handlerClicked}
             />
+            </div>
         </div>
     );
 }

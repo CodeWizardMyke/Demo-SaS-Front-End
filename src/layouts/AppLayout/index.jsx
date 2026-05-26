@@ -18,15 +18,15 @@ const AppLayout = () => {
                 setToggleSideBar={setToggleSideBar}
                 toggleSideBar={toggleSideBar}
             />
-            <section className="content">
-                {
-                    loading && <Loading/>
-                }
-                <WorkspaceProvider>
+            <WorkspaceProvider>
+                <section className="content">
                     <SideBar/>
+                    {
+                        loading && <Loading/>
+                    }
                     <Workspace/>
-                </WorkspaceProvider>
-            </section>
+                </section>
+            </WorkspaceProvider>
         </main>
     );
 }

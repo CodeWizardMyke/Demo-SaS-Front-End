@@ -148,5 +148,21 @@
         z-index: 100;
         max-width: 200px;
     }
+}
 
+@media (max-width:320px) {
+    .aside{
+        min-width: 150px;
+        width: 150px;
+    }
+    
+}
+@media (max-width:425px) {
+    .aside{
+        min-width: 200px;
+        width: 200px;
+    }
+    .aside.closed{
+        min-width: 30px; width: 30px;
+    }
 }

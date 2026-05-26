@@ -59,3 +59,15 @@
 .panel-aside .stFirst{
     font-weight: 600;
 }
+
+
+@media (max-width:768px) {
+    .panel-aside{
+        max-width: 300px;
+    }
+}
+@media (max-width:1024px) {
+    .panel-aside{
+        max-width: 325px;
+    }
+}
