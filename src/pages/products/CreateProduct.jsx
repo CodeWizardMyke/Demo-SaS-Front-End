@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PanelAside from '../../components/PanelAside';
 import { WorkspaceContext } from '../../contexts/WorkspaceContext';
+import SearchCategoryOrBrand from '../../components/product/searchCategoryOrBrand';
 
 const CreateProduct = () => {
 
@@ -8,8 +9,14 @@ const CreateProduct = () => {
 
     return (
         <div className="opened-module">
-            <h2>cria novo produto</h2>
-            
+
+            <div className="moduleo-content">
+                <SearchCategoryOrBrand
+                    type={"brand"}
+                />
+
+            </div>
+
             {
                 activeSideBar && <PanelAside /> 
             }

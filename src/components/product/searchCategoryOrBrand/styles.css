@@ -1,0 +1,93 @@
+.field-search-content{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    justify-content: space-between;
+    height: 35px;
+}
+.field-search-content button{
+    margin: 0 10px;
+    height: 35px;
+    width: 120px;
+}
+
+.scob-content input{
+     height: 35px;
+     border: 1px solid var(--inptBorder);
+     background-color: var(--inptBg);
+     color: var(--inptText);
+     border-radius: 5px;
+     flex: 1;
+     padding-left: 15px;
+     outline: 1px solid var(--inptBorder);
+}
+
+.result-search{
+    min-height: 400px;
+    margin-top: 45px;
+}
+.filter-result{
+    display: flex;
+    max-width: 300px;
+    margin-left: auto;
+    margin-bottom: 15px;
+}
+.table-content{
+    background-color: var(--inptBg);
+    min-height: 500px;
+    overflow: auto;
+}
+.result-search table{
+    background-color: var(--inptBg);
+    border: 1px solid var(--inptBorder);
+    width: 100%;
+}
+.result-search table thead{
+    border: 1px solid var(--inptBorder);
+}
+
+.result-search table tbody tr{
+    text-align: center;
+    height: 25px;
+    cursor: pointer;
+}
+
+.result-search table tbody tr:nth-child(odd){
+    background-color: var(--inptBorder);
+    text-align: center;
+}
+
+.result-search table tbody tr:hover{
+    background-color: var(--bgListHover) !important;
+    color: var(--txtListHover);
+}
+.result-search .active-row{
+    background-color: var(--bgListSelect) !important;
+    color: var(--txtListSelect);
+}
+
+.checkValue{
+    margin-top: 45px;
+    border: 1px solid var(--inptBorder);
+    color: var(--inptText);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px 0;
+}
+.checkValue input {
+    height: 25px;
+    text-align: center;
+    padding: 0;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.checkValue button {
+    max-width: 300px;
+    width: 100%;
+    border: 1px solid var(--border);
+    color: var(--inptText);
+}

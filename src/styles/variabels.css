@@ -19,6 +19,12 @@
     /*principais cores de texto açoes de usuario*/
     --text-hover:#184369;
     --textListHover: #184369; 
+    
+    --bgListSelect : #184369;
+    --txtListSelect: #F5F5F5;
+     
+    --bgListHover : #215885;
+    --txtListHover: #F5F5F5;
 
     /*princiapais cores de input*/
     --inptBg:#F4F4F4;
