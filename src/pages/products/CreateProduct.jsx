@@ -1,27 +1,57 @@
-import React, { useContext } from 'react';
-import PanelAside from '../../components/PanelAside';
+import React, { useContext, useEffect } from 'react';
+
+import { ProductFormProvider, ProductFormContext } from '../../contexts/ProductFormContext';
 import { WorkspaceContext } from '../../contexts/WorkspaceContext';
+
+import PanelAside from '../../components/PanelAside';
 import SearchCategoryOrBrand from '../../components/product/searchCategoryOrBrand';
+
+const CreateProductContent = () => {
+    const { activeSideBar } = useContext(WorkspaceContext);
+    const { step, dispatch,formData } = useContext(ProductFormContext);
+
+    useEffect(() => {
+    console.log(`[FEEDBACK FORM]`,formData);
+    }, [formData])
+
+    return (
+
+        <div className="moduleo-content">
+
+            {
+                step === 1 && <SearchCategoryOrBrand  type="brand" dispatch={dispatch} />
+            }
+
+            {
+                step === 2 && <SearchCategoryOrBrand type="category" dispatch={dispatch} />
+            }
+
+            {
+                activeSideBar && <PanelAside />
+            }
+
+        </div>
+
+    );
+
+};
 
 const CreateProduct = () => {
 
-    const {activeSideBar} = useContext(WorkspaceContext)
-
     return (
+
         <div className="opened-module">
 
-            <div className="moduleo-content">
-                <SearchCategoryOrBrand
-                    type={"brand"}
-                />
+            <ProductFormProvider>
 
-            </div>
+                <CreateProductContent />
 
-            {
-                activeSideBar && <PanelAside /> 
-            }
+            </ProductFormProvider>
+
         </div>
+
     );
-}
+
+};
 
 export default CreateProduct;

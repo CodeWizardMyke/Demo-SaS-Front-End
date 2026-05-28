@@ -6,7 +6,7 @@ import { searchCategories } from '../../../services/categoryService';
 import { AuthContext } from '../../../contexts/AuthContext';
 import TableResult from './table';
 
-const SearchCategoryOrBrand = ({type}) => {
+const SearchCategoryOrBrand = ({type,dispatch}) => {
     const [results, setResults] = useState([]);
     const [query,setQuery] = useState ("");
     const [filter,setFilter] = useState("");
@@ -63,13 +63,31 @@ const SearchCategoryOrBrand = ({type}) => {
 
     function handleSelect(item) {
 
-        const value =
+        const name = 
             item.brand_name ||
             item.category_name;
 
-        setSelectedValue(value);
+        const id = 
+            item.brand_id ||
+            item.category_id;
+
+        setSelectedValue({id,name});
     }
-    
+
+    function confirmStep(){
+        dispatch({
+            type: "SET_FIELD",
+            field: type === "brand" ? "brand" : "category",
+            value: selectedValue.id
+        })
+        dispatch({
+            type:"COMPLET_STEP",
+            payload:1
+        })
+        dispatch({
+            type:"NEXT_STEP"
+        })
+    }
 
     return (
         <div className='scob-content'>
@@ -128,7 +146,7 @@ const SearchCategoryOrBrand = ({type}) => {
                         type="text" 
                         name={typeText} 
                         id="selectedValue" 
-                        value={selectedValue || ""}
+                        value={selectedValue?.name || ""}
                         readOnly
                     />
 
@@ -137,6 +155,7 @@ const SearchCategoryOrBrand = ({type}) => {
                 <button 
                     type="button"
                     disabled={!selectedValue}
+                    onClick={confirmStep}
                 >
                     {
                         !selectedValue ? `Selecione uma ${typeText}...` : 'Confirmar'

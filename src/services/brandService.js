@@ -1,7 +1,6 @@
 import { api } from "./api";
 
 export async function searchBrands(query){
-    console.log('start search');
 
     try{
 
