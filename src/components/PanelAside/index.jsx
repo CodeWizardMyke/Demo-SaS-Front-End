@@ -1,12 +1,22 @@
-import React from 'react';
 
 import './styles.css'
 import PanelProdDetails from '../product/PanelProdDetails';
+import CreateCategoryOrBrand from '../product/createCategoryOrBrand';
 
-const PanelAside = () => {
+const PanelAside = ({activeCreateForm,createForm}) => {
+
     return (
         <aside className='panel-aside'>
-            <PanelProdDetails/>
+            {
+                !activeCreateForm 
+                    ? <PanelProdDetails/>
+                    :(
+                        <CreateCategoryOrBrand 
+                            activeCreateForm={activeCreateForm} 
+                            createForm={createForm} 
+                        />
+                    )
+            }
         </aside>
     );
 }

@@ -1,14 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import FieldsProdDetails from './FieldsProdDetails';
+import { ProductFormContext } from '../../../contexts/ProductFormContext';
 
 const PanelProdDetails = () => {
+
+    const {completedSteps, step, dispatch } = useContext(ProductFormContext);
+
+    function prevStep(){
+        dispatch({
+            type:"PREV_STEP"
+        })
+    }
+
+    function nextStep(){
+        dispatch({
+            type:"NEXT_STEP"
+        })
+    }
     return (
         <>
             <div className="content-buttons">
-                <button type='button'>Voltar</button>
-                <button type='button'>Avançar</button>
+                
+                {
+                    step > 1 && <button type='button'  onClick={prevStep}  > Voltar </button>
+                }
+                
+                {
+                    step < completedSteps.length && <button type='button'onClick={nextStep} >  Avançar  </button>
+                }
+
             </div>
+
             <FieldsProdDetails />
+
             <div className="content-buttons">
                 <button type='button'>Visualizar produto</button>
                 <button type='button'>Validar cadastro</button>

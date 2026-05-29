@@ -6,11 +6,7 @@ export function renderPreview(field, dataForm){
 
     const value = dataForm?.[field.name];
 
-    if(
-        value === undefined ||
-        value === null ||
-        value === ""
-    ){
+    if(!value){
         return "Não preenchido";
     }
 
@@ -25,8 +21,11 @@ export function renderPreview(field, dataForm){
         case "textarea":
             return String(value).slice(0, 40) + "...";
 
+        case "select":
+            return value.name
+
         default:
-            return value;
+            return "Valor não esperado";
     }
 
 }

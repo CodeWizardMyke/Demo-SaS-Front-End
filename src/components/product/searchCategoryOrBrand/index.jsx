@@ -1,12 +1,18 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext , useState } from 'react';
 import './styles.css'
 import { WorkspaceContext } from '../../../contexts/WorkspaceContext';
 import { searchBrands } from '../../../services/brandService';
 import { searchCategories } from '../../../services/categoryService';
 import { AuthContext } from '../../../contexts/AuthContext';
 import TableResult from './table';
+import { useFilteredResults } from './hooks/useFilteredResults';
+import { confirmStep } from '../utils/confirmStep';
+import { ProductFormContext } from '../../../contexts/ProductFormContext';
 
-const SearchCategoryOrBrand = ({type,dispatch}) => {
+const SearchCategoryOrBrand = ({type, createForm}) => {
+
+    const {dispatch,step} = useContext(ProductFormContext);
+
     const [results, setResults] = useState([]);
     const [query,setQuery] = useState ("");
     const [filter,setFilter] = useState("");
@@ -18,7 +24,7 @@ const SearchCategoryOrBrand = ({type,dispatch}) => {
     const typeText = type === "brand"
         ? "Marca"
         : "Categoria";
-
+    
     async function handleSearch(){
 
         if (!query.trim()) return;
@@ -42,52 +48,17 @@ const SearchCategoryOrBrand = ({type,dispatch}) => {
         setLoading(false);
     }
     
-    const filteredResults = useMemo(() => {
-
-        if (!filter.trim()) return results;
-
-        return results.filter((item) => {
-
-            const value =
-                item.brand_name ||
-                item.category_name ||
-                '';
-
-            return value
-                .toLowerCase()
-                .includes(filter.toLowerCase());
-
-        });
-
-    }, [results, filter]);
+    const filteredResults =  useFilteredResults(results, filter);
 
     function handleSelect(item) {
+        const value = confirmStep( item, type, step,  dispatch  );
 
-        const name = 
-            item.brand_name ||
-            item.category_name;
+        if(value){  setSelectedValue(value); }
+    };
 
-        const id = 
-            item.brand_id ||
-            item.category_id;
-
-        setSelectedValue({id,name});
-    }
-
-    function confirmStep(){
-        dispatch({
-            type: "SET_FIELD",
-            field: type === "brand" ? "brand" : "category",
-            value: selectedValue.id
-        })
-        dispatch({
-            type:"COMPLET_STEP",
-            payload:1
-        })
-        dispatch({
-            type:"NEXT_STEP"
-        })
-    }
+    function prevStepAction(){
+        dispatch({ type:"NEXT_STEP" })
+    };
 
     return (
         <div className='scob-content'>
@@ -114,7 +85,9 @@ const SearchCategoryOrBrand = ({type,dispatch}) => {
                     
                     </button>
 
-                    <button type="button">Criar nova</button>
+                    <button type="button"
+                        onClick={()=> createForm(type)}
+                    >Criar nova</button>
 
                 </div>
 
@@ -155,7 +128,7 @@ const SearchCategoryOrBrand = ({type,dispatch}) => {
                 <button 
                     type="button"
                     disabled={!selectedValue}
-                    onClick={confirmStep}
+                    onClick={prevStepAction}
                 >
                     {
                         !selectedValue ? `Selecione uma ${typeText}...` : 'Confirmar'

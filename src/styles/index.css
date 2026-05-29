@@ -16,7 +16,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-button {
+button{
     background: var(--button);
     color: var(--buttonTxtColor);
     border: 1px solid var(--buttonBorderColor);
@@ -28,6 +28,24 @@ button {
 }
 button:hover{
     opacity: 0.8;
+}
+
+input{
+    border-radius: 5px;
+    padding-left: 15px;
+    height: 35px;
+    max-width: 400px;
+    margin: 5px 0;
+    width: 100%;
+    background-color: var(--inptBg);
+    color: var(--inptText);
+    border: 2px solid var(--inptBorder);
+}
+
+
+.bt-create{
+    max-width: 250px;
+    width: 100%;
 }
 .container{
     display: flex;
@@ -56,4 +74,8 @@ button:hover{
     flex: 1;
     display: flex;
     flex-direction: column;
+}
+.errs{
+    color: var(--txt-err);
+    font-size: 10pt;
 }

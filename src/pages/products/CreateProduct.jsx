@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { ProductFormProvider, ProductFormContext } from '../../contexts/ProductFormContext';
 import { WorkspaceContext } from '../../contexts/WorkspaceContext';
@@ -7,27 +7,45 @@ import PanelAside from '../../components/PanelAside';
 import SearchCategoryOrBrand from '../../components/product/searchCategoryOrBrand';
 
 const CreateProductContent = () => {
-    const { activeSideBar } = useContext(WorkspaceContext);
-    const { step, dispatch,formData } = useContext(ProductFormContext);
+    const { activeSideBar, togglePanelAside } = useContext(WorkspaceContext);
+    const { step } = useContext(ProductFormContext);
+    const [ activeCreateForm, setActiveCreateForm] = useState(null);
 
-    useEffect(() => {
-    console.log(`[FEEDBACK FORM]`,formData);
-    }, [formData])
+    function toggleCreateForm(type) {
+        
+        if(type === "close"){
+            return setActiveCreateForm(null);
+        }else{
+            togglePanelAside()
+            return setActiveCreateForm(type);
+        }
+    }
+
+    const STEP_COMPONENTS = {
+
+        1: (
+            <SearchCategoryOrBrand
+                type="category"
+                createForm={toggleCreateForm}
+            />
+        ),
+
+        2: (
+            <SearchCategoryOrBrand
+                type="brand"
+                createForm={toggleCreateForm}
+            />
+        )
+    };
 
     return (
 
         <div className="moduleo-content">
 
-            {
-                step === 1 && <SearchCategoryOrBrand  type="brand" dispatch={dispatch} />
-            }
+            {STEP_COMPONENTS[step]}
 
             {
-                step === 2 && <SearchCategoryOrBrand type="category" dispatch={dispatch} />
-            }
-
-            {
-                activeSideBar && <PanelAside />
+                activeSideBar && <PanelAside activeCreateForm={activeCreateForm} createForm={toggleCreateForm} />
             }
 
         </div>

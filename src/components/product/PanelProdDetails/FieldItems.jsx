@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { renderPreview } from './renderPreview';
+import { ProductFormContext } from '../../../contexts/ProductFormContext';
 
-const FieldItems = ({dataConfigs,dataForm}) => {
+const FieldItems = ({dataConfigs}) => {
+
+    const {formData} = useContext(ProductFormContext)
 
     const fieldSteped = dataConfigs.fields ? dataConfigs.fields : []
 
@@ -9,7 +12,6 @@ const FieldItems = ({dataConfigs,dataForm}) => {
         <li>
             <div className="step-name">
                 {dataConfigs.title}
-
             </div>
             <ul>
                 {
@@ -22,7 +24,7 @@ const FieldItems = ({dataConfigs,dataForm}) => {
                             <span className='stFirst'>{field.label}</span>
                             <span>
                                {
-                                renderPreview(field, dataForm)
+                                renderPreview(field, formData)
                                }
                             </span>
                         </li>

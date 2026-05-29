@@ -27,15 +27,15 @@
     --txtListHover: #F5F5F5;
 
     /*princiapais cores de input*/
-    --inptBg:#F4F4F4;
+    --inptBg:#ffffff;
     --inptBorder: #cccc; 
     --inptText: #6c757d;
 
     /*principais cores de botoes*/
-    --button: transparent;
+    --button: #dddd;
     --border: #cccc;
-    --buttonTxtColor:#15181b;
-    --buttonBorderColor:#6C757D;
+    --buttonTxtColor:#6C757D;
+    --buttonBorderColor:#cccc;
     --bt-primary: #487CFF;
     --bt-txt-primary: #FFFF;
 
