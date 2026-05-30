@@ -1,13 +1,15 @@
 import React, { useContext , useEffect, useState } from 'react';
-import './styles.css'
+
 import { WorkspaceContext } from '../../../contexts/WorkspaceContext';
 import { searchBrands } from '../../../services/brandService';
 import { searchCategories } from '../../../services/categoryService';
 import { AuthContext } from '../../../contexts/AuthContext';
-import TableResult from './table';
 import { useFilteredResults } from './hooks/useFilteredResults';
 import { confirmStep } from '../utils/confirmStep';
 import { ProductFormContext } from '../../../contexts/ProductFormContext';
+
+import './styles.css'
+import TableResult from './table';
 
 const SearchCategoryOrBrand = ({type, createForm}) => {
 
@@ -122,21 +124,18 @@ const SearchCategoryOrBrand = ({type, createForm}) => {
             />
 
             <div className="checkValue">
-                <div>
 
-                    <label htmlFor="selectedValue">
-                        {typeText} Selecionada
-                    </label>
+                <label htmlFor="selectedValue">
+                    {typeText} Selecionada
+                </label>
 
-                    <input 
-                        type="text" 
-                        name={typeText} 
-                        id="selectedValue" 
-                        value={selectedValue?.name || ""}
-                        readOnly
-                    />
-
-                </div>
+                <input 
+                    type="text" 
+                    name={typeText} 
+                    id="selectedValue" 
+                    value={selectedValue?.name || ""}
+                    readOnly
+                />
 
                 <button 
                     type="button"

@@ -7,18 +7,26 @@ import PanelAside from '../../components/PanelAside';
 import SearchCategoryOrBrand from '../../components/product/searchCategoryOrBrand';
 
 const CreateProductContent = () => {
-    const { activeSideBar, togglePanelAside } = useContext(WorkspaceContext);
+    const { activeSideBar, toggleSideBar } = useContext(WorkspaceContext);
     const { step } = useContext(ProductFormContext);
     const [ activeCreateForm, setActiveCreateForm] = useState(null);
 
     function toggleCreateForm(type) {
-        
-        if(type === "close"){
-            return setActiveCreateForm(null);
-        }else{
-            togglePanelAside()
-            return setActiveCreateForm(type);
+
+        if(type === "close") {
+            setActiveCreateForm(null);
+            return;
         }
+
+        if(type && activeSideBar){
+            setActiveCreateForm(type);
+        }
+
+        if(type && !activeSideBar){
+            toggleSideBar()            
+            setActiveCreateForm(type);
+        }
+
     }
 
     const STEP_COMPONENTS = {

@@ -6,11 +6,11 @@ import { WorkspaceContext } from '../../contexts/WorkspaceContext';
 import ButtonAsideToggle from '../buttons/toggle/ButtonAsideToggle';
 
 const TabBar = () => {
-    const {openedTabs, togglePanelAside} = useContext(WorkspaceContext);
+    const {openedTabs, toggleSideBar} = useContext(WorkspaceContext);
     const [toggleButton, setToggleButton] = useState(false);
 
     function handlerClicked(){
-        togglePanelAside();
+        toggleSideBar();
         setToggleButton(!toggleButton)
     }
 

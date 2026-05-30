@@ -21,7 +21,7 @@ const PanelAside = ({activeCreateForm,createForm,activeSideBar}) => {
 
     return (
        <div 
-            className={`aside-container ${activeSideBar && 'aside-closed'}`}
+            className={`aside-container ${ activeSideBar === false && 'aside-closed'}`}
         >
         
             <aside 

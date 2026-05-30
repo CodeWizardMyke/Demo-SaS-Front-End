@@ -5,7 +5,7 @@ export const WorkspaceContext = createContext();
 
 export function WorkspaceProvider({children}){
     const [openedTabs,setOpenedTabs] = useState([]);
-    const [activeSideBar, setActiveSideBar] = useState(false);
+    const [activeSideBar, setActiveSideBar] = useState(true);
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
@@ -44,7 +44,7 @@ export function WorkspaceProvider({children}){
         }
     }
     
-    function togglePanelAside() {
+    function toggleSideBar() {
         setActiveSideBar(!activeSideBar);
     }
 
@@ -54,8 +54,8 @@ export function WorkspaceProvider({children}){
                 openedTabs,
                 openTab,
                 closeTab,
-                togglePanelAside,
                 activeSideBar,
+                toggleSideBar,
                 loading, setLoading
             }}
         >
