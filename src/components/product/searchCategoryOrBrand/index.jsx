@@ -1,4 +1,4 @@
-import React, { useContext , useState } from 'react';
+import React, { useContext , useEffect, useState } from 'react';
 import './styles.css'
 import { WorkspaceContext } from '../../../contexts/WorkspaceContext';
 import { searchBrands } from '../../../services/brandService';
@@ -60,6 +60,18 @@ const SearchCategoryOrBrand = ({type, createForm}) => {
         dispatch({ type:"NEXT_STEP" })
     };
 
+    useEffect(()=>{
+        cleanForm()
+    },[type])
+
+
+    function cleanForm(){
+        setResults([]);
+        setQuery("");
+        setFilter("");
+        setSelectedValue(null);
+    }
+
     return (
         <div className='scob-content'>
 
@@ -70,6 +82,7 @@ const SearchCategoryOrBrand = ({type, createForm}) => {
                 <input 
                     type="search"
                     onChange={e => setQuery(e.target.value)} 
+                    value={query}
                     placeholder={`Buscar ${typeText.toLowerCase()}...`}
                 />
 
