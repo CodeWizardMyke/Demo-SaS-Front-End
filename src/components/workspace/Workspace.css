@@ -1,31 +1,8 @@
+
 .tab-bar-content{
     display: flex;
     flex: 1;
     align-items: center;
-}
-
-.bt-expandContent{
-    width: 55px;
-    position: absolute;
-    right: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    background-color: var(--bgPanel);
-}
-.bt-sidebar-expand{
-    position: absolute;
-    right: 5px;
-    border-radius: 5px;
-    height: 25px;
-    width: 25px;
-    cursor: pointer;
-    transition: transform 300ms ease;
-}
-
-.bt-sidebar-expand.active{
-    transform: rotate(180deg);
 }
 
 .tabs-bar{
@@ -34,6 +11,7 @@
     padding: 5px;
     height: 40px;
     display: flex;
+    flex-direction: row;
     align-items: center;
     overflow-x: hidden;
     position: relative;
@@ -47,6 +25,7 @@
     flex-wrap: nowrap;
     overflow: hidden;
 }
+
 .tabs-bar ul li{
     height: 25px;
     margin-right: 5px;
@@ -83,34 +62,34 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-width: 380px;
 }
 
 .workspace-content{
-    flex: 1;
     display: flex;
     position: relative;
+    flex: 1;
 }
 
 .opened-module{
     display: flex;
     flex: 1;
-    flex-direction: row;
+}
+
+.module-content{
+    flex: 1;
+    margin: 0 auto;
+    display: flex;
     justify-content: space-between;
 }
-.moduleo-content{
-    padding: 50px 0;
+
+.module-step{
     margin: 0 auto;
-    max-width: 610px;
-    width: 100%;
 }
+
 @media only screen and (max-width:780px){
     .workspace{
         min-width: 100%;
         padding-left: 45px;
-    }
-    .bt-expandContent{
-        width: 45px;
     }
 }
 

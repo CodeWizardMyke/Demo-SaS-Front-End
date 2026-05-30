@@ -41,6 +41,12 @@
 
     --textTab:#6C757D;
     --btTab:#D9D9D9;
+
+
+    /*toggle Buttons*/
+    --tbdefault: #6C757D;
+    --tbActive: #0c6cc0;
+    --tbDisabled: #6c757d60;
 }
 
 [data-theme="dark"] {

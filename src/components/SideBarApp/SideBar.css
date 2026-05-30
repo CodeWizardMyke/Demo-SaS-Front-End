@@ -14,9 +14,9 @@
     overflow: hidden;
 
     transition:
-        width 300ms ease,
-        min-width 300ms ease,
-        padding 300ms ease;
+        width 500ms ease,
+        min-width 500ms ease,
+        padding 500ms ease;
 }
 
 .aside.closed{
@@ -64,7 +64,9 @@
 
     list-style: none;
 }
-
+.services{
+    position: relative;    
+}
 .asideMainBody ul li{
     cursor: pointer;
 

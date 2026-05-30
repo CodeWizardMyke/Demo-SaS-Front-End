@@ -7,14 +7,12 @@ import modules from '../../configs/sidebar/modules';
 import SearchField from '../search/SearchField';
 import SideBarNav from './SideBarNav';
 
-import { GoSidebarCollapse } from 'react-icons/go';
+import ButtonAsideToggle from '../buttons/toggle/ButtonAsideToggle'
 
 const SideBar = () => {
-
-    const [query, setQuery] = useState('');
+    const [toggleSideBar, setToggleSideBar] = useState(true);
     const [openedModule, setOpenedModule] = useState(null);
-
-    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    const [query, setQuery] = useState('');
 
     const filteredModules = modules.filter(module =>
         module.text.toLowerCase().includes(query.toLowerCase())
@@ -29,32 +27,31 @@ const SideBar = () => {
     }
 
     function handleToggleSidebar(){
-
-        setIsSidebarOpen(prev => !prev);
+ 
+        setToggleSideBar(!toggleSideBar);
 
     }
 
     return (
 
         <aside
-            className={`aside ${!isSidebarOpen ? "closed" : ""}`}
+            className={`aside ${ !toggleSideBar && "closed" }`}
         >
 
             <div className="asideTopContent">
 
                 <div className="services">
 
-                    <GoSidebarCollapse
-                        className={`bt-toggleAsideApp ${
-                            !isSidebarOpen ? "active" : ""
-                        }`}
-                        onClick={handleToggleSidebar}
+                    <ButtonAsideToggle
+                        collapsed={!toggleSideBar}
+                        clickEvent={handleToggleSidebar}
+                        clickAble={true}
                     />
 
                 </div>
 
                 {
-                    isSidebarOpen && (
+                    toggleSideBar && (
                         <SearchField setQuery={setQuery} />
                     )
                 }
@@ -62,7 +59,7 @@ const SideBar = () => {
             </div>
 
             {
-                isSidebarOpen && (
+                toggleSideBar && (
 
                     <SideBarNav
                         filteredModules={filteredModules}

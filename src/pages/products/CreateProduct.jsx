@@ -40,13 +40,17 @@ const CreateProductContent = () => {
 
     return (
 
-        <div className="moduleo-content">
+        <div className="module-content">
 
-            {STEP_COMPONENTS[step]}
+            <div className="module-step">
+                {STEP_COMPONENTS[step]}
+            </div>
 
-            {
-                activeSideBar && <PanelAside activeCreateForm={activeCreateForm} createForm={toggleCreateForm} />
-            }
+            <PanelAside
+                activeCreateForm={activeCreateForm} 
+                createForm={toggleCreateForm}
+                activeSideBar={activeSideBar}
+            />
 
         </div>
 
