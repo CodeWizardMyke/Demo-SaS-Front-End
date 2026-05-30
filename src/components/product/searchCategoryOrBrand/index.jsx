@@ -1,83 +1,90 @@
-import React, { useContext , useEffect, useState } from 'react';
+import React, {  useCallback, useContext, useEffect, useState } from 'react';
 
-import { WorkspaceContext } from '../../../contexts/WorkspaceContext';
-import { searchBrands } from '../../../services/brandService';
-import { searchCategories } from '../../../services/categoryService';
 import { AuthContext } from '../../../contexts/AuthContext';
-import { useFilteredResults } from './hooks/useFilteredResults';
-import { confirmStep } from '../utils/confirmStep';
 import { ProductFormContext } from '../../../contexts/ProductFormContext';
+import { useFilteredResults } from './hooks/useFilteredResults';
+import { usePaginatedSearch } from './hooks/usePaginatedSearch';
+import { confirmStep } from '../utils/confirmStep';
+import { servicesConfig } from './services/servicesConfig';
 
 import './styles.css'
 import TableResult from './table';
+import Pagination from './Pagination';
 
 const SearchCategoryOrBrand = ({type, createForm}) => {
-
     const {dispatch,step} = useContext(ProductFormContext);
 
-    const [results, setResults] = useState([]);
+    const [selectedValue, setSelectedValue] = useState(null);
     const [query,setQuery] = useState ("");
     const [filter,setFilter] = useState("");
-    const [selectedValue, setSelectedValue] = useState(null);
-
-    const {loading, setLoading} = useContext(WorkspaceContext);
-    const {setErrMsg} = useContext(AuthContext);
-
-    const typeText = type === "brand"
-        ? "Marca"
-        : "Categoria";
     
-    async function handleSearch(){
+    const currentConfig = servicesConfig[type];
 
-        if (!query.trim()) return;
+    const {
+        results,
+        loading,
+        err,
         
-        setLoading(true);
-
-        const service = type === "brand"
-            ? searchBrands
-            : searchCategories;
+        size, setSize, page,
         
-        const { data, error } = await service(query);
+        totalPages,
+        executeSearch,
 
-        if(error){
-            setLoading(false);
-            console.log(error);
-            setErrMsg(error);
-        }
+        reset,
 
-        setResults(data?.rows || []);
+    } = usePaginatedSearch(currentConfig.service);
 
-        setLoading(false);
-    }
+    const {setErrMsg} = useContext(AuthContext);
     
     const filteredResults =  useFilteredResults(results, filter);
+    
+    function prevStepAction(){
+        dispatch({ type:"NEXT_STEP" });
+        createForm({
+            action: "close"
+        });
+     };
 
-    function handleSelect(item) {
+    const handleSearch = useCallback((
+        currentPage = 1,
+        currentSize = size
+    ) => {
+
+        executeSearch(
+            query,
+            currentPage,
+            currentSize
+        );
+
+    }, [executeSearch, query, size]);
+
+    function handleConfirm(item) {
         const value = confirmStep( item, type, step,  dispatch  );
 
-        if(value){  setSelectedValue(value); }
+        if(value){  setSelectedValue(value); };
     };
 
-    function prevStepAction(){
-        dispatch({ type:"NEXT_STEP" })
-    };
+    useEffect(() => {
+        
+        reset();
 
-    useEffect(()=>{
-        cleanForm()
-    },[type])
-
-
-    function cleanForm(){
-        setResults([]);
         setQuery("");
         setFilter("");
         setSelectedValue(null);
-    }
 
+    }, [type,reset]);
+
+    useEffect(()=>{
+
+        if(err) setErrMsg(err);
+
+    },[err,setErrMsg]);
+
+    
     return (
         <div className='scob-content'>
 
-            <h2> {`${typeText} do produto`} </h2>
+            <h2> {`${currentConfig.label} do produto`} </h2>
            
            <div className="field-search-content">
 
@@ -85,14 +92,14 @@ const SearchCategoryOrBrand = ({type, createForm}) => {
                     type="search"
                     onChange={e => setQuery(e.target.value)} 
                     value={query}
-                    placeholder={`Buscar ${typeText.toLowerCase()}...`}
+                    placeholder={`Buscar ${currentConfig.label.toLowerCase()}...`}
                 />
 
                 <div className="button-content">
 
                     <button 
                         type="button" 
-                        onClick={handleSearch}
+                        onClick={() => handleSearch()}
                         disabled={loading}
                     >
                     
@@ -101,7 +108,7 @@ const SearchCategoryOrBrand = ({type, createForm}) => {
                     </button>
 
                     <button type="button"
-                        onClick={()=> createForm(type)}
+                        onClick={()=> createForm({action:type})}
                     >Criar nova</button>
 
                 </div>
@@ -117,21 +124,30 @@ const SearchCategoryOrBrand = ({type, createForm}) => {
                 />
             </div>
 
-            <TableResult 
-                data={filteredResults}
-                click={handleSelect}
-                selectedValue={selectedValue}
-            />
+            <div>
+                <TableResult 
+                    data={filteredResults}
+                    click={handleConfirm}
+                    selectedValue={selectedValue}
+                />
+                <Pagination
+                    page={page}
+                    totalPages={totalPages}
+                    size={size}
+                    setSize={setSize}
+                    onSearch={handleSearch}
+                />
+            </div>
 
             <div className="checkValue">
 
                 <label htmlFor="selectedValue">
-                    {typeText} Selecionada
+                    {currentConfig.label} Selecionada
                 </label>
 
                 <input 
                     type="text" 
-                    name={typeText} 
+                    name={currentConfig.label} 
                     id="selectedValue" 
                     value={selectedValue?.name || ""}
                     readOnly
@@ -143,7 +159,7 @@ const SearchCategoryOrBrand = ({type, createForm}) => {
                     onClick={prevStepAction}
                 >
                     {
-                        !selectedValue ? `Selecione uma ${typeText}...` : 'Confirmar'
+                        !selectedValue ? `Selecione uma ${currentConfig.label}...` : 'Confirmar'
                     }
                 
                 </button>

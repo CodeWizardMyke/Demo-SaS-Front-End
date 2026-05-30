@@ -61,7 +61,9 @@ const CreateCategoryOrBrand = ({activeCreateForm,createForm}) => {
     function closeForm() {
         setLoading(false);
 
-        createForm("close");
+        createForm({
+            action:"close"
+        });
     };
     
     return (

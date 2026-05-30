@@ -13,16 +13,18 @@ const CreateProductContent = () => {
 
     function toggleCreateForm(type) {
 
-        if(type === "close") {
+        console.log(type);
+
+        if(type.action === "close") {
             setActiveCreateForm(null);
             return;
         }
 
-        if(type && activeSideBar){
+        if(type.action && activeSideBar){
             setActiveCreateForm(type);
         }
 
-        if(type && !activeSideBar){
+        if(type.action && !activeSideBar){
             toggleSideBar()            
             setActiveCreateForm(type);
         }

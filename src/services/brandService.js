@@ -1,12 +1,14 @@
 import { api } from "./api";
 
-export async function searchBrands(query){
+export async function searchBrands(query, page = 1, size = 10){
 
     try{
 
         const response = await api.get('/brand', {
             headers:{
-                query
+                query,
+                page,
+                size
             }
         });
 
