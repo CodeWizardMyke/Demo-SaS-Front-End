@@ -23,6 +23,9 @@ export function ProductFormProvider({ children }){
                 completedSteps:
                     state.completedSteps,
 
+                totalSteps:
+                    state.totalSteps,
+
                 formData:
                     state.formData,
 

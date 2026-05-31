@@ -1,13 +1,19 @@
 export function renderPreview(field, dataForm){
 
-    if(!field){
+    const value = dataForm?.[field.name];
+
+    if(value == null || value === ""){
         return "Não preenchido";
     }
 
-    const value = dataForm?.[field.name];
+    // se for objeto de select
+    if(typeof value === "object" && !Array.isArray(value)){
 
-    if(!value){
-        return "Não preenchido";
+        if(value.name){
+            return value.name;
+        }
+
+        return JSON.stringify(value);
     }
 
     switch(field.type){
@@ -19,13 +25,9 @@ export function renderPreview(field, dataForm){
             return "Vídeo adicionado";
 
         case "textarea":
-            return String(value).slice(0, 40) + "...";
-
-        case "select":
-            return value.name
+            return String(value).slice(0, 100);
 
         default:
-            return "Valor não esperado";
+            return String(value);
     }
-
 }

@@ -38,7 +38,7 @@ const SearchCategoryOrBrand = ({type, createForm ,toggleSideBar}) => {
     
     const filteredResults =  useFilteredResults(results, filter);
     
-    function prevStepAction(){
+    function nextStepAction(){
         dispatch({ type:"NEXT_STEP" });
         createForm({
             action: "close"
@@ -157,7 +157,7 @@ const SearchCategoryOrBrand = ({type, createForm ,toggleSideBar}) => {
                 <button 
                     type="button"
                     disabled={!selectedValue}
-                    onClick={prevStepAction}
+                    onClick={nextStepAction}
                 >
                     {
                         !selectedValue ? `Selecione uma ${currentConfig.label}...` : 'Confirmar'

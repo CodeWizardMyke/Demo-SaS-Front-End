@@ -4,7 +4,9 @@ import { ProductFormContext } from '../../../contexts/ProductFormContext';
 
 const PanelProdDetails = () => {
 
-    const {completedSteps, step, dispatch } = useContext(ProductFormContext);
+    const {completedSteps, step, dispatch , formData, totalSteps} = useContext(ProductFormContext);
+
+    console.log(totalSteps);
 
     function prevStep(){
         dispatch({
@@ -17,16 +19,25 @@ const PanelProdDetails = () => {
             type:"NEXT_STEP"
         })
     }
+    
     return (
         <>
             <div className="content-buttons">
                 
                 {
-                    step > 1 && <button type='button'  onClick={prevStep}  > Voltar </button>
+                    step > 1 && (
+                        <button type='button' onClick={prevStep}>
+                            Voltar
+                        </button>
+                    )
                 }
-                
+
                 {
-                    step < completedSteps.length && <button type='button'onClick={nextStep} >  Avançar  </button>
+                    step < totalSteps && (
+                        <button type='button' onClick={nextStep}>
+                            Avançar
+                        </button>
+                    )
                 }
 
             </div>

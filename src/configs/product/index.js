@@ -142,21 +142,8 @@ const productForm = [
                 placeholder: "Informações complementares",
                 required: false,
                 preview: true,
-                rows: 4,
-                col: 12
-            },
-
-            {
-                id: "description",
-                name: "description",
-                label: "Descrição do produto",
-                type: "textarea",
-                placeholder: "Descrição detalhada do produto",
-                required: true,
-                preview: true,
-                rows: 8,
-                maxLength: 3000,
-                col: 12
+                rows: 20,
+                col: 120,
             }
         ]
     },

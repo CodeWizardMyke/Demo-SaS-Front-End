@@ -5,6 +5,7 @@ import { WorkspaceContext } from '../../contexts/WorkspaceContext';
 
 import PanelAside from '../../components/PanelAside';
 import SearchCategoryOrBrand from '../../components/product/searchCategoryOrBrand';
+import Informations from '../../components/product/information';
 
 const CreateProductContent = () => {
     const { activeSideBar, toggleSideBar } = useContext(WorkspaceContext);
@@ -12,8 +13,6 @@ const CreateProductContent = () => {
     const [ activeCreateForm, setActiveCreateForm] = useState(null);
 
     function toggleCreateForm(type) {
-
-        console.log(type);
 
         if(type.action === "close") {
             setActiveCreateForm(null);
@@ -45,6 +44,12 @@ const CreateProductContent = () => {
             <SearchCategoryOrBrand
                 type="brand"
                 createForm={toggleCreateForm}
+                toggleSideBar={toggleSideBar}
+            />
+        ),
+
+        3: (
+            <Informations
                 toggleSideBar={toggleSideBar}
             />
         )

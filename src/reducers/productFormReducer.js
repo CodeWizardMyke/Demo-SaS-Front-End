@@ -4,6 +4,8 @@ export const initialState = {
 
     completedSteps: [],
 
+    totalSteps: 5,
+
     formData: {
 
         brand: null,
@@ -30,21 +32,15 @@ export function productFormReducer(state, action){
     switch(action.type){
 
         case "NEXT_STEP":
-
             return {
                 ...state,
                 step: state.step + 1
-            };
-
+            }
         case "PREV_STEP":
-
             return {
                 ...state,
-                step:
-                    state.step > 1
-                        ? state.step - 1
-                        : 1
-            };
+                step: state.step - 1
+            }
 
         case "SET_STEP":
 
@@ -71,18 +67,21 @@ export function productFormReducer(state, action){
                 ]
             };
 
-        case "SET_FIELD":
+            case "SET_FIELD":
 
-            return {
-                ...state,
+                return {
 
-                formData: {
-                    ...state.formData,
+                    ...state,
 
-                    [action.field]:
-                        action.value
+                    formData: {
+
+                        ...state.formData,
+
+                        [action.field]: action.value
+
+                    }
+
                 }
-            };
 
         case "ADD_IMAGES":
 
