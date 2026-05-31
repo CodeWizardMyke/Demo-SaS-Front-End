@@ -44,8 +44,14 @@ export function WorkspaceProvider({children}){
         }
     }
     
-    function toggleSideBar() {
-        setActiveSideBar(!activeSideBar);
+    function toggleSideBar(value) {
+
+        if(value){
+            setActiveSideBar(value);
+        }else{
+            setActiveSideBar(!activeSideBar);
+        }
+        
     }
 
     return(

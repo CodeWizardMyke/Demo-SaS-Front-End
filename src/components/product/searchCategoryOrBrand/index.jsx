@@ -11,8 +11,8 @@ import './styles.css'
 import TableResult from './table';
 import Pagination from './Pagination';
 
-const SearchCategoryOrBrand = ({type, createForm}) => {
-    const {dispatch,step} = useContext(ProductFormContext);
+const SearchCategoryOrBrand = ({type, createForm ,toggleSideBar}) => {
+    const { dispatch,step } = useContext(ProductFormContext);
 
     const [selectedValue, setSelectedValue] = useState(null);
     const [query,setQuery] = useState ("");
@@ -43,6 +43,7 @@ const SearchCategoryOrBrand = ({type, createForm}) => {
         createForm({
             action: "close"
         });
+        toggleSideBar(true);
      };
 
     const handleSearch = useCallback((

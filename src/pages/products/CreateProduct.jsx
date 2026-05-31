@@ -37,6 +37,7 @@ const CreateProductContent = () => {
             <SearchCategoryOrBrand
                 type="category"
                 createForm={toggleCreateForm}
+                toggleSideBar={toggleSideBar}
             />
         ),
 
@@ -44,6 +45,7 @@ const CreateProductContent = () => {
             <SearchCategoryOrBrand
                 type="brand"
                 createForm={toggleCreateForm}
+                toggleSideBar={toggleSideBar}
             />
         )
     };
