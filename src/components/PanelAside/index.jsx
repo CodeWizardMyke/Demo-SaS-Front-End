@@ -5,6 +5,8 @@ import CreateCategoryOrBrand from '../product/createCategoryOrBrand';
 
 const PanelAside = ({activeCreateForm,createForm,activeSideBar}) => {
 
+    let cssToggleAside =  activeSideBar === false && 'aside-closed'
+
     const OPENED_VIEWS = {
 
         1: (
@@ -21,7 +23,7 @@ const PanelAside = ({activeCreateForm,createForm,activeSideBar}) => {
 
     return (
        <div 
-            className={`aside-container ${ activeSideBar === false && 'aside-closed'}`}
+            className={`${cssToggleAside} aside-container`}
         >
         
             <aside 

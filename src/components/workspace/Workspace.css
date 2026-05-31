@@ -79,10 +79,12 @@
     flex: 1;
     margin: 0 auto;
     display: flex;
+    z-index: 0;
     justify-content: space-between;
 }
 
 .module-step{
+    flex: 1;
     margin: 0 auto;
 }
 

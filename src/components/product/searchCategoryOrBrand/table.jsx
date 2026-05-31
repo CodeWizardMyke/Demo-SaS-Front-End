@@ -7,7 +7,7 @@ const TableResult = ({data,click,selectedValue}) => {
                   <table>
                 <thead>
                       <tr>
-                            <th>id:</th>
+                            <th className='table-id'>id:</th>
                             <th>Name:</th>
                       </tr>
                 </thead>
@@ -36,7 +36,11 @@ const TableResult = ({data,click,selectedValue}) => {
 
                         })
                     )
-                    : (<tr><td>Nenum resultado encontrado</td><td></td></tr>)
+                    : (
+                    <tr>
+                        <td></td>
+                        <td>...</td>
+                    </tr>)
                    }
                 </tbody>
             </table>

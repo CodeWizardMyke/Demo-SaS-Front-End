@@ -1,27 +1,37 @@
+
+/*CONTROLE DE ESPAÇO DA DIREITA AJUSTANDO O CONTEUDO DA PAGINA - TAMANHO DA ASIDE*/
 .aside-container{
-    max-width: 400px;
     flex: 1;
+    max-width: 350px;
+
     transition: all 500ms ease;
 }
+
+/*CONTEUDO EXIBIDO OU NAO*/
 .panel-aside{
-    max-width: 400px; width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
+    max-width: 350px;
+    width: 100%;
     padding: 15px 5px;
+    
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
-    flex: 1;
+
     z-index: 50;
     background-color: var(--bgPanel);
 }
 
-.aside-closed{
-   opacity: 0;
-   z-index: 0;
-   max-width: 0;
+/*AÇOES DE CONTROLE ATIVOS PELO TOGGLE*/
+.aside-closed.aside-container .panel-aside{
+    display: none;
+}
+.aside-closed.aside-container{
+    max-width: 0px;
 }
 
 .panel-aside .content-buttons{
@@ -48,7 +58,7 @@
 }
 
 .panel-aside .step-name{
-    background-color:var(--bgPanel);
+    background-color:var(--bg-default);
     padding: 10px;
     text-transform: uppercase;
     margin-top: 15px;
@@ -70,13 +80,27 @@
 }
 
 
-@media (max-width:768px) {
+
+@media (min-width:320px) {
     .panel-aside{
-        max-width: 300px;
+        max-width: 100%;
+    }
+    .aside-container{
+        max-width: 0px;
     }
 }
-@media (max-width:1024px) {
+
+@media (min-width:728px) {
     .panel-aside{
-        max-width: 325px;
+        max-width: 50%;
+    }
+}
+
+@media (min-width:1024px) {
+    .panel-aside{
+        max-width: 350px;
+    }
+    .aside-container{
+        max-width: 350px;
     }
 }
