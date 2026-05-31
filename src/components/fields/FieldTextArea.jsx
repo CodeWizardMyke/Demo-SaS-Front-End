@@ -10,6 +10,7 @@ const FieldTextArea = (props) => {
             value={props.value}
             col={props.col}
             rows={props.rows}
+            onChange={props.onChange}
         />
     
     );

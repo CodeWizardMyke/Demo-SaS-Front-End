@@ -25,7 +25,7 @@ export function renderPreview(field, dataForm){
             return "Vídeo adicionado";
 
         case "textarea":
-            return String(value).slice(0, 100);
+            return String(value).slice(0, 250);
 
         default:
             return String(value);

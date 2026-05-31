@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ProductFormContext } from "../../contexts/ProductFormContext";
 import FieldText from "./FieldText";
 import FieldSelect from "./FieldSelect";
+import FieldTextArea from "./FieldTextArea";
 
 const SetedFields = ({ data }) => {
 
@@ -10,8 +11,11 @@ const SetedFields = ({ data }) => {
 
    const FIELDS_TYPED = {
       text: FieldText,
-      select: FieldSelect
+      select: FieldSelect,
+      textarea: FieldTextArea,
    }
+
+   console.log(formData);
    
    const Component = FIELDS_TYPED[data.type];
 

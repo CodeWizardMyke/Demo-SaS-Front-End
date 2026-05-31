@@ -4,9 +4,7 @@ import { ProductFormContext } from '../../../contexts/ProductFormContext';
 
 const PanelProdDetails = () => {
 
-    const {completedSteps, step, dispatch , formData, totalSteps} = useContext(ProductFormContext);
-
-    console.log(totalSteps);
+    const {step, dispatch, totalSteps} = useContext(ProductFormContext);
 
     function prevStep(){
         dispatch({

@@ -2,14 +2,13 @@ import React, { useContext } from 'react';
 
 import productForm from '../../../configs/product/index';
 
-import FieldText from '../../fields/FieldText';
 import SetedFields from '../../fields';
 import { ProductFormContext } from '../../../contexts/ProductFormContext';
 
 import "./styless.css";
 
 const Informations = ({toggleSideBar}) => {
-    const { dispatch,step } = useContext(ProductFormContext);
+    const { dispatch } = useContext(ProductFormContext);
 
     const DataConfigured = productForm.find( item => item.id === "product_information" );
 
