@@ -8,8 +8,6 @@ const FieldItems = ({dataConfigs}) => {
 
     const fieldSteped = dataConfigs.fields ? dataConfigs.fields : []
 
-    console.log(dataConfigs);
-
     return (
         <li>
             <div className="step-name">

@@ -12,7 +12,7 @@
 
     /*principais cores de texto*/
     --txt-err: red;
-    --txtDanger:rgb(255, 0, 64);
+    --txtDanger:rgb(172, 29, 64);
     --text: #6C757D;
     --txt-strong: black;
 
@@ -47,6 +47,11 @@
     --tbdefault: #6C757D;
     --tbActive: #0c6cc0;
     --tbDisabled: #6c757d60;
+
+    /*MEDIA*/
+    --bgMedia: #6c757d60;
+    --txtMediaHover : #215885;
+
 }
 
 [data-theme="dark"] {

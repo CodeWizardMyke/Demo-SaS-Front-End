@@ -2,20 +2,20 @@ import React from 'react';
 
 import { IoImages } from "react-icons/io5";
 
-const CurrentImage = ({data}) => {
+const ItemListedImages = ({data}) => {
     return (
-        <div className='current-image'>
+        <>
             {
-                data 
-                ? (
+                data
+                ?(
                     <img src={data.path} alt="any" />
-                ) 
+                )
                 :(
-                    <IoImages />
+                    <IoImages className='nosetable' />
                 )
             }
-        </div>
+        </>
     );
 }
 
-export default CurrentImage;
+export default ItemListedImages;

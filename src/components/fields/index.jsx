@@ -15,8 +15,6 @@ const SetedFields = ({ data }) => {
       textarea: FieldTextArea,
    }
 
-   console.log(formData);
-   
    const Component = FIELDS_TYPED[data.type];
 
    if(!Component){
