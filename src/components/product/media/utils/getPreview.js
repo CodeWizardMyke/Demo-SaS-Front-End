@@ -1,20 +1,26 @@
 import { api } from "../../../../services/api"
 
- export default function getPreview({file,cloud,length}) {
+ export default function getPreview(data) {
+        
+    const eventFile = data?.target?.files;
 
-    const url = api.defaults.baseURL.split("/api")[0];
+    if(!eventFile){
+        
+        const url = api.defaults.baseURL.split("/api")[0];
 
-    const path = cloud 
-        ?   url + file.path
-        :   URL.createObjectURL(file);
-
-    const structure = {
-        path,
-        cloud,
-        file: !cloud ? file : null,
-        id: length ? length + 1 : 0
+        return [{
+            ...data,
+            path: `${url}${data.path}`
+        }];
     };
 
-    return structure;
+    const files = Array.from(eventFile);
 
-}
+    const filePreview = files.map(file => ({
+        preview_id:crypto.randomUUID(),
+        file,
+        path: URL.createObjectURL(file),
+    }))
+
+    return [...filePreview];
+};

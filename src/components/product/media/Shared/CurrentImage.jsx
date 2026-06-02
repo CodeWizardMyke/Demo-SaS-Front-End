@@ -11,7 +11,9 @@ const CurrentImage = ({data}) => {
                     <img src={data.path} alt="any" />
                 ) 
                 :(
-                    <IoImages />
+                   <div className="no-image">
+                        <IoImages />
+                   </div>
                 )
             }
         </div>

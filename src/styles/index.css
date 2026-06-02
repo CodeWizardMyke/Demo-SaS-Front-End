@@ -58,7 +58,9 @@ input{
 }
 
 .button-confirm{
-    max-width: 300px;
+    max-width: 250px;
+    height: 35px;
+    padding: 0;
     width: 100%;
     margin: 0 auto;
 }
