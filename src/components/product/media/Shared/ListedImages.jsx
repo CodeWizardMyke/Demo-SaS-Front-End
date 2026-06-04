@@ -1,16 +1,18 @@
 import React from 'react';
-import ItemListedImages from './ItemListedImages';
 
+import { TbTrashOff } from 'react-icons/tb';
 import { RiStickyNoteAddFill } from "react-icons/ri";
 import { IoTrashBinSharp } from "react-icons/io5";
-import getPreview from '../utils/getPreview';
-import { TbTrashOff } from 'react-icons/tb';
-import delPreview from '../utils/delPreview';
-import updateCurrent from '../utils/updateCurrent';
+
 import { getId } from '../utils/getId';
+import getPreview from '../utils/getPreview';
+import updateCurrent from '../utils/updateCurrent';
+import thumbnailFilter from '../utils/thumbnailFilter';
 
-const ListedImages = ({data,setData,setCurrent,current}) => {
+import ItemListedImages from './ItemListedImages';
 
+const ListedImages = ({dispatch, step, thumbnails, setCurrent, current}) => {
+    
     function actionItemList(item){
         
         setCurrent(item);
@@ -19,47 +21,42 @@ const ListedImages = ({data,setData,setCurrent,current}) => {
 
     function addMediaImage(event){
 
-        const file = getPreview(event);
+        const files = getPreview(event);
 
-        setCurrent(file[0]);
+        setCurrent(files[0]);
       
-        setData(prev => [ ...prev, ...file ]);
+        dispatch({
+            type: "ADD_IMAGES",
+            payload: files
+        });
 
     };
 
     function cleannerMediaImages(params) {
-      
-        setCurrent(null);
-      
-        setData([]);
-      
-    };
+      setCurrent(null)
 
-    function removeItem(id){
-
-        const {removeApi, filteredData} = delPreview(data, id);
-
-        if(removeApi){
-            console.log("[Implementar state para salvar array de id removidos]",removeApi);
-        }
-        
-        const updatedCurrentImage = updateCurrent({
-            data:filteredData,
-            current,
-            id
+       dispatch({
+            type: "CLEAR_IMAGES"
         });
-        
-        setCurrent(updatedCurrentImage);
-
-        setData(filteredData);
-
     };
+
+    function removeItem(id) {
+
+        const filtredThumbnails = thumbnailFilter(thumbnails, id);
+
+        const newCurrent = updateCurrent(filtredThumbnails, current, id)
+
+        setCurrent(newCurrent)
+        
+        dispatch({ type: "REMOVE_IMAGE",  payload: id});
+
+    }
 
     return (
         <div className='listed'>
             <ul>
                 {
-                    data.map( (item,index) => (
+                    thumbnails.map( (item,index) => (
                         <li
                             key={getId(item)}
                             onClick={() => actionItemList(item) }

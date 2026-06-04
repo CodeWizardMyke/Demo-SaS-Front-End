@@ -1,8 +1,6 @@
 import { getId } from "./getId";
 
-export default function delPreview(data, id) {
-
-    let removeApi = false;
+export default function thumbnailFilter(data, id) {
 
     const filteredData = data.filter(item => {
 
@@ -13,5 +11,5 @@ export default function delPreview(data, id) {
         return !shouldRemove;
     });
 
-    return { removeApi, filteredData };
+    return filteredData; 
 }

@@ -64,6 +64,13 @@ input{
     width: 100%;
     margin: 0 auto;
 }
+.bt-disabled{
+    opacity: 0.2;
+    cursor: default;
+}
+.bt-disabled:hover{
+    opacity: 0.2;
+}
 
 .container{
     display: flex;

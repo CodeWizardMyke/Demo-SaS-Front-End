@@ -18,6 +18,8 @@ export const initialState = {
 
         thumbnails: [],
 
+        thumbnails_removed: [],
+
         pricing: {
             cost: 0,
             sell: 0
@@ -27,20 +29,21 @@ export const initialState = {
 
 };
 
-export function productFormReducer(state, action){
+export function productFormReducer(state, action) {
 
-    switch(action.type){
+    switch (action.type) {
 
         case "NEXT_STEP":
             return {
                 ...state,
                 step: state.step + 1
-            }
+            };
+
         case "PREV_STEP":
             return {
                 ...state,
                 step: state.step - 1
-            }
+            };
 
         case "SET_STEP":
 
@@ -51,11 +54,11 @@ export function productFormReducer(state, action){
 
         case "COMPLETE_STEP":
 
-            if(
+            if (
                 state.completedSteps.includes(
                     action.payload
                 )
-            ){
+            ) {
                 return state;
             }
 
@@ -67,25 +70,26 @@ export function productFormReducer(state, action){
                 ]
             };
 
-            case "SET_FIELD":
+        case "SET_FIELD":
 
-                return {
+            return {
 
-                    ...state,
+                ...state,
 
-                    formData: {
+                formData: {
 
-                        ...state.formData,
+                    ...state.formData,
 
-                        [action.field]: action.value
-
-                    }
+                    [action.field]: action.value
 
                 }
+
+            };
 
         case "ADD_IMAGES":
 
             return {
+
                 ...state,
 
                 formData: {
@@ -98,16 +102,17 @@ export function productFormReducer(state, action){
                     ]
 
                 }
+
             };
 
         case "REMOVE_IMAGE": {
 
             const removed =
-                state.formData.thumbnails[
-                    action.index
-                ];
+                state.formData.thumbnails.find(
+                    image => image.preview_id === action.payload
+                );
 
-            if(removed?.preview){
+            if (removed?.preview) {
 
                 URL.revokeObjectURL(
                     removed.preview
@@ -125,9 +130,27 @@ export function productFormReducer(state, action){
 
                     thumbnails:
                         state.formData.thumbnails.filter(
-                            (_, i) =>
-                                i !== action.index
-                        )
+                            image =>
+                                image.preview_id !== action.payload
+                        ),
+
+                    thumbnails_removed:
+                        removed?.thumbnail_id
+                            ? [
+                                ...(Array.isArray(
+                                    state.formData.thumbnails_removed
+                                )
+                                    ? state.formData.thumbnails_removed
+                                    : []),
+                                removed.thumbnail_id
+                            ]
+                            : (
+                                Array.isArray(
+                                    state.formData.thumbnails_removed
+                                )
+                                    ? state.formData.thumbnails_removed
+                                    : []
+                            )
 
                 }
 
@@ -135,12 +158,12 @@ export function productFormReducer(state, action){
 
         }
 
-        case "CLEAR_IMAGES":
+        case "CLEAR_IMAGES": {
 
             state.formData.thumbnails.forEach(
                 image => {
 
-                    if(image?.preview){
+                    if (image?.preview) {
 
                         URL.revokeObjectURL(
                             image.preview
@@ -151,6 +174,15 @@ export function productFormReducer(state, action){
                 }
             );
 
+            const removedIds =
+                state.formData.thumbnails
+                    .filter(
+                        image => image.thumbnail_id
+                    )
+                    .map(
+                        image => image.thumbnail_id
+                    );
+
             return {
 
                 ...state,
@@ -159,11 +191,25 @@ export function productFormReducer(state, action){
 
                     ...state.formData,
 
-                    thumbnails: []
+                    thumbnails: [],
+
+                    thumbnails_removed: [
+
+                        ...(Array.isArray(
+                            state.formData.thumbnails_removed
+                        )
+                            ? state.formData.thumbnails_removed
+                            : []),
+
+                        ...removedIds
+
+                    ]
 
                 }
 
             };
+
+        }
 
         default:
             return state;
