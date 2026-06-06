@@ -23,9 +23,7 @@ const Informations = ({toggleSideBar}) => {
                 <h2>{DataConfigured?.title}</h2>
                 <div className="fields-content">
                     {
-                        DataConfigured?.fields?.map( (item,index)=> {
-
-                            return (
+                        DataConfigured?.fields?.map( (item,index)=> (
 
                               <div 
                                 className={` fields-col-${item.col}`}
@@ -43,7 +41,7 @@ const Informations = ({toggleSideBar}) => {
                               </div>
 
                            )
-                        } )
+                        )
                     }
                 </div>
             </div>

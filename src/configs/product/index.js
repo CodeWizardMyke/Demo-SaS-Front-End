@@ -157,9 +157,9 @@ const productForm = [
 
         fields: [
             {
-                id: "thumbnail_images",
-                name: "thumbnail_images",
-                label: "Imagens Thumbnail",
+                id: "thumbnails",
+                name: "thumbnails",
+                label: "Imagens do produto",
                 type: "image-upload",
                 required: true,
                 preview: true,
@@ -167,16 +167,15 @@ const productForm = [
                 accept: "image/*",
                 col: 12
             },
-
             {
-                id: "product_video",
-                name: "product_video",
-                label: "Vídeo do produto",
-                type: "video-upload",
-                required: false,
+                id: "thumbnails_removed",
+                name: "thumbnails_removed",
+                label: "Total de imagens removidas",
+                type: "remove-images",
+                required: true,
                 preview: true,
-                multiple: false,
-                accept: "video/*",
+                multiple: true,
+                accept: "array",
                 col: 12
             }
         ]
@@ -216,8 +215,8 @@ const productForm = [
                 id: "discounts",
                 name: "discounts",
                 label: "Descontos",
-                type: "currency",
-                placeholder: "0,00",
+                type: "percentage",
+                placeholder: "0%",
                 required: false,
                 preview: true,
                 col: 4
@@ -227,8 +226,8 @@ const productForm = [
                 id: "taxes",
                 name: "taxes",
                 label: "Taxas / Impostos",
-                type: "currency",
-                placeholder: "0,00",
+                type: "percentage",
+                placeholder: "0%",
                 required: false,
                 preview: true,
                 col: 4
@@ -242,7 +241,7 @@ const productForm = [
                 required: true,
                 preview: true,
                 col: 4,
-
+                defaultValue:"BRL",
                 options: [
                     {
                         value: "BRL",

@@ -1,24 +1,45 @@
+import { useEffect } from "react";
+
 const FieldSelect = ({
-   options,
-   ...props
+    options,
+    name,
+    value,
+    onChange,
+    preview,
+    ...props
 }) => {
 
-   return (
+useEffect(() => {
+    if (
+        (value === undefined || value === "") &&
+        options.length
+    ) {
+        onChange({
+            target: {
+                name,
+                value: options[0].value
+            }
+        });
+    }
+}, [name, value, options, onChange]);
 
-      <select {...props}>
-
-         {options.map(item => (
-            <option
-               key={item.value}
-               value={item.value}
-            >
-               {item.label}
-            </option>
-         ))}
-
-      </select>
-
-   )
-}
+    return (
+        <select
+            {...props}
+            name={name}
+            value={value || ""}
+            onChange={onChange}
+        >
+            {options.map(item => (
+                <option
+                    key={item.value}
+                    value={item.value}
+                >
+                    {item.label}
+                </option>
+            ))}
+        </select>
+    );
+};
 
 export default FieldSelect;

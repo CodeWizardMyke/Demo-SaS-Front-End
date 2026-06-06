@@ -52,6 +52,23 @@ input{
     border: 2px solid var(--inptBorder);
 }
 
+select{
+    background-color: var(--inptBg);
+    border: 2px solid var(--inptBorder);
+    outline: none;
+    border-radius: 5px;
+    color: var(--inptText);
+    
+    height: 35px;
+    max-width: 200px;
+    width: 100%;
+    
+    padding-left: 15px;
+    margin: 5px 0;
+
+    text-align: center;
+}
+
 .bt-create{
     max-width: 250px;
     width: 100%;
@@ -83,6 +100,14 @@ input{
     display: flex;
     flex: 1;
     position: relative;
+}
+.flex-grow{
+    flex-grow: 1;
+}
+
+.space-gap{
+    gap: 10px;
+    display: grid;
 }
 
 .bt-toggle-sidebar{

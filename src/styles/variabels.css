@@ -52,6 +52,15 @@
     --bgMedia: #6c757d60;
     --txtMediaHover : #215885;
 
+    /*any colors*/
+    --green-strong: #329B2E;
+    --green-inner:#D8EFD7;
+    --green-ligth:#F1FCF0;
+
+    --blue-strong:#0038C5;
+    --blue-inner:#487CFF;
+    --blue-ligth:#92B1FF;
+
 }
 
 [data-theme="dark"] {

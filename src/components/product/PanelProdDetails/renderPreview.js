@@ -19,7 +19,8 @@ export function renderPreview(field, dataForm){
     switch(field.type){
 
         case "image-upload":
-            return `${value.length} imagens`;
+
+            return `${value?.length} imagens`;
 
         case "video-upload":
             return "Vídeo adicionado";

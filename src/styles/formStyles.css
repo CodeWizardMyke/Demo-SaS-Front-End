@@ -1,0 +1,105 @@
+
+/* TITLE PAGE*/
+.pricing-title{ display: flex; }
+
+.pricing-title h2{
+    display: flex;
+    align-items: center;
+    color: var(--green-strong);
+}
+.pricing-title svg {
+    color: var(--green-strong);
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+}
+
+/*CARDS*/
+.p-card{
+    background-color: var(--bgPanel);
+    border: 1px solid var(--panelBorder);
+    border-radius: 10px;
+    
+    padding: 15px;
+}
+
+.p-card h3{
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.p-card-content{
+   display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+.p-tab{
+    position: relative;
+
+    border: 1px solid var(--panelBorder);
+    border-radius: 10px ;
+
+    padding: 16px;
+
+    min-height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    transition: .2s ease;
+}
+
+.p-tab:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+
+.p-tab::before{
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+    border-radius: 10px 10px 0 0 ;
+
+    background: var(--green-strong);
+}
+/*  TEXT  */
+
+.p-tab-text{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.p-tab-text span{
+    font-size: .85rem;
+    color: var(--subText);
+}
+
+.p-tab-text strong{
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--green-strong);
+}
+
+.p-tab-svg{
+    flex-shrink: 0;
+
+    width: 35px;
+    height: 35px;
+
+    color: var(--green-strong);
+
+    background: var(--green-inner);
+
+    padding: 10px;
+
+    border-radius: 10px;
+}

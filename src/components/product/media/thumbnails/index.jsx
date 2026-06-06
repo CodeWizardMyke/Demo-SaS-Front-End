@@ -14,6 +14,7 @@ const Thumbnails = ({toggleSideBar}) => {
     );
 
     function confirmStep(){
+        toggleSideBar(true);
 
         if(formData.thumbnails.length){
             dispatch({type:"COMPLETE_STEP", payload: step, });

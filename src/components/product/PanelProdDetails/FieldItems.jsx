@@ -24,6 +24,7 @@ const FieldItems = ({dataConfigs}) => {
                             <span className='stFirst'>{field.label}</span>
                             <span>
                                {
+                                
                                     renderPreview(field, formData)
                                }
                             </span>

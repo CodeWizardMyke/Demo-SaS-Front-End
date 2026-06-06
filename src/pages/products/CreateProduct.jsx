@@ -7,6 +7,7 @@ import PanelAside from '../../components/PanelAside';
 import SearchCategoryOrBrand from '../../components/product/searchCategoryOrBrand';
 import Informations from '../../components/product/information';
 import Thumbnails from '../../components/product/media/thumbnails';
+import Pricing from '../../components/product/pricing';
 
 const CreateProductContent = () => {
     const { activeSideBar, toggleSideBar } = useContext(WorkspaceContext);
@@ -61,6 +62,11 @@ const CreateProductContent = () => {
             />
         ),
 
+        5: (
+            <Pricing
+                toggleSideBar={toggleSideBar}
+            />
+        ),
 
     };
 

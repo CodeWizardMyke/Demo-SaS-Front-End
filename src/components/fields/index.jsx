@@ -3,6 +3,9 @@ import { ProductFormContext } from "../../contexts/ProductFormContext";
 import FieldText from "./FieldText";
 import FieldSelect from "./FieldSelect";
 import FieldTextArea from "./FieldTextArea";
+import FieldNumber from "./FieldNumber";
+import FieldCurrency from "./FieldCurrency";
+import FieldPercentage from "./FieldPercentage";
 
 const SetedFields = ({ data }) => {
 
@@ -13,6 +16,9 @@ const SetedFields = ({ data }) => {
       text: FieldText,
       select: FieldSelect,
       textarea: FieldTextArea,
+      number: FieldNumber,
+      currency:FieldCurrency,
+      percentage:FieldPercentage,
    }
 
    const Component = FIELDS_TYPED[data.type];

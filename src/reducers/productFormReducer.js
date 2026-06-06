@@ -20,10 +20,7 @@ export const initialState = {
 
         thumbnails_removed: [],
 
-        pricing: {
-            cost: 0,
-            sell: 0
-        }
+        selling_price: ""
 
     }
 
