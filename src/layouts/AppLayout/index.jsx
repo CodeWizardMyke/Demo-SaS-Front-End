@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import MainTopBar from '../../components/header/Header';
-import SideBar from '../../components/SideBarApp/SideBar';
+import SideBar from '../../components/navMenu/SideBar';
 import Workspace from '../../components/workspace/Workspace';
 import { WorkspaceProvider } from '../../contexts/WorkspaceContext';
 

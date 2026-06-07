@@ -1,0 +1,43 @@
+
+/*CONTROLE DE ESPAÇO DA DIREITA AJUSTANDO O CONTEUDO DA PAGINA - TAMANHO DA ASIDE*/
+.aside-container{
+    flex: 1;
+    max-width: 350px;
+    transition: all 500ms ease;
+}
+
+/*CONTEUDO EXIBIDO OU NAO*/
+.panel-aside{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    max-width: 350px;
+    width: 100%;
+    padding: 15px 5px;
+    
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    z-index: 50;
+    background-color: var(--bgPanel);
+}
+
+/*AÇOES DE CONTROLE ATIVOS PELO TOGGLE*/
+.aside-closed.aside-container .panel-aside{
+    display: none;
+}
+
+.aside-closed.aside-container{
+    max-width: 0px;
+}
+
+.panel-aside .content-buttons{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    justify-items: stretch;
+}
+

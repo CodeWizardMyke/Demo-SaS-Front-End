@@ -66,10 +66,10 @@ const Pricing = ({toggleSideBar}) => {
                 <Overview data={formData} processData={calculatedData} />
 
                 {
-                    joinedData?.map((item ) => {
+                    joinedData?.map(( item,index ) => {
 
                         return (
-                            <div className={item.cssP} key={item.step + item.step} >
+                            <div className={item.cssP} key={item.step + index} >
                                 <div className="circle-tag">
                                     <div>{item.step}</div>
                                     <h4>{item.stepLabel}</h4>

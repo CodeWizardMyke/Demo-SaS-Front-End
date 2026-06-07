@@ -1,6 +1,6 @@
 
 import './styles.css'
-import PanelProdDetails from '../product/PanelProdDetails';
+import AsideProduct from '../product/asideContents';
 import CreateCategoryOrBrand from '../product/createCategoryOrBrand';
 
 const PanelAside = ({activeCreateForm,createForm,activeSideBar}) => {
@@ -10,7 +10,7 @@ const PanelAside = ({activeCreateForm,createForm,activeSideBar}) => {
     const OPENED_VIEWS = {
 
         1: (
-            <PanelProdDetails/>
+            <AsideProduct/>
         ),
 
         2: (

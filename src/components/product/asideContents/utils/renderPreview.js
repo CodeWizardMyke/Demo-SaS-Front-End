@@ -3,7 +3,7 @@ export function renderPreview(field, dataForm){
     const value = dataForm?.[field.name];
 
     if(value == null || value === ""){
-        return "Não preenchido";
+        return "";
     }
 
     // se for objeto de select

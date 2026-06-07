@@ -43,7 +43,6 @@ export function productFormReducer(state, action) {
             };
 
         case "SET_STEP":
-
             return {
                 ...state,
                 step: action.payload

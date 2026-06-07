@@ -1,10 +1,21 @@
+import { IoPricetagOutline } from "react-icons/io5";
+import { CiSettings } from "react-icons/ci";
+import { GoFileMedia } from "react-icons/go";
+import { BsCoin } from "react-icons/bs";
+import { MdOutlinePermMedia } from "react-icons/md";
+import { TbBrandAbstract } from "react-icons/tb";
+
 const productForm = [
     {
-        id: "basic_information",
-        type: "section",
-        title: "Informações Básicas",
-        collapsible: true,
+        id: "category_product",
+        name: "category",
+        title: "Categoria do Produto",
+        label: "Categoria",
+        type: "select",
+        placeholder: "Selecione uma categoria",
+        required: true,
         preview: true,
+        svg:<IoPricetagOutline/>,
 
         fields: [
             {
@@ -17,9 +28,22 @@ const productForm = [
                 preview: true,
                 col: 6,
 
-                options: []
-            },
+                options: [],
+            }
+        ]
+    },
+      {
+        id: "brand_product",
+        name: "brand",
+        title: "Marca do Produto",
+        label: "Categoria",
+        type: "select",
+        placeholder: "Selecione uma categoria",
+        required: true,
+        preview: true,
+        svg: <TbBrandAbstract/>,
 
+        fields: [
             {
                 id: "brand",
                 name: "brand",
@@ -35,12 +59,14 @@ const productForm = [
         ]
     },
 
+
     {
         id: "product_information",
         type: "section",
         title: "Informações do Produto",
         collapsible: true,
         preview: true,
+        svg: <CiSettings/>,
 
         fields: [
             {
@@ -154,6 +180,7 @@ const productForm = [
         title: "Mídia",
         collapsible: true,
         preview: true,
+        svg: <GoFileMedia/>,
 
         fields: [
             {
@@ -187,6 +214,7 @@ const productForm = [
         title: "Precificação",
         collapsible: true,
         preview: true,
+        svg:<BsCoin />,
 
         fields: [
             {
@@ -285,6 +313,7 @@ const productForm = [
         title: "Marketing",
         collapsible: true,
         preview: true,
+        svg:<MdOutlinePermMedia/>,
 
         fields: [
             {

@@ -61,6 +61,9 @@
     --blue-inner:#487CFF;
     --blue-ligth:#92B1FF;
 
+    --btHoverConfirm: #329b2e;
+    --btColorConfirm: #FFFF;
+
 }
 
 [data-theme="dark"] {

@@ -1,0 +1,29 @@
+.bt-navigation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    height: 30px;
+    max-width: 300px;
+    width: 100%;
+    
+    background-color: var(--button);
+    color: var(--buttonTxtColor);
+}
+
+.bt-navigation:hover{
+    background-color: var(--btHoverConfirm);
+    color: var(--btColorConfirm);
+}
+
+.disabled {
+    opacity: 0.5;
+}
+.disabled:hover{
+    background-color:var(--button);
+    color: var(--buttonTxtColor);
+    opacity: 0.5;
+    cursor: default;
+}
