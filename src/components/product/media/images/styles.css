@@ -1,6 +1,6 @@
 .sub-content{
     border-radius: 12px;
-    min-height: 350px;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
     gap: 10px;

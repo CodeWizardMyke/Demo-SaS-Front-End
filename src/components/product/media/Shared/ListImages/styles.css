@@ -4,6 +4,9 @@
     flex-wrap: wrap;
     align-items: center;
     min-height: 60px;
+    background-color: var(--bgPanel);
+    border-radius: 12px;
+    padding: 5px;
     gap: 10px;
 }
 .list-images li{
@@ -50,3 +53,4 @@
     transform: translateY(-1px);
     border-color: var(--inptDanger);
 }
+

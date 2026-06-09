@@ -74,7 +74,7 @@ const Pricing = ({toggleSideBar}) => {
                     joinedData?.map(( item,index ) => {
 
                         return (
-                            <div className={item.cssP} key={item.step + index} >
+                            <div className={item.cssP} key={item.stepLabel + index} >
                                 <div className="circle-tag">
                                     <div>{item.step}</div>
                                     <h4>{item.stepLabel}</h4>

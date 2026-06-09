@@ -1,6 +1,6 @@
 import React from 'react';
-
 import './styles.css';
+
 import { FaTrash } from "react-icons/fa";
 import { useImageControl } from '../hook';
 

@@ -55,3 +55,15 @@
     justify-content: center;
     gap: 10px;
 }
+
+@media (max-width:600px) {
+    .upload-area-content .controls{
+        background-color: rgba(0, 0, 0, 0);
+        align-items: start;
+        padding-top: 15px;
+        bottom: auto;
+    }
+    .upload-area-content{
+        text-align: center;
+    }
+}

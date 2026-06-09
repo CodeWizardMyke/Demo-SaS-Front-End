@@ -41,3 +41,9 @@
     justify-items: stretch;
 }
 
+@media screen and (max-width:1024px) {
+    .aside-container{
+        max-width: 0;
+    }
+}
+
