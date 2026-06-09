@@ -1,0 +1,16 @@
+.sub-content{
+    border-radius: 12px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container-control{
+    flex: 1;
+}
+.button-complete{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

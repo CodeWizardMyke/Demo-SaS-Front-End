@@ -1,0 +1,52 @@
+.list-images{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 60px;
+    gap: 10px;
+}
+.list-images li{
+    height: 45px;
+    flex: 0 0 60px;
+    position: relative;
+
+    transition: all 300ms ease;
+}
+.list-images li img{
+    border: 1px solid var(--inptBorder);
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.list-images li:hover{
+    transform:  translateY(-1px);
+}
+
+.list-images .remove-content{
+    border: 1px solid var(--inptBorder);
+    border-radius: 20px;
+    padding: 3px;
+    height: 30px;
+    width: 30px;
+
+    position: absolute;
+    top: -5px;
+    right: -5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 300ms ease;
+}
+
+.list-images .remove-content:hover{
+    color: var(--inptDanger);
+    cursor: pointer;
+    transform: translateY(-1px);
+    border-color: var(--inptDanger);
+}

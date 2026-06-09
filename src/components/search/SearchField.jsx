@@ -1,5 +1,4 @@
 import React from 'react';
-import { IoMdCloseCircleOutline } from "react-icons/io";
 
 import './SearchField.css'
 

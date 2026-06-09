@@ -1,0 +1,57 @@
+
+.upload-area-content{
+    position: relative;
+
+    height: 250px;
+    
+    background-color: var(--bgPanel);
+    border: 1px dotted var(--inptBorder);
+    border-radius: 12px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.upload-area{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.upload-area .icon-content{
+    width: 45px;
+    height: 45px;
+    
+    background-color: var(--inptBorder);
+
+    border-radius: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.upload-area .icon-content svg{
+    width: 30px;
+    height: 30px;
+}
+
+.upload-area-content .controls{
+    background-color: var(--bg-default);
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+
+    border-radius: 0 12px 12px 0 ;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}

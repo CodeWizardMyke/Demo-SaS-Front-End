@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import ResumeList from './ResumeList';
-import { ProductFormContext } from '../../../contexts/ProductFormContext';
+
 import ButtonNavigation from 'components/buttons/default/ButtonNavigation'; 
+import { ProductFormContext } from 'contexts/ProductFormContext'; 
 
 import './styles.css'
 

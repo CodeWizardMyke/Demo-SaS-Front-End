@@ -6,7 +6,7 @@ import { WorkspaceContext } from '../../contexts/WorkspaceContext';
 import PanelAside from '../../components/aside';
 import SearchCategoryOrBrand from '../../components/product/searchCategoryOrBrand';
 import Informations from '../../components/product/information';
-import Thumbnails from '../../components/product/media/thumbnails';
+import Thumbnails from '../../components/product/media/images';
 import Pricing from '../../components/product/pricing';
 
 const CreateProductContent = () => {

@@ -4,7 +4,6 @@ import './style.css'
 import 'styles/formStyles.css'
 
 import Overview from './Overview';
-import PricingTitle from './PricingTitle';
 import PricingField from './PricingField';
 import SellingPrice from './SellingPrice';
 
@@ -12,16 +11,18 @@ import formConfig from 'configs/product/index';
 import { modifiableFields } from './util/modifiableFields';
 import { ProductFormContext } from 'contexts/ProductFormContext';
 import calculateSellingPrice from './util/calculateSellingPrice';
+import Title from 'components/titles/Title'; 
 
 const Pricing = ({toggleSideBar}) => {
     const { dispatch, formData } = useContext(ProductFormContext);
     const calculatedData = useMemo( () => calculateSellingPrice(formData),[formData] );
+    const pricingSettings = formConfig.find(item => item.id === "pricing");
     
     const joinedData = useMemo( () =>{
-        const pricing = formConfig.find(item => item.id === "pricing");
+        return modifiableFields(pricingSettings.fields)
+    },[pricingSettings] )
 
-        return modifiableFields(pricing.fields)
-    },[] )
+
 
     useEffect(() => {
 
@@ -60,7 +61,11 @@ const Pricing = ({toggleSideBar}) => {
     return (
         <div className='scob-content'>
 
-            <PricingTitle />
+            <Title 
+                title={pricingSettings.title}
+                svg={pricingSettings.svg}
+                subTitle={pricingSettings.subtitle}
+            />
             <div className="space-gap">
             
                 <Overview data={formData} processData={calculatedData} />
