@@ -18,9 +18,9 @@ export  function useImageControl (){
         });
     };
 
-    function setCurrent (file) {
+    function setCurrent (file,field) {
         if(!!file){
-            dispatch({type:"SET_CURRENT_IMAGE", payload:file})
+            dispatch({type:"SET_CURRENT_IMAGE", payload:file, field})
         }
     }
 

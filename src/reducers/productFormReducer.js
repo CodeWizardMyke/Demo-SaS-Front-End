@@ -32,7 +32,7 @@ export const initialState = {
 
 };
 
-export function productFormReducer(state, action, field) {
+export function productFormReducer(state, action) {
 
     switch (action.type) {
 
@@ -97,7 +97,7 @@ export function productFormReducer(state, action, field) {
                         state.formData[action.field],
                         action.payload
                     ),
-                    currentImage:action.payload[0]
+                    currentImage: imageManager.setCurrent(action.payload[0],action.field)
                 }
             }
         }
@@ -108,7 +108,7 @@ export function productFormReducer(state, action, field) {
                 ...state,
                 formData: {
                     ...state.formData,
-                    currentImage: imageManager.setCurrent(action.payload)
+                    currentImage: imageManager.setCurrent(action.payload, action.field)
                 }
             };
 
@@ -146,7 +146,8 @@ export function productFormReducer(state, action, field) {
                     ...state.formData,
                     [action.field]: imageManager.clear(
                         state.formData[action.field]
-                    )
+                    ),
+                    currentImage:null
                 }
            }
 
