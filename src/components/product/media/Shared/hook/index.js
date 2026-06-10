@@ -8,31 +8,37 @@ export  function useImageControl (){
 
     const {dispatch} = useContext(ProductFormContext);
 
-    function add(file){
-
+    function add(file,field){
         const files = getPreview(file);
-      
+
         dispatch({
             type: "ADD_IMAGES",
-            payload: files
+            payload: files,
+            field
         });
-
     };
 
     function setCurrent (file) {
-        dispatch({type:"SET_CURRENT_IMAGE", payload:file})
+        if(!!file){
+            dispatch({type:"SET_CURRENT_IMAGE", payload:file})
+        }
     }
 
-   function remove(file) {
+   function remove(file, field) {
         const id = getId(file)
 
-        dispatch({ type: "REMOVE_IMAGE",  payload: id});
+        dispatch({ 
+            type: "REMOVE_IMAGE", 
+            payload: id,
+            field    
+        });
     }
 
-    function clean() {
+    function clean(field) {
 
         dispatch({
-            type: "CLEAR_IMAGES"
+            type: "CLEAR_IMAGES",
+            field
         });
 
     };

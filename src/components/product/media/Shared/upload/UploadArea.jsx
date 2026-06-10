@@ -6,7 +6,7 @@ import './styles.css';
 
 import Button from 'components/buttons/Button';
 
-const UploadArea = ({svg}) => {
+const UploadArea = ({svg, field}) => {
     const inputRef = useRef();
 
     const {addImage, cleanImages} = useImageControl();
@@ -21,7 +21,7 @@ const UploadArea = ({svg}) => {
         const file = e.dataTransfer.files
 
         if (file) {
-            addImage(file)
+            addImage(file, field)
         }
     };
 
@@ -29,13 +29,13 @@ const UploadArea = ({svg}) => {
         const file = e.target.files
 
         if(file){
-            addImage(file)
+            addImage(file,field)
         }
 
     };
 
     const handlerCleanImages = () => {
-        cleanImages();
+        cleanImages(field);
     }
 
     return (

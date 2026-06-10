@@ -316,6 +316,7 @@ const productForm = [
         collapsible: true,
         preview: true,
         svg:<MdOutlinePermMedia/>,
+        subtitle:"Adicione imagens, vídeo para apresentar o melhor do seu produto.",
 
         fields: [
             {

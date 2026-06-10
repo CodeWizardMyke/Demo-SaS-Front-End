@@ -1,3 +1,5 @@
+import { imageManager } from "./utils/imagesManager";
+
 export const initialState = {
 
     step: 1,
@@ -18,6 +20,8 @@ export const initialState = {
 
         thumbnails: [],
 
+        marketing_images: [],
+
         currentImage: null,
 
         thumbnails_removed: [],
@@ -28,7 +32,7 @@ export const initialState = {
 
 };
 
-export function productFormReducer(state, action) {
+export function productFormReducer(state, action, field) {
 
     switch (action.type) {
 
@@ -85,142 +89,66 @@ export function productFormReducer(state, action) {
             };
 
         case "ADD_IMAGES": {
-
-            const thumbnails = [
-                ...state.formData.thumbnails,
-                ...action.payload
-            ];
-
             return {
                 ...state,
-                formData: {
+                formData:{
                     ...state.formData,
-                    thumbnails,
-                    currentImage:
-                        state.formData.currentImage ??
-                        action.payload[0]
+                    [action.field]: imageManager.add(
+                        state.formData[action.field],
+                        action.payload
+                    ),
+                    currentImage:action.payload[0]
                 }
-            };
+            }
         }
 
         case "SET_CURRENT_IMAGE":
 
-
-            return{
+            return {
                 ...state,
-                formData:{
+                formData: {
                     ...state.formData,
-                    currentImage:action.payload
+                    currentImage: imageManager.setCurrent(action.payload)
                 }
-        };
+            };
 
-        case "REMOVE_IMAGE": {
+       case "REMOVE_IMAGE": {
 
-            const removed = state.formData.thumbnails.find(
-                image => image.preview_id === action.payload
+            const {
+                images,
+               // removed 
+            } = imageManager.remove(
+                state.formData[action.field],
+                action.payload
             );
 
-            if (removed?.preview) {
-                URL.revokeObjectURL(removed.preview);
-            }
-
-            const newThumbnails = state.formData.thumbnails.filter(
-                image => image.preview_id !== action.payload
+            const newCurrentImage =
+                imageManager.validateCurrent(
+                    state.formData.currentImage,
+                    images
             );
-
-            let newCurrentImage = state.formData.currentImage;
-
-            if (
-                state.formData.currentImage?.preview_id === action.payload
-            ) {
-                newCurrentImage =
-                    newThumbnails.length > 0
-                        ? newThumbnails[newThumbnails.length - 1]
-                        : null;
-            }
 
             return {
                 ...state,
                 formData: {
                     ...state.formData,
-
-                    currentImage: newCurrentImage,
-
-                    thumbnails: newThumbnails,
-
-                    thumbnails_removed:
-                        removed?.thumbnail_id
-                            ? [
-                                ...(Array.isArray(
-                                    state.formData.thumbnails_removed
-                                )
-                                    ? state.formData.thumbnails_removed
-                                    : []),
-                                removed.thumbnail_id
-                            ]
-                            : (
-                                Array.isArray(
-                                    state.formData.thumbnails_removed
-                                )
-                                    ? state.formData.thumbnails_removed
-                                    : []
-                            )
-                    }
-                };
-            }
+                    [action.field]: images,
+                    currentImage:newCurrentImage
+                }
+            };
+        }
 
         case "CLEAR_IMAGES": {
 
-            state.formData.currentImage = null
-
-            state.formData.thumbnails.forEach(
-                image => {
-
-                    if (image?.preview) {
-
-                        URL.revokeObjectURL(
-                            image.preview
-                        );
-
-                    }
-
-                }
-            );
-
-            const removedIds =
-                state.formData.thumbnails
-                    .filter(
-                        image => image.thumbnail_id
-                    )
-                    .map(
-                        image => image.thumbnail_id
-                    );
-
-            return {
-
+           return{
                 ...state,
-
-                formData: {
-
+                formData:{
                     ...state.formData,
-
-                    thumbnails: [],
-
-                    thumbnails_removed: [
-
-                        ...(Array.isArray(
-                            state.formData.thumbnails_removed
-                        )
-                            ? state.formData.thumbnails_removed
-                            : []),
-
-                        ...removedIds
-
-                    ]
-
+                    [action.field]: imageManager.clear(
+                        state.formData[action.field]
+                    )
                 }
-
-            };
+           }
 
         }
 

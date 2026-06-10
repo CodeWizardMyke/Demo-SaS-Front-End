@@ -4,22 +4,22 @@ import './styles.css';
 import { FaTrash } from "react-icons/fa";
 import { useImageControl } from '../hook';
 
-const ListImages = ({thumbnails}) => {
+const ListImages = ({data,field}) => {
 
     const {removeImage, setCurrent} = useImageControl();
 
     const handlerRemove = (item) => {
-        removeImage(item);
+        removeImage(item,field);
     }
 
     const handlerSelection = (item) => {
-        setCurrent(item)
+        setCurrent(item,field)
     }
 
     return (
         <ul className='list-images'>
             {
-                thumbnails.map((item,index) => (
+                data.map((item,index) => (
 
                     <li key={item.id+ "/" +index} >
                        <img 

@@ -6,8 +6,9 @@ import { WorkspaceContext } from '../../contexts/WorkspaceContext';
 import PanelAside from '../../components/aside';
 import SearchCategoryOrBrand from '../../components/product/searchCategoryOrBrand';
 import Informations from '../../components/product/information';
-import Thumbnails from '../../components/product/media/images';
+import Thumbnails from '../../components/product/media/images/Thumbnails';
 import Pricing from '../../components/product/pricing';
+import Marketing from 'components/product/media/Banners/Marketing';
 
 const CreateProductContent = () => {
     const { activeSideBar, toggleSideBar } = useContext(WorkspaceContext);
@@ -67,7 +68,11 @@ const CreateProductContent = () => {
                 toggleSideBar={toggleSideBar}
             />
         ),
-
+        6: (
+            <Marketing
+                toggleSideBar={toggleSideBar}
+            />
+        ),
     };
 
     return (
