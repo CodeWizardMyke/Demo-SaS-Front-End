@@ -156,3 +156,16 @@ select{
     background-color: var(--inptBg) ;
     color: var(--txtDanger);
 }
+
+.ql-toolbar {
+    border-radius: 8px 8px 0 0;
+}
+
+.ql-container {
+    border-radius: 0 0 8px 8px;
+    font-size: 14px;
+}
+
+.ql-editor {
+    min-height: 220px;
+}

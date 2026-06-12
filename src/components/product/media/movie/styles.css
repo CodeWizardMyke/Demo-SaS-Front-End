@@ -1,0 +1,86 @@
+.movie-content{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--bgPanel);
+    border-radius: 12pt;
+    padding:15px;
+    margin: 5px 0;
+}
+
+.movie-title{
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.movie-title .title{
+    display: flex;
+    align-items: center;
+}
+.movie-title .title h3{
+    font-size: 12pt;
+}
+.movie-title .title span{
+    padding: 5px 10px;
+    background-color: var(--inptBorder);
+    border-radius: 5px;
+    margin-left: 15px;
+}
+
+.movie-controls{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    min-height: 60px;
+}
+.movie-controls{
+    margin: 10px 0; 
+}
+.movie-controls .input-content{
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.movie-controls .input-content input{
+    max-width: 100%;
+    min-height: 35px;
+}
+
+.control .msg{
+    display: flex;
+    flex-direction: column;
+}
+.control .msg svg{
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+
+.movie-preview{
+    height: 275px;
+    background-color: var(--panelBorder);
+    border-radius: 12px;
+}
+.movie-preview iframe{
+    height: 100%;
+    width: 100%;
+}
+
+.no-frameSet{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.no-frameSet svg{
+    height: 35px;
+    width: 35px;
+    margin-bottom: 15px;
+}

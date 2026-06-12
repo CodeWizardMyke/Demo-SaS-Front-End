@@ -7,6 +7,7 @@ import { ProductFormContext } from 'contexts/ProductFormContext';
 import ListImages from '../Shared/ListImages/ListImages';
 import UploadArea from '../Shared/upload/UploadArea';
 import Button from 'components/buttons/Button';
+import Movie from '../movie';
 
 const Marketing = () => {
 
@@ -47,7 +48,7 @@ const Marketing = () => {
             </div>
             
             <div className="sub-content">
-                vídeo content
+                <Movie />
             </div>
 
             <div className="button-complete">

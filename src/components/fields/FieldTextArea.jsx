@@ -1,18 +1,39 @@
-import React from 'react';
+import React from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
-const FieldTextArea = (props) => {
+const FieldTextArea = ({
+    name,
+    value,
+    onChange,
+    placeholder
+}) => {
+
+    const handleChange = (content) => {
+        onChange({
+            target: {
+                name,
+                value: content
+            }
+        });
+    };
 
     return (
-        <textarea
-            name={props.name}
-            id={props.id}
-            placeholder={props.placeholder}
-            value={props.value}
-            col={props.col}
-            rows={props.rows}
-            onChange={props.onChange}
+        <ReactQuill
+            theme="snow"
+            value={value || ""}
+            onChange={handleChange}
+            placeholder={placeholder}
+            modules={{
+                toolbar: [
+                    [{ header: [1, 2, 3, false] }],
+                    ["bold", "italic", "underline"],
+                    [{ list: "ordered" }, { list: "bullet" }],
+                    ["link", "image"],
+                    ["clean"]
+                ]
+            }}
         />
-    
     );
 };
 

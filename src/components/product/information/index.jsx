@@ -1,16 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
+import { ProductFormContext } from 'contexts/ProductFormContext'; 
+import { resolveFields } from './utils/resolveFields';
+import productForm from 'configs/product'; 
 
-import productForm from '../../../configs/product/index';
-
-import SetedFields from '../../fields';
-import { ProductFormContext } from '../../../contexts/ProductFormContext';
+import Title from 'components/titles/Title';
+import InformationItemsContent from './components/InformationItemsContent';
 
 import "./styless.css";
 
 const Informations = ({toggleSideBar}) => {
     const { dispatch } = useContext(ProductFormContext);
 
-    const DataConfigured = productForm.find( item => item.id === "product_information" );
+    const informationSettings = productForm.find( item => item.id === "product_information" );
+
+    const joinedSettings = useMemo(()=> {
+        return resolveFields(informationSettings.fields);
+    },[informationSettings])
 
     function prevStepAction(){
         dispatch({ type:"NEXT_STEP" });
@@ -19,31 +24,28 @@ const Informations = ({toggleSideBar}) => {
 
     return (
         <div className='scob-content'>
-            <div className="informations">
-                <h2>{DataConfigured?.title}</h2>
-                <div className="fields-content">
-                    {
-                        DataConfigured?.fields?.map( (item,index)=> (
-
-                              <div 
-                                className={` fields-col-${item.col}`}
-                                key={`${item.id}_${index}`}
-                              >
-                                    <label htmlFor={item.id}>
-                                        {item.label}
-                                    </label>
-
-                                    <div className="input-content">
-                                        <SetedFields data={item} />
-                                    </div>
-
-                                    <div className="errors"></div>
-                              </div>
-
-                           )
+            <Title 
+                title={informationSettings.title} 
+                svg={informationSettings.svg}  
+                subTitle={informationSettings.subtitle}
+            />
+            <div className='information'>
+                {
+                    joinedSettings.map( (element,index) => {
+                        return (
+                            <div 
+                                className={element.cssP}
+                                key={`JoinedSettings_step:${element.step}_id:${index}`}
+                            >
+                                <div className="circle-tag">
+                                    <div>{ element.step }</div>
+                                    <h4> {element.stepLabel} </h4>
+                                </div>
+                                <InformationItemsContent fields={element.fields} cssC={element.cssC} />
+                            </div>
                         )
-                    }
-                </div>
+                    } )
+                }
             </div>
             <button 
                 className='button-confirm'

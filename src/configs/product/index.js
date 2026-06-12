@@ -1,9 +1,9 @@
 import { IoPricetagOutline } from "react-icons/io5";
-import { CiSettings } from "react-icons/ci";
 import { GoFileMedia } from "react-icons/go";
 import { BsCoin } from "react-icons/bs";
 import { MdOutlinePermMedia } from "react-icons/md";
 import { TbBrandAbstract } from "react-icons/tb";
+import { MdOutlineSell } from "react-icons/md";
 
 const productForm = [
     {
@@ -64,113 +64,121 @@ const productForm = [
         id: "product_information",
         type: "section",
         title: "Informações do Produto",
+        subtitle:"Preencha os dados principais do seu produto.",
         collapsible: true,
         preview: true,
-        svg: <CiSettings/>,
+        svg: <MdOutlineSell/>,
 
-        fields: [
-            {
-                id: "title",
-                name: "title",
-                label: "Título do produto",
-                type: "text",
-                placeholder: "Digite o título do produto",
-                required: true,
-                preview: true,
-                col: 12,
-                maxLength: 120
-            },
 
-            {
-                id: "official_store_name",
-                name: "official_store_name",
-                label: "Nome oficial",
-                type: "text",
-                placeholder: "Nome oficial do produto",
-                required: true,
-                preview: true,
-                col: 12
-            },
+        fields:[
+                {
+                    id: "title",
+                    name: "title",
+                    label: "Título de venda",
+                    type: "text",
+                    placeholder: "Ex.: Camiseta Básica Masculina",
+                    step:1,
+                    required: true,
+                    preview: true,
+                    maxLength: "300px",
+                    col: 12,
+                },
 
-            {
-                id: "gtin",
-                name: "gtin",
-                label: "Código do produto",
-                type: "text",
-                placeholder: "GTIN / Código interno",
-                required: false,
-                preview: true,
-                col: 6
-            },
+                {
+                    id: "official_store_name",
+                    name: "official_store_name",
+                    label: "Nome oficial do produto",
+                    step:1,
+                    type: "text",
+                    placeholder: "Ex.: Camiseta Básica 100% Algodão",
+                    required: true,
+                    preview: true,
+                    maxLength: "300px",
+                    col: 12
+                },
+                 {
+                    id: "gtin",
+                    name: "gtin",
+                    label: "Código do produto (SKU)",
+                    step:2,
+                    type: "text",
+                    placeholder: "GTIN / Código interno",
+                    required: false,
+                    preview: true,
+                    col: 6
+                },
 
-            {
-                id: "is_new_arrival",
-                name: "is_new_arrival",
-                label: "Lançamento",
-                type: "select",
-                required: true,
-                preview: true,
-                col: 6,
+                {
+                    id: "is_new_arrival",
+                    name: "is_new_arrival",
+                    label: "Lançamento",
+                    type: "select",
+                    step:2,
+                    required: true,
+                    preview: true,
+                    col: 6,
 
-                options: [
-                    {
-                        value: true,
-                        label: "Sim"
-                    },
-                    {
-                        value: false,
-                        label: "Não"
-                    }
-                ]
-            },
+                    options: [
+                        {
+                            value: true,
+                            label: "Sim"
+                        },
+                        {
+                            value: false,
+                            label: "Não"
+                        }
+                    ]
+                },
 
-            {
-                id: "product_shape",
-                name: "product_shape",
-                label: "Formato do produto",
-                type: "text",
-                placeholder: "Formato do produto",
-                required: false,
-                preview: true,
-                col: 6
-            },
+                {
+                    id: "product_shape",
+                    name: "product_shape",
+                    label: "Formato do produto",
+                    type: "text",
+                    step:2,
+                    placeholder: "Formato do produto",
+                    required: false,
+                    preview: true,
+                    col: 6
+                },
 
-            {
-                id: "age_group",
-                name: "age_group",
-                label: "Faixa etária",
-                type: "select",
-                required: false,
-                preview: true,
-                col: 6,
+                {
+                    id: "age_group",
+                    name: "age_group",
+                    label: "Faixa etária",
+                    step:2,
+                    type: "select",
+                    required: false,
+                    preview: true,
+                    col: 6,
 
-                options: [
-                    {
-                        value: "adult",
-                        label: "Adulto"
-                    },
-                    {
-                        value: "children",
-                        label: "Infantil"
-                    },
-                    {
-                        value: "any",
-                        label: "Todos"
-                    }
-                ]
-            },
-
-            {
-                id: "additional_information",
-                name: "additional_information",
-                label: "Informações adicionais",
-                type: "textarea",
-                placeholder: "Informações complementares",
-                required: false,
-                preview: true,
-                rows: 20,
-                col: 120,
-            }
+                    options: [
+                        {
+                            value: "adult",
+                            label: "Adulto"
+                        },
+                        {
+                            value: "children",
+                            label: "Infantil"
+                        },
+                        {
+                            value: "any",
+                            label: "Todos"
+                        }
+                    ]
+                },
+                {
+                    id: "additional_information",
+                    name: "additional_information",
+                    step:3,
+                    label: "Informações adicionais",
+                    type: "textarea",
+                    placeholder: "Informações complementares",
+                    required: false,
+                    preview: true,
+                    rows: 20,
+                    col: 120,
+                }
         ]
     },
 

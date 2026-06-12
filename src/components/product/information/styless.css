@@ -1,69 +1,37 @@
-
-.informations{
+.information {
     display: flex;
-    margin-top: 15px;
     flex-direction: column;
+    gap: 10px;
+}
+.information .identfications, 
+.information .code-references, 
+.information .description{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.information .circle-tag{
+    margin-bottom: 10px;
+}
+
+.information .identfications div{
+        max-width: 48%;
+    width: 100%;
+}
+.information .identfications{
     justify-content: space-between;
 }
 
-.fields-content{
+.information .description div{
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 25px;
 }
-
-.fields-col-12{
-    min-width: 200px;
-    width: 48%;
-    display: flex;
-    flex-direction: column;
-    height: 75px;
-    margin: 10px 5px;
+.information .description img{
+    max-width: 200px;
 }
-.fields-col-12 input{
-    height: 25px;
-}
-
-.fields-col-6{
-    min-width: 175px;
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    height: 75px;
-    margin: 10px 5px;
-}
-.fields-col-6 select {
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
-    height: 25px;
-    margin-top: 5px;
-    border-radius: 5px;
-    background-color: var(--inptBg);
-    color: var(--inptText);
-    border: 2px solid var(--inptBorder);
-    outline: none;
-}
-.fields-col-6 option{
-    border: 2px solid var(--inptBorder);
-    cursor: pointer;
-    color: var(--inptText);
-    background-color: var(--inptBg);
-}
-.fields-col-6 input{
-    height: 25px;
-}
-.fields-col-120 {
-    width: 100%;
-    padding: 5px;
-}
-
-.fields-col-120 textarea{
-    padding: 5px;
-    width: 100%;
-    color: var(--inptText);
-    border: 2px solid var(--inptBorder);
-    background-color: var(--inptBg);
-    border-radius: 5px;
+@media screen  and (max-width:600px) {
+    .information .identfications div{
+        max-width: 100%;
+    }
 }

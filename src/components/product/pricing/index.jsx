@@ -84,13 +84,25 @@ const Pricing = ({toggleSideBar}) => {
                                     !!item.cssJoined ? (
                                         <div className={item.cssJoined} >
                                             {
-                                                item.fields.map((field) =>  <PricingField field={field} className={item.cssC} /> )
+                                                item.fields.map((field,jIndex) =>  {
+                                                    return (
+                                                        <div key={`fieldPricForm${field.name}_id:${jIndex}`}>
+                                                            <PricingField field={field} className={item.cssC} />
+                                                        </div>
+                                                    )
+                                                } )
                                             }
                                         </div>
                                     )
                                     : 
                                     (
-                                        item.fields.map((field) =>  <PricingField field={field} className={item.cssC} /> )
+                                        item.fields.map((field,yIndex) =>  {
+                                            return (
+                                                <div key={`fieldPricForm${field.name}_id:${yIndex+index}`}>
+                                                    <PricingField field={field} className={item.cssC} />
+                                                </div>
+                                            )
+                                        } )
                                     )
                                 }
                                 
