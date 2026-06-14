@@ -18,6 +18,8 @@ export const usePaginatedSearch  = (services) => {
        
         if(!query.trim()) return;
 
+        setLoading(true);
+
         const {data,error} = await services(
             query,
             currentPage,

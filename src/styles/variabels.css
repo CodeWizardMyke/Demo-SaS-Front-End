@@ -1,9 +1,27 @@
 
 :root {
+    /*DefaultCardsColors*/
+    --bgCardItem: #ffff;
+    --borderCard:  #d1d5db;
+    --borderCardActive: #16a34a;
+    --borderCardDisable:#15803d;
+    --bgCartItemActive: #f0fdf4;
+    --textCardActive:#fff;
+    --textCardStrong:  #111827;
+    --textCard: #374151;
+    --textCardLast: #9ca3af;
+
+    /*Buttons form*/
+    --btBgColor:#F5F5F5;
+    --btBdColor: #e7e7e7;
+    --btTxColor: #222222;
+    --btSwColor: #15803d;
+
     /*background principais da aplicação*/
     --background: #ffffff;
     --bgPanel:#F4F4F4;
     --bg-default: #ffff;
+    --bgDef: #ffff;
     --panelBorder:#CDCDCD;
 
     --bgGradientColor1: #e4e4e46c;
@@ -31,7 +49,8 @@
     --inptBorder: #cccc; 
     --inptText: #6c757d;
     --inptDanger: #DC3545;
-
+    --inptTextAc: #374151;
+    
     /*principais cores de botoes*/
     --button: #dddd;
     --border: #cccc;
@@ -55,8 +74,12 @@
 
     /*any colors*/
     --green-strong: #329B2E;
+    --greenActive: #16a34a;
+    --greenSec:#15803d;
     --green-inner:#D8EFD7;
     --green-ligth:#F1FCF0;
+
+    --listSelected: #afd4ad75;
 
     --blue-strong:#0038C5;
     --blue-inner:#487CFF;
@@ -66,26 +89,44 @@
     --btColorConfirm: #FFFF;
 
 }
-
 [data-theme="dark"] {
     --background: #222222;
-    --bgPanel:#272727;
-    --panelBorder:#797979cc;
+    --bgPanel: #272727;
+    --panelBorder: #797979cc;
     --bg-default: #383838cc;
 
+    /*Buttons form*/
+    --btBgColor:#272727;
+    --btBdColor: #797979cc;
+    --btTxColor: #f0f0f0;
+    --btSwColor: #22c55e;
+
     --text: #e0e0e0;
-    --textListHover: #cccc; 
+    --textListHover: #cccc;
 
     --button: #6C757D;
-    --buttonTxtColor:#ffff;
+    --buttonTxtColor: #ffffff;
     --border: #797979cc;
-    --buttonBorderColor:transparent;
-    
-    /*princiapais cores de input*/
-    --inptBg: #222222;
-    --inptBorder: #797979cc; 
-    --inptText: #ffff;
+    --buttonBorderColor: transparent;
 
-    --textTab:#F4F4F4;
-    --btTab:#797979cc;
+    /* principais cores de input */
+    --inptBg: #222222;
+    --inptBorder: #797979cc;
+    --inptText: #ffffff;
+
+    --textTab: #F4F4F4;
+    --btTab: #797979cc;
+
+    /* DefaultCardsColors */
+    --bgCardItem: #2f2f2f;
+    --borderCard: #5f5f5f;
+    --borderCardActive: #22c55e;
+    --borderCardDisable: #166534;
+
+    --bgCartItemActive: #12301d;
+
+    --textCardActive: #ffffff;
+    --textCardStrong: #f4f4f4;
+    --textCard: #d1d5db;
+    --textCardLast: #9ca3af;
 }

@@ -10,7 +10,8 @@ import FieldPercentage from "./FieldPercentage";
 const SetedFields = ({ data }) => {
 
    const { formData, dispatch } =
-      useContext(ProductFormContext);
+
+   useContext(ProductFormContext);
 
    const FIELDS_TYPED = {
       text: FieldText,

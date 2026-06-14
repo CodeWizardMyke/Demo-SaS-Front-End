@@ -1,0 +1,69 @@
+.cbs-panel{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.card-inline{
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.InputSearchContent{
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex: 1;
+    min-width: 170px;
+}
+.InputSearchContent input{
+    max-width: none;
+}
+
+.InputSearchContent svg{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    left: 5px;
+}
+.InputSearchContent input{
+    padding-left: 35px;
+}
+.bt-search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    height: 35px;
+    width: 100px;
+}
+.bt-search svg{
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+}
+
+.bt-search.create{
+    background-color: var(--btHoverConfirm);
+    color: var(--btColorConfirm);
+}
+
+.checked-content{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.p-card-header{
+    margin-bottom: 16px;
+}
+
+.p-card-header span{
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}

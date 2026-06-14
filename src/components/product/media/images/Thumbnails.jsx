@@ -8,16 +8,12 @@ import Title from 'components/titles/Title';
 import ListImages from '../Shared/ListImages/ListImages';
 import UploadArea from '../Shared/upload/UploadArea';
 import CurrentImage from '../Shared/currentImage';
-import Button from 'components/buttons/Button';
+import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
 
 const Thumbnails = () => {
-    const {formData,dispatch} = useContext(ProductFormContext);
+    const {formData} = useContext(ProductFormContext);
 
     const mediaSettings = productForm.find( settings => settings.id === "media");
-
-    const handlerConfirm = () => {
-        dispatch({ type:"NEXT_STEP" });
-    }
 
     return (
         <div className='scob-content'>
@@ -42,9 +38,8 @@ const Thumbnails = () => {
                 <CurrentImage current={formData.currentImage} />
             </div>
 
-            <div className="button-complete">
-                <Button text={"Confirmar"} click={handlerConfirm} css={'button-confirm'} />
-            </div>
+            <ButtonPrevNextStep/>
+            
         </div>
     );
 }

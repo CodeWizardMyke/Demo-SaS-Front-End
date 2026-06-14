@@ -1,5 +1,4 @@
-import React, { useContext, useMemo } from 'react';
-import { ProductFormContext } from 'contexts/ProductFormContext'; 
+import React, { useMemo } from 'react';
 import { resolveFields } from './utils/resolveFields';
 import productForm from 'configs/product'; 
 
@@ -7,20 +6,15 @@ import Title from 'components/titles/Title';
 import InformationItemsContent from './components/InformationItemsContent';
 
 import "./styless.css";
+import ButtonPrevNextStep from '../ButtonPrevNextStep';
 
-const Informations = ({toggleSideBar}) => {
-    const { dispatch } = useContext(ProductFormContext);
+const Informations = () => {
 
     const informationSettings = productForm.find( item => item.id === "product_information" );
 
     const joinedSettings = useMemo(()=> {
         return resolveFields(informationSettings.fields);
     },[informationSettings])
-
-    function prevStepAction(){
-        dispatch({ type:"NEXT_STEP" });
-        toggleSideBar(true);
-    };
 
     return (
         <div className='scob-content'>
@@ -37,8 +31,8 @@ const Informations = ({toggleSideBar}) => {
                                 className={element.cssP}
                                 key={`JoinedSettings_step:${element.step}_id:${index}`}
                             >
-                                <div className="circle-tag">
-                                    <div>{ element.step }</div>
+                                <div className="card-title">
+                                    <span>{ element.step }</span>
                                     <h4> {element.stepLabel} </h4>
                                 </div>
                                 <InformationItemsContent fields={element.fields} cssC={element.cssC} />
@@ -47,13 +41,7 @@ const Informations = ({toggleSideBar}) => {
                     } )
                 }
             </div>
-            <button 
-                className='button-confirm'
-                type='button'
-                onClick={prevStepAction}
-            >
-                confirmar
-            </button>
+            <ButtonPrevNextStep/>
         </div>
     );
 }

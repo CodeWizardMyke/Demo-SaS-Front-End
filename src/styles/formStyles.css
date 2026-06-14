@@ -1,3 +1,28 @@
+.scob-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    max-width: 800px;
+    height: 100%;
+    
+    padding: 10px 5px;
+    margin: 0 auto;
+
+    z-index: 100;
+
+    transition: all 300ms ease;
+}
+.scob-content input{
+     height: 35px;
+     border: 1px solid var(--inptBorder);
+     background-color: var(--inptBg);
+     color: var(--inptText);
+     border-radius: 5px;
+     flex: 1;
+     padding-left: 15px;
+     outline: 1px solid var(--inptBorder);
+}
 
 /* TITLE PAGE*/
 .pricing-title{ display: flex; }
@@ -16,11 +41,25 @@
 
 /*CARDS*/
 .p-card{
-    background-color: var(--bgPanel);
-    border: 1px solid var(--panelBorder);
+    background-color: var(--bgCardItem);
+    border: 1px solid var(--borderCard);
     border-radius: 10px;
     
     padding: 15px;
+}
+
+.card-title{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.card-title h4{
+    font-size: 12pt;
+}
+.card-title span{
+    font-size: 16pt;
+    color: var(--green-strong);
 }
 
 .p-card h3{
@@ -37,7 +76,7 @@
 .p-tab{
     position: relative;
 
-    border: 1px solid var(--panelBorder);
+    border: 1px solid var(--borderCard);
     border-radius: 10px ;
 
     padding: 16px;
@@ -68,7 +107,7 @@
     height: 5px;
     border-radius: 10px 10px 0 0 ;
 
-    background: var(--green-strong);
+    background: var(--borderCardActive);
 }
 /*  TEXT  */
 
@@ -80,13 +119,13 @@
 
 .p-tab-text span{
     font-size: .85rem;
-    color: var(--subText);
+    color: var(--textCard);
 }
 
 .p-tab-text strong{
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--green-strong);
+    color:  var(--borderCardActive);
 }
 
 .p-tab-svg{
@@ -95,9 +134,9 @@
     width: 35px;
     height: 35px;
 
-    color: var(--green-strong);
+    color:  var(--textCardActive);
 
-    background: var(--green-inner);
+    background:  var(--borderCardActive);
 
     padding: 10px;
 

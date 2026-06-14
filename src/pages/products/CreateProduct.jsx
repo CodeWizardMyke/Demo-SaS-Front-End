@@ -4,11 +4,11 @@ import { ProductFormProvider, ProductFormContext } from '../../contexts/ProductF
 import { WorkspaceContext } from '../../contexts/WorkspaceContext';
 
 import PanelAside from '../../components/aside';
-import SearchCategoryOrBrand from '../../components/product/searchCategoryOrBrand';
 import Informations from '../../components/product/information';
 import Thumbnails from '../../components/product/media/images/Thumbnails';
 import Pricing from '../../components/product/pricing';
 import Marketing from 'components/product/media/Banners/Marketing';
+import CategoryBrandSelector from 'components/product/categoryBrandSelector';
 
 const CreateProductContent = () => {
     const { activeSideBar, toggleSideBar } = useContext(WorkspaceContext);
@@ -36,7 +36,7 @@ const CreateProductContent = () => {
     const STEP_COMPONENTS = {
 
         1: (
-            <SearchCategoryOrBrand
+            <CategoryBrandSelector
                 type="category"
                 createForm={toggleCreateForm}
                 toggleSideBar={toggleSideBar}
@@ -44,7 +44,7 @@ const CreateProductContent = () => {
         ),
 
         2: (
-            <SearchCategoryOrBrand
+            <CategoryBrandSelector
                 type="brand"
                 createForm={toggleCreateForm}
                 toggleSideBar={toggleSideBar}

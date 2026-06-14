@@ -83,7 +83,6 @@ export const imageManager = {
     },
 
     setCurrent(image,field) {
-        console.log(image, field);
         if(field === "thumbnails"){
             return image;
         }

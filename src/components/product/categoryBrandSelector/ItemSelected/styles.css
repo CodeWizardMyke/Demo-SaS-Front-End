@@ -1,0 +1,47 @@
+
+.selected{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid transparent;
+
+    padding: 10px 15px;
+
+    background: var(--bgCardItem);
+    border-radius: 10px;
+}
+
+.selected-icon{
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--bgCardItem);
+    color:  var(--textCardActive);
+    border: solid 1px var(--borderCard);
+
+    border-radius: 8px;
+}
+
+.selected-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.selected-info strong{
+    color: var(--textCard);
+    font-size: 15px;
+}
+
+.selected-info span{
+    color: var(--textCard);
+    font-size: 13px;
+}
+
+.selected.active .selected-icon{
+    background-color: var(--borderCardActive);
+    border: 1px solid  var(--borderCardActive);
+}

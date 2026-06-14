@@ -1,23 +1,21 @@
 import React, { useContext } from 'react';
 
-import './styles.css';
+import { ProductFormContext } from 'contexts/ProductFormContext';
+
 import productForm from 'configs/product';
 import Title from 'components/titles/Title';
-import { ProductFormContext } from 'contexts/ProductFormContext';
 import ListImages from '../Shared/ListImages/ListImages';
 import UploadArea from '../Shared/upload/UploadArea';
-import Button from 'components/buttons/Button';
 import Movie from '../movie';
+import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
+
+import './styles.css';
 
 const Marketing = () => {
 
     const marketingSettings = productForm.find( settings => settings.id === "marketing");
 
-    const { formData, dispatch } = useContext(ProductFormContext) ;
-
-    const handlerConfirm = () => {
-        dispatch({ type:"NEXT_STEP" });
-    }
+    const { formData } = useContext(ProductFormContext) ;
 
     return (
         <div className='scob-content'>
@@ -51,9 +49,7 @@ const Marketing = () => {
                 <Movie />
             </div>
 
-            <div className="button-complete">
-                <Button text={"Confirmar"} click={handlerConfirm} css={'button-confirm'} />
-            </div>
+            <ButtonPrevNextStep/>
 
         </div>
     );

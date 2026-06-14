@@ -10,6 +10,7 @@ const productForm = [
         id: "category_product",
         name: "category",
         title: "Categoria do Produto",
+        subtitle:"Busque e selecione uma categoria para este produto.",
         label: "Categoria",
         type: "select",
         placeholder: "Selecione uma categoria",
@@ -37,6 +38,7 @@ const productForm = [
         name: "brand",
         title: "Marca do Produto",
         label: "Categoria",
+        subtitle:"Busque e selecione uma marca para este produto.",
         type: "select",
         placeholder: "Selecione uma categoria",
         required: true,
@@ -173,7 +175,7 @@ const productForm = [
                     step:3,
                     label: "Informações adicionais",
                     type: "textarea",
-                    placeholder: "Informações complementares",
+                    placeholder: "[ ... ]",
                     required: false,
                     preview: true,
                     rows: 20,
@@ -279,7 +281,6 @@ const productForm = [
                 required: true,
                 preview: true,
                 col: 4,
-                defaultValue:"BRL",
                 options: [
                     {
                         value: "BRL",

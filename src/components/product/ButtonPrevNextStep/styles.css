@@ -1,0 +1,39 @@
+.content-button-pvn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.content-button-pvn button{
+    min-width: 150px;
+    flex-direction: row-reverse;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--btTxColor);
+    background-color: var(--btBgColor);
+    border: 1px solid var(--btBdColor);
+    transition: all 200ms ease;
+}
+.content-button-pvn button:hover{
+   color: var(--btTxColor);
+   border-color: var(--btBdColor);
+}
+
+.content-button-pvn button:hover:not(:disabled){
+    border-color: var(--btSwColor);
+    color: var(--btSwColor);
+}
+
+.content-button-pvn button:disabled{
+    opacity: .5;
+    cursor: not-allowed;
+}
+.content-button-pvn.small-buttons button{
+    height: 30px;
+    min-width: 120px;
+}

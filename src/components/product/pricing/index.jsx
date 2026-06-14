@@ -12,8 +12,9 @@ import { modifiableFields } from './util/modifiableFields';
 import { ProductFormContext } from 'contexts/ProductFormContext';
 import calculateSellingPrice from './util/calculateSellingPrice';
 import Title from 'components/titles/Title'; 
+import ButtonPrevNextStep from '../ButtonPrevNextStep';
 
-const Pricing = ({toggleSideBar}) => {
+const Pricing = () => {
     const { dispatch, formData } = useContext(ProductFormContext);
     const calculatedData = useMemo( () => calculateSellingPrice(formData),[formData] );
     const pricingSettings = formConfig.find(item => item.id === "pricing");
@@ -21,8 +22,6 @@ const Pricing = ({toggleSideBar}) => {
     const joinedData = useMemo( () =>{
         return modifiableFields(pricingSettings.fields)
     },[pricingSettings] )
-
-
 
     useEffect(() => {
 
@@ -47,17 +46,6 @@ const Pricing = ({toggleSideBar}) => {
         dispatch
     ]);
 
-    function prevStepAction() {
-
-        if (!calculatedData?.sellingPrice) {
-            window.alert('insira um valor para o produto');
-            return;
-        }
-
-        dispatch({ type: "NEXT_STEP" });
-        toggleSideBar(true);
-    }
-
     return (
         <div className='scob-content'>
 
@@ -75,8 +63,8 @@ const Pricing = ({toggleSideBar}) => {
 
                         return (
                             <div className={item.cssP} key={item.stepLabel + index} >
-                                <div className="circle-tag">
-                                    <div>{item.step}</div>
+                                <div className="card-title">
+                                    <span>{item.step}</span>
                                     <h4>{item.stepLabel}</h4>
                                 </div>
 
@@ -116,15 +104,8 @@ const Pricing = ({toggleSideBar}) => {
                 
             </div>
             
-             <button 
-                className='button-confirm'
-                onClick={prevStepAction}
-                type='button'
-            >
-                {
-                    calculatedData?.sellingPrice ? "confirmar" : "Informar valor do produto"
-                }
-            </button>
+            <ButtonPrevNextStep/>
+            
         </div>
     );
 }
