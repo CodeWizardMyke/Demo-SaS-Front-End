@@ -6,7 +6,7 @@ import './styles.css';
 
 import Button from 'components/buttons/Button';
 
-const UploadArea = ({svg, field}) => {
+const UploadArea = ({svg, field, propsCurrent}) => {
     const inputRef = useRef();
 
     const {addImage, cleanImages} = useImageControl();
@@ -36,6 +36,7 @@ const UploadArea = ({svg, field}) => {
 
     const handlerCleanImages = () => {
         cleanImages(field);
+        if(propsCurrent) propsCurrent(null);
     }
 
     return (

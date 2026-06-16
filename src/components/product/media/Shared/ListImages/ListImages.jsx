@@ -4,7 +4,7 @@ import './styles.css';
 import { FaTrash } from "react-icons/fa";
 import { useImageControl } from '../hook';
 
-const ListImages = ({data,field}) => {
+const ListImages = ({data, field, propsCurrent }) => {
 
     const {removeImage, setCurrent} = useImageControl();
 
@@ -13,7 +13,15 @@ const ListImages = ({data,field}) => {
     }
 
     const handlerSelection = (item) => {
-        setCurrent(item,field)
+
+        if(field === "thumbnails"){
+            setCurrent(item,field)
+        }
+
+        if(field === "marketing_images"){
+            propsCurrent(item);
+        }
+
     }
 
     return (

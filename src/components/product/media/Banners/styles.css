@@ -1,0 +1,14 @@
+.sub-content{
+    position: relative;
+}
+.button-flow-close{
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    opacity: 0.7;
+}
+.button-flow-close:hover{
+    opacity: 1;
+    background-color: var(--btSwColor);
+    color: var(--btBdColor);
+}

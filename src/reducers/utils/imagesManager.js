@@ -87,7 +87,6 @@ export const imageManager = {
             return image;
         }
     },
-
 };
 
 

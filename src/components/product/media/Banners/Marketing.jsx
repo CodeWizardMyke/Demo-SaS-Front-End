@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { ProductFormContext } from 'contexts/ProductFormContext';
 
@@ -10,9 +10,12 @@ import Movie from '../movie';
 import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
 
 import './styles.css';
+import CurrentImage from '../Shared/currentImage';
+import Button from 'components/buttons/Button';
 
 const Marketing = () => {
-
+    const [ currentImage, setCurrentImage] = useState(null);
+    
     const marketingSettings = productForm.find( settings => settings.id === "marketing");
 
     const { formData } = useContext(ProductFormContext) ;
@@ -32,12 +35,13 @@ const Marketing = () => {
                     <ListImages 
                         data={formData.marketing_images}
                         field={'marketing_images'}
+                        propsCurrent={setCurrentImage}
                     />
                     
                 </div>
 
                 <UploadArea 
-                   
+                    propsCurrent={setCurrentImage}
                     svg={marketingSettings.svg} 
                     field={'marketing_images'}
 
@@ -46,7 +50,21 @@ const Marketing = () => {
             </div>
             
             <div className="sub-content">
-                <Movie />
+                {
+                    currentImage 
+                        
+                        ? <>
+                            <Button 
+                                text={'fechar visualização'} 
+                                css={'button-flow-close'} 
+                                click={()=> setCurrentImage(null)} 
+                            />
+                            <CurrentImage current={currentImage} />
+                        </>
+
+                        : <Movie />
+
+                }
             </div>
 
             <ButtonPrevNextStep/>
