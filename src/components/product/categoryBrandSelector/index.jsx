@@ -11,7 +11,6 @@ import Button from 'components/buttons/Button';
 import InputSearch from './search';
 import CheckedList from './checkList';
 import Pagination from './pagination';
-import ButtonPrevNextStep from '../ButtonPrevNextStep';
 import ItemSelected from './ItemSelected';
 
 import { ProductFormContext } from 'contexts/ProductFormContext';
@@ -19,15 +18,21 @@ import { usePaginatedSearch } from './hooks/usePaginatedSearch';
 import { servicesConfig } from './services/servicesConfig';
 import { AuthContext } from 'contexts/AuthContext';
 import { confirmStep } from '../utils/confirmStep';
+import ButtonPrevNextStep from '../ButtonPrevNextStep';
 
 const CategoryBrandSelector = ({type, createForm }) => {
     const settings = productForm.find( setting => setting.name === type );
     const currentService = servicesConfig[type];
-    const { formData, dispatch, step } = useContext(ProductFormContext);
+    const { formData, dispatch, step, errors} = useContext(ProductFormContext);
+    
+    const fieldError = {
+        brand: errors?.fk_brand_id,
+        category: errors?.fk_category_id
+    }[type];
 
     const [query, setQuery] = useState("");
 
-    let selectData = formData[type];
+    const selectData = formData[type];
 
     const {
         loading,
@@ -60,15 +65,16 @@ const CategoryBrandSelector = ({type, createForm }) => {
         reset();
 
         setQuery("");
+        
+    }, [type,reset,]);
     
-    }, [type,reset]);
-
     useEffect(()=>{
     
         if(err) setErrMsg(err);
     
     },[err,setErrMsg]);
 
+    
     const handlerSelect = (item) => {
 
         confirmStep( item, type, step,  dispatch  );
@@ -122,15 +128,34 @@ const CategoryBrandSelector = ({type, createForm }) => {
 
                 <div className="p-card">
                     <div className="p-card-header">
-                        <span>{settings.label} Selecionada.</span>
+                        
+                        <span className='errors-content'>
+                            {
+                                fieldError
+                                    ? fieldError.map(
+                                        (err,index) => (
+                                            <span
+                                                key={`error${type}_${index}`}
+                                                className='field-err'
+                                            >
+                                                {err}
+                                            </span>
+                                        )
+                                    )
+                                    : (
+                                        <span>
+                                            {settings.label} Selecionada.
+                                        </span>
+                                    )
+                            }
+                        </span>
                     </div>
 
                     <ItemSelected item={selectData} />
                 </div>
 
             </div>
-
-           <ButtonPrevNextStep/>
+                <ButtonPrevNextStep/>
 
         </div>
     );

@@ -11,7 +11,7 @@ import CurrentImage from '../Shared/currentImage';
 import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
 
 const Thumbnails = () => {
-    const {formData} = useContext(ProductFormContext);
+    const {formData, errors} = useContext(ProductFormContext);
 
     const mediaSettings = productForm.find( settings => settings.id === "media");
 
@@ -31,15 +31,32 @@ const Thumbnails = () => {
                 </div>
 
                 <UploadArea svg={mediaSettings.svg}  field={'thumbnails'}  />
+                
+                {
+                    errors?.thumbnails?.length > 0 && (
+                        <div className="field-err">
+                            {
+                                errors.thumbnails.map(
+                                    (msg, index) => (
+                                        <p
+                                            key={`thumbnail_error_${index}`}
+                                        >
+                                            {msg}
+                                        </p>
+                                    )
+                                )
+                            }
+                        </div>
+                    )
+                }
 
             </div>
 
             <div className="sub-content">
                 <CurrentImage current={formData.currentImage} />
             </div>
-
             <ButtonPrevNextStep/>
-            
+
         </div>
     );
 }

@@ -143,7 +143,17 @@ const productForm = [
                     preview: true,
                     col: 6
                 },
-
+                {
+                    id:'net_volum',
+                    name:"NET_VOLUM",
+                    label: "Volume do produto",
+                    type:"text",
+                    placeholder:"Volume do produto",
+                    required:true,
+                    preview:true,
+                    col:6,
+                    step:2
+                },
                 {
                     id: "age_group",
                     name: "age_group",
@@ -171,7 +181,7 @@ const productForm = [
                 },
                 {
                     id: "additional_information",
-                    name: "additional_information",
+                    name: "discribe",
                     step:3,
                     label: "Informações adicionais",
                     type: "textarea",

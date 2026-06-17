@@ -7,11 +7,11 @@ import Title from 'components/titles/Title';
 import ListImages from '../Shared/ListImages/ListImages';
 import UploadArea from '../Shared/upload/UploadArea';
 import Movie from '../movie';
-import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
 
 import './styles.css';
 import CurrentImage from '../Shared/currentImage';
 import Button from 'components/buttons/Button';
+import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
 
 const Marketing = () => {
     const [ currentImage, setCurrentImage] = useState(null);
@@ -46,7 +46,7 @@ const Marketing = () => {
                     field={'marketing_images'}
 
                 />
-
+    
             </div>
             
             <div className="sub-content">
@@ -66,7 +66,7 @@ const Marketing = () => {
 
                 }
             </div>
-
+            
             <ButtonPrevNextStep/>
 
         </div>

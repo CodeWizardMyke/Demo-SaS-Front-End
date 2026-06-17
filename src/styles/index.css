@@ -25,7 +25,18 @@ body {
     transition: 0.3s;
     font-family: Arial, Helvetica, sans-serif;
 }
+body::-webkit-scrollbar{
+    width: 6px;
+}
 
+body::-webkit-scrollbar-thumb{
+    border-radius: 999px;
+    background: rgba(120,120,120,.4);
+}
+
+body::-webkit-scrollbar-thumb:hover{
+    background: rgba(120,120,120,.7);
+}
 button{
     background: var(--button);
     color: var(--buttonTxtColor);
@@ -168,4 +179,36 @@ select{
 
 .ql-editor {
     min-height: 220px;
+}
+
+.messege-state{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.errors-content{
+    display: flex;
+    width: 100%;
+    position: relative
+}
+.field-err{
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 15px;
+    display: block;
+    width: 100%;
+    background-color: var(--bgCardItem);
+    display: flex;
+    gap: 10px;
+    border-radius: 5pt;
+    color: var(--txtDanger) !important;
+    padding: 0 10px;
+}
+.field-error{
+    width: 100%;
+    color: var(--txtDanger);
 }

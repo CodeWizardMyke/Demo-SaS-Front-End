@@ -9,6 +9,7 @@ import Thumbnails from '../../components/product/media/images/Thumbnails';
 import Pricing from '../../components/product/pricing';
 import Marketing from 'components/product/media/Banners/Marketing';
 import CategoryBrandSelector from 'components/product/categoryBrandSelector';
+import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
 
 const CreateProductContent = () => {
     const { activeSideBar, toggleSideBar } = useContext(WorkspaceContext);

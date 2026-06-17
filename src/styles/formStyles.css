@@ -13,6 +13,19 @@
 
     transition: all 300ms ease;
 }
+.scob-content::-webkit-scrollbar{
+    width: 6px;
+}
+
+.scob-content::-webkit-scrollbar-thumb{
+    border-radius: 999px;
+    background: rgba(120,120,120,.4);
+}
+
+.scob-content::-webkit-scrollbar-thumb:hover{
+    background: rgba(120,120,120,.7);
+}
+
 .scob-content input{
      height: 35px;
      border: 1px solid var(--inptBorder);

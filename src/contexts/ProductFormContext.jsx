@@ -29,6 +29,8 @@ export function ProductFormProvider({ children }){
                 formData:
                     state.formData,
 
+                errors: state.errors,
+
                 dispatch
 
             }}

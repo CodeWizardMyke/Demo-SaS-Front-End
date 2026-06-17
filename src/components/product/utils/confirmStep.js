@@ -52,6 +52,12 @@ export function confirmStep(
     });
 
     dispatch({
+        type: "SET_FIELD",
+        field: `fk_${type}_id`,
+        value: value.id
+    })
+
+    dispatch({
 
         type:"COMPLETE_STEP",
 

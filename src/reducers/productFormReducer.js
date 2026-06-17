@@ -7,6 +7,8 @@ export const initialState = {
     completedSteps: [],
 
     totalSteps: 6,
+    
+    errors:{},
 
     formData: {
 
@@ -35,6 +37,35 @@ export const initialState = {
 export function productFormReducer(state, action) {
 
     switch (action.type) {
+        
+        case "SET_ERRORS":
+
+            return {
+                ...state,
+                errors: action.payload
+            };
+
+        case "CLEAR_ERRORS":
+
+            return {
+                ...state,
+                errors: {}
+            };
+
+        case "CLEAR_FIELD_ERROR": {
+
+            const errors = {
+                ...state.errors
+            };
+
+            delete errors[action.field];
+
+            return {
+                ...state,
+                errors
+            };
+
+        }
 
         case "NEXT_STEP":
             return {
@@ -72,11 +103,19 @@ export function productFormReducer(state, action) {
                 ]
             };
 
-        case "SET_FIELD":
+        case "SET_FIELD": {
+
+            const errors = {
+                ...state.errors
+            };
+
+            delete errors[action.field];
 
             return {
 
                 ...state,
+
+                errors,
 
                 formData: {
 
@@ -88,7 +127,15 @@ export function productFormReducer(state, action) {
 
             };
 
+        }
         case "ADD_IMAGES": {
+            
+            const errors = {
+                ...state.errors
+            };
+
+            delete errors[action.field];
+
             return {
                 ...state,
                 formData:{

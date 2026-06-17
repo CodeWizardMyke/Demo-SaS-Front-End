@@ -4,6 +4,15 @@
     justify-content: space-between;
     gap: 10px;
     flex-wrap: wrap;
+    max-width: 800px;
+    margin-top: 5px;
+
+    position: sticky;
+    bottom: 0;
+
+    background: var(--background);
+
+    padding: 16px;
 }
 
 .content-button-pvn button{
@@ -19,6 +28,7 @@
     border: 1px solid var(--btBdColor);
     transition: all 200ms ease;
 }
+
 .content-button-pvn button:hover{
    color: var(--btTxColor);
    border-color: var(--btBdColor);
