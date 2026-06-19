@@ -13,6 +13,7 @@ const productForm = [
         subtitle:"Busque e selecione uma categoria para este produto.",
         label: "Categoria",
         type: "select",
+        step:1,
         placeholder: "Selecione uma categoria",
         required: true,
         preview: true,
@@ -40,6 +41,7 @@ const productForm = [
         label: "Categoria",
         subtitle:"Busque e selecione uma marca para este produto.",
         type: "select",
+        step:2,
         placeholder: "Selecione uma categoria",
         required: true,
         preview: true,
@@ -65,6 +67,7 @@ const productForm = [
     {
         id: "product_information",
         type: "section",
+        step:3,
         title: "Informações do Produto",
         subtitle:"Preencha os dados principais do seu produto.",
         collapsible: true,
@@ -198,6 +201,7 @@ const productForm = [
         id: "media",
         type: "section",
         title: "Mídia",
+        step:4,
         subtitle:"Adicione imagens de alta qualidade para apresentar melhor o seu produto.",
         collapsible: true,
         preview: true,
@@ -232,6 +236,7 @@ const productForm = [
     {
         id: "pricing",
         type: "section",
+        step:5,
         title: "Precificação",
         subtitle:"Defina o preço e margens do produto",
         collapsible: true,
@@ -331,6 +336,7 @@ const productForm = [
     {
         id: "marketing",
         type: "section",
+        step:6,
         title: "Marketing",
         collapsible: true,
         preview: true,

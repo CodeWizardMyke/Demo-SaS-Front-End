@@ -5,6 +5,7 @@ export const WorkspaceContext = createContext();
 
 export function WorkspaceProvider({children}){
     const [openedTabs,setOpenedTabs] = useState([]);
+    const [validationErrors, setValidationErrors] = useState(null);
     const [activeSideBar, setActiveSideBar] = useState(true);
     const [loading, setLoading] = useState(false);
 
@@ -62,7 +63,8 @@ export function WorkspaceProvider({children}){
                 closeTab,
                 activeSideBar,
                 toggleSideBar,
-                loading, setLoading
+                loading, setLoading,
+                validationErrors, setValidationErrors
             }}
         >
             {children}

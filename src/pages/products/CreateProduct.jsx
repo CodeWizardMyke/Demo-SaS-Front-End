@@ -9,10 +9,11 @@ import Thumbnails from '../../components/product/media/images/Thumbnails';
 import Pricing from '../../components/product/pricing';
 import Marketing from 'components/product/media/Banners/Marketing';
 import CategoryBrandSelector from 'components/product/categoryBrandSelector';
-import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
+import ErrorForm from 'components/Error/forms/ErrorForm';
 
 const CreateProductContent = () => {
-    const { activeSideBar, toggleSideBar } = useContext(WorkspaceContext);
+
+    const { activeSideBar, toggleSideBar, validationErrors} = useContext(WorkspaceContext);
     const { step } = useContext(ProductFormContext);
     const [ activeCreateForm, setActiveCreateForm] = useState(null);
 
@@ -79,7 +80,9 @@ const CreateProductContent = () => {
     return (
 
         <div className="module-content">
-
+            {
+                validationErrors  && <ErrorForm />
+            }
             <div className="module-step">
                 {STEP_COMPONENTS[step]}
             </div>

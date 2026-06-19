@@ -31,6 +31,11 @@
     /*principais cores de texto*/
     --txt-err: red;
     --bgError: #f5f5f5;
+    --borderError: #374151;
+    --bgErrorForm: #f5f5f5 ;
+    --txtErrorForm: #727272 ;
+
+
     --txtDanger:#c92b52;
     --text: #6C757D;
     --txt-strong: black;
@@ -113,6 +118,9 @@
     /*Errors*/
     --bgError: #1f1f1fcc;
     --txtDanger: #db2c3b;
+
+     --bgErrorForm: #1f1f1f ;
+    --txtErrorForm: #e0e0e0 ;
 
     /* principais cores de input */
     --inptBg: #222222;
