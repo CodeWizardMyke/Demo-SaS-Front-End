@@ -7,94 +7,89 @@ import { categoryCreateService } from '../../../services/categoryCreateService';
 import { ProductFormContext } from '../../../contexts/ProductFormContext';
 import { handdlerErrors } from './utils/handdlerErrors';
 import { confirmStep } from '../utils/confirmStep';
+import Button from 'components/buttons/Button';
 
-const CreateCategoryOrBrand = ({activeCreateForm,createForm}) => {
+const CreateCategoryOrBrand = ({modalCreate,setModalCreate}) => {
     const [query,setQuery] = useState("");
     const [errMsg,setErrMsg] = useState(null);
-    
-    const {loading,setLoading} = useContext(WorkspaceContext);
     const {dispatch, step} = useContext(ProductFormContext)
 
-    const entityLabel  = activeCreateForm === "category" 
-        ? "categoria" 
-        : "marca";
+    const {
+        loading,
+        setLoading,
+        setModalSucess,
+    } = useContext(WorkspaceContext);
 
-    async function submitFormCreate(event) {
-        event.preventDefault();
+    const service = {
+        brand:{
+            api:brandCreateService,
+            label:"Marca"
+        },
+        category:{
+            api:categoryCreateService,
+            label:"Categoria"
+        }
+    }[modalCreate];
+
+    async function sendCreate() {
+        setLoading(true);
 
         if (!query.trim()) {
 
-            setErrMsg(
-                `Informe o nome da ${entityLabel}`
-            );
+            setErrMsg(`Nome da ${service.label} não foi inserido.`);
 
             return;
-
         }
 
-        setLoading(true);
-
-        const service = activeCreateForm === "brand"
-            ? brandCreateService
-            : categoryCreateService;
-        
-        const {data,error} = await service(query);
+        const {data,error} = await service.api(query);
 
         const errorsResult = handdlerErrors(error);
 
-        if(errorsResult){
+        if(!!errorsResult){
             setLoading(false);
             setErrMsg(errorsResult);
 
             return;
         };
   
-        confirmStep( data.data, activeCreateForm, step, dispatch );
-        
-        dispatch({
-            type:"NEXT_STEP"
-        });
+        confirmStep( data?.data, modalCreate, step, dispatch );
 
-        closeForm();
-    };
+        setModalSucess(data);
 
-    function closeForm() {
         setLoading(false);
-
-        createForm({
-            action:"close"
-        });
+        
+        setModalCreate(null);
     };
+
     
     return (
-        <div className='create-categorybrand'>
-            <div className='close-form-content'>
-                <button
-                    onClick={closeForm}
-                    type='button'
-                >
-                    Fechar
-                </button>
+        <div className='p-card create-entity-bc'>
+            <div className='card-title'>
+               
+                <div className="title">
+                    
+                    <h2>Cadastro</h2>
+                    <span>Adicionar Nova {service.label}. </span>
+                    
+                </div>
+               
+                <Button text={'Fechar'} click={() =>  setModalCreate(null)} />
+               
+            </div>
+          
+            <div className="p-card-content">
+                <input 
+                    type="text" 
+                    placeholder={`Informe o nome da nova ${service.label}...`}
+                    onChange={(e) => setQuery(e.target.value)}
+                    value={query}
+                />
+                <span className="field-error">
+                    {errMsg}
+                </span>
             </div>
 
-            <h2>Cadastro de nova {entityLabel}</h2>
-
-          <form onSubmit={submitFormCreate}>
-                <div className="form-input-content">
-                    <input 
-                        type="text" 
-                        placeholder={`Informe o nome da nova ${entityLabel}...`}
-                        onChange={(e) => setQuery(e.target.value)}
-                    />
-                    <span className="errs">
-                        {errMsg? errMsg : ""}
-                    </span>
-                </div>
-
-                <button type='submit' className='bt-create' >
-                    {loading ? "Cadastrando..." : "Cadastrar"}
-                </button>
-          </form>
+            <Button text={ loading ? "Cadastrando..." : "Cadastrar"}  click={sendCreate}/>
         </div>
     );
 }

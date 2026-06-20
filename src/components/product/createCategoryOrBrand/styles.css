@@ -1,29 +1,23 @@
-.create-categorybrand{
+.p-card.create-entity-bc{
+    gap: 15px;
     display: flex;
     flex-direction: column;
-    min-height: 400px;
+    background-color: transparent;
 }
 
-.create-categorybrand .close-form-content{
-    display: flex;
-    flex-direction: column;
+.p-card.create-entity-bc .card-title{
+    justify-content: space-between;
     align-items: end;
-    justify-content: center;
-    min-height: 75px;
 }
-.create-categorybrand form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.p-card.create-entity-bc .card-title .title span{
+    font-size: 12pt;
 }
 
-.form-input-content{
+.p-card.create-entity-bc .p-card-content button{
     width: 100%;
-    margin: 25px 0;
-    min-height: 100px;
 }
-.form-input-content .errs{
-    display: flex;flex-direction: column;
-    align-items: center;justify-content: center;
-    margin-top: 15px;
+
+
+.p-card.create-entity-bc .p-card-content span{
+    text-align: center;
 }

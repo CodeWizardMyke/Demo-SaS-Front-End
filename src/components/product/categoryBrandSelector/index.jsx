@@ -108,7 +108,7 @@ const CategoryBrandSelector = ({type, createForm }) => {
                             text={"Cadastrar"} 
                             svg={ <LuPlus/> } 
                             css={"bt-search create"} 
-                            click={ () => createForm({action:type}) }
+                            click={ () => createForm(type) }
                         />
                     </div>
                 </div>

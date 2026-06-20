@@ -3,35 +3,34 @@ import './styles.css'
 import AsideProduct from '../product/asideContents';
 import CreateCategoryOrBrand from '../product/createCategoryOrBrand';
 
-const PanelAside = ({activeCreateForm,createForm,activeSideBar}) => {
+const PanelAside = ({modalCreate,setModalCreate,activeSideBar}) => {
 
-    let cssToggleAside =  activeSideBar === false && 'aside-closed'
+    console.log(modalCreate)
 
-    const OPENED_VIEWS = {
-
-        1: (
-            <AsideProduct/>
-        ),
-
-        2: (
-          <CreateCategoryOrBrand 
-                activeCreateForm={activeCreateForm} 
-                createForm={createForm} 
-            />  
-        )
-    };
 
     return (
-       <div 
-            className={`${cssToggleAside} aside-container`}
-        >
+       <div  
+            className= {
+
+                `${ activeSideBar === false && 'aside-closed'} 
+
+                aside-container`
+        }>
         
-            <aside 
-                className="panel-aside"
-            >
+            <aside  className="panel-aside" >
         
-                { OPENED_VIEWS[ activeCreateForm ? 2 : 1 ] }
-        
+                {
+                    !!modalCreate 
+                    
+                    ? <CreateCategoryOrBrand 
+                        modalCreate={modalCreate} 
+                        setModalCreate={setModalCreate} 
+                    />
+
+                    : <AsideProduct/>        
+                    
+                }
+
             </aside>
         
        </div>

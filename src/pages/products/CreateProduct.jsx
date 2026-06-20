@@ -16,23 +16,12 @@ const CreateProductContent = () => {
 
     const { activeSideBar, toggleSideBar, validationErrors, modalSucess} = useContext(WorkspaceContext);
     const { step } = useContext(ProductFormContext);
-    const [ activeCreateForm, setActiveCreateForm] = useState(null);
+    const [ modalCreateCategoryBrand, setModalCreateCategoryBrand] = useState(null);
 
     function toggleCreateForm(type) {
 
-        if(type.action === "close") {
-            setActiveCreateForm(null);
-            return;
-        }
-
-        if(type.action && activeSideBar){
-            setActiveCreateForm(type);
-        }
-
-        if(type.action && !activeSideBar){
-            toggleSideBar()            
-            setActiveCreateForm(type);
-        }
+        toggleSideBar(true);
+        setModalCreateCategoryBrand(type);
 
     }
 
@@ -93,8 +82,8 @@ const CreateProductContent = () => {
             </div>
 
             <PanelAside
-                activeCreateForm={activeCreateForm} 
-                createForm={toggleCreateForm}
+                modalCreate={modalCreateCategoryBrand} 
+                setModalCreate={setModalCreateCategoryBrand}
                 activeSideBar={activeSideBar}
             />
 

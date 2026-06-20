@@ -1,22 +1,51 @@
 
 export function handdlerErrors(error) {
-    
-    let handdlerErr = '';
 
-    switch (error?.status) {
-        case 401:
-            handdlerErr = error.response.data[0].msg;
-            break;
-       case 409:
-            handdlerErr = error.response.data.msg;
-            break;
-       case 403:
-            handdlerErr =  error.response.data.errors[0].msg;
-            break;
+    const typeErr = error?.status ? error.status : error?.code;
 
-        default:
-            break;
+    if(!typeErr){
+        return null;
     }
 
-    return handdlerErr;
+    if( Number(typeErr) ){
+
+        return statusError(error);
+
+    }else{
+
+        return codeError(error);
+
+    }
+
 };
+
+
+function codeError(error){
+    switch (error.code) {
+        case "ERR_NETWORK":
+            return "Erro de conexão com a aplicação de back-end"
+    
+        default:
+            return error.message
+    }
+
+}
+
+function statusError(error){
+    
+    switch (error?.status) {
+
+        case 401:
+            return error.response.data[0].msg;
+
+        case 409:
+            return error.response.data.msg;
+
+        case 403:
+            return error.response.data.errors[0].msg;
+
+        default:
+            return 'Erro inesperado.'
+    }
+
+}
