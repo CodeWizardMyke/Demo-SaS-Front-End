@@ -81,14 +81,15 @@ const CreateProductContent = () => {
     return (
 
         <div className="module-content">
-            {
-                validationErrors  && <ErrorForm />
-            }
+
             <div className="module-step">
-                {
-                    modalSucess && <PopupSucess />
-                }
+
+                { validationErrors  && <ErrorForm /> }
+
+                { modalSucess && <PopupSucess /> }
+
                 {STEP_COMPONENTS[step]}
+                
             </div>
 
             <PanelAside

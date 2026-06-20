@@ -26,7 +26,7 @@ export default function useServicesProduct () {
 
             setModalSucess(response.data);
 
-            //dispatch({ type:'RESET_FORM' });
+            dispatch({ type:'RESET_FORM' });
 
             return{
                 data: response.data,

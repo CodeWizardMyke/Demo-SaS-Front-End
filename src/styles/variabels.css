@@ -2,6 +2,7 @@
 :root {
     /*DefaultCardsColors*/
     --bgCardItem: #ffff;
+    --bgCardSubITem: #f6f6f6;
     --borderCard:  #d1d5db;
     --borderCardActive: #16a34a;
     --borderCardDisable:#15803d;
@@ -132,6 +133,7 @@
 
     /* DefaultCardsColors */
     --bgCardItem: #2f2f2f;
+    --bgCardSubITem: #2b2b2b;
     --borderCard: #5f5f5f;
     --borderCardActive: #22c55e;
     --borderCardDisable: #166534;
