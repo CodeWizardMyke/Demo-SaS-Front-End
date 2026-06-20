@@ -8,8 +8,6 @@ const Overview = ({data,processData}) => {
     return (
         <div className='p-card'>
             
-            <h3>Visão geral</h3>
-            
             <div className="p-card-content">
 
                 <div className="p-tab">

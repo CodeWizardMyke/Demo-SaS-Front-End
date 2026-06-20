@@ -1,3 +1,7 @@
+.module-step{
+ position: relative;
+}
+
 .scob-content{
     display: flex;
     flex-direction: column;
@@ -13,16 +17,16 @@
 
     transition: all 300ms ease;
 }
-.scob-content::-webkit-scrollbar{
+.scroll::-webkit-scrollbar{
     width: 6px;
 }
 
-.scob-content::-webkit-scrollbar-thumb{
+.scroll::-webkit-scrollbar-thumb{
     border-radius: 999px;
     background: rgba(120,120,120,.4);
 }
 
-.scob-content::-webkit-scrollbar-thumb:hover{
+.scroll::-webkit-scrollbar-thumb:hover{
     background: rgba(120,120,120,.7);
 }
 

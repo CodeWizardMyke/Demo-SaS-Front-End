@@ -1,0 +1,92 @@
+.popupSucess{
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    min-height: 75px;
+    text-align: center;
+    top: 15px;
+    left: 0;
+    padding: 0 12px;
+
+    animation: popupEnter .35s ease;
+}
+
+.popupSucess-content{
+    padding: 16px 18px;
+    background: var(--bgCardItem);
+    backdrop-filter: blur(10px);
+
+    max-width: 790px;
+    margin: 0 auto;
+
+    border-radius: 14px;
+    border: 1px solid var(--borderCard);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25),
+        0 0 0 1px rgba(255,255,255,.03);
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* barra lateral de sucesso */
+.popupSucess-content::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--borderCardActive);
+}
+
+/* efeito brilho suave */
+.popupSucess-content::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(255,255,255,.03),
+        transparent 80%
+    );
+
+    pointer-events: none;
+}
+
+.popupSucess h2{
+    color: var(--borderCardActive);
+    flex: 1;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.popupSucess .msg{
+    width: 100%;
+    color: var(--textCard);
+    opacity: .9;
+    line-height: 1.5;
+    font-size: .95rem;
+}
+
+/* animação */
+@keyframes popupEnter{
+    from{
+        opacity: 0;
+        transform: translateY(-18px) scale(.98);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

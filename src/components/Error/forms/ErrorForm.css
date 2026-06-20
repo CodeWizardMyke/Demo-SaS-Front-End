@@ -21,7 +21,7 @@
     background-color: var(--bgErrorForm);
     border: 1px solid var(--borderError);
     color: var(--txtErrorForm);
-    border-radius: 12px;
+    border-radius: 6px;
     padding: 15px;
     max-height: 800px; 
     overflow-y: auto;
@@ -31,6 +31,20 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.errors-form-content::-webkit-scrollbar{
+    width: 6px;
+}
+
+.errors-form-content::-webkit-scrollbar-thumb{
+    border-radius: 999px;
+    background: rgba(120,120,120,.4);
+}
+
+.errors-form-content::-webkit-scrollbar-thumb:hover{
+    background: rgba(120,120,120,.7);
+}
+
 
 .error-list h2{
     color: var(--txtDanger);

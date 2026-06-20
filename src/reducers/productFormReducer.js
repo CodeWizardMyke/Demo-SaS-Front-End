@@ -199,7 +199,11 @@ export function productFormReducer(state, action) {
            }
 
         }
+        case "RESET_FORM":
 
+            return {
+                ...initialState
+            };
         default:
             return state;
 

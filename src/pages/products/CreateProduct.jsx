@@ -10,10 +10,11 @@ import Pricing from '../../components/product/pricing';
 import Marketing from 'components/product/media/Banners/Marketing';
 import CategoryBrandSelector from 'components/product/categoryBrandSelector';
 import ErrorForm from 'components/Error/forms/ErrorForm';
+import PopupSucess from 'components/popup/PopupSucess';
 
 const CreateProductContent = () => {
 
-    const { activeSideBar, toggleSideBar, validationErrors} = useContext(WorkspaceContext);
+    const { activeSideBar, toggleSideBar, validationErrors, modalSucess} = useContext(WorkspaceContext);
     const { step } = useContext(ProductFormContext);
     const [ activeCreateForm, setActiveCreateForm] = useState(null);
 
@@ -84,6 +85,9 @@ const CreateProductContent = () => {
                 validationErrors  && <ErrorForm />
             }
             <div className="module-step">
+                {
+                    modalSucess && <PopupSucess />
+                }
                 {STEP_COMPONENTS[step]}
             </div>
 
