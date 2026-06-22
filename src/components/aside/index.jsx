@@ -3,10 +3,11 @@ import './styles.css'
 import AsideProduct from '../product/asideContents';
 import CreateCategoryOrBrand from '../product/createCategoryOrBrand';
 
-const PanelAside = ({modalCreate,setModalCreate,activeSideBar}) => {
-
-    console.log(modalCreate)
-
+const PanelAside = ({
+        modalCreate,
+        setModalCreate,
+        activeSideBar,
+}) => {
 
     return (
        <div  

@@ -52,7 +52,6 @@ const CategoryBrandSelector = ({type, createForm }) => {
         currentSize = size
     ) => 
     {
-
         executeSearch(
             query,
             currentPage,

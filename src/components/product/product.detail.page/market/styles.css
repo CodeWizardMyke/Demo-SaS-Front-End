@@ -1,0 +1,51 @@
+.content-mk h2{
+    font-size: 10pt;
+    max-width: 500px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.mk-describe{
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.mk-describe .details{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.mk-describe .details div{
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 25px;
+    align-items: center;
+}
+.mk-describe .details div h3{
+    min-width: 100px;
+}
+.mk-describe .details div span{
+    max-width: 300px;
+}
+
+.mk-describe .pricing{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+    justify-content: center;
+}
+
+.mk-describe .pricing h2{
+    font-size: 34pt;
+}
+.mk-describe .pricing span{
+    font-size: 10pt;
+    text-align: center;
+    width: 100%;
+}
+.price-off{
+    text-decoration: line-through;
+}

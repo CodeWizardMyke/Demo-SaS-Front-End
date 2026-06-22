@@ -1,12 +1,15 @@
 import {
     createContext,
-    useReducer
+    useReducer,
+    useState
 } from "react";
 import { initialState, productFormReducer } from "../reducers/productFormReducer";
 
 export const ProductFormContext = createContext();
 
 export function ProductFormProvider({ children }){
+
+    const [viewProductDetail,setViewProductDetail] = useState(false);
 
     const [state, dispatch] = useReducer(
         productFormReducer,
@@ -31,7 +34,9 @@ export function ProductFormProvider({ children }){
 
                 errors: state.errors,
 
-                dispatch
+                viewProductDetail,setViewProductDetail,
+                
+                dispatch,
 
             }}
         >

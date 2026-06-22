@@ -4,6 +4,8 @@
     flex: 1;
     max-width: 350px;
     transition: all 500ms ease;
+    height: 100%;
+    background-color: var(--bgPanel);
 }
 
 /*CONTEUDO EXIBIDO OU NAO*/
@@ -13,6 +15,8 @@
     justify-content: space-between;
     
     max-width: 350px;
+    max-height: 100vh;
+
     width: 100%;
     padding: 15px 5px;
     
@@ -23,6 +27,11 @@
 
     z-index: 50;
     background-color: var(--bgPanel);
+}
+
+.aside-list{
+    max-height: 90%;
+    overflow: auto;
 }
 
 /*AÇOES DE CONTROLE ATIVOS PELO TOGGLE*/

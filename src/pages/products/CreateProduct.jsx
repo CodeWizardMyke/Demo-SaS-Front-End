@@ -11,11 +11,12 @@ import Marketing from 'components/product/media/Banners/Marketing';
 import CategoryBrandSelector from 'components/product/categoryBrandSelector';
 import ErrorForm from 'components/Error/forms/ErrorForm';
 import PopupSucess from 'components/popup/PopupSucess';
+import ProductDetailPage from 'components/product/product.detail.page';
 
 const CreateProductContent = () => {
 
     const { activeSideBar, toggleSideBar, validationErrors, modalSucess} = useContext(WorkspaceContext);
-    const { step } = useContext(ProductFormContext);
+    const { step, viewProductDetail } = useContext(ProductFormContext);
     const [ modalCreateCategoryBrand, setModalCreateCategoryBrand] = useState(null);
 
     function toggleCreateForm(type) {
@@ -77,7 +78,13 @@ const CreateProductContent = () => {
 
                 { modalSucess && <PopupSucess /> }
 
-                {STEP_COMPONENTS[step]}
+                {viewProductDetail && <ProductDetailPage/> }
+
+                {
+                    !viewProductDetail &&  <>
+                        {STEP_COMPONENTS[step]}
+                    </>
+                }
                 
             </div>
 

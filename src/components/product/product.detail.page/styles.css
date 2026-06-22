@@ -1,0 +1,56 @@
+.pd-content{
+    background-color:var(--bgCardItem);
+    height: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 5px;
+    overflow-y: auto;
+}
+.pd-main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.pd-title{
+    text-align: center;
+}
+.pd-media{
+    margin:  0 auto;
+}
+
+.pd-market{
+    margin:  0 auto;
+}
+.pd-description{
+    margin: 25px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+.pd-description .pd-d{
+    padding: 5px 25px;
+}
+.pd-marketing-images{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+.pd-marketing-images img{
+    width: 100%;
+    height: 100%;
+    border:  1px solid var(--borderCard);
+    height: 100%;
+    object-fit: contain;
+}
+
+.button-larger{
+    width: 100%;
+    margin-top: 25px;
+}
