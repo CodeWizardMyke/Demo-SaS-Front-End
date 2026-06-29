@@ -78,7 +78,7 @@ const CreateProductContent = () => {
 
                 { modalSucess && <PopupSucess /> }
 
-                {viewProductDetail && <ProductDetailPage/> }
+                { viewProductDetail && <ProductDetailPage/> }
 
                 {
                     !viewProductDetail &&  <>

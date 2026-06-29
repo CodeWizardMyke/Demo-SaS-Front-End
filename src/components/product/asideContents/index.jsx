@@ -11,8 +11,6 @@ const AsideProduct = () => {
 
     const {viewProductDetail,setViewProductDetail} = useContext(ProductFormContext);
 
-    console.log('message', viewProductDetail)
-
     return (
         <>
             <ButtonPrevNextStep css={'small-buttons bg-transparent'}/>

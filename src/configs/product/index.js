@@ -358,13 +358,22 @@ const productForm = [
 
             {
                 id: "marketing_video",
-                name: "marketing_video",
+                name: "movie_url",
                 label: "Vídeo de marketing",
                 type: "video-upload",
                 required: false,
                 preview: true,
                 multiple: false,
                 accept: "video/*",
+                col: 12
+            },
+                        {
+                id: "use_marketing_video",
+                name: "use_movie",
+                label: "Mostrar o vídeo do produto",
+                type: "text",
+                required: false,
+                preview: true,
                 col: 12
             }
         ]

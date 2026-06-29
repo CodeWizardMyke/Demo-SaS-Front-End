@@ -1,0 +1,29 @@
+.pd-media-buttons{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.pd-media-buttons button{
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+}
+
+.pd-media-buttons button svg{
+    height: 35px;
+    width: 100px;
+    background-color: transparent;
+    border-radius: 5px;
+    color: var(--bgYtb);
+}
+
+.pd-media-buttons .media-photo{
+   background-color: rgb(190, 190, 190);
+   color: #363636;
+    border: 1px solid #363636;
+   width: 120px;
+   height: 35px;
+}

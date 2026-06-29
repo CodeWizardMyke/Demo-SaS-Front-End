@@ -1,12 +1,13 @@
 import ButtonToggleSolid from 'components/buttons/toggle/ButtonToggleSolid';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './styles.css';
 import Iframe from './Iframe';
 import NoFrame from './NoFrame';
 import convertYouTubeUrl from './utils/convertYouTubeUrl';
+import { ProductFormContext } from 'contexts/ProductFormContext';
 
 const Movie = () => {
-    const [url,setUrl] = useState("");
+    const {dispatch,formData} = useContext(ProductFormContext);
     const [showMovie,setShowMovie] = useState(false)
 
     function handleURL(value) {
@@ -14,13 +15,24 @@ const Movie = () => {
         const converted =
             convertYouTubeUrl(value);
 
-        setUrl(converted);
+        dispatch({
+            type:"SET_FIELD",
+            field:"movie_url",
+            value:converted
+        });
 
     }
 
+    function togleShowMovie () {
 
-    function handdlerShowMovie(){
-        setShowMovie(!showMovie)
+        setShowMovie(!showMovie);
+        
+        dispatch({
+            type:"SET_FIELD",
+            field:"use_movie",
+            value: showMovie
+        })
+
     }
 
     return (
@@ -38,7 +50,7 @@ const Movie = () => {
                     <input 
                         type="url" 
                         id="movieUrl" 
-                        value={url}
+                        value={formData?.movie_url}
                         placeholder='Cole o link do YouTube, Vimeo ou outra plataforma.'
                         onChange={ (e) => handleURL(e.target.value) }
                     />
@@ -47,16 +59,16 @@ const Movie = () => {
                     
                     <div className='msg'>
                         <span>Exibir vídeo</span>
-                        <ButtonToggleSolid state={showMovie} click={handdlerShowMovie}  />
+                        <ButtonToggleSolid state={showMovie} click={()=> togleShowMovie()}  />
                     </div>
 
                 </div>
             </div>
             <div className="movie-preview">
                 {
-                    url 
-                        ? <Iframe url={url} /> 
-                        : <NoFrame svg={null}/>
+                    formData?.movie_url 
+                        ? <Iframe url={formData?.movie_url} /> 
+                        : <NoFrame />
                 }
             </div>         
         </div>
