@@ -11,6 +11,7 @@
 
     display: flex;
     padding: 0 25px;
+    user-select: none;
     justify-content: space-between;
 
 }
@@ -22,6 +23,7 @@
 }
 
 .gallery_items_navigation ul{
+    user-select: none;
     display: flex;
     flex-direction: column;
     cursor: pointer;
@@ -45,7 +47,10 @@
 .modal_close button{
     background-color: transparent;
     font-size: 16pt;
+    border: none;
     padding: 0;
+    padding: 15px;
+    margin-left: 5px;
 }
 
 .gallery_items{

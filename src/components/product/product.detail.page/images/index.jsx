@@ -1,15 +1,16 @@
-import { useState } from "react";
 import "./styles.css";
 
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import { FaSearchPlus } from "react-icons/fa";
-import GalleryModal from "./galleryModal";
 
-export default function ProductGallery({ images = [] }) {
-    const [currentIndex, setCurrentIndex] = useState(1);
-    const [openModal,setOpenModal] = useState(false)
-
-    const currentImage = images[currentIndex];
+export default function ProductGallery(
+    { 
+        images ,
+        currentIndex,setCurrentIndex,
+        currentImage,
+        toggleModal
+    }
+) {
 
     const nextImage = () => {
         setCurrentIndex((prev) =>
@@ -23,9 +24,6 @@ export default function ProductGallery({ images = [] }) {
         );
     };
 
-    function toggleModal(){
-        setOpenModal(!openModal);
-    }
 
     if (!currentImage) return null;
 
@@ -59,16 +57,7 @@ export default function ProductGallery({ images = [] }) {
                 </button>
             </div>
         </div>
-        {
-            openModal && <GalleryModal 
-                images={images} 
-                current={currentIndex}
-                setCurrent={setCurrentIndex}
-                prev={prevImage}
-                next={nextImage}
-                close={toggleModal} 
-            />
-        }
+        
     </div>
   );
 }

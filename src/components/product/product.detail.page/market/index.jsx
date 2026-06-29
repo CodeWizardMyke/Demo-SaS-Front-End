@@ -4,53 +4,51 @@ import './styles.css';
 import CheckoutProduct from './checkout';
 
 const Market = ({data}) => {
-    const price = data?.selling_price || null ;
 
     return (
-        <div className='content-mk'>
-            <div className="mk-describe">
-                <div className="pricing">
-                        {
-                            price 
-                                ? <h2>R$: {price}</h2>
-                                : <span>Preço indisponível.</span>
-                        }
-                    <span className='price-off'>
-                       {
-                           price && <span>de R$:{price}</span>
-                        }
-                    </span>
-
-
-                    {
-                        price && <span>parecelamento em até  5x sem juros.</span>
-                    }
-                        
+        <div className='product_content'>
+            <div className="product_header">
+                <h2>{data?.title}</h2>
+                <span className="">
+                    R$:{data?.selling_price}
+                </span>
+            </div>
+            <div className="portable_snippet">
+                <div className="product_sale_details">
+                    <ul>
+                        <li>
+                            <span>Marca:</span>
+                            <span>{data?.brand?.name}</span>
+                        </li>
+                        <li>
+                            <span>Forma:</span>
+                            <span>{data?.product_shape}</span>
+                        </li>   
+                        <li>
+                            <span>Volume:</span>
+                            <span>{data?.NET_VOLUM}</span>
+                        </li>
+                        <li>
+                            <span>Faixa etária:</span>
+                            <span>{data?.age_group}</span>
+                        </li>
+                    </ul>
                 </div>
-
-                <div className="details">
-                    <div>
-                        <h3>Marca:</h3>
-                        <span>
-                            {data?.brand?.name}
-                        </span>
-                    </div>
+                <div className="product_sale_quantity">
                     
-                    <div>
-                        <h3>Categoria:</h3>
-                        <span>
-                            {data?.category?.name}
-                        </span>
-                    </div>
+                    {
+                        data?.stock > 0 
+                        
+                            ? <span className="stock">Em estoque</span>
+                            : <span className="no-stock">Sem estoque</span>
+                    }
 
-
-                   <div>
-                        <h3>Faixa etária:</h3>
-                        <span>
-                            {data?.age_group}
-                        </span>
-                    </div>
                     
+                    <div className="quantity">
+                        <label>Quantidade</label>
+                        <input type="number" min="1" defaultValue="1" />
+                    </div>
+
                 </div>
 
                 <CheckoutProduct data={data} />

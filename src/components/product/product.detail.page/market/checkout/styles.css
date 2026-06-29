@@ -13,15 +13,15 @@
 .stock{
     font-size: 0.9rem;
     color: #1a7f37;
-    background: #e9f9ee;
     padding: 5px 10px;
+    font-weight: 900;
     border-radius: 999px;
 }
 .no-stock{
     font-size: 0.9rem;
-    color: var(--txtDanger);
-    background: var(--bgCardSubITem);
+    color: rgb(252, 135, 40);
     padding: 5px 10px;
+    font-weight: 900;
     border-radius: 999px;
 }
 

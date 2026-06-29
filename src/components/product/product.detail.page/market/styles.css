@@ -1,140 +1,88 @@
-
-.mk-describe{
-    display: flex;
+.product_content{
+    background-color: var(--bgCardSubITem);
+    
+    max-width: 300px;
+    max-height: 100vh;
     width: 100%;
-    max-width: 250px;
-    gap: 5px;
+    height: 100%;
+    
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+    z-index: 10;
+    padding: 15px ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.product_header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 75px;
+    align-items: center;
+    gap: 10px;
+}
+.product_header h2{font-size: 14pt;}
+
+.portable_snippet{
+    width: 100%;
+    height: 100%;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.content-mk h2{
-    font-size: 10pt;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.mk-describe .details{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.mk-describe .details div{
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 25px;
-    align-items: center;
-}
-.mk-describe .details div h3{
-    min-width: 100px;
-}
-.mk-describe .details div span{
-    max-width: 300px;
-}
-
-.mk-describe .pricing{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 15px;
-    justify-content: center;
-    margin-bottom: 25px;
-}
-
-.mk-describe .pricing h2{
-    font-size:26pt;
-}
-.mk-describe .pricing span{
-    font-size: 10pt;
-    text-align: center;
+.product_sale_details{
+    padding: 15px 0;
     width: 100%;
 }
-.price-off{
-    text-decoration: line-through;
-}
-
-.content-mk{
-    width: 100%;
-    padding: 24px;
-    border-radius: 18px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.content-mk h2{
-    font-size: 2rem;
-    color: #111;
-    line-height: 1.3;
-}
-
-.mk-describe{
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.pricing{
+.product_sale_details ul{
+    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding-bottom: 20px;
 }
-
-.pricing h2{
-    font-size: 2.2rem;
-    color: var(--txtSalle);
-    font-weight: 700;
-}
-
-.price-off{
-    font-size: 1rem;
-    color: #999;
-    text-decoration: line-through;
-}
-
-.pricing span:last-child{
-    color: #16a34a;
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-.details{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.details div{
+.product_sale_details ul li{
+    background-color: var(--bgCardItem);
+    height: 35px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    padding: 5px 15px;
+    border-radius: 8px;
+}
+.product_sale_quantity{
+    background-color: var(--bgCardItem);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: end;
+    padding: 5px 15px;
 }
 
-.details h3{
-    font-size: 1rem;
+
+@media screen  and (max-width:1023px) {
+    .product_content{
+        position: relative;
+        max-width: none;
+        max-height: none;
+        height: auto;
+    }
+    .product_header{
+        display: none;
+    }
 }
-
-.details span{
-    font-size: 0.96rem;
+@media screen and (min-width:1100px) {
+    .product_content{
+        max-width: 350px;
+    }
 }
-
-@media (max-width: 768px){
-    .content-mk{
-        padding: 18px;
-    }
-
-    .content-mk h2{
-        font-size: 1.5rem;
-    }
-
-    .pricing h2{
-        font-size: 1.8rem;
-    }
-
-    .details div{
-        flex-direction: column;
-        align-items: flex-start;
+@media screen and (min-width:1240px) {
+    .product_content{
+        max-width: 400px;
     }
 }
