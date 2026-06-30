@@ -18,7 +18,6 @@ import { usePaginatedSearch } from './hooks/usePaginatedSearch';
 import { servicesConfig } from './services/servicesConfig';
 import { AuthContext } from 'contexts/AuthContext';
 import { confirmStep } from '../utils/confirmStep';
-import ButtonPrevNextStep from '../ButtonPrevNextStep';
 
 const CategoryBrandSelector = ({type, createForm }) => {
     const settings = productForm.find( setting => setting.name === type );
@@ -154,8 +153,6 @@ const CategoryBrandSelector = ({type, createForm }) => {
                 </div>
 
             </div>
-                <ButtonPrevNextStep/>
-
         </div>
     );
 }

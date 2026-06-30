@@ -41,15 +41,14 @@
      outline: 1px solid var(--inptBorder);
 }
 
-/* TITLE PAGE*/
-.pricing-title{ display: flex; }
+.title_form_step{ display: flex; margin-bottom: 10px;}
 
-.pricing-title h2{
+.title_form_step h2{
     display: flex;
     align-items: center;
     color: var(--green-strong);
 }
-.pricing-title svg {
+.title_form_step svg {
     color: var(--green-strong);
     height: 25px;
     width: 25px;

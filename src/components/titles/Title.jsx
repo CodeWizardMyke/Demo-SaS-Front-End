@@ -2,7 +2,7 @@ import React from 'react';
 
 const Title = ({title,subTitle,svg}) => {
     return (
-        <div className="pricing-title">
+        <div className="title_form_step">
                     
             {svg}
 

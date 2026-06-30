@@ -12,6 +12,7 @@ import CategoryBrandSelector from 'components/product/categoryBrandSelector';
 import ErrorForm from 'components/Error/forms/ErrorForm';
 import PopupSucess from 'components/popup/PopupSucess';
 import ProductDetailPage from 'components/product/product.detail.page';
+import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
 
 const CreateProductContent = () => {
 
@@ -83,8 +84,10 @@ const CreateProductContent = () => {
                 {
                     !viewProductDetail &&  <>
                         {STEP_COMPONENTS[step]}
+                        <ButtonPrevNextStep/>
                     </>
                 }
+                
                 
             </div>
 

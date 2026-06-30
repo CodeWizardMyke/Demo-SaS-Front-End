@@ -12,7 +12,6 @@ import { modifiableFields } from './util/modifiableFields';
 import { ProductFormContext } from 'contexts/ProductFormContext';
 import calculateSellingPrice from './util/calculateSellingPrice';
 import Title from 'components/titles/Title'; 
-import ButtonPrevNextStep from '../ButtonPrevNextStep';
 
 const Pricing = () => {
     const { dispatch, formData } = useContext(ProductFormContext);
@@ -103,8 +102,6 @@ const Pricing = () => {
                 <SellingPrice processData={calculatedData}/>
                 
             </div>
-            
-            <ButtonPrevNextStep/>
             
         </div>
     );

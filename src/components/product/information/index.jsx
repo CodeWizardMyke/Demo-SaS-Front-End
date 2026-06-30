@@ -6,7 +6,6 @@ import Title from 'components/titles/Title';
 import InformationItemsContent from './components/InformationItemsContent';
 
 import "./styless.css";
-import ButtonPrevNextStep from '../ButtonPrevNextStep';
 
 const Informations = () => {
 
@@ -41,7 +40,6 @@ const Informations = () => {
                     } )
                 }
             </div>
-            <ButtonPrevNextStep/>
             
         </div>
     );

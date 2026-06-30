@@ -16,6 +16,10 @@ export function ProductFormProvider({ children }){
         initialState
     );
 
+    function handlerToggleProductShow(value){
+        setViewProductDetail(value || !viewProductDetail)
+    }
+
     return(
 
         <ProductFormContext.Provider
@@ -34,7 +38,8 @@ export function ProductFormProvider({ children }){
 
                 errors: state.errors,
 
-                viewProductDetail,setViewProductDetail,
+                handlerToggleProductShow,
+                viewProductDetail,
                 
                 dispatch,
 

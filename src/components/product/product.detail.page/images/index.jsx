@@ -25,36 +25,48 @@ export default function ProductGallery(
     };
 
 
-    if (!currentImage) return null;
-
   return (
     <div className="gallery">
         <div className="gallery-image-wrapper">
-            <img
-                src={currentImage.path}
-                alt={currentImage.alt || ""}
-                className="gallery-image"
-            />
 
-            <button 
-                className="gallery-expand"
-                onClick={toggleModal}
-            >
-                <FaSearchPlus />
-            </button>
+            {
+                currentImage 
+                    ? <img
+                        src={currentImage?.path}
+                        alt={currentImage?.alt || ""}
+                        className="gallery-image"
+                    />
+                    : <h2 className="no-image-seted">Nenhuma imagem carregada...</h2>
+            }
+
+            {
+                currentImage 
+                    && <button 
+                        className="gallery-expand"
+                        onClick={toggleModal}
+                    > <FaSearchPlus />  
+                    </button>
+            }
 
             <div className="gallery-navigation">
-                <button onClick={prevImage}>
-                    <FaLongArrowAltLeft />
-                </button>
+                {
+                    currentImage &&
+                     <>
+                    
+                        <button onClick={prevImage}>
+                            <FaLongArrowAltLeft />
+                        </button>
 
-                <span>
-                    {currentIndex + 1} / {images.length}
-                </span>
+                        <span>
+                            {currentIndex + 1} / {images.length}
+                        </span>
 
-                <button onClick={nextImage}>
-                    <FaLongArrowAltRight />
-                </button>
+                        <button onClick={nextImage}>
+                            <FaLongArrowAltRight />
+                        </button>
+
+                    </>
+                }
             </div>
         </div>
         

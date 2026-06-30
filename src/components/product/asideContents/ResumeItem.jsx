@@ -7,7 +7,14 @@ import { matchStep } from './utils/matchStep';
 
 const ResumeItem = ({ dataConfigs }) => {
 
-    const {formData,dispatch, step} = useContext(ProductFormContext)
+    const {
+        formData,
+        dispatch, 
+        step, 
+        handlerToggleProductShow, 
+        viewProductDetail,
+
+    } = useContext(ProductFormContext)
 
     const fieldSteped = dataConfigs.fields ? dataConfigs.fields : []
 
@@ -18,6 +25,10 @@ const ResumeItem = ({ dataConfigs }) => {
             type:"SET_STEP",
             payload: resolvedStep ? resolvedStep : step 
         })
+
+        if(viewProductDetail){
+            handlerToggleProductShow(false);
+        }
     }
 
     return (

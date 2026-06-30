@@ -1,5 +1,5 @@
 .pd-content{
-    background-color:var(--bgCardItem);
+    background-color:var(--bg-default);
 
     height: 100%;
     max-width:1200px;

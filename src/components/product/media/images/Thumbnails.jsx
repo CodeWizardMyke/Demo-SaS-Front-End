@@ -8,7 +8,6 @@ import Title from 'components/titles/Title';
 import ListImages from '../Shared/ListImages/ListImages';
 import UploadArea from '../Shared/upload/UploadArea';
 import CurrentImage from '../Shared/currentImage';
-import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
 
 const Thumbnails = () => {
     const {formData, errors} = useContext(ProductFormContext);
@@ -16,7 +15,7 @@ const Thumbnails = () => {
     const mediaSettings = productForm.find( settings => settings.id === "media");
 
     return (
-        <div className='scob-content'>
+        <div className='scob-content thumbnails'>
             <Title 
                 title={mediaSettings.title}
                 svg={mediaSettings.svg}
@@ -55,7 +54,6 @@ const Thumbnails = () => {
             <div className="sub-content">
                 <CurrentImage current={formData.currentImage} />
             </div>
-            <ButtonPrevNextStep/>
 
         </div>
     );

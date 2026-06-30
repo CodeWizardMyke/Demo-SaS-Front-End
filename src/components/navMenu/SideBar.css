@@ -2,9 +2,8 @@
     background-color: var(--bgPanel);
     width: 260px;
     min-width: 260px;
-
+    min-height: 100vh;
     padding: 15px;
-
     display: flex;
     flex-direction: column;
 
@@ -156,7 +155,6 @@
         min-width: 150px;
         width: 150px;
     }
-    
 }
 @media (max-width:425px) {
     .aside{
@@ -164,6 +162,6 @@
         width: 200px;
     }
     .aside.closed{
-        min-width: 30px; width: 30px;
+        min-width: 40px; width: 45px;
     }
 }

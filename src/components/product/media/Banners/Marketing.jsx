@@ -11,7 +11,6 @@ import Movie from '../movie';
 import './styles.css';
 import CurrentImage from '../Shared/currentImage';
 import Button from 'components/buttons/Button';
-import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
 
 const Marketing = () => {
     const [ currentImage, setCurrentImage] = useState(null);
@@ -67,8 +66,6 @@ const Marketing = () => {
                 }
             </div>
             
-            <ButtonPrevNextStep/>
-
         </div>
     );
 }

@@ -9,6 +9,7 @@
 }
 
 .list-content{
+    z-index: 9999;
     padding: 5px 0;
 }
 

@@ -26,7 +26,9 @@ const ButtonPrevNextStep = ({css}) => {
 
     
     return (
-        <div className={`content-button-pvn ${css}` }>
+      <>
+         <div className="container_button_navigation_steps">
+         <div className={`content-button-pvn ${css}` }>
             <button 
                 type="button"
                 onClick={handlerPrev}
@@ -49,6 +51,8 @@ const ButtonPrevNextStep = ({css}) => {
             }
         
         </div>
+       </div>
+      </>
     );
 }
 

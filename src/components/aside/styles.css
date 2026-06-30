@@ -1,11 +1,13 @@
+.bt_show_product{
+    background-color: var(--inptWarning);
+    color: var(--inptTextLight);
+}
 
 /*CONTROLE DE ESPAÇO DA DIREITA AJUSTANDO O CONTEUDO DA PAGINA - TAMANHO DA ASIDE*/
 .aside-container{
-    flex: 1;
     max-width: 350px;
     transition: all 500ms ease;
     height: 100%;
-    background-color: var(--bgPanel);
 }
 
 /*CONTEUDO EXIBIDO OU NAO*/
@@ -15,7 +17,6 @@
     justify-content: space-between;
     
     max-width: 350px;
-    max-height: 100vh;
 
     width: 100%;
     padding: 15px 5px;
@@ -30,7 +31,7 @@
 }
 
 .aside-list{
-    max-height: 90%;
+    max-height: 100%;
     overflow: auto;
 }
 
@@ -56,3 +57,9 @@
     }
 }
 
+@media screen and (max-width:480px) {
+    .panel-aside{
+        padding: 15px;
+        max-width: none;
+    }
+}
