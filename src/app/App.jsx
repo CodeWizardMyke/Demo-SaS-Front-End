@@ -6,6 +6,7 @@ import {router} from './routes';
 
 import '../styles/index.css';
 import '../styles/variabels.css';
+import '../styles/sizes.css';
 
 export default function App  () {
 

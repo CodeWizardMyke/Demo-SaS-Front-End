@@ -4,15 +4,17 @@
 }
 
 .content-button-pvn{
+    background: var(--background);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
-    height: 45px;
-    padding: 0 10px;
 
-    background: var(--background);
+    max-width: var(--content);
+    height: 45px;
+    
+    padding: 0 10px;
+    margin: 0 auto;
 }
 
 .content-button-pvn button{

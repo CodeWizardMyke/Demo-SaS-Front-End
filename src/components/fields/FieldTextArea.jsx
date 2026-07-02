@@ -1,6 +1,9 @@
 import React from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
+import './styles.css';
 
 const FieldTextArea = ({
     name,
@@ -9,32 +12,52 @@ const FieldTextArea = ({
     placeholder
 }) => {
 
-    const handleChange = (content) => {
-        onChange({
-            target: {
-                name,
-                value: content
-            }
-        });
-    };
-
     return (
-        <ReactQuill
-            theme="snow"
-            value={value || ""}
-            onChange={handleChange}
-            placeholder={placeholder}
-            modules={{
-                toolbar: [
-                    [{ header: [1, 2, 3, false] }],
-                    ["bold", "italic", "underline"],
-                    [{ list: "ordered" }, { list: "bullet" }],
-                    ["link", "image"],
-                    ["clean"]
-                ]
-            }}
-        />
+        <div className="editor-container">
+            <span className="warning">
+                Para usar a barra de ferramentas e suas funcionalidades, 
+                é necessário um dispositivo com tela maior.
+            </span>
+            <CKEditor
+                editor={ClassicEditor}
+                data={value || ""}
+
+                config={{
+                    placeholder,
+
+                    toolbar: [
+                        "heading",
+                        "|",
+                        "bold",
+                        "italic",
+                        "underline",
+                        "|",
+                        "bulletedList",
+                        "numberedList",
+                        "|",
+                        "link",
+                        "blockQuote",
+                        "insertTable",
+                        "|",
+                        "undo",
+                        "redo"
+                    ]
+                }}
+
+                onChange={(event, editor) => {
+                    const data = editor.getData();
+
+                    onChange({
+                        target: {
+                            name,
+                            value: data
+                        }
+                    });
+                }}
+            />
+        </div>
     );
 };
+
 
 export default FieldTextArea;

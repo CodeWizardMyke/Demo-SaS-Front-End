@@ -9,7 +9,6 @@
     width: 100%;
     transition: all 500ms ease;
     height: 100%;
-    padding: 15px;
 }
 
 /*CONTEUDO EXIBIDO OU NAO*/
@@ -21,7 +20,7 @@
     max-width: 350px;
 
     width: 100%;
-    padding: 15px 5px;
+    padding: 5px;
     
     position: absolute;
     right: 0;
@@ -61,7 +60,6 @@
 
 @media screen and (max-width:480px) {
     .panel-aside{
-        padding: 15px;
         max-width: none;
     }
 }
