@@ -9,15 +9,11 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
-}
-
-.information .circle-tag{
-    margin-bottom: 10px;
+    gap: 5px;
 }
 
 .information .identfications div{
-        max-width: 48%;
+    max-width: 48%;
     width: 100%;
 }
 .information .identfications{

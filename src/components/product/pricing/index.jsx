@@ -11,6 +11,7 @@ import formConfig from 'configs/product/index';
 import { modifiableFields } from './util/modifiableFields';
 import { ProductFormContext } from 'contexts/ProductFormContext';
 import calculateSellingPrice from './util/calculateSellingPrice';
+
 import Title from 'components/titles/Title'; 
 
 const Pricing = () => {
@@ -47,13 +48,13 @@ const Pricing = () => {
 
     return (
         <div className='scob-content'>
-
-            <Title 
-                title={pricingSettings.title}
-                svg={pricingSettings.svg}
-                subTitle={pricingSettings.subtitle}
-            />
             <div className="space-gap">
+
+                <Title 
+                    title={pricingSettings.title}
+                    svg={pricingSettings.svg}
+                    subTitle={pricingSettings.subtitle}
+                />
             
                 <Overview data={formData} processData={calculatedData} />
 

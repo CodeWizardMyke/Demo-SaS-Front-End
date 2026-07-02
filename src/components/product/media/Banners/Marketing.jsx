@@ -21,23 +21,20 @@ const Marketing = () => {
 
     return (
         <div className='scob-content'>
-            <Title 
-                title={marketingSettings.title}
-                svg={marketingSettings.svg}
-                subTitle={marketingSettings.subtitle}
-            />
-            
-            <div className="sub-content">
+            <div className="space-gap">
 
-                <div className="media-header">
+                <Title 
+                    title={marketingSettings.title}
+                    svg={marketingSettings.svg}
+                    subTitle={marketingSettings.subtitle}
+                />
                 
-                    <ListImages 
-                        data={formData.marketing_images}
-                        field={'marketing_images'}
-                        propsCurrent={setCurrentImage}
-                    />
                     
-                </div>
+                <ListImages 
+                    data={formData.marketing_images}
+                    field={'marketing_images'}
+                    propsCurrent={setCurrentImage}
+                />
 
                 <UploadArea 
                     propsCurrent={setCurrentImage}
@@ -45,10 +42,7 @@ const Marketing = () => {
                     field={'marketing_images'}
 
                 />
-    
-            </div>
-            
-            <div className="sub-content">
+
                 {
                     currentImage 
                         
@@ -64,6 +58,7 @@ const Marketing = () => {
                         : <Movie />
 
                 }
+    
             </div>
             
         </div>

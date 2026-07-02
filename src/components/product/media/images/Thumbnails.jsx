@@ -10,51 +10,27 @@ import UploadArea from '../Shared/upload/UploadArea';
 import CurrentImage from '../Shared/currentImage';
 
 const Thumbnails = () => {
-    const {formData, errors} = useContext(ProductFormContext);
+    const { formData } = useContext(ProductFormContext);
 
     const mediaSettings = productForm.find( settings => settings.id === "media");
 
     return (
-        <div className='scob-content thumbnails'>
-            <Title 
-                title={mediaSettings.title}
-                svg={mediaSettings.svg}
-                subTitle={mediaSettings.subtitle}
-            />
+        <div className='scob-content'>
             <div className="sub-content">
 
-                <div className="media-header">
-                
-                    <ListImages data={formData.thumbnails} field={'thumbnails'} />
-                    
-                </div>
+                <Title 
+                    title={mediaSettings.title}
+                    svg={mediaSettings.svg}
+                    subTitle={mediaSettings.subtitle}
+                />
+
+                <ListImages data={formData.thumbnails} field={'thumbnails'} />
 
                 <UploadArea svg={mediaSettings.svg}  field={'thumbnails'}  />
                 
-                {
-                    errors?.thumbnails?.length > 0 && (
-                        <div className="field-err">
-                            {
-                                errors.thumbnails.map(
-                                    (msg, index) => (
-                                        <p
-                                            key={`thumbnail_error_${index}`}
-                                        >
-                                            {msg}
-                                        </p>
-                                    )
-                                )
-                            }
-                        </div>
-                    )
-                }
-
-            </div>
-
-            <div className="sub-content">
                 <CurrentImage current={formData.currentImage} />
-            </div>
 
+            </div>
         </div>
     );
 }

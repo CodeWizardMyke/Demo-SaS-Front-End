@@ -33,7 +33,6 @@ const CreateProductContent = () => {
             <CategoryBrandSelector
                 type="category"
                 createForm={toggleCreateForm}
-                toggleSideBar={toggleSideBar}
             />
         ),
 
@@ -41,32 +40,16 @@ const CreateProductContent = () => {
             <CategoryBrandSelector
                 type="brand"
                 createForm={toggleCreateForm}
-                toggleSideBar={toggleSideBar}
             />
         ),
 
-        3: (
-            <Informations
-                toggleSideBar={toggleSideBar}
-            />
-        ),
+        3: ( <Informations/> ),
 
-        4: (
-            <Thumbnails
-                toggleSideBar={toggleSideBar}
-            />
-        ),
+        4: ( <Thumbnails/>  ),
 
-        5: (
-            <Pricing
-                toggleSideBar={toggleSideBar}
-            />
-        ),
-        6: (
-            <Marketing
-                toggleSideBar={toggleSideBar}
-            />
-        ),
+        5: (  <Pricing /> ),
+
+        6: ( <Marketing /> ),
     };
 
     return (

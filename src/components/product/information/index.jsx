@@ -5,7 +5,7 @@ import productForm from 'configs/product';
 import Title from 'components/titles/Title';
 import InformationItemsContent from './components/InformationItemsContent';
 
-import "./styless.css";
+import "./styles.css";
 
 const Informations = () => {
 
@@ -17,12 +17,12 @@ const Informations = () => {
 
     return (
         <div className='scob-content'>
+            <div className='information'>
             <Title 
                 title={informationSettings.title} 
                 svg={informationSettings.svg}  
                 subTitle={informationSettings.subtitle}
             />
-            <div className='information'>
                 {
                     joinedSettings.map( (element,index) => {
                         return (

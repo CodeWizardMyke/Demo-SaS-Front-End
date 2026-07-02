@@ -6,8 +6,10 @@
 /*CONTROLE DE ESPAÇO DA DIREITA AJUSTANDO O CONTEUDO DA PAGINA - TAMANHO DA ASIDE*/
 .aside-container{
     max-width: 350px;
+    width: 100%;
     transition: all 500ms ease;
     height: 100%;
+    padding: 15px;
 }
 
 /*CONTEUDO EXIBIDO OU NAO*/

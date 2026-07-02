@@ -47,13 +47,11 @@ export function WorkspaceProvider({children}){
     }
     
     function toggleSideBar(value) {
-
         if(value){
             setActiveSideBar(value);
         }else{
             setActiveSideBar(!activeSideBar);
         }
-        
     }
 
     return(
@@ -66,7 +64,7 @@ export function WorkspaceProvider({children}){
                 toggleSideBar,
                 loading, setLoading,
                 validationErrors, setValidationErrors,
-               modalSucess, setModalSucess
+                modalSucess, setModalSucess
             }}
         >
             {children}
