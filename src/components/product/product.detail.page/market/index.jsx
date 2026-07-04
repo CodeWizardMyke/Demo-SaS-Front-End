@@ -9,8 +9,8 @@ const Market = ({data}) => {
         <div className='product_content'>
             <div className="product_header">
                 <h2>{data?.title}</h2>
-                <span className="">
-                    R$:{data?.selling_price}
+                <span className="pricing">
+                    R$: {data?.selling_price}
                 </span>
             </div>
             <div className="portable_snippet">

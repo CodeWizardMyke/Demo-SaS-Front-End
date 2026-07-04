@@ -54,6 +54,7 @@
 
     /*princiapais cores de input*/
     --inptBg:#ffffff;
+    --inputClose:#6c757d6c ;
     --inptBorder: #cccc; 
     --inptText: #6c757d;
     --inptDanger: #DC3545;

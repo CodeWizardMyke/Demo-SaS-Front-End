@@ -43,9 +43,15 @@
 }
 .modal_close {
     padding: 25px 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
 }
 .modal_close button{
-    background-color: transparent;
+    background-color: var(--inputClose);
     font-size: 16pt;
     border: none;
     padding: 0;
@@ -78,4 +84,42 @@
 
     scroll-snap-align: start;
     flex-shrink: 0;
+}
+
+@media screen and (max-width:768px) {
+    .gallery_modal{
+        position: relative;
+        height: 100vh;
+        background-color: var(--bgCardItem);
+    }
+    .gallery_items{
+        position: absolute;
+        
+        z-index: 10;
+        padding: 0;
+
+        left: 0;
+        right: 0;
+        
+    }
+    .gallery_items img{
+        object-fit: contain;
+    }
+    .gallery_items_navigation{
+        z-index: 100;
+        /*background-color: var(--bgCardItem);*/
+    }
+    .modal_close{
+        z-index: 100;
+        position: absolute;
+        top: 25px;
+        right: 15px;
+    }
+    .gallery_items_navigation{
+        width: 80px;
+        padding: 5px;
+    }
+    .gallery_items_navigation ul li{
+        height: 80px;
+    }
 }

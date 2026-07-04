@@ -138,10 +138,20 @@
     justify-content: center;
     width:100%;
 }
+.product_header{
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.product_header .pricing{
+    font-weight: 900;
+    font-size: 14pt;
+    align-items: end;
+    flex: 1;
+    text-align: end;
+}
 @media screen  and (max-width:1024px) {
     .product_header_mobile{
         display: flex;
-
     }
 }
