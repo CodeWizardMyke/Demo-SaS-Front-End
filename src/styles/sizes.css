@@ -1,3 +1,4 @@
 :root{
- --content: 800px ;
+    --content: 800px ;
+    --mdMw:800px;
 }

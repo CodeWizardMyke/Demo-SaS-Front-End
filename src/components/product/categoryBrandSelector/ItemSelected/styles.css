@@ -2,18 +2,20 @@
 .selected{
     display: flex;
     align-items: center;
-    gap: 15px;
-    border: 1px solid transparent;
+    gap: 10px;
+    
+    padding: 10px 0;
+    width: 100%;
 
-    padding: 10px 15px;
+    border: 1px solid transparent;
+    border-radius: 10px;
 
     background: var(--bgCardItem);
-    border-radius: 10px;
 }
 
 .selected-icon{
-    width: 30px;
-    height: 30px;
+    width: 30px ;
+    height: 30px ;
 
     display: flex;
     align-items: center;
@@ -28,6 +30,7 @@
 
 .selected-info{
     display: flex;
+    flex: 1;
     flex-direction: column;
 }
 

@@ -214,3 +214,8 @@ select{
     width: 100%;
     color: var(--txtDanger);
 }
+
+.btSearchProduct{
+    max-width: 140px;
+    width: 100%;
+}

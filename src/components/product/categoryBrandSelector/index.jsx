@@ -10,7 +10,7 @@ import Title from 'components/titles/Title';
 import Button from 'components/buttons/Button';
 import InputSearch from './search';
 import CheckedList from './checkList';
-import Pagination from './pagination';
+import Pagination from '../../pagination';
 import ItemSelected from './ItemSelected';
 
 import { ProductFormContext } from 'contexts/ProductFormContext';

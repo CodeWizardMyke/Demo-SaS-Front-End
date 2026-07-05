@@ -1,0 +1,62 @@
+.md-content{
+    width: 100%;
+    max-width: var(--mdMw);
+    
+    margin: 0 auto;
+    padding: 5px;
+    gap: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+
+.md-card, .md-card-row{
+    background-color: var(--bgCardItem);
+    border: 1px solid var(--borderCard);
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    
+    gap: 5px;
+    padding: 15px;
+    border-radius: 10px;
+
+    width: 100%;
+}
+.md-card{
+    flex-direction: column;
+    align-items: start;
+}
+
+.md-card .card-label{
+    font-size: 14pt;
+    font-weight: 700;
+    
+    color: var(--borderCard);
+}
+
+.input-search{
+    flex: 1;
+    position: relative;
+    height: 35px;
+}
+.input-search input{
+    width: 100%;
+    max-width: none;
+
+    padding-left: 35px;
+    padding-right: 10px;
+    margin: 0;
+}
+.input-search svg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+}
