@@ -50,7 +50,7 @@ const Movie = () => {
                     <input 
                         type="url" 
                         id="movieUrl" 
-                        value={formData?.movie_url}
+                        value={formData?.movie_url && formData.movie_url !== null}
                         placeholder='Cole o link do YouTube, Vimeo ou outra plataforma.'
                         onChange={ (e) => handleURL(e.target.value) }
                     />
@@ -67,7 +67,7 @@ const Movie = () => {
             <div className="movie-preview">
                 {
                     formData?.movie_url 
-                        ? <Iframe url={formData?.movie_url} /> 
+                        ? <Iframe url={formData?.movie_url && formData.movie_url !== null} /> 
                         : <NoFrame />
                 }
             </div>         

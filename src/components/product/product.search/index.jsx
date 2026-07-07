@@ -16,9 +16,9 @@ import SelectedProductCard from "./selectedProductCard";
 import './styles.css';
 import { searchServicesConfig } from "./services/searchServicesConfig";
 
-const ProductSearch = () => {
+const ProductSearch = ({selected, setSelected, openForm}) => {
     const [query, setQuery] = useState("");
-    const [selected, setSelected] = useState(null);
+    
     const [searchType, setSearchType] = useState('read');
     
     const {setErrMsg} = useContext(AuthContext);
@@ -70,6 +70,16 @@ const ProductSearch = () => {
         title: "Digite o nome do produto",
         id: "Digite o ID do produto"
     };
+
+    const text = selected
+        ? "Atualizar cadastro do produto."
+        : "Selecione um produto para continuar.";
+    
+    const css = selected
+        ? "active"
+        : "disabled";
+
+    
 
     return(
         <div className="md-content">
@@ -140,7 +150,11 @@ const ProductSearch = () => {
                 </div>
                 <SelectedProductCard item={selected} onClear={setSelected} />
             </div>
-
+            <Button 
+                text={ text } 
+                css={ css } 
+                click={()=> openForm(selected && true)}
+            />
         </div>
 
     )

@@ -3,13 +3,13 @@ import React from 'react';
 import "./styles.css";
 import { FaCheck } from 'react-icons/fa';
 
-const ItemSelected = ({item}) => {
+const ItemSelected = ({attributeName}) => {
     return (
         <div 
             className={
                 `
                     selected 
-                    ${item && "active"}
+                    ${attributeName && "active"}
                 
                 `
             } 
@@ -17,8 +17,7 @@ const ItemSelected = ({item}) => {
             
             <div className={`selected-icon`} >
                 {
-                    item && <FaCheck />
-                
+                    attributeName && <FaCheck />
                 }
             </div>
 
@@ -26,8 +25,8 @@ const ItemSelected = ({item}) => {
                 
                 <strong>
                     { 
-                        item 
-                            ? item.name 
+                        attributeName 
+                            ? attributeName 
                             : "Nenhuma " 
                     }
                 </strong>

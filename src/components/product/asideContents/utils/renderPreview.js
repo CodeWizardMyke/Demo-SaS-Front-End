@@ -2,6 +2,7 @@ export function renderPreview(field, dataForm){
 
     const value = dataForm?.[field.name];
 
+
     if(value == null || value === ""){
         return "";
     }
@@ -13,6 +14,14 @@ export function renderPreview(field, dataForm){
             return value.name;
         }
 
+        if(value.category_name){
+            return value.category_name;
+        }
+
+        if(value.brand_name){
+            return value.brand_name;
+        }
+
         return JSON.stringify(value);
     }
 
@@ -21,7 +30,7 @@ export function renderPreview(field, dataForm){
         case "image-upload":
 
             return `${value?.length} imagens`;
-
+ 
         case "video-upload":
             return "Vídeo adicionado";
 

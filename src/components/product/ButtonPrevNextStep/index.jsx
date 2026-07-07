@@ -5,12 +5,14 @@ import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { ProductFormContext } from 'contexts/ProductFormContext';
 
 import Button from 'components/buttons/Button';
-import useServicesProduct from '../hooks/useServicesProduct';
+import useProductCreate from '../hooks/useProductCreate';
+import useProductUpdate from '../hooks/useProductUpdate';
 
-const ButtonPrevNextStep = ({css}) => {
+const ButtonPrevNextStep = ({css,formType ,children}) => {
     const {step, totalSteps, dispatch } = useContext(ProductFormContext);
 
-    const {sendCreateProduct} = useServicesProduct();
+    const {sendCreate} = useProductCreate();
+    const {sendUpdate} = useProductUpdate();
 
     const handlerPrev =() =>{
         if(step > 1){
@@ -23,6 +25,18 @@ const ButtonPrevNextStep = ({css}) => {
             dispatch({type:"NEXT_STEP"});
         }
     }
+
+    const handlerFormType = () => {
+        if(formType && formType === 'update'){
+            sendUpdate()
+        }
+
+        if(!formType || formType === "create"){
+            sendCreate()
+        }
+    }
+
+    const textButtonSendForm = formType ? "Atualizar produto." : "Cadastrar produto." 
 
     
     return (
@@ -38,17 +52,19 @@ const ButtonPrevNextStep = ({css}) => {
                 <span>Voltar</span>
             </button>
 
+
             {
                 step === totalSteps 
                     
                     ?<>
-                        <Button text={'Cadastrar'} click={sendCreateProduct} />
+                        <Button text={textButtonSendForm} click={handlerFormType} />
                     </>
 
                     :<>
                         <Button text={'Avançar'} click={handlerNext} svg={ <FaArrowRightLong/> } />
                     </>
             }
+            {children}
         
         </div>
        </div>

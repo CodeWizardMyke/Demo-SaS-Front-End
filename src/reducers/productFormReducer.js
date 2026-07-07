@@ -12,9 +12,15 @@ export const initialState = {
 
     formData: {
 
-        brand: null,
+        brandProduct:{
+            brand_id:null,
+            brand_name:null
+        },
 
-        category: null,
+        categoryProduct:{
+            category_id:null,
+            category_name:null
+        },
 
         title: "",
 
@@ -31,7 +37,7 @@ export const initialState = {
         selling_price: ""
 
     }
-
+ 
 };
 
 export function productFormReducer(state, action) {
@@ -163,11 +169,16 @@ export function productFormReducer(state, action) {
 
             const {
                 images,
-               // removed 
+                removeApi,
+
             } = imageManager.remove(
                 state.formData[action.field],
                 action.payload
             );
+
+            const thumbnails_removed = removeApi
+                ? [...state.formData.thumbnails_removed, removeApi]
+                : state.formData.thumbnails_removed;
 
             const newCurrentImage =
                 imageManager.validateCurrent(
@@ -180,23 +191,36 @@ export function productFormReducer(state, action) {
                 formData: {
                     ...state.formData,
                     [action.field]: images,
-                    currentImage:newCurrentImage
+                    currentImage:newCurrentImage,
+                    thumbnails_removed
                 }
             };
         }
 
         case "CLEAR_IMAGES": {
 
-           return{
+            const {
+                images,
+                removeApi
+
+            } = imageManager.clear(state.formData[action.field])
+
+            console.log('removeApi',removeApi)
+
+            let currentRemoved = [
+                ...state.formData.thumbnails_removed,
+                ...removeApi
+            ]
+
+            return{
                 ...state,
                 formData:{
                     ...state.formData,
-                    [action.field]: imageManager.clear(
-                        state.formData[action.field]
-                    ),
-                    currentImage:null
+                    [action.field]: images,
+                    currentImage:null,
+                    thumbnails_removed: currentRemoved
                 }
-           }
+            }
 
         }
         case "RESET_FORM":

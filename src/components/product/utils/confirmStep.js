@@ -5,47 +5,35 @@ export function confirmStep(
     dispatch
 ){
 
-    const value = {
-        id: null,
-        name: ""
+    let value = {};
+    
+    let fieldName = null
+
+    if(type === 'category'){
+        fieldName = "categoryProduct";
+
+        value = {
+            category_id:data.category_id,
+            category_name:data.category_name
+        }
     };
 
-    switch (type) {
+    if(type === 'brand'){
+        fieldName = "brandProduct";
 
-        case "category":
-
-            value.name =
-                data.category_name || data.name;
-
-            value.id =
-                data.category_id || data.id;
-
-            break;
-
-        case "brand":
-
-            value.name =
-                data.brand_name || data.name;
-
-            value.id =
-                data.brand_id || data.id;
-
-            break;
-
-        default:
-
-            value.id = null;
-            value.name = data;
-
-            break;
-
+        value  = {
+            brand_id:data.brand_id,
+            brand_name:data.brand_name
+        }
     }
 
+    console.log(value)
+   
     dispatch({
 
         type: "SET_FIELD",
 
-        field: type,
+        field:fieldName,
 
         value
 

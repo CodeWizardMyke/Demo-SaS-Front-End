@@ -22,7 +22,7 @@ const productForm = [
         fields: [
             {
                 id: "category",
-                name: "category",
+                name: "categoryProduct",
                 label: "Categoria",
                 type: "select",
                 placeholder: "Selecione uma categoria",
@@ -50,7 +50,7 @@ const productForm = [
         fields: [
             {
                 id: "brand",
-                name: "brand",
+                name: "brandProduct",
                 label: "Marca",
                 type: "select",
                 placeholder: "Selecione uma marca",

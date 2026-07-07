@@ -11,40 +11,54 @@ export const imageManager = {
 
     remove(images, imageId) {
 
-        const removed = images.find(
-            image => image.preview_id === imageId
-        );
+        let removeApi = null;
 
-        if (removed?.preview) {
-            URL.revokeObjectURL(
-                removed.preview
-            );
-        }
+        const filtered = images.filter(image => {
+
+            if (image.preview_id === imageId) {
+
+                if (image.thumbnail_id) {
+                    removeApi = image.thumbnail_id;
+                }
+
+                if (image.preview) {
+                    URL.revokeObjectURL(image.preview);
+                }
+
+                return false;
+            }
+
+            return true;
+        });
 
         return {
-            images: images.filter(
-                image => image.preview_id !== imageId
-            ),
+            images: filtered,
+            removeApi
         };
 
     },
 
     clear(images) {
+        const removeFromApi = [];
 
         images.forEach(image => {
 
-            if (image?.preview) {
+            // Se veio da API, guarda o id para remover no backend
+            if (image.thumbnail_id) {
+                removeFromApi.push(image.thumbnail_id);
+            }
 
-                URL.revokeObjectURL(
-                    image.preview
-                );
-
+            // Revoga apenas URLs criadas pelo navegador
+            if (image.file && image.path?.startsWith("blob:")) {
+                URL.revokeObjectURL(image.path);
             }
 
         });
 
-        return [];
-
+        return {
+            images: [],
+            removeApi: removeFromApi
+        };
     },
 
     validateCurrent(

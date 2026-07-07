@@ -31,7 +31,17 @@ const CategoryBrandSelector = ({type, createForm }) => {
 
     const [query, setQuery] = useState("");
 
-    const selectData = formData[type];
+    const {brandProduct, categoryProduct} = formData
+
+    let selectData = null;
+
+    if(type === 'category'){
+        selectData = categoryProduct?.category_name;
+    }
+
+    if(type === 'brand'){
+        selectData = brandProduct?.brand_name;
+    }
 
     const {
         loading,
@@ -149,9 +159,8 @@ const CategoryBrandSelector = ({type, createForm }) => {
                         </span>
                     </div>
 
-                    <ItemSelected item={selectData} />
+                    <ItemSelected attributeName={selectData} />
                 </div>
-
             </div>
         </div>
     );

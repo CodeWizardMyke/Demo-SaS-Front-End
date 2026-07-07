@@ -25,7 +25,14 @@ export  function useImageControl (){
     }
 
    function remove(file, field) {
-        const id = getId(file)
+
+
+       const id = getId(file)
+       
+       if(file.thumbnail_id){
+           
+           console.log(file)
+        }
 
         dispatch({ 
             type: "REMOVE_IMAGE", 

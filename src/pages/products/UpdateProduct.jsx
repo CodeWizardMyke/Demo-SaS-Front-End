@@ -1,23 +1,34 @@
+import Button from 'components/buttons/Button';
 import ProductSearch from 'components/product/product.search';
+import ProductUpdateForm from 'components/product/product.search/productForm';
 import { ProductFormProvider } from 'contexts/ProductFormContext';
-import React from 'react';
+import React, { useState } from 'react';
 
-const UpdateProductContent= () => {
+export default function UpdateProduct () {
+    const [selectProduct, setSelectProduct] = useState(null)
+    const [toggleUpdate, setToggleUpdate] = useState(false);
 
+    function closeForm(){
+        setSelectProduct(null);
+        setToggleUpdate(false);
+    }
+    
     return(
-        <div className='md-content'>
-            <ProductSearch/>
+        <div className='module-content'>
+            {
+                !toggleUpdate
+                    ?<ProductSearch
+                        selected={selectProduct}
+                        setSelected={setSelectProduct}
+                        openForm={setToggleUpdate} 
+                    />
+
+                    :<ProductUpdateForm
+                        selected={selectProduct}
+                        closeForm={closeForm}
+                />
+            }
         </div>
+
     )
 }
-
-
-const UpdateProduct = () => {
-    return (
-        <ProductFormProvider>
-            <UpdateProductContent/>
-        </ProductFormProvider>
-    );
-}
-
-export default UpdateProduct;

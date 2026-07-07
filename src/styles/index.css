@@ -219,3 +219,11 @@ select{
     max-width: 140px;
     width: 100%;
 }
+
+.disabled{
+    cursor:not-allowed;
+    opacity: 0.5;
+}
+.disabled:hover{
+    opacity: 0.5;
+}

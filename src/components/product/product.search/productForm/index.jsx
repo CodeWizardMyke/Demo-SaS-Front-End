@@ -1,23 +1,23 @@
-import React, { useContext, useState } from 'react';
-
-import { ProductFormProvider, ProductFormContext } from '../../contexts/ProductFormContext';
-import { WorkspaceContext } from '../../contexts/WorkspaceContext';
-
-import PanelAside from '../../components/aside';
-import Informations from '../../components/product/information';
-import Thumbnails from '../../components/product/media/images/Thumbnails';
-import Pricing from '../../components/product/pricing';
-import Marketing from 'components/product/media/Banners/Marketing';
-import CategoryBrandSelector from 'components/product/categoryBrandSelector';
+import PanelAside from 'components/aside';
+import Button from 'components/buttons/Button';
 import ErrorForm from 'components/Error/forms/ErrorForm';
 import PopupSucess from 'components/popup/PopupSucess';
-import ProductDetailPage from 'components/product/product.detail.page';
 import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
+import CategoryBrandSelector from 'components/product/categoryBrandSelector';
+import Informations from 'components/product/information';
+import Marketing from 'components/product/media/Banners/Marketing';
+import Thumbnails from 'components/product/media/images/Thumbnails';
+import Pricing from 'components/product/pricing';
+import ProductDetailPage from 'components/product/product.detail.page';
+import { ProductFormContext, ProductFormProvider } from 'contexts/ProductFormContext';
+import { WorkspaceContext } from 'contexts/WorkspaceContext';
+import React, { useContext, useState } from 'react';
 
-const CreateProductContent = () => {
+
+const ProductUpdateFormContent = ({closeForm}) => {
 
     const { activeSideBar, toggleSideBar, validationErrors, modalSucess} = useContext(WorkspaceContext);
-    const { step, viewProductDetail } = useContext(ProductFormContext);
+    const { step, viewProductDetail} = useContext(ProductFormContext);
     const [ modalCreateCategoryBrand, setModalCreateCategoryBrand] = useState(null);
 
     function toggleCreateForm(type) {
@@ -52,10 +52,9 @@ const CreateProductContent = () => {
         6: ( <Marketing /> ),
     };
 
+
     return (
-
-        <div className="module-content">
-
+        <div className='module-content'>
             <div className="module-step">
 
                 { validationErrors  && <ErrorForm /> }
@@ -67,7 +66,10 @@ const CreateProductContent = () => {
                 {
                     !viewProductDetail &&  <>
                         {STEP_COMPONENTS[step]}
-                        <ButtonPrevNextStep/>
+                        <ButtonPrevNextStep formType={'update'}>
+                            <Button text={'Fechar atualização'} click={closeForm}/>
+                        </ButtonPrevNextStep>
+                        
                     </>
                 }
                 
@@ -78,29 +80,23 @@ const CreateProductContent = () => {
                 setModalCreate={setModalCreateCategoryBrand}
                 activeSideBar={activeSideBar}
             />
-
         </div>
+    )
 
-    );
+}
 
-};
-
-const CreateProduct = () => {
-
+const ProductUpdateForm = ({selected,closeForm}) => {
     return (
+        <ProductFormProvider initialData={selected}>
 
-        <div className="opened-module">
+            <ProductUpdateFormContent 
+                selected={selected}
+                closeForm={closeForm} 
+            />
 
-            <ProductFormProvider>
-
-                <CreateProductContent />
-
-            </ProductFormProvider>
-
-        </div>
-
+        </ProductFormProvider>
     );
+}
 
-};
 
-export default CreateProduct;
+export default ProductUpdateForm;
