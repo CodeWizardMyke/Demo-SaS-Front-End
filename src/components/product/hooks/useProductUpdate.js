@@ -62,6 +62,7 @@ export default function useServicesProduct () {
         } catch(error) {
             const errors = normalizeErrors(error.response?.data?.errors);
 
+            console.log(error)
 
             setValidationErrors(error.response?.data?.errors);
 

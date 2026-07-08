@@ -11,13 +11,13 @@ import Pricing from 'components/product/pricing';
 import ProductDetailPage from 'components/product/product.detail.page';
 import { ProductFormContext, ProductFormProvider } from 'contexts/ProductFormContext';
 import { WorkspaceContext } from 'contexts/WorkspaceContext';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 
-const ProductUpdateFormContent = ({closeForm}) => {
+const ProductUpdateFormContent = ({closeForm,selected}) => {
 
     const { activeSideBar, toggleSideBar, validationErrors, modalSucess} = useContext(WorkspaceContext);
-    const { step, viewProductDetail} = useContext(ProductFormContext);
+    const { step, viewProductDetail, dispatch} = useContext(ProductFormContext);
     const [ modalCreateCategoryBrand, setModalCreateCategoryBrand] = useState(null);
 
     function toggleCreateForm(type) {
@@ -26,6 +26,15 @@ const ProductUpdateFormContent = ({closeForm}) => {
         setModalCreateCategoryBrand(type);
 
     }
+
+    useEffect(()=> {
+        dispatch({
+            type:"SET_FIELD",
+            field:"product_id",
+            value:selected.product_id,
+        });
+    },[selected,dispatch]);
+
 
     const STEP_COMPONENTS = {
 
@@ -59,7 +68,7 @@ const ProductUpdateFormContent = ({closeForm}) => {
 
                 { validationErrors  && <ErrorForm /> }
 
-                { modalSucess && <PopupSucess /> }
+                { modalSucess && <PopupSucess text={"Atualização do produto"} /> }
 
                 { viewProductDetail && <ProductDetailPage/> }
 

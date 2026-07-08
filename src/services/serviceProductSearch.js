@@ -3,8 +3,9 @@ import { api } from "./api";
 export async function serviceProductSearch(query, page=1,size=10){
 
     try{
+        console.log('message')
 
-        const response = await api.get('/product/crud/read', {
+        const response = await api.get('/product/search/', {
             headers:{
                 query,
                 page,

@@ -4,8 +4,6 @@ import ModalDelete from 'components/product/product.delete/modalDelete';
 import { WorkspaceContext } from 'contexts/WorkspaceContext';
 import React, { useContext, useState } from 'react';
 
-import './styles.css';
-
 const DeleteProduct = () => {
     const {modalSucess,setModalSucess} = useContext(WorkspaceContext);
     const [selectProduct, setSelectProduct] = useState(null);

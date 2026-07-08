@@ -27,8 +27,6 @@ export function confirmStep(
         }
     }
 
-    console.log(value)
-   
     dispatch({
 
         type: "SET_FIELD",
@@ -42,7 +40,7 @@ export function confirmStep(
     dispatch({
         type: "SET_FIELD",
         field: `fk_${type}_id`,
-        value: value.id
+        value:  data[`${type}_id`]
     })
 
     dispatch({

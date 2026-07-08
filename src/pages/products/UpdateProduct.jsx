@@ -1,7 +1,5 @@
-import Button from 'components/buttons/Button';
 import ProductSearch from 'components/product/product.search';
 import ProductUpdateForm from 'components/product/product.search/productForm';
-import { ProductFormProvider } from 'contexts/ProductFormContext';
 import React, { useState } from 'react';
 
 export default function UpdateProduct () {

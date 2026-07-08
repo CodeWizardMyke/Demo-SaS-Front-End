@@ -9,17 +9,15 @@ export function renderPreview(field, dataForm){
 
     // se for objeto de select
     if(typeof value === "object" && !Array.isArray(value)){
+        if(value.category_name){
+            return value.category_name
+        }
+        if(value.brand_name){
+            return value.brand_name;
+        }
 
         if(value.name){
             return value.name;
-        }
-
-        if(value.category_name){
-            return value.category_name;
-        }
-
-        if(value.brand_name){
-            return value.brand_name;
         }
 
         return JSON.stringify(value);
