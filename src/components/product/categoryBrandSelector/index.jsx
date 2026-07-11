@@ -1,8 +1,6 @@
 import productForm from 'configs/product';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 
-import './style.css';
-
 import { IoIosSearch } from "react-icons/io";
 import { LuPlus } from "react-icons/lu";
 
@@ -18,8 +16,11 @@ import { usePaginatedSearch } from './hooks/usePaginatedSearch';
 import { servicesConfig } from './services/servicesConfig';
 import { AuthContext } from 'contexts/AuthContext';
 import { confirmStep } from '../utils/confirmStep';
+import ErrorFieldList from 'components/Error/forms/ErrorFieldList';
 
 const CategoryBrandSelector = ({type, createForm }) => {
+    const [query, setQuery] = useState("");
+    
     const settings = productForm.find( setting => setting.name === type );
     const currentService = servicesConfig[type];
     const { formData, dispatch, step, errors} = useContext(ProductFormContext);
@@ -29,19 +30,10 @@ const CategoryBrandSelector = ({type, createForm }) => {
         category: errors?.fk_category_id
     }[type];
 
-    const [query, setQuery] = useState("");
-
-    const {brandProduct, categoryProduct} = formData
-
-    let selectData = null;
-
-    if(type === 'category'){
-        selectData = categoryProduct?.category_name;
-    }
-
-    if(type === 'brand'){
-        selectData = brandProduct?.brand_name;
-    }
+    const field = {
+        brand:formData.brandProduct,
+        category:formData.categoryProduct
+    };
 
     const {
         loading,
@@ -51,8 +43,7 @@ const CategoryBrandSelector = ({type, createForm }) => {
         results, err,
         executeSearch,reset
 
-    } = 
-        usePaginatedSearch(currentService.service);
+    } = usePaginatedSearch(currentService.service);
 
     const {setErrMsg} = useContext(AuthContext);
 
@@ -81,31 +72,30 @@ const CategoryBrandSelector = ({type, createForm }) => {
         if(err) setErrMsg(err);
     
     },[err,setErrMsg]);
-
     
     const handlerSelect = (item) => {
+        field[type] = {...item};
 
-        confirmStep( item, type, step,  dispatch  );
-
+        confirmStep( field[type], type, step,  dispatch );
+        
     }
 
     return (
-        <div className='scob-content'>
-            <div className="cbs-panel">
+        <div className='md-content'>
                 <Title 
                     title={settings.title}
                     subTitle={settings.subtitle}
                     svg={settings.svg}
                 />
 
-                <div className="p-card card-inline">
+                <div className="md-card-row">
                     <InputSearch 
                         query={query} 
                         setQuery={setQuery} 
                         placeholder={settings.placeholder} 
                         svg={ <IoIosSearch/> }
                     />
-                    <div className='card-inline'>
+                    <div className='row-content'>
                         <Button 
                             text={loading ? "Buscando.." : "buscar"} 
                             svg={ <IoIosSearch/> }
@@ -120,7 +110,8 @@ const CategoryBrandSelector = ({type, createForm }) => {
                         />
                     </div>
                 </div>
-                <div className="p-card">
+
+                <div className="md-card">
                     <CheckedList 
                         data={results} 
                         click={handlerSelect} 
@@ -134,34 +125,19 @@ const CategoryBrandSelector = ({type, createForm }) => {
                     />
                 </div>
 
-                <div className="p-card">
-                    <div className="p-card-header">
-                        
-                        <span className='errors-content'>
-                            {
-                                fieldError
-                                    ? fieldError.map(
-                                        (err,index) => (
-                                            <span
-                                                key={`error${type}_${index}`}
-                                                className='field-err'
-                                            >
-                                                {err}
-                                            </span>
-                                        )
-                                    )
-                                    : (
-                                        <span>
-                                            {settings.label} Selecionada.
-                                        </span>
-                                    )
-                            }
-                        </span>
+                <div className="md-card">
+                    <div>
+                        {
+                            fieldError && <ErrorFieldList fields={fieldError} />
+                        }
+
+                        {
+                            !fieldError && `${currentService.label} selecionada` 
+                        }
                     </div>
 
-                    <ItemSelected attributeName={selectData} />
+                    <ItemSelected data={field[type]} />
                 </div>
-            </div>
         </div>
     );
 }

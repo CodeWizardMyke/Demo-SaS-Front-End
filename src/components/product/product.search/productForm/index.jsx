@@ -1,14 +1,16 @@
-import PanelAside from 'components/aside';
 import Button from 'components/buttons/Button';
 import ErrorForm from 'components/Error/forms/ErrorForm';
+import InspectorPanel from 'components/InspectorPanel/InspectorPanel';
 import PopupSucess from 'components/popup/PopupSucess';
 import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
 import CategoryBrandSelector from 'components/product/categoryBrandSelector';
+import CreateCategoryOrBrand from 'components/product/createCategoryOrBrand';
 import Informations from 'components/product/information';
 import Marketing from 'components/product/media/Banners/Marketing';
 import Thumbnails from 'components/product/media/images/Thumbnails';
 import Pricing from 'components/product/pricing';
 import ProductDetailPage from 'components/product/product.detail.page';
+import ProductInspector from 'components/product/productInspector/productInspector';
 import { ProductFormContext, ProductFormProvider } from 'contexts/ProductFormContext';
 import { WorkspaceContext } from 'contexts/WorkspaceContext';
 import React, { useContext, useEffect, useState } from 'react';
@@ -22,9 +24,16 @@ const ProductUpdateFormContent = ({closeForm,selected}) => {
 
     function toggleCreateForm(type) {
 
-        toggleSideBar(true);
-        setModalCreateCategoryBrand(type);
 
+        setModalCreateCategoryBrand(type);
+        
+        if(activeSideBar){
+            toggleSideBar();
+        }
+
+        if(modalCreateCategoryBrand){
+            setModalCreateCategoryBrand(null)
+        }
     }
 
     useEffect(()=> {
@@ -61,34 +70,38 @@ const ProductUpdateFormContent = ({closeForm,selected}) => {
         6: ( <Marketing /> ),
     };
 
-
     return (
-        <div className='module-content'>
-            <div className="module-step">
+        <div className="module-step">
 
-                { validationErrors  && <ErrorForm /> }
+            { validationErrors  && <ErrorForm /> }
 
-                { modalSucess && <PopupSucess text={"Atualização do produto"} /> }
+            { modalSucess && <PopupSucess text={"Atualização do produto"} /> }
 
-                { viewProductDetail && <ProductDetailPage/> }
+            { viewProductDetail && <ProductDetailPage/> }
 
+            {
+                !viewProductDetail &&  <>
+                    {STEP_COMPONENTS[step]}
+                    <ButtonPrevNextStep formType={'update'}>
+                        <Button text={'Fechar atualização'} click={closeForm}/>
+                    </ButtonPrevNextStep>
+                    
+                </>
+            }
+
+            <InspectorPanel active={activeSideBar}> 
                 {
-                    !viewProductDetail &&  <>
-                        {STEP_COMPONENTS[step]}
-                        <ButtonPrevNextStep formType={'update'}>
-                            <Button text={'Fechar atualização'} click={closeForm}/>
-                        </ButtonPrevNextStep>
+                    modalCreateCategoryBrand 
                         
-                    </>
-                }
-                
-            </div>
+                        ? <CreateCategoryOrBrand 
+                            modalCreate={modalCreateCategoryBrand} 
+                            setModalCreate={setModalCreateCategoryBrand} 
+                        />
 
-            <PanelAside
-                modalCreate={modalCreateCategoryBrand} 
-                setModalCreate={setModalCreateCategoryBrand}
-                activeSideBar={activeSideBar}
-            />
+                        : <ProductInspector />
+                }
+            </InspectorPanel>
+                
         </div>
     )
 

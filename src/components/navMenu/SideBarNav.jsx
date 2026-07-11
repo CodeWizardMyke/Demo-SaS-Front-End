@@ -3,7 +3,6 @@ import SideBarItem from './SideBarItem';
 
 const SideBarNav = ({
     filteredModules,
-    modules,
     openedModule,
     handleToggleModule
 }) => {

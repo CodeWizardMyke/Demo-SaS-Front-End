@@ -3,7 +3,6 @@ import React, { useContext, useState } from 'react';
 import { ProductFormProvider, ProductFormContext } from '../../contexts/ProductFormContext';
 import { WorkspaceContext } from '../../contexts/WorkspaceContext';
 
-import PanelAside from '../../components/aside';
 import Informations from '../../components/product/information';
 import Thumbnails from '../../components/product/media/images/Thumbnails';
 import Pricing from '../../components/product/pricing';
@@ -13,6 +12,9 @@ import ErrorForm from 'components/Error/forms/ErrorForm';
 import PopupSucess from 'components/popup/PopupSucess';
 import ProductDetailPage from 'components/product/product.detail.page';
 import ButtonPrevNextStep from 'components/product/ButtonPrevNextStep';
+import InspectorPanel from 'components/InspectorPanel/InspectorPanel';
+import ProductInspector from 'components/product/productInspector/productInspector';
+import CreateCategoryOrBrand from 'components/product/createCategoryOrBrand';
 
 const CreateProductContent = () => {
 
@@ -22,8 +24,15 @@ const CreateProductContent = () => {
 
     function toggleCreateForm(type) {
 
-        toggleSideBar(true);
         setModalCreateCategoryBrand(type);
+        
+        if(activeSideBar){
+            toggleSideBar();
+        }
+
+        if(modalCreateCategoryBrand){
+            setModalCreateCategoryBrand(null)
+        }
 
     }
 
@@ -53,34 +62,34 @@ const CreateProductContent = () => {
     };
 
     return (
+        <div className="module-step">
 
-        <div className="module-content">
+            { validationErrors  && <ErrorForm /> }
 
-            <div className="module-step">
+            { modalSucess && <PopupSucess /> }
 
-                { validationErrors  && <ErrorForm /> }
+            { viewProductDetail && <ProductDetailPage/> }
 
-                { modalSucess && <PopupSucess /> }
-
-                { viewProductDetail && <ProductDetailPage/> }
-
+            {
+                !viewProductDetail &&  <>
+                    {STEP_COMPONENTS[step]}
+                    <ButtonPrevNextStep/>
+                </>
+            }
+            
+            <InspectorPanel active={activeSideBar}> 
                 {
-                    !viewProductDetail &&  <>
-                        {STEP_COMPONENTS[step]}
-                        <ButtonPrevNextStep/>
-                    </>
+                    modalCreateCategoryBrand 
+                        
+                        ? <CreateCategoryOrBrand 
+                            modalCreate={modalCreateCategoryBrand} 
+                            setModalCreate={setModalCreateCategoryBrand} 
+                        />
+
+                        : <ProductInspector />
                 }
-                
-            </div>
-
-            <PanelAside
-                modalCreate={modalCreateCategoryBrand} 
-                setModalCreate={setModalCreateCategoryBrand}
-                activeSideBar={activeSideBar}
-            />
-
+            </InspectorPanel>
         </div>
-
     );
 
 };
@@ -89,15 +98,12 @@ const CreateProduct = () => {
 
     return (
 
-        <div className="opened-module">
+        <ProductFormProvider>
 
-            <ProductFormProvider>
+            <CreateProductContent />
 
-                <CreateProductContent />
+        </ProductFormProvider>
 
-            </ProductFormProvider>
-
-        </div>
 
     );
 

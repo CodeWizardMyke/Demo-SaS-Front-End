@@ -1,8 +1,9 @@
 .pd-content{
     background-color:var(--bg-default);
-
-    height: 100%;
+    flex: 1;
     max-width:1200px;
+    max-height: 88vh;
+    padding: 10px 5px;
 
     margin: 0 auto;
     padding: 0 5px;
@@ -11,8 +12,9 @@
     flex-direction: column;
     position: relative;
 
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
+    gap: 25px;
 }
 
 .product_header_mobile{
@@ -42,7 +44,6 @@
 }
 
 .pd-main{
-    
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -131,12 +132,13 @@
     width: 100%;
 }
 .closeDetail{
-    position: absolute;
+    position: sticky;
     bottom: 5px ;
     display: flex;
     align-items: center;
     justify-content: center;
     width:100%;
+    z-index: 20;
 }
 .product_header{
     display: flex;

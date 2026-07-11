@@ -1,23 +1,83 @@
-.p-card.create-entity-bc{
-    gap: 15px;
-    display: flex;
-    flex-direction: column;
-    background-color: transparent;
+.create-entity-aside{
+    display:flex;
+    flex-direction:column;
+
+    width:100%;
+    max-width:350px;
+    height:100vh;
+
+    background: var(--background);
+    padding:24px;
 }
 
-.p-card.create-entity-bc .card-title{
-    justify-content: space-between;
-    align-items: end;
-}
-.p-card.create-entity-bc .card-title .title span{
-    font-size: 12pt;
-}
+.create-entity-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
 
-.p-card.create-entity-bc .p-card-content button{
-    width: 100%;
+    padding-bottom:20px;
+    border-bottom:1px solid #ececec;
 }
 
+.create-entity-header small{
+    color:#777;
+    font-size:.8rem;
+}
 
-.p-card.create-entity-bc .p-card-content span{
-    text-align: center;
+.create-entity-header h2{
+    margin:4px 0;
+    font-size:1.5rem;
+}
+
+.create-entity-header p{
+    margin-top:8px;
+    color:#666;
+    line-height:1.5;
+    font-size:.9rem;
+}
+
+.create-entity-content{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+
+    margin-top:24px;
+}
+
+.create-entity-content label{
+    font-weight:600;
+    font-size:.9rem;
+}
+
+.create-entity-content input{
+    width:100%;
+    height:44px;
+
+    border:1px solid #d8d8d8;
+    border-radius:8px;
+
+    padding:0 14px;
+
+    font-size:.95rem;
+
+    transition:.2s;
+}
+
+.create-entity-content input:focus{
+    outline:none;
+    border-color:#0d6efd;
+}
+
+.field-error{
+    min-height:20px;
+    color:#d93025;
+    font-size:.82rem;
+}
+
+.create-entity-footer{
+    padding-top:20px;
+    border-top:1px solid #ececec;
 }

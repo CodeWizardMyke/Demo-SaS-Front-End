@@ -8,7 +8,7 @@ import './styles.css';
 import productForm from "configs/product";
 import Button from "components/buttons/Button";
 import { api } from "services/api";
-import { serviceProductDelete } from "services/serviceProductDelete";
+import { serviceProductDelete } from "services/product/serviceProductDelete";
 
 const ModalDelete = ({ data,close,sucess }) => {
 

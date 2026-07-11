@@ -12,13 +12,14 @@ export default function UpdateProduct () {
     }
     
     return(
-        <div className='module-content'>
+        <div className="module-step">
             {
                 !toggleUpdate
+
                     ?<ProductSearch
                         selected={selectProduct}
                         setSelected={setSelectProduct}
-                        openForm={setToggleUpdate} 
+                        openForm={setToggleUpdate}
                     />
 
                     :<ProductUpdateForm

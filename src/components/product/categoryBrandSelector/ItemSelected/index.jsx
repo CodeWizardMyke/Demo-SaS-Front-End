@@ -3,7 +3,11 @@ import React from 'react';
 import "./styles.css";
 import { FaCheck } from 'react-icons/fa';
 
-const ItemSelected = ({attributeName}) => {
+const ItemSelected = ({data}) => {
+    const {category_name, brand_name} = data;
+
+    const attributeName = category_name || brand_name
+
     return (
         <div 
             className={

@@ -97,8 +97,8 @@ const productForm = [
                     type: "text",
                     placeholder: "Ex.: Camiseta Básica 100% Algodão",
                     required: true,
-                    preview: true,
                     maxLength: "300px",
+                    preview: true,
                     col: 12
                 },
                  {
@@ -113,27 +113,7 @@ const productForm = [
                     col: 6
                 },
 
-                {
-                    id: "is_new_arrival",
-                    name: "is_new_arrival",
-                    label: "Lançamento",
-                    type: "select",
-                    step:2,
-                    required: true,
-                    preview: true,
-                    col: 6,
-
-                    options: [
-                        {
-                            value: true,
-                            label: "Sim"
-                        },
-                        {
-                            value: false,
-                            label: "Não"
-                        }
-                    ]
-                },
+              
 
                 {
                     id: "product_shape",
@@ -179,6 +159,27 @@ const productForm = [
                         {
                             value: "any",
                             label: "Todos"
+                        }
+                    ]
+                },
+                  {
+                    id: "is_new_arrival",
+                    name: "is_new_arrival",
+                    label: "Lançamento",
+                    type: "select",
+                    step:2,
+                    required: true,
+                    preview: true,
+                    col: 6,
+
+                    options: [
+                        {
+                            value: true,
+                            label: "Sim"
+                        },
+                        {
+                            value: false,
+                            label: "Não"
                         }
                     ]
                 },

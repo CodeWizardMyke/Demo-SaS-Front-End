@@ -21,7 +21,7 @@ const CheckList = ({data = [], click}) => {
             </div>
 
             <div className="contentList">
-                <ul>
+                <ul className=' scroll'>
                     {
                         data?.map( item => {
                            

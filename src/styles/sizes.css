@@ -1,4 +1,5 @@
 :root{
     --content: 800px ;
     --mdMw:800px;
+    --mw-module-step: 850px ;
 }

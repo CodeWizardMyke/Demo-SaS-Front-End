@@ -1,134 +1,62 @@
-
-.p-card .input-content{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 10px 0;
-}
-.p-card .input-content select{
-    width: 175px;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-}
-.p-card .input-content input{
-    margin: 0;
-}
-
-.p-card .input{
-    margin: 10px 0;
-}
-.p-card .input div{
+.input-prefixes{
     position: relative;
+    height: 35px;
+    width: max-content;
+    padding: 0 5px;
 }
-.p-card .input input,
-.p-card .input select
-{
-    margin: 0; 
-    text-align: end; 
+.input-prefixes input{
+    margin: 0;
+    padding-left: 35px;
+}
+.input-prefixes strong{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input-prefixes select{
+    margin: 0;
+    width: 200px;
     padding-right: 10px;
 }
-.p-card .input strong{
-    position: absolute;
-    top: 1px;
-    bottom: 1px;
-    left: 1px;
 
-    width: 30px;
-    background-color: var(--inptBorder);
-    color: var(--inptText);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.pcost input{
+    max-width: 300px;
+    text-align: end;
+    padding-right: 25px;
 }
-
-.selling-price{
+.ptaxes input{
+    padding-left: 0;
+    padding: 0 35px;
     text-align: center;
-}
-.selling {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    max-width: 400px;
-    margin: 0 auto 10px auto;
-}
-
-.icon-circle{
-    width: 75px;
-    height: 75px;
-    border-radius: 75px;
-
-    margin-right: 10px;
-
-    background-color: var(--green-inner);
-    color: var(--green-strong);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.icon-circle svg{
-    width: 45px;
-    height: 45px;
-}
-
-.current-price h3{
-    font-size: 16pt;
-    margin-bottom: 15px;
-}
-.current-price h2{
-    font-size: 34pt;
-    color: var(--green-strong);
-}
-
-.set-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.set-container .p-card{
-    flex: 1 1 350px;
-}
-.percent-content{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
-}
-
-.input-percent{
     max-width: 120px;
-    display: flex;
-    margin: 10px 0;
-    flex-direction: column;
-    margin-bottom: 10px;
-    align-items: center; 
-    justify-content: center;
 }
-.input-percent label{
-    width: 100%;
-}
-.input-percent input{ 
-    margin: 0; 
-    text-align: center;
-}
-.input-percent div{ 
-    position: relative;
-}
-.input-percent strong{
-    background-color: var(--inptBorder);
-    color: var(--inptText);
-    border-radius: 5px 0 0 5px;
+.ptaxes strong{ right: 0;}
 
-    position: absolute;
-    top: 1px;
-    bottom: 1px;
-    
-    width: 30px;
-    
+.content-pricing{
+    display: flex;
+    flex-direction: column;
+}
+
+.content-price-suggested{
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-price-suggested .selling{
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    gap: 15px;
+}
+
+.content-price-suggested .selling svg{
+    height: 35px;width: 35px;
+    color: var(--borderCardDisable);
 }

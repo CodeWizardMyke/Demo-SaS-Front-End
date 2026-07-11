@@ -1,5 +1,5 @@
-import { searchBrands } from "../../../../services/brandService";
-import { searchCategories } from "../../../../services/categoryService";
+import { searchBrands } from "services/product/brandService";
+import { searchCategories } from "services/product/categoryService";
 
 export const servicesConfig = {
 

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 
 import TabItem from './TabItem';
+import './TabBar.css';
 
 import { WorkspaceContext } from '../../contexts/WorkspaceContext';
 import ButtonAsideToggle from '../buttons/toggle/ButtonAsideToggle';
@@ -15,23 +16,26 @@ const TabBar = () => {
     }
 
     return (
-        <div className='tab-bar-content'>
-            <ul>
-                {
-                    openedTabs.map((item,i) => 
-                    <TabItem
-                        key={`tabItem${i}`}
-                        item={item}
-                    />
-                )
-                }
-            </ul>
-            <ButtonAsideToggle 
+       <div className="tabs-bar">
+
+            <div className="tabs-wrapper scroll">
+                <ul>
+                    {openedTabs.map((item, i) => (
+                        <TabItem
+                            key={item.id ?? i}
+                            item={item}
+                        />
+                    ))}
+                </ul>
+            </div>
+
+            <ButtonAsideToggle
                 collapsed={toggleButton}
                 clickEvent={handlerClicked}
-                clickAble={!!openedTabs.length}
+                clickAble={openedTabs.length > 0}
             />
-        </div>
+
+    </div>
     );
 }
 

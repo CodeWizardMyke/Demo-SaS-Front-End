@@ -1,19 +1,16 @@
+import ErrorTag from 'components/tags/ErrorTag';
 import React from 'react';
 
 const ErrorFieldList = ({fields}) => {
     return (
-        <ul>
+        <ul className='errors-fields'>
             {
                 fields?.map( (field,index) => (
-                    <li 
-                        key={`ErrorFieldListID_${index}`}
-                    >
-                        <span>
-                            {
-                                field.label
-                            }
-                        </span>
+
+                    <li  key={`Error:${index}`}>
+                        <ErrorTag msg={field.label || field } />
                     </li>
+
                 ))
             }
         </ul>

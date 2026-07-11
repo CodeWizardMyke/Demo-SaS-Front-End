@@ -5,27 +5,9 @@ export function confirmStep(
     dispatch
 ){
 
-    let value = {};
+    let value = data;
     
-    let fieldName = null
-
-    if(type === 'category'){
-        fieldName = "categoryProduct";
-
-        value = {
-            category_id:data.category_id,
-            category_name:data.category_name
-        }
-    };
-
-    if(type === 'brand'){
-        fieldName = "brandProduct";
-
-        value  = {
-            brand_id:data.brand_id,
-            brand_name:data.brand_name
-        }
-    }
+    let fieldName = type === 'brand' ? 'brandProduct' : 'categoryProduct'
 
     dispatch({
 

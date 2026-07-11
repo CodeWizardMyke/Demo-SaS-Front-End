@@ -15,7 +15,7 @@ const ProductInList = ({data = [], click, selected}) => {
 
             <div className="contentList">
                 
-                <ul>
+                <ul className='scroll'>
                     {
                         data.map( (item) => {
 

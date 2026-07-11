@@ -1,18 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from "react";
 
-import './styles.css'
-import { WorkspaceContext } from '../../../contexts/WorkspaceContext';
-import { brandCreateService } from '../../../services/brandCreateService';
-import { categoryCreateService } from '../../../services/categoryCreateService';
-import { ProductFormContext } from '../../../contexts/ProductFormContext';
-import { handdlerErrors } from './utils/handdlerErrors';
-import { confirmStep } from '../utils/confirmStep';
-import Button from 'components/buttons/Button';
+import "./styles.css";
+import { WorkspaceContext } from "../../../contexts/WorkspaceContext";
+import { ProductFormContext } from "../../../contexts/ProductFormContext";
+import { handdlerErrors } from "./utils/handdlerErrors";
+import { confirmStep } from "../utils/confirmStep";
+import Button from "components/buttons/Button";
+import { brandCreateService } from "services/product/brandCreateService";
+import { categoryCreateService } from "services/product/categoryCreateService";
 
-const CreateCategoryOrBrand = ({modalCreate,setModalCreate}) => {
-    const [query,setQuery] = useState("");
-    const [errMsg,setErrMsg] = useState(null);
-    const {dispatch, step} = useContext(ProductFormContext)
+const CreateCategoryOrBrand = ({ modalCreate, setModalCreate }) => {
+    const [query, setQuery] = useState("");
+    const [errMsg, setErrMsg] = useState("");
+
+    const { dispatch, step } = useContext(ProductFormContext);
 
     const {
         loading,
@@ -21,77 +22,96 @@ const CreateCategoryOrBrand = ({modalCreate,setModalCreate}) => {
     } = useContext(WorkspaceContext);
 
     const service = {
-        brand:{
-            api:brandCreateService,
-            label:"Marca"
+        brand: {
+            api: brandCreateService,
+            label: "Marca",
         },
-        category:{
-            api:categoryCreateService,
-            label:"Categoria"
-        }
+        category: {
+            api: categoryCreateService,
+            label: "Categoria",
+        },
     }[modalCreate];
 
     async function sendCreate() {
-        setLoading(true);
+        setErrMsg("");
 
         if (!query.trim()) {
-
-            setErrMsg(`Nome da ${service.label} não foi inserido.`);
-
+            setErrMsg(`Informe o nome da ${service.label.toLowerCase()}.`);
             return;
         }
 
-        const {data,error} = await service.api(query);
+        setLoading(true);
+
+        const { data, error } = await service.api(query);
 
         const errorsResult = handdlerErrors(error);
 
-        if(!!errorsResult){
-            setLoading(false);
+        if (errorsResult) {
             setErrMsg(errorsResult);
-
+            setLoading(false);
             return;
-        };
-  
-        confirmStep( data?.data, modalCreate, step, dispatch );
+        }
+
+        confirmStep(data?.data, modalCreate, step, dispatch);
 
         setModalSucess(data);
 
         setLoading(false);
-        
         setModalCreate(null);
-    };
+    }
 
-    
     return (
-        <div className='p-card create-entity-bc'>
-            <div className='card-title'>
-               
-                <div className="title">
-                    
-                    <h2>Cadastro</h2>
-                    <span>Adicionar Nova {service.label}. </span>
-                    
-                </div>
-               
-                <Button text={'Fechar'} click={() =>  setModalCreate(null)} />
-               
-            </div>
-          
-            <div className="p-card-content">
-                <input 
-                    type="text" 
-                    placeholder={`Informe o nome da nova ${service.label}...`}
-                    onChange={(e) => setQuery(e.target.value)}
-                    value={query}
-                />
-                <span className="field-error">
-                    {errMsg}
-                </span>
-            </div>
+        <aside className="create-entity-aside">
 
-            <Button text={ loading ? "Cadastrando..." : "Cadastrar"}  click={sendCreate}/>
-        </div>
+            <header className="create-entity-header">
+                <div>
+                    <small>Novo cadastro</small>
+                    <h2>{service.label}</h2>
+                    <p>
+                        Cadastre uma nova {service.label.toLowerCase()} sem sair
+                        do formulário.
+                    </p>
+                </div>
+
+                <Button
+                    text="Fechar"
+                    click={() => setModalCreate(null)}
+                />
+            </header>
+
+            <main className="create-entity-content">
+
+                <label>
+                    Nome da {service.label.toLowerCase()}
+                </label>
+
+                <input
+                    type="text"
+                    placeholder={`Ex: ${service.label} Premium`}
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    autoFocus
+                />
+
+                {errMsg && (
+                    <span className="field-error">
+                        {errMsg}
+                    </span>
+                )}
+
+            </main>
+
+            <footer className="create-entity-footer">
+
+                <Button
+                    text={loading ? "Cadastrando..." : "Cadastrar"}
+                    click={sendCreate}
+                />
+
+            </footer>
+
+        </aside>
     );
-}
+};
 
 export default CreateCategoryOrBrand;

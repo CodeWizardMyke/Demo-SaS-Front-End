@@ -1,5 +1,5 @@
-import { serviceProductSearch } from "services/serviceProductSearch";
-import { serviceProductSearchBy } from "services/serviceProductSearchBy";
+import { serviceProductSearch } from "services/product/serviceProductSearch";
+import { serviceProductSearchBy } from "services/product/serviceProductSearchBy";
 
 export const searchServicesConfig = {
     read:serviceProductSearch,

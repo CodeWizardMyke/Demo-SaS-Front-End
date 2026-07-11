@@ -7,9 +7,11 @@ import { ProductFormContext } from 'contexts/ProductFormContext';
 import Button from 'components/buttons/Button';
 import useProductCreate from '../hooks/useProductCreate';
 import useProductUpdate from '../hooks/useProductUpdate';
+import { WorkspaceContext } from 'contexts/WorkspaceContext';
 
 const ButtonPrevNextStep = ({css,formType ,children}) => {
     const {step, totalSteps, dispatch } = useContext(ProductFormContext);
+    const { activeSideBar } = useContext(WorkspaceContext);
 
     const {sendCreate} = useProductCreate();
     const {sendUpdate} = useProductUpdate();
@@ -41,7 +43,7 @@ const ButtonPrevNextStep = ({css,formType ,children}) => {
     
     return (
       <>
-         <div className="container_button_navigation_steps">
+         <div className={`container_button_navigation_steps acressWidth ${ activeSideBar ? "active" : ""}`}>
          <div className={`content-button-pvn ${css}` }>
             <button 
                 type="button"

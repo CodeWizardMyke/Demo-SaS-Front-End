@@ -20,8 +20,7 @@ const Marketing = () => {
     const { formData } = useContext(ProductFormContext) ;
 
     return (
-        <div className='scob-content'>
-            <div className="space-gap">
+        <div className='md-content scroll'>
 
                 <Title 
                     title={marketingSettings.title}
@@ -59,7 +58,6 @@ const Marketing = () => {
 
                 }
     
-            </div>
             
         </div>
     );

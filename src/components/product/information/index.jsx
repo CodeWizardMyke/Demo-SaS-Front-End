@@ -1,43 +1,47 @@
 import React, { useMemo } from 'react';
 import { resolveFields } from './utils/resolveFields';
-import productForm from 'configs/product'; 
 
+import productForm from 'configs/product'; 
 import Title from 'components/titles/Title';
-import InformationItemsContent from './components/InformationItemsContent';
 
 import "./styles.css";
+import RenderFields from './RenderFields';
 
 const Informations = () => {
 
-    const informationSettings = productForm.find( item => item.id === "product_information" );
+    const settings = productForm.find( item => item.id === "product_information" );
 
-    const joinedSettings = useMemo(()=> {
-        return resolveFields(informationSettings.fields);
-    },[informationSettings])
+    const joinFields = useMemo(()=> {
+        return resolveFields(settings.fields);
+    },[settings])
 
     return (
-        <div className='scob-content'>
+        <div className='md-content'>
             <div className='information'>
-            <Title 
-                title={informationSettings.title} 
-                svg={informationSettings.svg}  
-                subTitle={informationSettings.subtitle}
-            />
+                <Title 
+                    title={settings.title} 
+                    svg={settings.svg}  
+                    subTitle={settings.subtitle}
+                />
                 {
-                    joinedSettings.map( (element,index) => {
-                        return (
-                            <div 
-                                className={element.cssP}
-                                key={`JoinedSettings_step:${element.step}_id:${index}`}
-                            >
-                                <div className="card-title">
-                                    <span>{ element.step }</span>
-                                    <h4> {element.stepLabel} </h4>
+                    joinFields.map((joinStep,index)=> (
+
+                        <div key={`ji${index}`} className='p-card' >
+                            
+                            <div className='title-card-step'>
+                                <div className='step-row'>
+                                    <h1>{joinStep.step}.</h1>
+                                    <h2>{joinStep.stepLabel}</h2>
                                 </div>
-                                <InformationItemsContent fields={element.fields} cssC={element.cssC} />
+                                <span>{joinStep.help}</span>
                             </div>
-                        )
-                    } )
+
+
+                            <div className={joinStep.css} >
+                                <RenderFields data={joinStep} />
+                            </div>
+                        </div>
+                    ) )
                 }
             </div>
             

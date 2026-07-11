@@ -1,0 +1,27 @@
+
+.tabs-bar li{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    min-width:160px;
+    max-width:220px;
+    flex-shrink:0;
+
+    padding:0 14px;
+
+    height:30px;
+
+    border-radius:6px;
+
+    background:var(--btTab);
+    color:var(--textTab);
+
+    transition:.2s;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tabs-bar li:hover{
+    opacity:.85;
+}

@@ -1,33 +1,41 @@
-.information {
+.field-md-10{
+    width: 100%;
+    padding: 25px;
+}
+.field-md-10 div  {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-.information .identfications, 
-.information .code-references, 
-.information .description{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     gap: 5px;
 }
 
-.information .identfications div{
-    max-width: 48%;
-    width: 100%;
-}
-.information .identfications{
-    justify-content: space-between;
+.information{
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.information .description div{
+.title-card-step{
     width: 100%;
+    padding: 5px ;
+    display: flex;
+    flex-direction: column;
 }
-.information .description img{
-    max-width: 200px;
+.step-row{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--textCard);
 }
-@media screen  and (max-width:600px) {
-    .information .identfications div{
-        max-width: 100%;
+
+@media screen and (max-width:900px) {
+    .information .md-card-row div{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .information .md-card-row select{
+        max-width: 400px;
     }
 }

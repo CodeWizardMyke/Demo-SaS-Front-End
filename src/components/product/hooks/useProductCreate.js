@@ -3,7 +3,7 @@ import { WorkspaceContext } from "contexts/WorkspaceContext";
 import { useContext } from "react"
 import { api } from "services/api";
 import { normalizeErrors } from "utils/normalizeErrors";
-import parsePrice from "../information/utils/parsePrice";
+import parsePrice from "../utils/parsePrice";
 
 export default function useProductCreate () {
     const {formData, dispatch} = useContext(ProductFormContext);

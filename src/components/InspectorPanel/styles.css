@@ -1,0 +1,48 @@
+.cl-inspector{
+    width: 350px;
+    transition:.3s;
+}
+
+.inspector-panel{
+
+    display:flex;
+    flex:1;
+
+    width:350px;
+    min-width:0;
+    min-height:0;
+
+
+    overflow:hidden;
+
+    transition:.3s;
+
+    z-index: 100;
+
+    border-left:1px solid var(--panelBorder);
+
+    background:var(--bgPanel);
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.inspector-panel.active{
+    width:0;
+    min-width:0;
+    border-left:none;
+}
+
+.cl-inspector.active{
+    width:0;
+    min-width:0;
+    border-left:none;
+}
+
+@media screen and (max-width:1440px) {
+    .cl-inspector{
+        width: 0;
+    }
+}

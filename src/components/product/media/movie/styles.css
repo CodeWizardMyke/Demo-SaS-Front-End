@@ -1,19 +1,17 @@
 .movie-content{
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--bgPanel);
     border-radius: 12pt;
-    padding:15px;
-    margin: 5px 0;
 }
-
 .movie-title{
     gap: 10px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
 }
+
 .movie-title .title{
     display: flex;
     align-items: center;
@@ -32,6 +30,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    padding: 5px 15px;
     gap: 10px;
     justify-content: space-between;
     min-height: 60px;
@@ -59,7 +58,6 @@
     height: 35px;
     cursor: pointer;
 }
-
 
 .movie-preview{
     height: 275px;

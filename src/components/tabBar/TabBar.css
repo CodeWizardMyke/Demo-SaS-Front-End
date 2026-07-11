@@ -1,0 +1,42 @@
+.tabs-bar{
+    display:flex;
+    align-items:center;
+
+    height:42px;
+    flex-shrink:0;
+
+    background:var(--bgPanel);
+    border-bottom:1px solid var(--panelBorder);
+
+    padding:0 6px;
+    gap:8px;
+}
+
+.tab-bar-content{
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.tabs-wrapper{
+    flex:1;
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    scrollbar-width:none;
+}
+
+.tabs-wrapper::-webkit-scrollbar{
+    display:none;
+}
+
+.tabs-wrapper ul{
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    list-style:none;
+
+    width:max-content;
+    min-width:100%;
+}

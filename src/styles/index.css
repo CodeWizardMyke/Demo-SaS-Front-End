@@ -1,30 +1,42 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    user-select: none;
-    margin: 0;
-    font-size: 10pt;
-}
-h1{
-    font-size: 18pt;
-}
-h2{
-    font-size: 16pt;
-}
-h3{
-    font-size: 14;
+/* ==========================================================
+   RESET
+========================================================== */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-main.container{
-    min-height: 100vh;
+html,
+body{
+    width:100%;
+    height:100%;
 }
 
-body {
-    color: var(--text);
-    background-color: var(--background);
-    transition: 0.3s;
-    font-family: Arial, Helvetica, sans-serif;
+body{
+    font:10pt Arial, Helvetica, sans-serif;
+    color:var(--text);
+    background:var(--background);
+    transition:.25s ease;
 }
+
+h1{font-size:18pt;}
+h2{font-size:16pt;}
+h3{font-size:14pt;}
+
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+/* ==========================================================
+   SCROLL
+========================================================== */
 .scroll::-webkit-scrollbar{
     width: 6px;
 }
@@ -38,200 +50,275 @@ body {
     background: rgba(120,120,120,.7);
 }
 
+/* ==========================================================
+   BUTTONS
+========================================================== */
 
 button{
-    background: var(--button);
-    color: var(--buttonTxtColor);
-    border: 1px solid var(--buttonBorderColor);
-    padding: 10px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    justify-content: space-between;
-    transition: 200ms ease;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:10px 16px;
+
+    border:1px solid var(--buttonBorderColor);
+    border-radius:6px;
+
+    background:var(--button);
+    color:var(--buttonTxtColor);
+
+    cursor:pointer;
+    transition:.2s;
 }
+
 button:hover{
-    opacity: 0.8;
+    opacity:.85;
+}
+
+button:disabled,
+.disabled{
+    cursor:not-allowed;
+    opacity:.45;
+}
+
+button:disabled:hover,
+.disabled:hover{
+    opacity:.45;
+}
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+input,
+select{
+    width:100%;
+    height:35px;
+
+    margin:5px 0;
+    padding:0 15px;
+
+    border:2px solid var(--inptBorder);
+    border-radius:5px;
+
+    background:var(--inptBg);
+    color:var(--inptText);
+
+    outline:none;
+    transition:.2s;
 }
 
 input{
-    border-radius: 5px;
-    padding-left: 15px;
-    height: 35px;
-    max-width: 400px;
-    margin: 5px 0;
-    width: 100%;
-    background-color: var(--inptBg);
-    color: var(--inptText);
-    border: 2px solid var(--inptBorder);
+    max-width:400px;
 }
 
 select{
-    background-color: var(--inptBg);
-    border: 2px solid var(--inptBorder);
-    outline: none;
-    border-radius: 5px;
-    color: var(--inptText);
-    
-    height: 35px;
-    max-width: 200px;
-    width: 100%;
-    
-    padding-left: 15px;
-    margin: 5px 0;
-
-    text-align: center;
+    max-width:200px;
+    text-align:center;
 }
 
-.bt-create{
-    max-width: 250px;
-    width: 100%;
+input:hover,
+select:hover{
+    border-color:var(--blue-inner);
+}
+
+input:focus,
+select:focus{
+    border-color:var(--blue-strong);
+}
+
+/* ==========================================================
+   BUTTON VARIANTS
+========================================================== */
+
+.bt-create,
+.button-confirm{
+    width:100%;
+    max-width:250px;
 }
 
 .button-confirm{
-    max-width: 250px;
-    height: 35px;
-    padding: 0;
-    width: 100%;
-    margin: 0 auto;
-}
-.bt-disabled{
-    opacity: 0.2;
-    cursor: default;
-}
-.bt-disabled:hover{
-    opacity: 0.2;
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    max-width: 100vw;
-}
-
-.content{
-    display: flex;
-    flex: 1;
-    position: relative;
-}
-.flex-grow{
-    flex-grow: 1;
-}
-
-.space-gap{
-    gap: 10px;
-    display: grid;
-}
-
-.bt-toggle-sidebar{
-    cursor: pointer;
-    margin: 0px 10px;
-    width: 25px;
-    height: 25px;
-}
-.bt-toggle-sidebar:hover{
-    opacity: 0.5;
-}
-
-.sectionAppContent{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-.errs{
-    color: var(--txt-err);
-    font-size: 10pt;
-}
-
-.btn{
-    min-width: 45px;
-    height: 45px;
-    padding: 5px 10px;
-    font-size: 8pt;
-    
-    border: 1px solid var(--inptBorder);
-    border-radius: 5px;
-    cursor: pointer;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn svg{
-    height: 25px;
-    width: 25px;
-    margin-bottom: 2px;
-}
-
-.btn.clean{
-    background-color: var(--inptBg) ;
-    color: var(--txtDanger);
-}
-
-.ql-toolbar {
-    border-radius: 8px 8px 0 0;
-}
-
-.ql-container {
-    border-radius: 0 0 8px 8px;
-    font-size: 14px;
-}
-
-.ql-editor {
-    min-height: 220px;
-}
-
-.messege-state{
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.errors-content{
-    display: flex;
-    width: 100%;
-    position: relative
-}
-.field-err{
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-height: 15px;
-    display: block;
-    width: 100%;
-    background-color: var(--bgCardItem);
-    display: flex;
-    gap: 10px;
-    border-radius: 5pt;
-    color: var(--txtDanger) !important;
-    padding: 0 10px;
-}
-.field-error{
-    width: 100%;
-    color: var(--txtDanger);
+    height:35px;
+    margin:auto;
+    padding:0;
 }
 
 .btSearchProduct{
-    max-width: 140px;
-    width: 100%;
+    max-width:140px;
 }
 
-.disabled{
-    cursor:not-allowed;
-    opacity: 0.5;
-}
-.disabled:hover{
-    opacity: 0.5;
+.bt-search{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:100px;
+    height:35px;
+
+    padding:0;
 }
 
-.popupDeletedSucess h2{
-    color: #dc3545;
+.bt-search svg{
+    width:20px;
+    height:20px;
+    margin-right:5px;
 }
 
+.bt-search.create{
+    background:var(--btHoverConfirm);
+    color:var(--btColorConfirm);
+}
+
+/* ==========================================================
+   ICON BUTTONS
+========================================================== */
+
+.btn{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    min-width:45px;
+    height:45px;
+
+    padding:5px 10px;
+
+    border:1px solid var(--inptBorder);
+    border-radius:5px;
+
+    font-size:8pt;
+}
+
+.btn svg{
+    width:25px;
+    height:25px;
+    margin-bottom:2px;
+}
+
+.btn.clean{
+    background:var(--inptBg);
+    color:var(--txtDanger);
+}
+
+/* ==========================================================
+   HELPERS
+========================================================== */
+
+.flex-grow{
+    flex-grow:1;
+}
+
+.space-gap{
+    display:grid;
+    gap:10px;
+}
+
+.sectionAppContent{
+    display:flex;
+    flex:1;
+    flex-direction:column;
+}
+
+/* ==========================================================
+   SIDEBAR
+========================================================== */
+
+.bt-toggle-sidebar{
+    width:25px;
+    height:25px;
+    margin:0 10px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.bt-toggle-sidebar:hover{
+    opacity:.5;
+}
+
+/* ==========================================================
+   FORM ERRORS
+========================================================== */
+
+.errs,
+.field-error{
+    color:var(--txtDanger);
+}
+
+.errors-fields{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+
+    width:100%;
+
+    list-style:none;
+    padding:5px;
+}
+
+.errors-content{
+    position:relative;
+    width:100%;
+}
+
+.field-err{
+    position:absolute;
+    inset:0 auto auto 0;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    width:100%;
+    min-height:18px;
+
+    padding:0 10px;
+
+    border-radius:5px;
+
+    background:var(--bgCardItem);
+    color:var(--txtDanger);
+}
+
+/* ==========================================================
+   SEARCH INPUT
+========================================================== */
+
+.div-input-content{
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    flex:1;
+    min-width:170px;
+}
+
+.div-input-content input{
+    max-width:none;
+    padding-left:38px;
+}
+
+.div-input-content svg{
+    position:absolute;
+    left:8px;
+
+    width:22px;
+    height:22px;
+}
+
+/* ==========================================================
+   MESSAGES
+========================================================== */
+
+.messege-state{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    gap:5px;
+}
+
+.popupDeletedSucess h2,
 .popupDeletedSucess span{
-    color: #dc3545;
+    color:#dc3545;
 }

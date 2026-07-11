@@ -4,8 +4,27 @@
     overflow-y: auto;
 }
 
+.aside-product{
+    flex: 1;
+}
+
+
+.aside-list{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 .bg-transparent{
     background-color: transparent !important;
+}
+.aside-header{
+    padding: 5px;
+}
+.aside-header button{
+    width: 100%;
+    max-width: 350px;
+    background-color: orange;
+    color: white;
 }
 
 .list-content{

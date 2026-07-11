@@ -15,7 +15,7 @@ const Thumbnails = () => {
     const mediaSettings = productForm.find( settings => settings.id === "media");
 
     return (
-        <div className='scob-content'>
+        <div className='md-content'>
             <div className="sub-content">
 
                 <Title 

@@ -2,7 +2,6 @@
     background-color: var(--bgPanel);
     width: 260px;
     min-width: 260px;
-    min-height: 100vh;
     padding: 15px;
     display: flex;
     flex-direction: column;

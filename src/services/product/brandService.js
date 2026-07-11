@@ -1,10 +1,10 @@
-import { api } from "./api";
+import { api } from "services/api";
 
-export async function searchCategories(query, page = 1, size = 10){
+export async function searchBrands(query, page = 1, size = 10){
 
     try{
 
-        const response = await api.get('/category', {
+        const response = await api.get('/brand', {
             headers:{
                 query,
                 page,

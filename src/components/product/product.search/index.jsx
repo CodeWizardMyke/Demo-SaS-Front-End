@@ -83,6 +83,7 @@ const ProductSearch = ({selected, setSelected, openForm}) => {
 
     return(
         <div className="md-content">
+            
             {
                 loading && <Loading/>
             }

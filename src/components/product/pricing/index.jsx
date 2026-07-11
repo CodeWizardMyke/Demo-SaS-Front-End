@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useMemo } from 'react';
 
 import './style.css'
-import 'styles/formStyles.css'
+import 'styles/formStyles.css';
 
 import Overview from './Overview';
-import PricingField from './PricingField';
 import SellingPrice from './SellingPrice';
 
 import formConfig from 'configs/product/index';
@@ -13,15 +12,18 @@ import { ProductFormContext } from 'contexts/ProductFormContext';
 import calculateSellingPrice from './util/calculateSellingPrice';
 
 import Title from 'components/titles/Title'; 
+import RenderFieldPricing from './RenderFieldPricing';
 
 const Pricing = () => {
     const { dispatch, formData } = useContext(ProductFormContext);
+   
     const calculatedData = useMemo( () => calculateSellingPrice(formData),[formData] );
-    const pricingSettings = formConfig.find(item => item.id === "pricing");
     
-    const joinedData = useMemo( () =>{
-        return modifiableFields(pricingSettings.fields)
-    },[pricingSettings] )
+    const settings = formConfig.find(item => item.id === "pricing");
+    
+    const joinFields = useMemo( () =>{
+        return modifiableFields(settings.fields)
+    },[settings] )
 
     useEffect(() => {
 
@@ -47,62 +49,40 @@ const Pricing = () => {
     ]);
 
     return (
-        <div className='scob-content'>
-            <div className="space-gap">
+        <div className='md-content'>
 
-                <Title 
-                    title={pricingSettings.title}
-                    svg={pricingSettings.svg}
-                    subTitle={pricingSettings.subtitle}
-                />
-            
-                <Overview data={formData} processData={calculatedData} />
+            <Title 
+                title={settings.title}
+                svg={settings.svg}
+                subTitle={settings.subtitle}
+            />
+        
+            <Overview data={formData} processData={calculatedData} />
 
-                {
-                    joinedData?.map(( item,index ) => {
+            {
+                joinFields?.map(( joinStep,index ) =>
 
-                        return (
-                            <div className={item.cssP} key={item.stepLabel + index} >
-                                <div className="card-title">
-                                    <span>{item.step}</span>
-                                    <h4>{item.stepLabel}</h4>
-                                </div>
+                    <div className='md-card' key={`jf${index}`} >
 
-                                {
-                                    !!item.cssJoined ? (
-                                        <div className={item.cssJoined} >
-                                            {
-                                                item.fields.map((field,jIndex) =>  {
-                                                    return (
-                                                        <div key={`fieldPricForm${field.name}_id:${jIndex}`}>
-                                                            <PricingField field={field} className={item.cssC} />
-                                                        </div>
-                                                    )
-                                                } )
-                                            }
-                                        </div>
-                                    )
-                                    : 
-                                    (
-                                        item.fields.map((field,yIndex) =>  {
-                                            return (
-                                                <div key={`fieldPricForm${field.name}_id:${yIndex+index}`}>
-                                                    <PricingField field={field} className={item.cssC} />
-                                                </div>
-                                            )
-                                        } )
-                                    )
-                                }
-                                
-                                <span>{item.help}</span>
+                        <div className='md-title'>
+                            <div className='title-row'>
+                                <h1>{joinStep.step}.</h1>
+                                <h2>{joinStep.stepLabel}</h2>
                             </div>
-                        )
-                    })
-                }
+                            <span>{joinStep.help}</span>
+                        </div>
 
-                <SellingPrice processData={calculatedData}/>
-                
-            </div>
+                        <div className={joinStep.css} >
+                            <RenderFieldPricing data={joinStep.fields} css={joinStep.cssField} />
+                        </div>
+
+                    </div>
+
+                )
+            }
+
+            <SellingPrice processData={calculatedData}/>
+            
             
         </div>
     );

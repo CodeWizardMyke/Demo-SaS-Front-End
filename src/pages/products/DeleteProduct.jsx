@@ -15,14 +15,14 @@ const DeleteProduct = () => {
     }
 
     function deletedSucess(){
-        //setSelectProduct(null);
+        setSelectProduct(null);
         setToggleModal(false);
         setModalSucess(selectProduct);
         console.log('deletado')
     }
 
     return (
-      <div className='module-content'>
+      <div className='module-content scroll'>
             {
                 modalSucess && <PopupSucess  text={`DELETADO Produto: ${selectProduct.title}`} css={'popupDeletedSucess'} />            
             }
