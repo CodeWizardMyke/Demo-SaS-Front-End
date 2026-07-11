@@ -1,10 +1,24 @@
 .movie-content{
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--bgPanel);
     border-radius: 12pt;
+    gap: 5px;
+    position: relative;
 }
+.container-movies-controls{
+    background-color: var(--bgCardItem);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    flex: 1;
+    width: 100%;
+    border-radius: 12px;
+    padding: 5px 15px;
+}
+
 .movie-title{
     gap: 10px;
     padding: 5px;
@@ -60,7 +74,8 @@
 }
 
 .movie-preview{
-    height: 275px;
+    min-height: 275px;
+    flex: 1;
     background-color: var(--panelBorder);
     border-radius: 12px;
 }
@@ -81,4 +96,21 @@
     height: 35px;
     width: 35px;
     margin-bottom: 15px;
+}
+
+
+.bt-manager-movie{
+    max-width: 250px;
+    width: 100%;
+    margin: 0 auto;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.bt-manager-movie svg{
+    transition: transform .1s ease;
+}
+
+.bt-manager-movie.active svg{
+    transform: rotate(180deg);
 }

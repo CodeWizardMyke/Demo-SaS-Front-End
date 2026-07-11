@@ -10,9 +10,17 @@ import UploadArea from '../Shared/upload/UploadArea';
 import CurrentImage from '../Shared/currentImage';
 
 const Thumbnails = () => {
-    const { formData } = useContext(ProductFormContext);
+    const { formData, dispatch } = useContext(ProductFormContext);
 
     const mediaSettings = productForm.find( settings => settings.id === "media");
+
+    function handlerToggle() {
+        dispatch({
+            type:"SET_FIELD",
+            field:'currentImage',
+            value:null
+        })
+    }
 
     return (
         <div className='md-content'>
@@ -28,7 +36,10 @@ const Thumbnails = () => {
 
                 <UploadArea svg={mediaSettings.svg}  field={'thumbnails'}  />
                 
-                <CurrentImage current={formData.currentImage} />
+                <CurrentImage
+                     current={formData.currentImage}
+                     toggle={handlerToggle}
+                />
 
             </div>
         </div>

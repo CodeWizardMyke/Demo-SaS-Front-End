@@ -2,8 +2,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 320px;
+    min-height: 320px;
+    flex: 1;
     border-radius: 12px;
+    background-color: var(--bgCardItem);
+    position: relative;
 }
 .current-image img{
     width: 100%;
@@ -23,4 +26,10 @@
     width: 45px;
     height: 45px;
     border-radius: 12px;
+}
+.bt-closeCurrentImage{
+    position: absolute;
+    
+    top: 0;
+    right: 0;
 }

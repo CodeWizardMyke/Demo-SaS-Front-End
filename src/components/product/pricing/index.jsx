@@ -61,8 +61,13 @@ const Pricing = () => {
 
             {
                 joinFields?.map(( joinStep,index ) =>
+                    
+                    <div 
+                        key={`jf${index}`} 
+                    
+                        className={joinStep.cssLayout ? joinStep.cssLayout : "md-card"} 
 
-                    <div className='md-card' key={`jf${index}`} >
+                    >
 
                         <div className='md-title'>
                             <div className='title-row'>

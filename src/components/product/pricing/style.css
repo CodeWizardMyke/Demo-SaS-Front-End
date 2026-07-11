@@ -23,6 +23,29 @@
     padding-right: 10px;
 }
 
+.layout_pcost{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+    gap: 10px;
+    
+    padding: 10px;
+
+    border: 1px solid var(--borderCard);
+    
+    min-height: 100px;
+
+    background-color: var(--bgCardItem);
+
+    border-radius: 12px;
+}
+
+.content-pcost{
+    padding: 5px 0;
+}
+
 .pcost input{
     max-width: 300px;
     text-align: end;
@@ -60,3 +83,4 @@
     height: 35px;width: 35px;
     color: var(--borderCardDisable);
 }
+

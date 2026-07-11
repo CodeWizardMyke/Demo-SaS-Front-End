@@ -2,11 +2,19 @@ import React from 'react';
 
 import './styles.css';
 import { MdInsertPhoto } from "react-icons/md";
+import Button from 'components/buttons/Button';
 
-const CurrentImage = ({current}) => {
+const CurrentImage = ({current, toggle}) => {
+
 
     return (
         <div className='current-image'>
+            <Button 
+                css={'bt-closeCurrentImage'}
+                text={'x'}
+                click={ e => toggle(null) }
+            />
+
             {
                 current 
                 ?(

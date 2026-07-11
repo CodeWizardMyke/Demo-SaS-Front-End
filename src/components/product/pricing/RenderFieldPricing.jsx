@@ -19,7 +19,7 @@ export default function RenderFieldPricing({ data, css }) {
 
              return(
 
-                <div className="content-pricing"  key={`rfp${index}`} >
+                <div className="content-pricing" key={`rfp${index}`} >
 
                     <div>
                         <label htmlFor={field.name}>

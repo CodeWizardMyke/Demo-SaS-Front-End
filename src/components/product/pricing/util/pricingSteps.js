@@ -5,7 +5,8 @@ export const PRICING_STEPS = [
         step: 1,
         stepLabel: "Preço de custo",
         help: "Informe o quanto você paga para adquirir ou produzir este produto.",
-        css: "md-card pcost",
+        cssLayout:"layout_pcost",
+        css: "content-pcost",
         cssField:"pcost",
         match: field => field.name === "product_cost"
     },

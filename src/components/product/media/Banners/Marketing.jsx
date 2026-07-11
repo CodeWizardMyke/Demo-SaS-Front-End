@@ -10,7 +10,6 @@ import Movie from '../movie';
 
 import './styles.css';
 import CurrentImage from '../Shared/currentImage';
-import Button from 'components/buttons/Button';
 
 const Marketing = () => {
     const [ currentImage, setCurrentImage] = useState(null);
@@ -45,14 +44,10 @@ const Marketing = () => {
                 {
                     currentImage 
                         
-                        ? <>
-                            <Button 
-                                text={'fechar visualização'} 
-                                css={'button-flow-close'} 
-                                click={()=> setCurrentImage(null)} 
-                            />
-                            <CurrentImage current={currentImage} />
-                        </>
+                        ? <CurrentImage 
+                            current={currentImage}
+                            toggle={setCurrentImage}
+                        />
 
                         : <Movie />
 

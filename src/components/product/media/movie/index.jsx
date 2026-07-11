@@ -1,4 +1,3 @@
-import ButtonToggleSolid from 'components/buttons/toggle/ButtonToggleSolid';
 import React, { useContext, useState } from 'react';
 import './styles.css';
 import Iframe from './Iframe';
@@ -6,9 +5,16 @@ import NoFrame from './NoFrame';
 import convertYouTubeUrl from './utils/convertYouTubeUrl';
 import { ProductFormContext } from 'contexts/ProductFormContext';
 
+import BtTogleMovieManager from './btTogleMovieManager';
+import MovieControls from './movieControls';
+
 const Movie = () => {
     const {dispatch,formData} = useContext(ProductFormContext);
     const [showMovie,setShowMovie] = useState(false)
+    const [showControls,setShowControls] = useState(false);
+    const {movie_url} = formData;
+
+    let movieUrl = movie_url === "null" ? "" : movie_url;
 
     function handleURL(value) {
 
@@ -35,39 +41,26 @@ const Movie = () => {
 
     }
 
-    const {movie_url} = formData;
-
-    let movieUrl = movie_url === "null" ? "" : movie_url
-    
     return (
         <div className='movie-content'>
-            <div className="movie-title">
-                <div className='title'>
-                    <h3>Vídeo do produto</h3>
-                    <span className='optional'>Opicional</span>
-                </div>
-                <span>Adicione um vídeo para apresentar seu vídeo em ação.</span>
-            </div>
-            <div className="movie-controls">
-                <div className="input-content">
-                    <label htmlFor="movieUrl">URL do vídeo</label>
-                    <input 
-                        type="url" 
-                        id="movieUrl" 
-                        value={movieUrl}
-                        placeholder='Cole o link do YouTube, Vimeo ou outra plataforma.'
-                        onChange={ (e) => handleURL(e.target.value) }
-                    />
-                </div>   
-                <div className="control">
-                    
-                    <div className='msg'>
-                        <span>Exibir vídeo</span>
-                        <ButtonToggleSolid state={showMovie} click={()=> togleShowMovie()}  />
-                    </div>
+            <div className="container-movies-controls">
+                <BtTogleMovieManager 
+                setShowControls={setShowControls} 
+                showControls={showControls} 
+            />
 
-                </div>
+            {
+                showControls 
+                    && 
+                <MovieControls 
+                    handleURL={handleURL}
+                    movieUrl={movieUrl}
+                    showMovie={showMovie}
+                    togleShowMovie={togleShowMovie}
+                />
+            }
             </div>
+            
             <div className="movie-preview">
                 {
                     formData?.movie_url 
