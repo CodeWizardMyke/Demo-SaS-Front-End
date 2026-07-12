@@ -3,12 +3,14 @@
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 
 .content{
     display: flex;
     flex: 1;
     min-height: 0;
+    position: relative;
     overflow: hidden;
 }
 

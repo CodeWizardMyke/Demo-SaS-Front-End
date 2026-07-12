@@ -28,6 +28,14 @@
     color: var(--textCard);
 }
 
+.information .title-card-step h1{
+    font-size: 16pt;
+}
+
+.information .title-card-step h2{
+    font-size: 14pt;
+}
+
 @media screen and (max-width:900px) {
     .information .md-card-row div{
         width: 100%;
@@ -38,4 +46,18 @@
     .information .md-card-row select{
         max-width: 400px;
     }
+}
+
+@media screen and (max-width:900px) {
+    .information .title-card-step h1{
+        font-size: 15pt;
+    }
+
+    .information .title-card-step h2{
+        font-size: 14pt;
+    }
+    .information .title-card-step{
+        gap: 6px;
+    }
+
 }

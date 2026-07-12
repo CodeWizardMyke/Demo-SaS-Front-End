@@ -9,7 +9,7 @@ const BtTogleMovieManager = ({
     return (
         <Button
             text={
-                showControls
+                !showControls
                     ? 'Abrir gerenciamento de vídeo'
                     : 'Fechar gerenciamento de vídeo'
             } 

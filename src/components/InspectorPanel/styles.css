@@ -17,7 +17,7 @@
 
     transition:.3s;
 
-    z-index: 100;
+    z-index: 80;
 
     border-left:1px solid var(--panelBorder);
 
@@ -44,5 +44,25 @@
 @media screen and (max-width:1440px) {
     .cl-inspector{
         width: 0;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .inspector-panel{
+        max-width: none;
+        padding-left: 25px;
+    }
+    .inspector-panel.active{
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .inspector-panel{
+        max-width: none;
+        padding-left: 75px;
+    }
+    .inspector-panel.active{
+        padding-left: 0;
     }
 }

@@ -66,4 +66,6 @@
     .upload-area-content{
         text-align: center;
     }
+    .upload-area h2{font-size: 14pt;}
+    .upload-area h3{font-size: 12pt;}
 }

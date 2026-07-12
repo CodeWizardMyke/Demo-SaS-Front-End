@@ -119,7 +119,7 @@ const ModalDelete = ({ data,close,sucess }) => {
                 <strong>Atenção:</strong> esta ação não poderá ser desfeita.
             </div>
 
-            <div className="md-card-row">
+            <div className="md-card-row content-buttons-delete">
                 <Button 
                     text={'Processeguir com a remoção'} 
                     css={'button-remove'} 

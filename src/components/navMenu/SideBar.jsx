@@ -35,42 +35,44 @@ const SideBar = () => {
     return (
 
         <aside
-            className={`aside ${ !toggleSideBar && "closed" }`}
+           className='aside-container'
         >
+            <div  className={`aside ${ !toggleSideBar && "closed" }`}>
+                
+                <div className="asideTopContent">
 
-            <div className="asideTopContent">
+                    <div className="services">
 
-                <div className="services">
+                        <ButtonAsideToggle
+                            collapsed={!toggleSideBar}
+                            clickEvent={handleToggleSidebar}
+                            clickAble={true}
+                        />
 
-                    <ButtonAsideToggle
-                        collapsed={!toggleSideBar}
-                        clickEvent={handleToggleSidebar}
-                        clickAble={true}
-                    />
+                    </div>
+
+                    {
+                        toggleSideBar && (
+                            <SearchField setQuery={setQuery} />
+                        )
+                    }
 
                 </div>
 
                 {
                     toggleSideBar && (
-                        <SearchField setQuery={setQuery} />
+
+                        <SideBarNav
+                            filteredModules={filteredModules}
+                            modules={modules}
+                            openedModule={openedModule}
+                            handleToggleModule={handleToggleModule}
+                        />
+
                     )
                 }
 
             </div>
-
-            {
-                toggleSideBar && (
-
-                    <SideBarNav
-                        filteredModules={filteredModules}
-                        modules={modules}
-                        openedModule={openedModule}
-                        handleToggleModule={handleToggleModule}
-                    />
-
-                )
-            }
-
         </aside>
 
     );

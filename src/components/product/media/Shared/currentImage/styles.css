@@ -33,3 +33,10 @@
     top: 0;
     right: 0;
 }
+
+@media (max-width:600px) {
+    .insert-image h3{
+        font-size: 12pt;
+        margin-top: 10px;
+    }
+}

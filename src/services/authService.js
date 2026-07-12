@@ -3,6 +3,7 @@ import { setStorageItems } from "../utils/setStorageItems";
 import { api } from "./api";
 
 export async function loginRequest (payload,keepLogged) {
+
    try {
         
         const response = await api.post('/auth/login',payload);
@@ -23,8 +24,8 @@ export async function loginRequest (payload,keepLogged) {
 }
 
 export async function createAccountRequest (payload,keepLogged) {
-   try {
-        
+    try {
+
         const response = await api.post('/auth/create',payload);
 
         if(keepLogged){
@@ -33,12 +34,13 @@ export async function createAccountRequest (payload,keepLogged) {
             setStorageItems(response.data);
         }
 
-
         return {response:response, error:null};
 
-   } catch(error) {
+    } catch(error) {
+
+
         const result = responseErrorHandler(error);
 
         return {response:null, error:result};
-   }
+    }
 }

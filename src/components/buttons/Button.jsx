@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Button = ({
+        type,
         text,
         css,
         click,
@@ -10,7 +11,7 @@ const Button = ({
     
     return (
         <button 
-            type='button' 
+            type={type || 'button'} 
             onClick={click}
             className={`${css}`}
         >

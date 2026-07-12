@@ -60,14 +60,29 @@
     min-width: 120px;
 }
 
-@media screen and (max-width:375px) {
+@media screen and (max-width:425px) {
     .content-button-pvn button{
         min-width: 100px;
+        padding: 5px 15px;
+    }
+    .content-button-pvn{
+        background-color: var(--bgCardItem);
+        border-top: 1px solid var(--borderCard);
+        border-radius: 0;
         gap: 5px;
     }
 }
 @media screen and (max-width:1440px) {
     .acressWidth{
         padding-right: 0;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .content-button-pvn svg{
+        display: none;
+    }
+    .content-button-pvn button{
+        min-width: 55px;
     }
 }

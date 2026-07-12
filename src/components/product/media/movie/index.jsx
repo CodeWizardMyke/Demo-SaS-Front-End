@@ -14,7 +14,17 @@ const Movie = () => {
     const [showControls,setShowControls] = useState(false);
     const {movie_url} = formData;
 
-    let movieUrl = movie_url === "null" ? "" : movie_url;
+    let movieUrl = "";
+
+    try {
+        movieUrl = JSON.parse(movie_url);
+
+        if (!movieUrl || movieUrl === "null") {
+            movieUrl = "";
+        }
+    } catch {
+        movieUrl = movie_url || "";
+    }
 
     function handleURL(value) {
 
@@ -40,7 +50,7 @@ const Movie = () => {
         })
 
     }
-
+    
     return (
         <div className='movie-content'>
             <div className="container-movies-controls">
@@ -63,8 +73,8 @@ const Movie = () => {
             
             <div className="movie-preview">
                 {
-                    formData?.movie_url 
-                        ? <Iframe url={movieUrl} /> 
+                    movieUrl
+                        ? <Iframe url={movieUrl} />
                         : <NoFrame />
                 }
             </div>         

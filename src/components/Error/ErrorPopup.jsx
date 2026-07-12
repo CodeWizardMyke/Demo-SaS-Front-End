@@ -1,57 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 
-const ErrorPopup = ({errMsg,setErrMsg}) => {
-    const [toggle,setToggle] = useState(false)
+import './styles.css';
 
-    useEffect(()=>{
-        if(errMsg){
-            setToggle(true);
+const ErrorPopup = ({ errMsg, setErrMsg }) => {
+    const dialogRef = useRef(null);
+
+    const message = useMemo(() => {
+        if (!errMsg) return '';
+
+        if (typeof errMsg === 'string') return errMsg;
+
+        if (Array.isArray(errMsg)) {
+            return errMsg.map(error => error.msg || String(error)).join('\n');
         }
-    },[errMsg])
 
-    function closePopUp(){
+        if (typeof errMsg === 'object') {
+            return errMsg.msg || JSON.stringify(errMsg);
+        }
+
+        return String(errMsg);
+    }, [errMsg]);
+
+    useEffect(() => {
+        const dialog = dialogRef.current;
+
+        if (!dialog) return;
+
+        if (errMsg) {
+            if (!dialog.open) {
+                dialog.showModal();
+            }
+        } else if (dialog.open) {
+            dialog.close();
+        }
+    }, [errMsg]);
+
+    function handleClose() {
+        dialogRef.current?.close();
         setErrMsg(null);
-        setToggle(false);
-    };
+    }
 
     return (
-        toggle && (
-        <dialog style={style.popup}>
-            <h3>Erro na solicitação com o serviço.</h3>
-            <p style={style.spaceP}>{errMsg}</p>
+        <dialog
+            ref={dialogRef}
+            className='popup'
+            onCancel={handleClose}
+        >
+            <div className='header'>
+                <span className='icon' >⚠️</span>
+                <h3>Ocorreu um erro</h3>
+            </div>
+
+            <p className='message'>
+                {message}
+            </p>
+
             <button
-                onClick={()=> closePopUp()}
-                type='button'
-                className='btn-df'
+                type="button"
+                className="btn-df"
+                onClick={handleClose}
             >
                 Fechar
             </button>
         </dialog>
-        )
     );
-}
+};
 
-const style={
-    popup:{
-        maxWidth:"500px",width:"100%",
-        minHeigth:"200px",
-        display:"flex",
-        flexDirection:"column",
-        padding:"10px 20px",
-        justifyContent:"space-between",
-        position:"fixed",
-        top:"50px",
-        margin:"0px auto",
-        textAlign:"center",
-        border:"1px solid #c1c1c1",
-        borderRadius:"5px",
-        zIndex:"100"
-    },
-
-    spaceP:{
-        minHeight:"45px",
-        padding:"10px 0"
-    }
-}
 
 export default ErrorPopup;

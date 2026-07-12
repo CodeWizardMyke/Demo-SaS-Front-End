@@ -1,12 +1,21 @@
+.aside-container{
+    display: flex;
+    flex-direction: column;
+}
+
 .aside{
     background-color: var(--bgPanel);
     width: 260px;
     min-width: 260px;
     padding: 15px;
+
+    flex: 1;
     display: flex;
     flex-direction: column;
 
     border-right: 1px solid var(--panelBorder);
+
+    z-index: 100;
 
     overflow: hidden;
 
@@ -57,6 +66,7 @@
 
 .asideMainBody ul{
     display: flex;
+    z-index: 100;
     flex-direction: column;
 
     list-style: none;
@@ -135,9 +145,8 @@
 }
 
 @media (max-width:800px){
-
-    .secound{
-        display:none;
+    .aside-container{
+        padding-right: 45px;
     }
     .aside{
         position: absolute;

@@ -1,72 +1,36 @@
 .form-auth-content{
     background-color: var(--background);
-    position: absolute;
     color: var(--text);
-    padding: 20px;
-    min-height: 400px;
-    max-width: 400px; width: 100%;
+
+    z-index: 50;
+    right: 0; 
+
+    top: 0; bottom: 0;
+    position: absolute;
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    z-index: 50;
-    top: 0; bottom: 0;
-    right: 0; left: auto;
-    margin: 5px;
-}
+    justify-content: end;
+    gap: 25px;
 
-.form-auth-content .form-title{
+    min-height: 600px;
+    max-width: 400px; width: 100%;
+
+    margin: 5px;
+    padding: 15px;
+    user-select: none;
+}
+.form-auth-content h1{
     margin: 25px 0;
 }
-
-.form-auth-field{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 25px ;
-}
-
-.form-auth-content label{
-    font-size: 10pt;
-}
-.form-auth-field input{
-    height: 35px;
-    border-radius: 5px;
-    border: 1px solid var(--border);
-    background-color: var(--background);
-    color: var(--text);
-    padding-left: 15px;
-    font-size: 12pt;
-}
-.form-auth-field .response-field{
-    min-height: 15px;
-    text-align: end;
-    padding-right: 15px;
-    display: flex;
-    flex-direction: column;
-    color: var(--txt-err);
-    font-size: 10pt;
-}
-
-.form-auth-content .form-bt-action button{
-    width: 100%;
-    background-color: var(--bt-primary);
-    color: var(--bt-txt-primary);
-}
-
-.switch-auth-form{
-    text-align: center;
-    font-size: 10pt;
-    margin-top: 45px;
-    margin-bottom: 25px;
-    transition: all 200ms ease;
-}
-.switch-auth-form strong{
-    margin-left: 15px;
-}
-
-.switch-auth-form:hover strong{
-    cursor: pointer;
-    color: var(--text-hover);
+.input-content{
     
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    max-height: 350px;
 }
 .check-box-save{
     display: flex;
@@ -81,6 +45,26 @@
 .check-box-save input{
     cursor: pointer;
     height: 20px; width: 20px;
+}
+
+.auth-error{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.auth-error span{
+    color: var(--txtDanger);
+    display: block;
+}
+
+.toggle-form button{
+    width: 100%;
+}
+
+.bt-action{
+    background-color: var(--blue-inner);
+    color: var(--inptTextLight);
+    max-width: none;
 }
 
 @media only screen and (max-width:780px ) {

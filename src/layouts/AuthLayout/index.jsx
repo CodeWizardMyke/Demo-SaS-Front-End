@@ -5,62 +5,35 @@ import { createAccountRequest, loginRequest } from '../../services/authService';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
 
-import AuthForm from '../../components/auth/AuthForm';
-import ErrorPopup from '../../components/Error/ErrorPopup';
 import Loading from '../../components/loading/Loading';
+
+import AuthText from 'components/auth/AuthText';
 
 import './styles.css'
 
-const AuthLayout = () => {
-    const [authMode, setAuthMode] = useState("login");
-    const [keepLogged,setKeepLogged] = useState(false);
-    const [erros,setErrors] = useState([]);
-    const [errMsg,setErrMsg] = useState(null);
+import Login from 'components/auth/Login';
+import CreateAcc from 'components/auth/CreateAcc';
+import { CgDarkMode } from 'react-icons/cg';
+import ErrorPopup from 'components/Error/ErrorPopup';
 
+const AuthLayout = () => {
+    
     const {theme,toggleTheme} = useTheme()
+    const [authMode, setAuthMode] = useState("create");
+    const [keepLogged,setKeepLogged] = useState(false);
+    
+    const [fieldErrors,setFieldErrors] = useState([]);
+    const [errorMessage,setErrorMessage] = useState(null);
     
     const navigate = useNavigate()
 
+    useEffect(()=>{  setFieldErrors([]); setErrorMessage(null); },[authMode]);
     const { 
         isAuthenticated,
         setUser,setToken, 
         loading,setLoading 
 
     } = useContext(AuthContext);
-
-    async function submitAuthRequest(payload) {
-        if(authMode === "login"){
-            return await loginRequest(payload, keepLogged);
-        }else{
-            return await createAccountRequest(payload, keepLogged);
-        };
-    };
-
-    async function handleSubmitForm(event){
-        event.preventDefault();
-        setLoading(true);
-        const payload = new FormData(event.target);
-
-        let { response , error } = await submitAuthRequest(payload);
-        
-        if(error !== null ){
-
-            if(error.data){
-                setErrors(error.data);
-            }else{
-                setErrMsg(error.msg);
-            }
-            setLoading(false)
-            return false;
-        };
-
-        setUser(response.data.user);
-        setToken(response.data.token);
-
-        setLoading(false)
-    };
-
-    useEffect(()=>{  setErrors([]);  },[authMode]);
 
     useEffect(() => {
 
@@ -70,48 +43,100 @@ const AuthLayout = () => {
 
     }, [isAuthenticated, navigate]);
 
+    const services = {
+        login:loginRequest,
+        create:createAccountRequest
+    }[authMode];
+
+    const handleSubmitForm = async(event) => {
+        if(!event) return;
+
+        event.preventDefault();
+
+        const payload = Object.fromEntries(new FormData(event.target));
+        
+        setLoading(true);
+
+        const { response, error } = await services(payload,keepLogged);
+
+        if(error){
+
+            const {data , msg} = error;
+
+            if (data) {
+                setFieldErrors(data);
+                setErrorMessage(msg);
+            }
+
+            setLoading(false);
+
+            return;
+
+        }
+
+        setUser(response?.data?.user);
+        setToken(response?.data?.token);
+
+        setLoading(false);
+    }
+
+    const saveCredentials = () => {
+        setKeepLogged(!keepLogged)
+    }
+
+    const handlerAuthType = () => {
+        const types = authMode === 'login' ? 'create' : 'login';
+
+        setAuthMode(types)
+    }
+
+    const COMPONENT = {
+        login:
+        (
+            <Login
+                submit={handleSubmitForm}
+                saveCredentials={saveCredentials}
+                handlerAuthType={handlerAuthType}
+                errors={fieldErrors}
+            />
+        ),
+        create:
+        (
+            <CreateAcc
+                submit={handleSubmitForm}
+                saveCredentials={saveCredentials}
+                handlerAuthType={handlerAuthType}
+                errors={fieldErrors}
+            />
+        )
+    }[authMode]
+
     return (
-       <main className={`Auth ${theme === "dark" && "AuthDark"}`}>
-        {
-            errMsg && <ErrorPopup errMsg={errMsg} setErrMsg={setErrMsg} />
-        }
-        {
-            loading && <Loading />
-        }
+       <main 
+        className={
+            ` 
+                Auth 
+                ${theme === "dark" && "AuthDark"}
+            `}
+        >
+        
+        { errorMessage && <ErrorPopup ErrorMessage={errorMessage}  setErrorMessage={setErrorMessage} />}
+   
+        { loading && <Loading /> }
 
         <div className="pre-box" >
-            <AuthForm 
-                toggleTheme={toggleTheme}
-                setAuthMode={setAuthMode} 
-                authMode={authMode}
-                setKeepLogged={setKeepLogged}
-                keepLogged={keepLogged}
-                erros={erros}
-                submitForm={handleSubmitForm}
-            />
-
-            <div className="fixed-text">
-                <h1>{ authMode === "create" ? "CADASTRO" : "LOGIN"}</h1>
-            {
-                authMode === "create"
-                ?
-                (
-                    <p>
-                        Crie sua conta para acessar a plataforma demo e experimentar as funcionalidades do sistema.
-                        Os dados cadastrados são utilizados apenas para fins de demonstração, autenticação 
-                        e organização básica das informações dentro da aplicação.
-                    </p>
-                )
-                :
-                    <p>
-                        Faça login para acessar o ambiente demonstrativo da plataforma.
-                        Este projeto foi desenvolvido como um experimento SaaS para portfólio, 
-                        simulando processos reais de autenticação, gerenciamento de usuários e armazenamento de dados.
-                    </p>
-            }
+            <div className='alocate'>
+                <CgDarkMode
+                    onClick={toggleTheme}
+                    className='bt-theme'
+                />
             </div>
+
+            { COMPONENT }
+            
+            <AuthText type={authMode} />
+            
         </div>
-                
 
        </main>
     );
