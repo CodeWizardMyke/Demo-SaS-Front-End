@@ -88,7 +88,6 @@ const productForm = [
                     maxLength: "300px",
                     col: 12,
                 },
-
                 {
                     id: "official_store_name",
                     name: "official_store_name",
@@ -186,7 +185,7 @@ const productForm = [
                 {
                     id: "additional_information",
                     name: "discribe",
-                    step:3,
+                    step:4,
                     label: "Informações adicionais",
                     type: "textarea",
                     placeholder: "[ ... ]",
@@ -194,7 +193,14 @@ const productForm = [
                     preview: true,
                     rows: 20,
                     col: 120,
-                }
+                },
+                {
+                    id:"specifications",
+                    name:"specifications",
+                    label:"Especificação do produto",
+                    type:"json",
+                    step:3,
+                },
         ]
     },
 

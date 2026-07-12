@@ -5,6 +5,12 @@ import CheckoutProduct from './checkout';
 
 const Market = ({data}) => {
 
+    const specifications =
+        typeof data?.specifications === "string"
+            ? JSON.parse(data.specifications)
+            : data?.specifications;
+
+
     return (
         <div className='product_content'>
             <div className="product_header">
@@ -14,26 +20,28 @@ const Market = ({data}) => {
                 </span>
             </div>
             <div className="portable_snippet">
-                <div className="product_sale_details">
-                    <ul>
-                        <li>
-                            <span>Marca:</span>
-                            <span>{data?.brand?.name}</span>
-                        </li>
-                        <li>
-                            <span>Forma:</span>
-                            <span>{data?.product_shape}</span>
-                        </li>   
-                        <li>
-                            <span>Volume:</span>
-                            <span>{data?.NET_VOLUM}</span>
-                        </li>
-                        <li>
-                            <span>Faixa etária:</span>
-                            <span>{data?.age_group}</span>
-                        </li>
-                    </ul>
-                </div>
+            <div className="product_sale_details">
+                <ul>
+                    <li>
+                        <span>Marca:</span>
+                        <span>{data?.brandProduct?.brand_name}</span>
+                    </li>
+
+                    <li>
+                        <span>Categoria:</span>
+                        <span>{data?.categoryProduct?.category_name}</span>
+                    </li>
+
+                    {specifications &&
+                        Object.entries(specifications).map(([key, value]) => (
+                            <li key={key}>
+                                <span>{key}:</span>
+                                <span>{String(value)}</span>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
                 <div className="product_sale_quantity">
                     
                     {

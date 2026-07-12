@@ -6,6 +6,7 @@ import FieldTextArea from "./FieldTextArea";
 import FieldNumber from "./FieldNumber";
 import FieldCurrency from "./FieldCurrency";
 import FieldPercentage from "./FieldPercentage";
+import FieldJson from "./FieldJson";
 
 const SetedFields = ({ data }) => {
 
@@ -20,6 +21,7 @@ const SetedFields = ({ data }) => {
       number: FieldNumber,
       currency:FieldCurrency,
       percentage:FieldPercentage,
+      json:FieldJson,
    }
 
    const Component = FIELDS_TYPED[data.type];

@@ -13,6 +13,38 @@
     background-color: var(--bgCardItem) !important;
 }
 
+.field-json{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.field-json-row{
+    display:grid;
+    grid-template-columns:1fr 1fr 40px;
+    gap:10px;
+    align-items:center;
+}
+
+.field-json-row input{
+    width:100%;
+}
+
+.field-json-row button{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.field-json-add{
+    width:fit-content;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+}
+
 @media screen and (max-width:850px) {
     .ck .ck-editor__top {
         display: none;
