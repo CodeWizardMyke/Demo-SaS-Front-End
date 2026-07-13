@@ -31,25 +31,27 @@ const ProductInspector = () => {
 
         <div className="aside-product">
 
+            <Button
+                css="bt_show_product"
+                click={toggleShowDetails}
+                text={
+                    viewProductDetail
+                        ? "Fechar visualização"
+                        : "Visualizar produto"
+                }
+            />
+
             <div className="aside-header">
+            
+                <h3>Etapas de Formulário</h3>
 
-                <Button
-                    css="bt_show_product"
-                    click={toggleShowDetails}
-                    text={
-                        viewProductDetail
-                            ? "Fechar visualização"
-                            : "Visualizar produto"
-                    }
-                />
-
+                <span>
+                    clique em cima de uma etapa para exibir mais detalhes ou  clique em edição para ir direto para o formulário.
+                </span>
+                
             </div>
 
-            <div className="aside-content scroll">
-
-                <ResumeList/>
-
-            </div>
+            <ResumeList/>
 
         </div>
 

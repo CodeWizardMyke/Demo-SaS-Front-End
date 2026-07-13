@@ -9,7 +9,7 @@ import Market from './market';
 import GalleryModal from './images/galleryModal';
 
 const ProductDetailPage = () => {
-    const {formData,viewProductDetail,handlerToggleProductShow} = useContext(ProductFormContext);
+    const {formData ,handlerToggleProductShow} = useContext(ProductFormContext);
     
     const [openModal,setOpenModal] = useState(false)
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -71,7 +71,7 @@ const ProductDetailPage = () => {
 
             <div className="closeDetail">
                 <Button 
-                text={viewProductDetail ? "fechar visualização" : "visualizar produto"} 
+                text={"Fechar visualização"} 
                 click={()=> handlerToggleProductShow(false)} 
                 css={'button-larger'}
             />

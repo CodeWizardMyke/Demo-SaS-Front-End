@@ -5,7 +5,8 @@ import FieldItems from './ResumeItem';
 
 const ResumeList = () => {
     return (
-        <ul className='aside-list scroll'>
+        <ul className='aside-list'>
+            
             {
                 productFields.map((item,index) => (
                     <FieldItems 
@@ -14,6 +15,7 @@ const ResumeList = () => {
                     />
                 ))
             }
+            
         </ul>
     );
 }

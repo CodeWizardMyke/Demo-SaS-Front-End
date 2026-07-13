@@ -66,7 +66,7 @@ const productForm = [
 
     {
         id: "product_information",
-        type: "section",
+        type: "information",
         step:3,
         title: "Informações do Produto",
         subtitle:"Preencha os dados principais do seu produto.",

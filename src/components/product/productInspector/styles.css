@@ -1,36 +1,45 @@
-.aside-list, .aside-list ul{
-    list-style: none;
-    flex: 1;
-    overflow-y: auto;
-}
-
 .aside-product{
     flex: 1;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
+.aside-header{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    border-radius: 12px;
+    padding: 5px 15px;
+}
+
+.bt_show_product{
+    background-color: var(--bt-primary);
+    color: var(--bt-txt-primary);
+    width: 100%;
+}
 
 .aside-list{
     display: flex;
     flex-direction: column;
     width: 100%;
-}
-.bg-transparent{
-    background-color: transparent !important;
-}
-.aside-header{
-    padding: 5px;
-}
-.aside-header button{
-    width: 100%;
-    max-width: 350px;
-    background-color: orange;
-    color: white;
+    cursor: pointer;
+    user-select: none;
+    gap: 10px;
+    
 }
 
 .list-content{
-    z-index: 9999;
     padding: 5px 0;
 }
+
+
+.list-content:hover{
+    color: var(--blue-ligth);
+}
+
 
 .list-content .title{
     border-top: 1px solid var(--panelBorder);
@@ -42,10 +51,15 @@
     padding: 5px;
     position: relative;
 }
+
 .list-content .title svg{
     width: 20px;
     height: 20px;
     margin-right: 5px;
+
+}
+.list-content .bt-svg-edit:hover{
+    color: var(--inptWarning);
 }
 
 .bt-svg-edit{
@@ -71,4 +85,8 @@
     margin-left: 5px;
     font-style: italic;
     font-size: 8pt;
+}
+
+.list-content ul li .active{
+    background-color: red;
 }
