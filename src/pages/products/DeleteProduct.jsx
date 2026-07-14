@@ -24,7 +24,7 @@ const DeleteProduct = () => {
     return (
       <div className='module-content scroll'>
             {
-                modalSucess && <PopupSucess  text={`DELETADO Produto: ${selectProduct.title}`} css={'popupDeletedSucess'} />            
+                modalSucess && <PopupSucess  text={`DELETADO Produto: ${selectProduct?.title}`} css={'popupDeletedSucess'} />            
             }
             {
                 toggleModal
