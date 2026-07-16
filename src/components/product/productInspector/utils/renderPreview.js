@@ -33,7 +33,6 @@ export function renderPreview(field, dataForm) {
 
     }
 
-
     // Selects
     if (typeof value === "object" && !Array.isArray(value)) {
 
@@ -59,11 +58,6 @@ export function renderPreview(field, dataForm) {
     }
 
     switch (field.type) {
-
-        case "information":
-            console.log(field)
-            return;
-
 
         case "image-upload":
             return `${value.length} imagens`;

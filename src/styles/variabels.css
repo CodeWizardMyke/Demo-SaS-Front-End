@@ -51,6 +51,7 @@
      
     --bgListHover : #215885;
     --txtListHover: #F5F5F5;
+    --txtAction: #184369;
 
     /*princiapais cores de input*/
     --inptBg:#ffffff;
@@ -126,6 +127,7 @@
     /*Text colors*/
     --txtSalle: #e0e0e0;
     --txtDefault:#e0e0e0;
+    --txtAction: #ffe3c1;
 
 
     /*Errors*/

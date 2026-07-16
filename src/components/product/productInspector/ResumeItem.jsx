@@ -51,10 +51,14 @@ const ResumeItem = ({ dataConfigs }) => {
             <div className="title">
                 {dataConfigs.svg}
                 {dataConfigs.title}
-                <TbEdit 
-                    className='bt-svg-edit' 
+                <div 
+                    className="bt_svg_edit"
                     onClick={() => goEditStap(dataConfigs) }
-                />                
+                >
+
+                    <TbEdit />
+
+                </div>
             </div>
 
 

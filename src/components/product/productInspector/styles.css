@@ -27,6 +27,8 @@
     width: 100%;
     cursor: pointer;
     user-select: none;
+    max-height: 700px;
+    overflow-y: auto;
     gap: 10px;
     
 }
@@ -37,9 +39,11 @@
 
 
 .list-content:hover{
+    color: var(--blue-ligth) !important;
+}
+.list-content:hover p{
     color: var(--blue-ligth);
 }
-
 
 .list-content .title{
     border-top: 1px solid var(--panelBorder);
@@ -58,19 +62,30 @@
     margin-right: 5px;
 
 }
-.list-content .bt-svg-edit:hover{
+.list-content .bt_svg_edit:hover{
     color: var(--inptWarning);
 }
 
-.bt-svg-edit{
+.bt_svg_edit{
     position: absolute;
     right: 5px;
+    
     cursor: pointer;
-
+    
+    height: 25px;
+    width: 35px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition:  .4ms ease;
 }
-.bt-svg-edit:hover{
+.bt_svg_edit:hover{
     transform: translateY(-2px);
+}
+.bt_svg_edit svg{
+    width: 25px;
+    height: 25px;
 }
 
 .list-content li{
@@ -83,10 +98,24 @@
 
 .list-content li p{
     margin-left: 5px;
-    font-style: italic;
-    font-size: 8pt;
+    color: var(--txtAction);
 }
 
-.list-content ul li .active{
-    background-color: red;
+.preview-object{
+
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.preview-object strong{
+    padding-right: 15px;
+}
+
+.sub-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 5px;
 }
