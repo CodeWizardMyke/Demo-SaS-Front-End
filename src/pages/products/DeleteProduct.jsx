@@ -15,10 +15,12 @@ const DeleteProduct = () => {
     }
 
     function deletedSucess(){
+        
         setSelectProduct(null);
+
         setToggleModal(false);
+
         setModalSucess(selectProduct);
-        console.log('deletado')
     }
 
     return (

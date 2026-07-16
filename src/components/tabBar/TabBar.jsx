@@ -13,6 +13,7 @@ const TabBar = () => {
     function handlerClicked(){
         toggleSideBar();
         setToggleButton(!toggleButton)
+
     }
 
     return (
@@ -29,11 +30,16 @@ const TabBar = () => {
                 </ul>
             </div>
 
+         {
+            openedTabs.length
+                ?
             <ButtonAsideToggle
                 collapsed={toggleButton}
                 clickEvent={handlerClicked}
                 clickAble={openedTabs.length > 0}
             />
+            : " "
+         }
 
     </div>
     );
