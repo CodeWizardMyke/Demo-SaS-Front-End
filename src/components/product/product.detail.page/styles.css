@@ -155,5 +155,6 @@
 @media screen  and (max-width:1024px) {
     .product_header_mobile{
         display: flex;
+        margin-top: 75px;
     }
 }

@@ -5,7 +5,7 @@ import React, { useContext } from 'react';
 
 const RenderFields = ({ data }) => {
     const {errors} = useContext(ProductFormContext)
-    const {fields} = data
+    const fields = data.fields ? data.fields : []  ;
 
     return (
         fields.map((field,index) => {

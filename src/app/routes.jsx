@@ -7,6 +7,7 @@ import CreateProduct from '../pages/products/CreateProduct';
 import UpdateProduct from '../pages/products/UpdateProduct';
 import DeleteProduct from '../pages/products/DeleteProduct';
 import Overview from 'pages/overview/overview';
+import DashboardProducts from 'pages/dashboard/DashboardProducts';
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
             {path:"products/create",element:<CreateProduct/>},
             {path:"products/update",element:<UpdateProduct/>},
             {path:"products/delete",element:<DeleteProduct/>},
+            {path:"dashboard/products",element:<DashboardProducts/>},
         ]
     }
 ]);

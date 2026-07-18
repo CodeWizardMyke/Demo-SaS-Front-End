@@ -1,0 +1,127 @@
+.stat-card{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    min-height:150px;
+
+    padding:20px;
+
+    border-radius:14px;
+
+    background:var(--bgCardSubITem);
+
+    border:1px solid var(--panelBorder);
+
+    transition:.25s;
+
+    cursor:pointer;
+}
+
+.stat-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.stat-card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+}
+
+.stat-card-title{
+
+    display:block;
+
+    font-size:.85rem;
+
+    color:#8b8b8b;
+
+    margin-bottom:8px;
+
+}
+
+.stat-card-value{
+
+    margin:0;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+}
+
+.stat-card-icon{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(0,86,179,.08);
+
+    color:var(--bt-primary);
+
+    font-size:1.8rem;
+
+}
+
+.stat-card-description{
+
+    margin:15px 0;
+
+    font-size:.82rem;
+
+    color:#777;
+
+    line-height:1.5;
+
+}
+
+.stat-card-footer{
+
+    margin-top:auto;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+}
+
+.stat-card-footer.success{
+
+    color:#16a34a;
+
+}
+
+.stat-card-footer.danger{
+
+    color:#dc2626;
+
+}
+
+.stat-card-footer.warning{
+
+    color:#d97706;
+
+}
+
+.stat-card-footer.neutral{
+
+    color:#666;
+
+}

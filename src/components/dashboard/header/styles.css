@@ -1,0 +1,26 @@
+.d_header{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.d_header-tag{
+    background-color: var(--bgCardItem);
+    border: 1px solid var(--borderCard);
+    
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+    border-radius: 12px;
+    
+    padding: 15px;
+
+}
+.d_header-tag span{
+    font-size: 12pt;
+    font-weight: 900;
+    display: flex;
+    color: var(--txtAction);
+    align-items: center;
+    gap: 10px;
+}

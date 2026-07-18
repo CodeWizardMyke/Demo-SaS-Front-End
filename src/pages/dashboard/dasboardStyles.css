@@ -1,0 +1,50 @@
+.d_content{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    padding: 15px;
+    gap: 45px;
+    overflow-y: auto;
+}
+.d_statCards{
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.d_recents{
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.d_activity_feed{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:20px;
+
+}
+
+@media (max-width:780px){
+    .d_content{
+        align-items: center;
+    }
+    .d_statCards{
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .d_recents{
+        width: 100%;
+        justify-content: space-evenly;
+    }
+}

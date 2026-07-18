@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React,  { useEffect, useRef, useState } from "react";
 import { FaPlus, FaTrash } from "react-icons/fa6";
 import './styles.css';
-import { ProductFormContext } from "contexts/ProductFormContext";
 
 const createItem = () => ({
     id: crypto.randomUUID(),
@@ -9,7 +8,7 @@ const createItem = () => ({
     value: "",
 });
 
-const FieldJson = ({ value = {}, onChange, data}) => {
+const FieldJson = ({ value = {}, onChange}) => {
 
     const [items, setItems] = useState([createItem()]);
 
@@ -18,7 +17,7 @@ const FieldJson = ({ value = {}, onChange, data}) => {
     useEffect(() => {
 
         if (initialized.current) return;
-        if (!value) return;
+        if (!value || value === null || value === "null") return;
 
         let specifications = value;
 

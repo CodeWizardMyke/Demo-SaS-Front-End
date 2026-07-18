@@ -7,7 +7,7 @@ import './styles.css';
 
 const FieldTextArea = ({
     name,
-    value,
+    value = "",
     onChange,
     placeholder
 }) => {
