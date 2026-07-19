@@ -14,6 +14,7 @@ import Loading from "components/loading/Loading";
 import ProductInList from "../product.search/productList";
 import SelectedProductCard from "../product.search/selectedProductCard";
 import { searchServicesConfig } from "../product.search/services/searchServicesConfig";
+import { load } from "cache/cache";
 
 const ProductSearchDelete = ({selected,setSelected,openModal})=> {
 
@@ -31,6 +32,10 @@ const ProductSearchDelete = ({selected,setSelected,openModal})=> {
         size, setSize,
 
         page, totalPages,
+        
+        setResults,
+
+        setTotalPages,
 
         results, err,
 
@@ -54,6 +59,20 @@ const ProductSearchDelete = ({selected,setSelected,openModal})=> {
         setQuery("");
         
     }, [reset]);
+
+    useEffect(() => {
+
+        const cache = load("products");
+
+        if(cache){
+
+            setResults(cache?.rows);
+
+            setTotalPages(cache?.totalPages);
+
+        }
+
+    },[setResults,setTotalPages]);
         
     useEffect(()=>{
     

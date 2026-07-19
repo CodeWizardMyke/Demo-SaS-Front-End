@@ -9,6 +9,7 @@ import productForm from "configs/product";
 import Button from "components/buttons/Button";
 import { api } from "services/api";
 import { serviceProductDelete } from "services/product/serviceProductDelete";
+import { remove } from "cache/cache";
 
 const ModalDelete = ({ data,close,sucess }) => {
 
@@ -42,6 +43,7 @@ const ModalDelete = ({ data,close,sucess }) => {
 
         if(!error){
             sucess();
+            remove('products');
         }
 
     }

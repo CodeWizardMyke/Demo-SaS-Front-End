@@ -1,3 +1,4 @@
+import {  save } from "cache/cache";
 import { useCallback, useState } from "react";
 
 export const usePaginate = (services) => {
@@ -25,6 +26,7 @@ export const usePaginate = (services) => {
         setLoading(true);
 
         const { data, error} = await services(query,currentPage,currentSize,searchType);
+  
 
         if(error){
             setLoading(false);
@@ -39,6 +41,14 @@ export const usePaginate = (services) => {
         const total = Math.ceil(
             (data?.count || 0 ) / currentSize
         );
+
+        const setCache = {
+            rows:data.rows,
+            totalPages:total,
+            currentPage:currentPage
+        }
+
+        save('products',setCache);
 
         setTotalPages(total);
 
@@ -55,7 +65,7 @@ export const usePaginate = (services) => {
     },[])
 
     return {
-        results,
+        results,setResults,
         loading,
         err,
 
@@ -65,7 +75,7 @@ export const usePaginate = (services) => {
         size,
         setSize,
 
-        totalPages,
+        totalPages,setTotalPages,
 
         executeSearch,
         reset

@@ -4,6 +4,7 @@ import { useContext } from "react"
 import { api } from "services/api";
 import { normalizeErrors } from "utils/normalizeErrors";
 import parsePrice from "../utils/parsePrice";
+import { remove } from "cache/cache";
 
 export default function useProductCreate () {
     const {formData, dispatch} = useContext(ProductFormContext);
@@ -27,6 +28,7 @@ export default function useProductCreate () {
             setModalSucess(response.data);
 
             dispatch({ type:'RESET_FORM' });
+            remove('products');
 
             return{
                 data: response.data,

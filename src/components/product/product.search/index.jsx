@@ -15,6 +15,7 @@ import SelectedProductCard from "./selectedProductCard";
 
 import './styles.css';
 import { searchServicesConfig } from "./services/searchServicesConfig";
+import { load } from "cache/cache";
 
 const ProductSearch = ({selected, setSelected, openForm}) => {
     const [query, setQuery] = useState("");
@@ -30,7 +31,11 @@ const ProductSearch = ({selected, setSelected, openForm}) => {
 
         size, setSize,
 
-        page, totalPages,
+        page, 
+        
+        totalPages,setTotalPages,
+
+        setResults,
 
         results, err,
 
@@ -38,6 +43,27 @@ const ProductSearch = ({selected, setSelected, openForm}) => {
 
     } = usePaginate(currentProductSearch);
 
+        useEffect(() => {
+            
+        reset();
+
+        setQuery("");
+        
+    }, [reset]);
+
+    useEffect(() => {
+
+        const cache = load("products");
+
+        if(cache){
+
+            setResults(cache?.rows);
+
+            setTotalPages(cache?.totalPages);
+
+        }
+
+    },[setResults,setTotalPages]);
     
     const handleSearch = useCallback((
         currentPage = 1,
@@ -48,14 +74,7 @@ const ProductSearch = ({selected, setSelected, openForm}) => {
 
     },[executeSearch,query,size, searchType]);
 
-    useEffect(() => {
-            
-        reset();
 
-        setQuery("");
-        
-    }, [reset]);
-        
     useEffect(()=>{
     
         if(err) setErrMsg(err);
@@ -78,8 +97,6 @@ const ProductSearch = ({selected, setSelected, openForm}) => {
     const css = selected
         ? "active"
         : "disabled";
-
-    
 
     return(
         <div className="md-content">

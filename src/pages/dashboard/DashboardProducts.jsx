@@ -2,7 +2,7 @@ import DashboardHeader from 'components/dashboard/header/DashboardHeader';
 import StatCard from 'components/dashboard/statCard/StatCard';
 import React, { useEffect, useState } from 'react';
 
-import { TbBuildingStore, TbCategory, TbDeviceDesktop, TbDeviceLaptop, TbDeviceMobile, TbDeviceTv, TbKeyboard, TbPackage, TbPhoto, TbPlus } from 'react-icons/tb';
+import { TbBuildingStore, TbCategory, TbPackage } from 'react-icons/tb';
 
 import './dasboardStyles.css';
 import RecentActions from 'components/dashboard/recentActions/RecentActions';
@@ -11,6 +11,7 @@ import CategoryDistribution from 'components/dashboard/CategoryDistribution/Cate
 import modules from 'configs/sidebar/modules';
 
 import { dashboardService } from 'services/dashboard/dashboardService';
+import { load, save } from 'cache/cache';
 
 const DashboardProducts = () => {
 
@@ -19,9 +20,20 @@ const DashboardProducts = () => {
     const {routes} = modules.find( module => module.id === 1)
 
     useEffect( () =>{
+        
+        const cache = load("dashboard");
+        
+        if(cache){
+            setData("dashboard", cache);
+            return;
+        };
+
         const loaderDashboard = async () => {
+
             try {
                 const response = await dashboardService();
+                
+                save("dashboard",response.data);
 
                 setData(response.data);
                 
