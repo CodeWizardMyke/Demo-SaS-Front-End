@@ -43,6 +43,38 @@ const modules = [
                 sidePanel:false,
             },
         ]
+    },
+    {
+        id:2,
+        text:"Categorias",
+        path:"/app/categories",
+        visible:true,
+        routes:[
+            {
+                id:21,
+                icon:<TbPlus/>,
+                text:"Nova Categoria",
+                path:"/app/categories/create",
+                sidePanel:false,
+            },
+
+            {
+                id:22,
+                icon:<TbEdit/>,
+                text:"Atualizar Categoria",
+                path:"/app/categories/update",
+                sidePanel:false,
+            }
+            ,
+
+            {
+                id:23,
+                icon:<TbEdit/>,
+                text:"Deletar Categoria",
+                path:"/app/categories/delete",
+                sidePanel:false,
+            }
+        ]
     }
 ];
 

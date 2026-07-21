@@ -1,6 +1,7 @@
+import { save } from "cache/cache";
 import { useCallback, useState } from "react";
 
-export const usePaginatedSearch  = (services) => {
+export const usePaginatedSearch  = (services, queryAllowNull = false) => {
     const [results,setResults] = useState([]);
     const [loading,setLoading] = useState(false);
 
@@ -16,7 +17,7 @@ export const usePaginatedSearch  = (services) => {
         currentSize = size
     ) => {
        
-        if(!query.trim()) return;
+        if(query.trim() ===  queryAllowNull ) return;
 
         setLoading(true);
 
@@ -42,13 +43,22 @@ export const usePaginatedSearch  = (services) => {
             (data?.count || 0 ) / currentSize
         );
 
+
+        const setCache = {
+            rows:data.rows,
+            totalPages:total,
+            currentPage:currentPage
+        }
+
+        save('categories',setCache);
+
         setTotalPages(total);
 
         setPage(currentPage);
 
         setLoading(false);
 
-    },[services, size])
+    },[services, size, queryAllowNull])
 
     const reset = useCallback(()=>{
         setResults([]);
@@ -57,7 +67,7 @@ export const usePaginatedSearch  = (services) => {
     },[])
 
     return {
-        results,
+        results,setResults,
         loading,
         err,
 
@@ -67,7 +77,7 @@ export const usePaginatedSearch  = (services) => {
         size,
         setSize,
 
-        totalPages,
+        totalPages,setTotalPages,
 
         executeSearch,
         reset

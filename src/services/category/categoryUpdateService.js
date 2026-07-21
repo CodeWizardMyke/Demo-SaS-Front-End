@@ -1,10 +1,10 @@
 import { api } from "services/api";
 
-export async function categoryCreateService(query){
+export async function categoryUpdateService(payload){
 
     try{
 
-        const response = await api.post('/category', {category_name:query});
+        const response = await api.put('/category', payload);
 
         return {
             data: response.data,

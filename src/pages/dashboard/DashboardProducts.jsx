@@ -87,7 +87,7 @@ const DashboardProducts = () => {
 
             <div className="d_activity_feed">
                 <CategoryDistribution
-                    data={data.distributed}
+                    data={data?.distributed}
                 />
             </div>
 

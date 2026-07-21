@@ -1,10 +1,13 @@
 import { api } from "services/api";
 
-export async function categoryCreateService(query){
+export async function categoryDeleteService(payload){
 
     try{
 
-        const response = await api.post('/category', {category_name:query});
+        const response = await api.delete('/category', {
+            headers:{ id:payload.category_id },
+            data:payload
+        });
 
         return {
             data: response.data,

@@ -19,7 +19,6 @@ export function handdlerErrors(error) {
 
 };
 
-
 function codeError(error){
     switch (error.code) {
         case "ERR_NETWORK":
@@ -39,7 +38,9 @@ function statusError(error){
             return error.response.data[0].msg;
 
         case 409:
-            return error.response.data.msg;
+            const {data} = error.response
+
+            return data?.msg || data ;
 
         case 403:
             return error.response.data.errors[0].msg;

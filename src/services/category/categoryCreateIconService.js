@@ -1,10 +1,8 @@
 import { api } from "services/api";
 
-export async function categoryCreateService(query){
-
+export async function categoryCreateIconService(payload){
     try{
-
-        const response = await api.post('/category', {category_name:query});
+        const response = await api.post('/category', payload);
 
         return {
             data: response.data,

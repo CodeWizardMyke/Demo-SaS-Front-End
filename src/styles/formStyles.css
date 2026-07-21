@@ -144,6 +144,15 @@
     border-radius: 10px;
 }
 
+.buttons-row{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
 .input-search{
     flex: 1;
     position: relative;

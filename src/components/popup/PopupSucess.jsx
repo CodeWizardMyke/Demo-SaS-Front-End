@@ -4,28 +4,47 @@ import './style.css';
 import Button from 'components/buttons/Button';
 import { WorkspaceContext } from 'contexts/WorkspaceContext';
 
-const PopupSucess = ({text, css}) => {
+const PopupSucess = ({text, css, set}) => {
 
     const {modalSucess, setModalSucess} = useContext(WorkspaceContext);
 
     setTimeout(()=> {
-        setModalSucess(null);
+        handlerClose();
     },6000);
 
     const currentText = text
         ? text
         : 'cadastrado com sucesso!'
 
+
+    const handlerClose = () => {
+        if(set){
+            set(null);
+        }
+        setModalSucess(null);
+    }
+
     return (
         <div className={`popupSucess ${css}`}>
             <div className="popupSucess-content">
                 <h2>{currentText}</h2>
-                <Button text={'fechar'} click={ () => setModalSucess(null)}/>
+                <Button text={'fechar'} click={e => handlerClose()}/>
                 <div className="msg">
-                    <h3>Título do item</h3>
-                    <span>
-                        {modalSucess?.title}
-                    </span>
+                    {
+                        modalSucess?.title && (
+                            <>
+                            
+                                <h3>Título do item</h3>
+                            
+                                <span>
+                                    {modalSucess?.title}
+                                </span>
+                            
+                            </>
+
+                        )
+                    
+                    }
                 </div>
             </div>
         </div>

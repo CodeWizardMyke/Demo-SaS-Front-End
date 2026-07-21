@@ -169,6 +169,34 @@ select:focus{
     color:var(--btColorConfirm);
 }
 
+.bt-cancel{
+    background-color: var(--inptDanger);
+    color: var(--inptTextLight);
+    max-width: 300px;
+    width: 100%;
+}
+
+.bt-update{
+    background-color: var(--inptUpdate);
+    color:#2d3338fa;
+    max-width: 300px;
+    width: 100%;
+}
+
+.bt-accept{
+    background-color: var(--blue-inner);;
+    color: var(--inptTextLight);
+    max-width: 300px;
+    width: 100%;
+}
+
+.bt-l-accept{
+    background-color: var(--blue-inner);;
+    color: var(--inptTextLight);
+    max-width: none;
+    width: 100%;
+}
+
 /* ==========================================================
    ICON BUTTONS
 ========================================================== */
@@ -213,7 +241,9 @@ select:focus{
     display:grid;
     gap:10px;
 }
-
+.space-between{
+    justify-content: space-between;
+}
 .sectionAppContent{
     display:flex;
     flex:1;

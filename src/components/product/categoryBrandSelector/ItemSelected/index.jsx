@@ -4,9 +4,8 @@ import "./styles.css";
 import { FaCheck } from 'react-icons/fa';
 
 const ItemSelected = ({data}) => {
-    const {category_name, brand_name} = data;
 
-    const attributeName = category_name || brand_name
+    const attributeName = data?.category_name || data?.brand_name || ""
 
     return (
         <div 
