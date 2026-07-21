@@ -2,7 +2,7 @@ import CategoryDeleteForm from 'components/category/CategoryDeleteForm';
 import CategorySearchForm from 'components/category/CategorySearchForm';
 import PopupSucess from 'components/popup/PopupSucess';
 import { WorkspaceContext } from 'contexts/WorkspaceContext';
-import React, { useContext,useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 const DeleteCategories = () => {
     const [selectCategory, setSelectedCategory] = useState(null);

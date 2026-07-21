@@ -5,7 +5,6 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const SideBarItem = ({
     text,
-    path,
     iconArrow,
     opened,
     onClick,
@@ -13,10 +12,6 @@ const SideBarItem = ({
 }) => {
 
     const {openTab} = useContext(WorkspaceContext)
-    const splitText = text ? text.split(' ') : "";
-
-    const firstText =  splitText[0] ? splitText[0] + " " : "";
-    const secoundText = splitText[1] ? splitText[1] : "";
 
     function handleClick(){
         if(item){
@@ -42,8 +37,7 @@ const SideBarItem = ({
                 )
             }
 
-            <span className="first">{firstText ? firstText : ""}</span>
-            <span className="secound">{secoundText ? secoundText : ""}</span>
+            <span className="first">{text}</span>
 
         </li>
     );
