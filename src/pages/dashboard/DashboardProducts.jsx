@@ -16,36 +16,37 @@ import { load, save } from 'cache/cache';
 const DashboardProducts = () => {
 
     const [data,setData]= useState({});
-
+    
     const {routes} = modules.find( module => module.id === 1)
 
-    useEffect( () =>{
-        
+    useEffect(() => {
+
         const cache = load("dashboard");
-        
-        if(cache){
-            setData("dashboard", cache);
+
+        if (cache.length) {
+            setData(cache);
             return;
-        };
+        }
 
         const loaderDashboard = async () => {
 
             try {
                 const response = await dashboardService();
-                
-                save("dashboard",response.data);
+
+            console.log(response.data);
+                save("dashboard", response.data);
 
                 setData(response.data);
-                
+
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         };
 
         loaderDashboard();
-    },[])
 
-
+    }, []);
+    
     return (
         <section className='d_content scroll'>
             

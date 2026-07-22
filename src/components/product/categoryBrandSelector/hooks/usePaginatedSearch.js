@@ -1,4 +1,3 @@
-import { save } from "cache/cache";
 import { useCallback, useState } from "react";
 
 export const usePaginatedSearch  = (services, queryAllowNull = false) => {
@@ -42,15 +41,6 @@ export const usePaginatedSearch  = (services, queryAllowNull = false) => {
         const total = Math.ceil(
             (data?.count || 0 ) / currentSize
         );
-
-
-        const setCache = {
-            rows:data.rows,
-            totalPages:total,
-            currentPage:currentPage
-        }
-
-        save('categories',setCache);
 
         setTotalPages(total);
 

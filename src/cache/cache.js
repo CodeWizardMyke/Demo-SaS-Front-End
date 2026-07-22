@@ -18,7 +18,7 @@ export function load(key){
 
         const value = localStorage.getItem(key);
 
-        if (!value) return [];
+        if (!value) return null;
 
         const cache = JSON.parse(value);
 
@@ -33,7 +33,7 @@ export function load(key){
 
         localStorage.removeItem(key);
 
-        return [];
+        return null;
 
     }
 
