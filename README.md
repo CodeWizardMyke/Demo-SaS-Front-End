@@ -299,7 +299,7 @@ Feel free to open an Issue or submit a Pull Request.
 
 **Myke William**
 
-Junior Full Stack Web Developer
+Dev Full Stack Web Developer
 
 * GitHub: https://github.com/CodeWizardMyke
 * LinkedIn: https://linkedin.com/in/codewizardmyke
