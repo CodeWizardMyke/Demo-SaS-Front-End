@@ -54,7 +54,7 @@ const CreateProductContent = () => {
 
         3: ( <Informations/> ),
 
-        4: ( <Thumbnails/>  ),
+        4: ( <Thumbnails/> ),
 
         5: (  <Pricing /> ),
 
