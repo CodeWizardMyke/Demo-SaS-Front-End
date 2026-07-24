@@ -3,14 +3,22 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import AuthLayout from '../layouts/AuthLayout';
 import PrivateRoute from '../routes/PrivateRoute';
+
+import Overview from 'pages/overview/overview';
+import DashboardProducts from 'pages/dashboard/DashboardProducts';
+
 import CreateProduct from '../pages/products/CreateProduct';
 import UpdateProduct from '../pages/products/UpdateProduct';
 import DeleteProduct from '../pages/products/DeleteProduct';
-import Overview from 'pages/overview/overview';
-import DashboardProducts from 'pages/dashboard/DashboardProducts';
+
+
 import CreateCategories from 'pages/categories/CreateCategories';
 import UpdateCategories from 'pages/categories/UpdateCategories';
 import DeleteCategories from 'pages/categories/DeleteCategories';
+
+import CreateBrand from 'pages/brands/CreateBrand';
+import UpdateBrand from 'pages/brands/UpdateBrand';
+import DeleteBrand from 'pages/brands/DeleteBrand';
 
 export const router = createBrowserRouter([
     {
@@ -32,6 +40,11 @@ export const router = createBrowserRouter([
             {path:"categories/create",element:<CreateCategories/>},
             {path:"categories/update",element:<UpdateCategories/>},
             {path:"categories/delete",element:<DeleteCategories/>},
+
+            {path:"brands/create",element:<CreateBrand/>},
+            {path:"brands/update",element:<UpdateBrand/>},
+            {path:"brands/delete",element:<DeleteBrand/>},
+
         ]
     }
 ]);

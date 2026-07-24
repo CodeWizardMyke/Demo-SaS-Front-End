@@ -352,3 +352,8 @@ select:focus{
 .popupDeletedSucess span{
     color:#dc3545;
 }
+
+.xl-input{
+    max-width: none;
+    width: 100%;
+}

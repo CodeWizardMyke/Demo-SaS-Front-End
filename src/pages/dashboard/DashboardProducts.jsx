@@ -17,13 +17,13 @@ const DashboardProducts = () => {
 
     const [data,setData]= useState({});
     
-    const {routes} = modules.find( module => module.id === 1)
-
+    const {routes} = modules.find( module => module.id === 2);
+    
     useEffect(() => {
 
         const cache = load("dashboard");
 
-        if (cache.length) {
+        if (cache?.length) {
             setData(cache);
             return;
         }
@@ -33,7 +33,6 @@ const DashboardProducts = () => {
             try {
                 const response = await dashboardService();
 
-            console.log(response.data);
                 save("dashboard", response.data);
 
                 setData(response.data);

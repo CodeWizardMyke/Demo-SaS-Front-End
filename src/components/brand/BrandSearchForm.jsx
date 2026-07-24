@@ -1,25 +1,23 @@
-import productForm from 'configs/product';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 
 import { IoIosSearch } from "react-icons/io";
 
 import Title from 'components/titles/Title';
 import Button from 'components/buttons/Button';
-
-import { AuthContext } from 'contexts/AuthContext';
 import InputSearch from 'components/product/categoryBrandSelector/search';
 import Pagination from 'components/pagination';
 import CheckList from 'components/product/categoryBrandSelector/checkList';
 import ItemSelected from 'components/product/categoryBrandSelector/ItemSelected';
+
+import { AuthContext } from 'contexts/AuthContext';
 import { load } from 'cache/cache';
 import { useReqPagData } from 'components/product/hooks/useReqPagData';
-import { categorySearchService } from 'services/category/categorySearchService';
+import { brandSearchService } from 'services/brand/brandSearchService';
+import { TbBrandAbstract } from 'react-icons/tb';
 
-const CategorySearchForm = ({selected, setSelected, open, text}) => {
+const BrandSearchForm = ({selected, setSelected, open, textType }) => {
     const [query, setQuery] = useState("");
     
-    const settings = productForm.find( setting => setting.name === "category");
-  
     const {
         loading,
         
@@ -33,8 +31,8 @@ const CategorySearchForm = ({selected, setSelected, open, text}) => {
 
     } = useReqPagData(
         {
-            cacheName:"category",
-            services:categorySearchService,
+            cacheName:'brand',
+            services:brandSearchService,
             queryAllowNull:true
         }
     );
@@ -55,7 +53,7 @@ const CategorySearchForm = ({selected, setSelected, open, text}) => {
 
   useEffect(() => {
 
-        const cache = load("category");
+        const cache = load("brand");
 
         if(cache){
 
@@ -86,16 +84,16 @@ const CategorySearchForm = ({selected, setSelected, open, text}) => {
     return (
         <div className='md-content space-between'>
                 <Title 
-                    title={ text?.title || settings.title}
-                    subTitle={text?.subTitle || settings.subtitle}
-                    svg={settings.svg}
+                    title={`Localizar Marca ${textType? 'para ' + textType : '' }`}
+                    subTitle={'Pesquise um marca por nome, ID ou liste todos as Marca cadastradas'}
+                    svg={<TbBrandAbstract/>}
                 />
 
                 <div className="md-card-row ">
                     <InputSearch 
                         query={query} 
                         setQuery={setQuery} 
-                        placeholder={settings.placeholder} 
+                        placeholder={'Pesquisa de marcas..'} 
                         svg={ <IoIosSearch/> }
                     />
                     <div className='row-content'>
@@ -145,4 +143,4 @@ const CategorySearchForm = ({selected, setSelected, open, text}) => {
     );
 }
 
-export default CategorySearchForm;
+export default BrandSearchForm;

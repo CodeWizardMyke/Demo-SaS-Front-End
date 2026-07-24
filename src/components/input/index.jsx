@@ -7,6 +7,7 @@ const Input = (
         placeholder,
         svg,
         css,
+        id,
         name,
         type,
         

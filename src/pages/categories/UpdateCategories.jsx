@@ -22,7 +22,7 @@ const UpdateCategories = () => {
                         open={setToggleUpdate}
                         text={{ 
                             title:"Localizar Categoria",
-                            subTitle:"Pesquise um produto por nome, ID ou liste todos as categorias cadastradas"
+                            subTitle:"Pesquise um categorias por nome, ID ou liste todos as categorias cadastradas"
                         }}
                     />
 

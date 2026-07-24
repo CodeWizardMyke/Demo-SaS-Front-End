@@ -12,11 +12,12 @@ import Pagination from '../../pagination';
 import ItemSelected from './ItemSelected';
 
 import { ProductFormContext } from 'contexts/ProductFormContext';
-import { usePaginatedSearch } from './hooks/usePaginatedSearch';
 import { servicesConfig } from './services/servicesConfig';
 import { AuthContext } from 'contexts/AuthContext';
 import { confirmStep } from '../utils/confirmStep';
 import ErrorFieldList from 'components/Error/forms/ErrorFieldList';
+import { useReqPagData } from '../hooks/useReqPagData';
+import { load } from 'cache/cache';
 
 const CategoryBrandSelector = ({type, createForm }) => {
     const [query, setQuery] = useState("");
@@ -38,12 +39,21 @@ const CategoryBrandSelector = ({type, createForm }) => {
     const {
         loading,
         
-        size, setSize, page, totalPages,
-        
-        results, err,
-        executeSearch,reset
+        size, setSize, page,
 
-    } = usePaginatedSearch(currentService.service);
+        totalPages, setTotalPages,
+        
+        resData, setResData,
+
+        resErrors, request,
+
+    } = useReqPagData(
+        {
+            cacheName:type,
+            services:currentService.service,
+            queryAllowNull:true
+        }
+    );
 
     const {setErrMsg} = useContext(AuthContext);
 
@@ -52,26 +62,18 @@ const CategoryBrandSelector = ({type, createForm }) => {
         currentSize = size
     ) => 
     {
-        executeSearch(
+        request(
             query,
             currentPage,
             currentSize
         );
-    }, [executeSearch, query, size]);
+    }, [request, query, size]);
 
-    useEffect(() => {
-        
-        reset();
-
-        setQuery("");
-        
-    }, [type,reset,]);
-    
     useEffect(()=>{
     
-        if(err) setErrMsg(err);
+        if(resErrors) setErrMsg(resErrors);
     
-    },[err,setErrMsg]);
+    },[resErrors,setErrMsg]);
     
     const handlerSelect = (item) => {
         field[type] = {...item};
@@ -79,6 +81,19 @@ const CategoryBrandSelector = ({type, createForm }) => {
         confirmStep( field[type], type, step,  dispatch );
         
     }
+
+    useEffect(() => {
+                
+        const cache = load(type);
+
+        if(cache){
+            setResData(cache.rows);
+            setTotalPages(cache.totalPages);
+        }
+
+        setQuery("");
+        
+    }, [type,setTotalPages,setResData]);
 
     return (
         <div className='md-content'>
@@ -113,7 +128,7 @@ const CategoryBrandSelector = ({type, createForm }) => {
 
                 <div className="md-card">
                     <CheckedList 
-                        data={results} 
+                        data={resData} 
                         click={handlerSelect} 
                     />
                     <Pagination 

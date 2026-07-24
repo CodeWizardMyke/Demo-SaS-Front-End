@@ -1,11 +1,11 @@
 import { api } from "services/api";
 
-export async function categoryDeleteService(payload){
+export async function brandDeleteService(id){
 
     try{
-        const response = await api.delete('/category', {
-            headers:{ id:payload.brand_id },
-            data:payload
+
+        const response = await api.delete('/brand', {
+            headers:{ id }
         });
 
         return {

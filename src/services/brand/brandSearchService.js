@@ -1,11 +1,15 @@
 import { api } from "services/api";
 
-export async function categoryDeleteService(payload){
+export async function brandSearchService(query, page = 1, size = 10){
 
     try{
-        const response = await api.delete('/category', {
-            headers:{ id:payload.brand_id },
-            data:payload
+
+        const response = await api.get('/brand', {
+            headers:{
+                query,
+                page,
+                size
+            }
         });
 
         return {

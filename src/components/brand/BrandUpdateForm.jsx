@@ -1,7 +1,6 @@
 import { remove } from 'cache/cache';
 import Button from 'components/buttons/Button';
 import ErrorPopup from 'components/Error/ErrorPopup';
-import IconsSelection from 'components/iconsSelection';
 import Input from 'components/input';
 import Loading from 'components/loading/Loading';
 import PopupSucess from 'components/popup/PopupSucess';
@@ -10,11 +9,10 @@ import Title from 'components/titles/Title';
 import { WorkspaceContext } from 'contexts/WorkspaceContext';
 import React, { useContext, useState } from 'react';
 import { IoPricetagOutline } from 'react-icons/io5';
-import { categoryUpdateService } from 'services/category/categoryUpdateService';
+import { brandUpdateService } from 'services/brand/brandUpdateService';
 
-const CategoryUpdateForm = ({selected,close,text}) => {
-    const [categoryName, setCategoryName] = useState(selected?.category_name || "");
-    const [selectedIcon, setSelectedIcon] = useState(selected?.icon || "");
+const BrandUpdateForm = ({selected,close }) => {
+    const [brand, setBrand] = useState(selected?.brand_name || "");
     
     const [loading,setLoading] = useState(false);
     const [errMsg,setErrMsg] = useState("");
@@ -23,17 +21,16 @@ const CategoryUpdateForm = ({selected,close,text}) => {
     const update =  async () => {
         setErrMsg("");
         
-        if(!categoryName.trim()) return;
+        if(!brand.trim()) return;
 
         setLoading(true);
 
         const payload = {
-            category_name:categoryName,
-            category_id:selected.category_id,
-            icon:selectedIcon
+            brand_name:brand,
+            brand_id:selected.brand_id
         };
 
-        const { data, error } = await categoryUpdateService(payload)
+        const { data, error } = await brandUpdateService(payload)
         
         setLoading(false);
 
@@ -47,7 +44,8 @@ const CategoryUpdateForm = ({selected,close,text}) => {
             return;
         }
 
-        remove('category')
+        remove('brand');
+
         setModalSucess(data);
     }
 
@@ -61,31 +59,24 @@ const CategoryUpdateForm = ({selected,close,text}) => {
                 errMsg && <ErrorPopup errMsg={errMsg} setErrMsg={setErrMsg} />
             }
             {
-                modalSucess && <PopupSucess text={`Atualizado com sucesso: ${categoryName}`}/>
+                modalSucess && <PopupSucess text={`Atualizado com sucesso: ${brand}`}/>
             }
             <Title
-                title={ text?.title || 'Nova categoria' } 
-                subTitle={ text.subTitle || 'Adione novas categorias de produtos ao seu sistema.' }
+                title={'Edição de Marca' } 
+                subTitle={'Preencha os novos valores nos campos abaixos para fazer uma modificação.' }
                 svg={<IoPricetagOutline/>}
             />
             <div className="md-card">
-                <label htmlFor="category_name">Nome da categoria</label>
+                <label htmlFor="brand_name">Nome da Marca</label>
                 <Input 
                     type={'text'} 
-                    placeholder={'Ex: Computador, Smartphone, etc...'} 
-                    css={'inpt-cn'} 
-                    query={categoryName}
-                    setQuery={setCategoryName}
+                    placeholder={'Ex: Nike, Adidas, etc...'} 
+                    css={'xl-input'} 
+                    query={brand}
+                    setQuery={setBrand}
                 />
             </div>
 
-            <div className="md-card icon-select">
-                <IconsSelection
-                    selected={selectedIcon}
-                    setSelected={setSelectedIcon}
-                />
-                
-            </div>
             <div className="buttons-row">
                 
                 <Button
@@ -108,4 +99,4 @@ const CategoryUpdateForm = ({selected,close,text}) => {
     );
 }
 
-export default CategoryUpdateForm;
+export default BrandUpdateForm;
