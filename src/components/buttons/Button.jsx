@@ -5,7 +5,8 @@ const Button = ({
         text,
         css,
         click,
-        svg
+        svg,
+        children
     }
 ) => {
     
@@ -17,6 +18,7 @@ const Button = ({
         >
             {svg}
             {text}
+            {children}
         </button>
     );
 }

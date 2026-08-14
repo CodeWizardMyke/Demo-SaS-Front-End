@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoIosArrowForward } from "react-icons/io";
 
-const UserMenu = ({ user }) => {
+const UserMenu = ({ user, click }) => {
 
     function capitalize(text = "") {
         return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
@@ -25,7 +25,10 @@ const UserMenu = ({ user }) => {
     }
 
     return (
-        <div style={style.text}>
+        <div 
+            style={style.text}
+            onClick={click}
+        >
             {formattedName}
 
             <IoIosArrowForward style={style.svg} />

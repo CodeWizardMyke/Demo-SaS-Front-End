@@ -6,17 +6,24 @@ import ErrorPopup from '../Error/ErrorPopup';
 import HeaderActions from './HeaderActions';
 
 import "./Header.css"
+import { useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
-
+    
     const {
-            user,
-            errMsg,
-            setErrMsg,
-            logout
+        user,
+        errMsg,
+        setErrMsg,
+        logout
     } = useContext(AuthContext)
+    
+    const navigate = useNavigate();
 
+    const handlerClickUserMenu = () => {
+        navigate('/app/user');
+    }
+    
     return (
         <div style={style.divBar}>
             <ErrorPopup 
@@ -24,7 +31,8 @@ const Header = () => {
                 setErrMsg={setErrMsg} 
             />
             <UserMenu 
-                user={user} 
+                user={user}
+                click={handlerClickUserMenu}
             />
             <HeaderActions logout={logout} />
         </div>

@@ -19,6 +19,7 @@ import DeleteCategories from 'pages/categories/DeleteCategories';
 import CreateBrand from 'pages/brands/CreateBrand';
 import UpdateBrand from 'pages/brands/UpdateBrand';
 import DeleteBrand from 'pages/brands/DeleteBrand';
+import UserProfile from 'pages/user/userProfile';
 
 export const router = createBrowserRouter([
     {
@@ -31,6 +32,7 @@ export const router = createBrowserRouter([
         children:[
             {index:true, element: <Overview/> },
             
+            {path:"user/",element:<UserProfile/>},
             {path:"dashboard/products",element:<DashboardProducts/>},
 
             {path:"products/create",element:<CreateProduct/>},

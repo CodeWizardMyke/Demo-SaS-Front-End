@@ -1,0 +1,37 @@
+.profileFormCard{
+    background-color: var(--bgCardItem);
+    border: 1px solid var(--borderCard);
+    
+    padding: 25px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profileFormCard .pfFooter{
+    display: flex;
+    justify-content: end;
+}
+.profileFormCard .header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+}
+.profileFormCard .header svg{
+    font-size: 18pt ;
+}
+.profileFormCard p{
+    width: 100%;
+}
+
+.profile-content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.btn_pf{
+    gap: 10px;
+}

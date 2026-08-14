@@ -1,0 +1,55 @@
+.userAside{
+    background-color: var(--bgCardItem);
+    border: 1px solid var(--borderCard);
+
+    border-radius: 10px;
+    padding: 25px;
+    gap: 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    height: fit-content;
+}
+
+.userInitials{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+    padding: 15px;
+}
+
+.userInitials span{
+    height: 105px;width: 105px;
+    border-radius: 100%;
+    
+    background:#0d6efd;
+    color:#fff;
+
+    font-size: 36px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.userInf, .userInf div{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.userInf{
+    flex-direction: column;
+}
+
+.user-role{
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: var(--bgCardSubITem);
+    color: var(--tbActive);
+}

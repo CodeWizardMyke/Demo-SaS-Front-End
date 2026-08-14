@@ -10,7 +10,7 @@ const Input = (
         id,
         name,
         type,
-        
+        disabled = false,
     }
 ) => {
 
@@ -40,7 +40,7 @@ const Input = (
                 placeholder={placeholder}
                 onChange={changed}
                 onWheel={(e) => e.target.blur()}
-                
+                disabled={disabled}
             />
             {svg}
         </div>

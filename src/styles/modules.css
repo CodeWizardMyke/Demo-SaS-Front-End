@@ -77,6 +77,14 @@
     border-radius:8px;
 }
 
+.md-success{
+    border-left:4px solid #35dc59;
+    background:rgba(106, 220, 53, 0.08);
+    padding:15px 20px;
+    border-radius:8px;
+}
+
+
 .md-warning{
     padding:14px 18px;
     border-left:4px solid orange;
@@ -84,4 +92,26 @@
 
     border-radius:10px;
     font-weight:500;
+}
+
+.md-profile{
+    display:flex;
+    flex-direction:column;
+    padding: 10px;
+       
+    overflow-y: scroll;
+    gap: 10px ;
+
+    max-height: 88vh;
+}
+.profile-grid{
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:10px;
+}
+
+@media (max-width:1024px) {
+    .profile-grid{
+        grid-template-columns: 1fr;
+    }
 }
