@@ -1,5 +1,3 @@
-// src/config/categoryIcons.js
-
 import {
     MdPhoneAndroid,
     MdLaptop,
@@ -27,7 +25,6 @@ import {
     MdTableRestaurant,
     MdBed,
     MdWeekend,
-    MdLightbulb,
     MdConstruction,
     MdBuild,
     MdDirectionsCar,

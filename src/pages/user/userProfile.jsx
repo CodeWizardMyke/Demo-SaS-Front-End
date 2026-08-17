@@ -2,6 +2,7 @@ import Title from 'components/titles/Title';
 import AcessBadge from 'components/user/acess/acessBadge';
 import UserProfileAside from 'components/user/aside/userProfileAside';
 import BasicInformations from 'components/user/basicInfo/basicInformations';
+import UserDelete from 'components/user/delete/userDelete';
 import UserUpdatePass from 'components/user/userPass/userUpdatePass';
 import { AuthContext } from 'contexts/AuthContext';
 import React, { useContext } from 'react';
@@ -23,6 +24,7 @@ const UserProfile = () => {
                     <BasicInformations user={user} setUser={setUser} />
                     <AcessBadge user={user} />
                     <UserUpdatePass user={user} />
+                    <UserDelete user={user} />
                 </section>
             </div>
         </div>
