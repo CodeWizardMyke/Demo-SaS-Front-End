@@ -4,11 +4,11 @@
     width: 100%;
 }
 .acressWidth{
-    padding-right: 350px;
+    padding-right: 0;
     transition: 0.3s;
 }
 .acressWidth.active{
-    padding-right: 0;
+    padding-right: 350px;
 }
 
 .content-button-pvn{

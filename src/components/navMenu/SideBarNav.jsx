@@ -1,14 +1,23 @@
 import React from 'react';
 import SideBarItem from './SideBarItem';
+import { useNavigate } from 'react-router-dom';
 
 const SideBarNav = ({
     filteredModules,
     openedModule,
     handleToggleModule
 }) => {
+    const navigate = useNavigate();
+
     return (
+
       <nav className="asideMainBody">
-                <h3>Modulos</h3>
+                <div 
+                    className="home"
+                    onClick={()=> navigate('/app')}
+                >
+                    <h3>Modulos </h3>
+                </div>
                 {
                     filteredModules.map(module => (
 

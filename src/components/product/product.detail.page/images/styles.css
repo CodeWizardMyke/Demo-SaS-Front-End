@@ -1,34 +1,15 @@
-.pd-main{
-    width: 100%;
-
-    display: flex;
-    align-items: flex-start;
-
-    gap: 24px;
-
-    position: relative;
-}
-
-/* =========================
-   GALLERY
-========================= */
-
 .gallery{
     width: 100%;
-    flex: 1;
 
-    min-width: 0;
 }
 
 .gallery-image-wrapper{
     position: relative;
-
+    
     width: 100%;
-
     aspect-ratio: 1 / 1;
-
+    
     background-color: var(--bgCardSubITem);
-
     overflow: hidden;
 
     display: flex;
@@ -38,7 +19,6 @@
 
 .gallery-image{
     width: 100%;
-    height: 100%;
 
     object-fit: contain;
 
@@ -161,7 +141,7 @@
    TABLET
 ========================= */
 
-@media screen and (max-width: 1023px){
+@media screen and (max-width: 1200px){
 
     .pd-main{
         flex-direction: column;

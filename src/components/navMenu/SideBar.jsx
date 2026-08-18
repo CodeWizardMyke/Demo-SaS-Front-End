@@ -40,6 +40,12 @@ const SideBar = () => {
             <div  className={`aside ${ !toggleSideBar && "closed" }`}>
                 
                 <div className="asideTopContent">
+                    
+                    {
+                        toggleSideBar && (
+                            <SearchField setQuery={setQuery} />
+                        )
+                    }
 
                     <div className="services">
 
@@ -50,12 +56,6 @@ const SideBar = () => {
                         />
 
                     </div>
-
-                    {
-                        toggleSideBar && (
-                            <SearchField setQuery={setQuery} />
-                        )
-                    }
 
                 </div>
 

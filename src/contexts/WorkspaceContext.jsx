@@ -7,7 +7,7 @@ export function WorkspaceProvider({children}){
     const [openedTabs,setOpenedTabs] = useState([]);
     const [validationErrors, setValidationErrors] = useState(null);
     const [modalSucess, setModalSucess] = useState(false);
-    const [activeSideBar, setActiveSideBar] = useState(false);
+    const [activeSideBar, setActiveSideBar] = useState(true);
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();

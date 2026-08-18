@@ -14,7 +14,7 @@ const Overview = () => {
 
             <header className="overview-header">
                 <span className="overview-badge">
-                    ERP Portfolio
+                    Projeto para Portfolio
                 </span>
 
                 <h1>Bem-vindo ao Manager.IO</h1>

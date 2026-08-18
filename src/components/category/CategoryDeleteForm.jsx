@@ -40,6 +40,8 @@ const CategoryDeleteForm = ({selected,close, text}) => {
         setModalSucess(data);
         close()
     }
+
+
     
     const selectedIcon = categoryIcons.find( element => element.id === selected.icon)
 

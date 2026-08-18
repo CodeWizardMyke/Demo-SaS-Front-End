@@ -11,7 +11,7 @@ import { WorkspaceContext } from 'contexts/WorkspaceContext';
 
 const ButtonPrevNextStep = ({css,formType ,children}) => {
     const {step, totalSteps, dispatch } = useContext(ProductFormContext);
-    const { activeSideBar } = useContext(WorkspaceContext);
+    const { activeSideBar, toggleSideBar, } = useContext(WorkspaceContext);
 
     const {sendCreate} = useProductCreate();
     const {sendUpdate} = useProductUpdate();
@@ -40,6 +40,13 @@ const ButtonPrevNextStep = ({css,formType ,children}) => {
 
     const textButtonSendForm = formType ? "Atualizar produto." : "Cadastrar produto." 
 
+    function openSideBar(){
+        if(activeSideBar){
+            toggleSideBar(false);
+        }else{
+            toggleSideBar(true);
+        }
+    }
     
     return (
       <>
@@ -53,6 +60,10 @@ const ButtonPrevNextStep = ({css,formType ,children}) => {
                 <FaArrowLeftLong/>
                 <span>Voltar</span>
             </button>
+            <Button
+                text={activeSideBar ? "Fechar etapas" : "Mostrar etapas"}
+                click={openSideBar}
+            />
 
 
             {

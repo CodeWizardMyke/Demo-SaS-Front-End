@@ -4,7 +4,7 @@ export async function categoryDeleteService(payload){
 
     try{
         const response = await api.delete('/category', {
-            headers:{ id:payload.brand_id },
+            headers:{ id:payload.category_id },
             data:payload
         });
 

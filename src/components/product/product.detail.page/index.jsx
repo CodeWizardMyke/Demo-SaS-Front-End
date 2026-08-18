@@ -20,7 +20,7 @@ const ProductDetailPage = () => {
     }
 
     return (
-        <div className='pd-content scroll'>
+        <div className={`pd-content scroll ${openModal ? 'active' : " "}`}>
              <div className="product_header_mobile">
                 <h2>{formData?.title}</h2>
                 <span className='pricing'>

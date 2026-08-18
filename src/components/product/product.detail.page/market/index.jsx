@@ -10,7 +10,6 @@ const Market = ({data}) => {
             ? JSON.parse(data.specifications)
             : data?.specifications;
 
-
     return (
         <div className='product_content'>
             <div className="product_header">

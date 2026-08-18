@@ -1,3 +1,10 @@
+.home{
+    user-select: none;
+    cursor: pointer;
+}
+.home h3:hover{
+    opacity: 0.8;
+}
 .aside-container{
     display: flex;
     flex-direction: column;
@@ -43,6 +50,13 @@
 .aside .listContent{
     transition: opacity 150ms ease;
 }
+.asideTopContent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
 
 .asideTopContent .services{
     height: 35px;
@@ -50,8 +64,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-
-    width: 100%;
 }
 
 .asideMainBody h3{
