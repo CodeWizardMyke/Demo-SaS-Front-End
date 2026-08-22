@@ -4,6 +4,7 @@ import { ProductFormContext } from '../../../contexts/ProductFormContext';
 
 import { TbEdit } from "react-icons/tb";
 import { matchStep } from './utils/matchStep';
+import { WorkspaceContext } from 'contexts/WorkspaceContext';
 
 const ResumeItem = ({ dataConfigs }) => {
 
@@ -18,11 +19,16 @@ const ResumeItem = ({ dataConfigs }) => {
 
     } = useContext(ProductFormContext)
 
+    const {toggleSideBar} = useContext(WorkspaceContext)
+
     const fieldSteped = dataConfigs.fields ? dataConfigs.fields : [];
+
 
     function goEditStap(item) {
         const resolvedStep = matchStep(item.id)
 
+        toggleSideBar(false);
+        
         dispatch({
             type:"SET_STEP",
             payload: resolvedStep ? resolvedStep : step 

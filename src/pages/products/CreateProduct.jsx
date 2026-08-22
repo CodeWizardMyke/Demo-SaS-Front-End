@@ -27,9 +27,6 @@ const CreateProductContent = () => {
             setModalCreateCategoryBrand(type);
             toggleSideBar(true);
         }
-        if(modalCreateCategoryBrand){
-            toggleSideBar()
-        }
     }
 
     const STEP_COMPONENTS = {

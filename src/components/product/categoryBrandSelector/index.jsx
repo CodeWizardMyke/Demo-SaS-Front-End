@@ -85,10 +85,15 @@ const CategoryBrandSelector = ({type, createForm }) => {
     useEffect(() => {
                 
         const cache = load(type);
+        console.log(type)
 
         if(cache){
             setResData(cache.rows);
             setTotalPages(cache.totalPages);
+        }else
+        {
+            setResData([])
+            setTotalPages(0)
         }
 
         setQuery("");
