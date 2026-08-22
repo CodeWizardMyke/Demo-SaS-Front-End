@@ -13,8 +13,8 @@
     justify-content: end;
     gap: 25px;
 
-    min-height: 600px;
-    max-width: 400px; width: 100%;
+    width: 100%;
+    max-width: 350px;
 
     margin: 5px;
     padding: 15px;
@@ -66,10 +66,8 @@
     color: var(--inptTextLight);
     max-width: none;
 }
-
-@media only screen and (max-width:780px ) {
-    .form-auth-content{
-        top: auto; bottom: auto;
-        right: auto; left: auto;
+@media only screen and (max-width:650px) {
+    .form-auth-content {
+        max-width: none;
     }
 }

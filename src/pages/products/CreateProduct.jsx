@@ -23,17 +23,13 @@ const CreateProductContent = () => {
     const [ modalCreateCategoryBrand, setModalCreateCategoryBrand] = useState(null);
 
     function toggleCreateForm(type) {
-
-        setModalCreateCategoryBrand(type);
-        
-        if(activeSideBar){
-            toggleSideBar();
+        if(type){
+            setModalCreateCategoryBrand(type);
+            toggleSideBar(true);
         }
-
         if(modalCreateCategoryBrand){
-            setModalCreateCategoryBrand(null)
+            toggleSideBar()
         }
-
     }
 
     const STEP_COMPONENTS = {

@@ -23,7 +23,7 @@ const Thumbnails = () => {
     }
 
     return (
-        <div className='md-content'>
+        <div className='md-content pb'>
             <div className="sub-content">
 
                 <Title 

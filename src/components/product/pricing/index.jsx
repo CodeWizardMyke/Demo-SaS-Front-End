@@ -49,7 +49,7 @@ const Pricing = () => {
     ]);
 
     return (
-        <div className='md-content'>
+        <div className='md-content pb'>
 
             <Title 
                 title={settings.title}

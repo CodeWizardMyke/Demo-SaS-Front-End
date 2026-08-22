@@ -96,7 +96,7 @@ const CategoryBrandSelector = ({type, createForm }) => {
     }, [type,setTotalPages,setResData]);
 
     return (
-        <div className='md-content'>
+        <div className='md-content scroll pb'>
                 <Title 
                     title={settings.title}
                     subTitle={settings.subtitle}

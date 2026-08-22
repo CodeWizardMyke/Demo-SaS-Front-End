@@ -88,6 +88,10 @@
     height: 25px;
 }
 
+.aside-list{
+    padding-bottom: 25px;
+}
+
 .list-content li{
     padding: 2px 30px;
     display: flex;

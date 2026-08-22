@@ -22,7 +22,12 @@ const AuthText = ({type}) => {
             
             <p>
                 {text}
-            </p>  
+            </p>
+
+            <div>
+                <h2>Aviso</h2>
+                <p>Esta aplicação está em servidores com planos hobbie, ou seja pode demorar um pouco para o servidor ligar e responder a primeira requisição!</p>
+            </div>
 
         </div>
     );

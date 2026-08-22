@@ -33,7 +33,9 @@
     top: 0;
     right: 0;
 }
-
+.insert-image{
+    text-align: center;
+}
 @media (max-width:600px) {
     .insert-image h3{
         font-size: 12pt;

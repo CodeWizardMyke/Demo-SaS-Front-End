@@ -19,7 +19,7 @@ const Marketing = () => {
     const { formData } = useContext(ProductFormContext) ;
 
     return (
-        <div className='md-content scroll'>
+        <div className='md-content scroll pb'>
 
                 <Title 
                     title={marketingSettings.title}

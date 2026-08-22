@@ -16,7 +16,7 @@ const Informations = () => {
     },[settings])
 
     return (
-        <div className='md-content'>
+        <div className='md-content pb'>
             <div className='information'>
                 <Title 
                     title={settings.title} 
