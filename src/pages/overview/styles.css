@@ -90,3 +90,26 @@
     margin-top:10px;
     line-height:1.6;
 }
+
+
+.overview-card-header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16pt;
+}
+.overview-card-header svg{
+    color: orange;
+}
+.warning-att{
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 12pt;    
+    user-select: none;
+}
+
+.warning-att:hover{
+    transform:translateY(0);
+}
