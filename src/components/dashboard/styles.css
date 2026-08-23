@@ -2,7 +2,6 @@
 
     background:var(--bg-card);
 
-    border:1px solid var(--panelBorder);
 
     border-radius:14px;
 
@@ -10,9 +9,13 @@
 
 }
 
+.ds-border{
+    border:1px solid var(--panelBorder);
+}
+
 .dashboard-panel-header{
 
-    margin-bottom:20px;
+    margin-bottom:10px;
 
 }
 

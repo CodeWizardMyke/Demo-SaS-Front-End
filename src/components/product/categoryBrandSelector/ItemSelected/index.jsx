@@ -30,11 +30,11 @@ const ItemSelected = ({data}) => {
                     { 
                         attributeName 
                             ? attributeName 
-                            : "Nenhuma " 
+                            : "Nenhum " 
                     }
                 </strong>
+                <span>Valor selecionado</span>
                 
-                <span>Marca atualmente vinculada ao produto</span>
                 
             </div>
         </div>

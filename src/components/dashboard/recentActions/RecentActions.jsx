@@ -16,7 +16,7 @@ const RecentActions = ({ actions = [] }) => {
     };
 
     return (
-        <section className="dashboard-panel">
+        <section className="dashboard-panel ds-border">
 
             <header className="dashboard-panel-header">
                 <h3>Atividades Recentes</h3>
