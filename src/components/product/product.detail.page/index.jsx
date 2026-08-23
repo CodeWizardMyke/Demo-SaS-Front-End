@@ -44,7 +44,6 @@ const ProductDetailPage = () => {
                     currentImage={currentImage}
                     currentIndex={currentIndex}
                     toggleModal={toggleModal}
-
                 />
                 <Market data={formData} />
             </div>
