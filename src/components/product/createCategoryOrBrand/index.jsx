@@ -56,6 +56,9 @@ const CreateCategoryOrBrand = ({ modalCreate, setModalCreate }) => {
 
         const { data, error } = await service.api(query);
 
+        console.log(error);
+        console.log(data);
+
         const errorsResult = handdlerErrors(error);
 
         if (errorsResult) {

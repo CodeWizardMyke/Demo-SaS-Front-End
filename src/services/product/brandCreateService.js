@@ -2,13 +2,9 @@ import { api } from "services/api";
 
 export async function brandCreateService(query){
 
-    const formData = new FormData()
-
-    formData.append('brand_name',query)
-
     try{
 
-        const response = await api.post('/brand', formData);
+        const response = await api.post('/brand',  {brand_name:query});
 
         return {
             data: response.data,
