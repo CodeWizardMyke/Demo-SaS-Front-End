@@ -24,9 +24,15 @@ const AuthText = ({type}) => {
                 {text}
             </p>
 
-            <div>
+            <div className='warning'>
                 <h2>Aviso</h2>
-                <p>Esta aplicação está em servidores com planos hobbie, ou seja pode demorar um pouco para o servidor ligar e responder a primeira requisição!</p>
+                <p>
+                    Este projeto está hospedado utilizando planos gratuitos/Hobby para fins de demonstração.
+                </p>
+                <p>
+                    Devido às limitações desses planos, o servidor pode entrar em modo de inatividade quando não está sendo utilizado. 
+                    Por isso, a primeira requisição pode levar alguns segundos enquanto o serviço é reativado.
+                </p>
             </div>
 
         </div>
