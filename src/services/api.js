@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export const api = axios.create({
-    baseURL:'https://manager-back-rwtu.onrender.com/api'
-    //baseURL:'http://localhost:1515/api'
+   // baseURL:'https://manager-back-rwtu.onrender.com/api'
+    baseURL:'http://localhost:1515/api'
 })
 
 api.interceptors.request.use((config) => {

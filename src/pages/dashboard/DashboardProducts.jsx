@@ -7,17 +7,24 @@ import { TbBuildingStore, TbCategory, TbPackage } from 'react-icons/tb';
 import './dasboardStyles.css';
 import RecentActions from 'components/dashboard/recentActions/RecentActions';
 import QuickActions from 'components/dashboard/quickActions/QuickActions';
-import CategoryDistribution from 'components/dashboard/CategoryDistribution/CategoryDistribution';
 import modules from 'configs/sidebar/modules';
 
 import { dashboardService } from 'services/dashboard/dashboardService';
 import { load, save } from 'cache/cache';
+import Loading from 'components/loading/Loading';
+import CatalogState from 'components/dashboard/catalog';
+import CatalogCardCategory from 'components/dashboard/catalog/CatalogCard';
+import PercentageProducts from 'components/dashboard/catalog/PercentageProducts';
+import StockState from 'components/dashboard/catalog/ad/StockState';
+import StockResume from 'components/dashboard/catalog/ad/StockResume';
 
 const DashboardProducts = () => {
 
     const [data,setData]= useState({});
     
     const {routes} = modules.find( module => module.id === 2);
+
+    const [loading,setLoading] = useState(false);
     
     useEffect(() => {
 
@@ -29,7 +36,7 @@ const DashboardProducts = () => {
         }
 
         const loaderDashboard = async () => {
-
+            setLoading(true);
             try {
                 const response = await dashboardService();
 
@@ -37,9 +44,14 @@ const DashboardProducts = () => {
 
                 setData(response.data);
 
+                console.log(response?.data);
+
             } catch (error) {
                 console.log(error);
             }
+
+            setLoading(false);
+
         };
 
         loaderDashboard();
@@ -48,6 +60,7 @@ const DashboardProducts = () => {
     
     return (
         <section className='d_content scroll'>
+            {loading && <Loading/>}
             
             <DashboardHeader text={'Visão Geral de Produtos'} />
             
@@ -55,41 +68,59 @@ const DashboardProducts = () => {
 
                 <StatCard
                     title="Produtos"
-                    value={data?.totalProducts}
+                    value={data?.products?.total}
                     icon={<TbPackage />}
-                    description="Produtos cadastrados"
+                    description={`${data?.products?.enabled} Produtos Ativos no sistema.`}
                     variationType="success"
                 />
 
                 <StatCard
                     title="Categorias"
-                    value={data?.totalCategories}
+                    value={data?.catalog?.categories?.total}
                     icon={<TbCategory />}
-                    description="Categorias ativas"
+                    description={`${data?.catalog?.categories?.unused} Categorias não utilizadas.`}
                 />
 
                 <StatCard
                     title="Marcas"
-                    value={data?.totalBrands}
+                    value={data?.catalog?.brands?.total}
                     icon={<TbBuildingStore />}
-                    description="Marcas cadastradas"
+                    description={`${data?.catalog?.brands?.unused} Marcas não utilizadas.`}
                 />
 
+                <StatCard
+                    title="Estoque"
+                    value={`${data?.stock?.total} un.`}
+                    icon={<TbBuildingStore />}
+                    description={`${data?.stock?.outOfStock} Produtos sem estoque.`}
+                />
             </div>
                             
             <QuickActions actions={routes} />
 
+            <div className="stats-catalog">
+                <CatalogState>
+                    <CatalogCardCategory 
+                        data={data.distribution}
+                    />
+                    <PercentageProducts
+                        products={data.products}
+                    />
+                </CatalogState>
+            </div>
+
+            <div className="stats-catalog">
+                <CatalogState>
+                    <StockState data={data?.stock?.products} />
+                    <StockResume data={data?.financial}/>
+                </CatalogState>
+            </div>
+
             <RecentActions
                 actions={
-                    data?.recentProducts || []
+                    data?.activities || []
                 }
             />
-
-            <div className="d_activity_feed">
-                <CategoryDistribution
-                    data={data?.distributed}
-                />
-            </div>
 
         </section>
     );

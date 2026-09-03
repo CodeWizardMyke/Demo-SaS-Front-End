@@ -52,14 +52,12 @@ const ButtonPrevNextStep = ({css,formType ,children}) => {
       <>
          <div className={`container_button_navigation_steps acressWidth ${ activeSideBar ? "active" : ""}`}>
          <div className={`content-button-pvn ${css}` }>
-            <button 
-                type="button"
-                onClick={handlerPrev}
-                disabled={ step === 1 }
-            >
-                <FaArrowLeftLong/>
-                <span>Voltar</span>
-            </button>
+            <Button
+                text={'Voltar'}
+                svg={<FaArrowLeftLong/>}
+                disabled={step === 1}
+                click={handlerPrev}
+            />
             <Button
                 text={activeSideBar ? "Fechar etapas" : "Mostrar etapas"}
                 click={openSideBar}

@@ -1,5 +1,8 @@
 import { TbEdit, TbPackage } from "react-icons/tb";
-import { formatDistanceToNow } from "date-fns";
+import {
+    formatDistanceToNow,
+    isValid
+} from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 import "../styles.css";
@@ -8,11 +11,16 @@ const RecentActions = ({ actions = [] }) => {
 
     const handlerLastTime = (date) => {
 
-        return formatDistanceToNow(new Date(date), {
+        const parsedDate = new Date(date);
+
+        if (!isValid(parsedDate)) {
+            return "Data indisponível";
+        }
+
+        return formatDistanceToNow(parsedDate, {
             addSuffix: true,
             locale: ptBR
         });
-
     };
 
     return (
@@ -24,52 +32,52 @@ const RecentActions = ({ actions = [] }) => {
 
             <ul className="recent-actions">
 
-                {actions.map((item, index) =>
-                {
-                    const { createdAt,updatedAt } = item;
+                {actions.map((item) => {
 
-                    const lastTime = updatedAt === createdAt 
-                            ? {created:true,date:createdAt}
-                            : {updated:true,date:updatedAt}
+                    const isCreated = item.action === "created";
 
                     return (
                         <li
-                            key={index}
+                            key={item.product_id}
                             className="recent-action"
                         >
 
                             <div className="recent-action-icon">
                                 {
-                                   lastTime.created
-                                        ? <TbPackage/>
-                                        : <TbEdit/>
+                                    isCreated
+                                        ? <TbPackage />
+                                        : <TbEdit />
                                 }
                             </div>
 
                             <div className="recent-action-content">
 
-                                <strong>{item.title}</strong>
+                                <strong title={item.title}>
+                                    {item.title}
+                                </strong>
 
-                                <span>{item.description}</span>
+                                <span>
+                                    {
+                                        isCreated
+                                            ? "Produto cadastrado"
+                                            : "Produto atualizado"
+                                    }
+                                </span>
 
                             </div>
 
                             <small>
-                                {
-                                    handlerLastTime(lastTime.date)
-                                }
+                                {handlerLastTime(item.date)}
                             </small>
 
                         </li>
-
-                    )
+                    );
                 })}
 
             </ul>
 
         </section>
     );
-
 };
 
 export default RecentActions;

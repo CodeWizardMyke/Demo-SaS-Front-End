@@ -1,0 +1,27 @@
+.ds-content .active-percentage{
+    
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    gap: 5px;
+    
+    text-align: center;
+    
+    height: 100%;
+}
+.active-percentage span{
+    width: 100%;
+    font-size: 18pt;
+    font-weight: 600;
+    height: fit-content;
+}
+.active-percentage small{
+    font-size: 12pt;
+}
+.ds-bottom{
+    display: flex;
+    justify-content: space-between;
+}

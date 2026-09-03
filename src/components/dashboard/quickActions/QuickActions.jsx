@@ -1,7 +1,7 @@
 import { WorkspaceContext } from "contexts/WorkspaceContext";
 import { useContext } from "react";
 
-import "../styles.css";
+import "./styles.css";
 
 const QuickActions = ({ actions = [] }) => {
     const {openTab} = useContext(WorkspaceContext)

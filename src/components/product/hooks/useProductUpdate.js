@@ -46,6 +46,7 @@ export default function useServicesProduct () {
 
     const sendUpdate = async () => {
         setLoading(true);
+        console.log('update product')
 
         try {
  
