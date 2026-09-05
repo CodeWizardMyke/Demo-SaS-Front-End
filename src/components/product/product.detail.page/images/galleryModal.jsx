@@ -1,10 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 
 import './galleryModal.css';
-import Button from 'components/buttons/Button';
+
+import {
+    FaChevronLeft,
+    FaChevronRight,
+    FaTimes
+} from 'react-icons/fa';
 
 const GalleryModal = ({
-    images,
+    images = [],
     close,
     current,
     setCurrent
@@ -13,114 +18,201 @@ const GalleryModal = ({
     const imageRefs = useRef([]);
     const containerRef = useRef(null);
 
-    // inicia já na imagem atual
+    const nextImage = useCallback(() => {
+
+        if (!images.length) return;
+
+        setCurrent(prev =>
+            prev === images.length - 1
+                ? 0
+                : prev + 1
+        );
+
+    }, [images.length, setCurrent]);
+
+
+    const prevImage = useCallback(() => {
+
+        if (!images.length) return;
+
+        setCurrent(prev =>
+            prev === 0
+                ? images.length - 1
+                : prev - 1
+        );
+
+        }, [images.length, setCurrent]);
+        const handleSelectImage = index => {
+            setCurrent(index);
+    };
+
     useEffect(() => {
 
-        if (imageRefs.current[current]) {
+        const element = imageRefs.current[current];
 
-            imageRefs.current[current].scrollIntoView({
-                behavior: 'auto',
-                block: 'start'
-            });
+        if (!element) return;
 
-        }
+        element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest'
+        });
 
     }, [current]);
 
-    // scroll automático para o item mais próximo
     useEffect(() => {
 
-        const container = containerRef.current;
+        const handleKeyboard = event => {
 
-        let timeout;
+            if (event.key === 'Escape') {
+                close();
+            }
 
-        const handleScroll = () => {
+            if (event.key === 'ArrowRight') {
+                nextImage();
+            }
 
-            clearTimeout(timeout);
-
-            timeout = setTimeout(() => {
-
-                const itemHeight = window.innerHeight;
-                const scrollPosition = container.scrollTop;
-
-                const index = Math.round(scrollPosition / itemHeight);
-
-                setCurrent(index);
-
-                container.scrollTo({
-                    top: index * itemHeight,
-                    behavior: 'smooth'
-                });
-
-            }, 50);
+            if (event.key === 'ArrowLeft') {
+                prevImage();
+            }
 
         };
 
-        container.addEventListener('scroll', handleScroll);
+        window.addEventListener('keydown', handleKeyboard);
 
         return () => {
-            container.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('keydown', handleKeyboard);
         };
 
-    }, [setCurrent]);
-
-    const handleSelectImage = (index) => {
-
-        setCurrent(index);
-
-        imageRefs.current[index]?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-
-    };
+    }, [images.length, close, nextImage, prevImage]);
 
     return (
-        <div className='gallery_modal'>
-
-            <div className="gallery_items_navigation">
-                <ul className='scroll'>
-                    {
-                        images.map((image, i) =>
-                            <li
-                                key={image.preview_id + "gallery_modal" + i}
-                                onClick={() => handleSelectImage(i)}
-                            >
-                                <img src={image.path} alt="" />
-                            </li>
-                        )
-                    }
-                </ul>
-            </div>
+        <div className="gallery-modal">
 
             <div
-                className="gallery_items scroll"
-                ref={containerRef}
-            >
-                {
-                    images.map((image, index) => {
-                        return (
-                            <div
-                                className="contentItem"
-                                key={index + "clis"}
-                                ref={(el) => imageRefs.current[index] = el}
-                            >
+                className="gallery-modal-backdrop"
+                onClick={close}
+            />
+
+            <div className="gallery-modal-layout">
+
+                <aside className="gallery-modal-sidebar">
+
+                    <div className="gallery-modal-sidebar-header">
+                        <span>
+                            Imagens
+                        </span>
+
+                        <strong>
+                            {images.length}
+                        </strong>
+                    </div>
+
+                    <div
+                        className="gallery-modal-thumbnails scroll"
+                        ref={containerRef}
+                    >
+
+                        {
+                            images.map((image, index) => (
+
+                                <button
+                                    type="button"
+                                    key={
+                                        image?.preview_id
+                                        || `modal-thumb-${index}`
+                                    }
+                                    ref={element => {
+                                        imageRefs.current[index] = element;
+                                    }}
+                                    className={
+                                        `gallery-modal-thumbnail ${
+                                            index === current
+                                                ? 'active'
+                                                : ''
+                                        }`
+                                    }
+                                    onClick={() =>
+                                        handleSelectImage(index)
+                                    }
+                                >
+
+                                    <img
+                                        src={image?.path}
+                                        alt={image?.alt || ''}
+                                    />
+
+                                    <span>
+                                        {index + 1}
+                                    </span>
+
+                                </button>
+
+                            ))
+                        }
+
+                    </div>
+
+                </aside>
+
+                <main className="gallery-modal-stage">
+
+                    {
+                        images[current] && (
+                            <div className="gallery-modal-image-wrapper">
+
                                 <img
-                                    src={image.path}
-                                    alt={image.alt || ""}
+                                    src={images[current]?.path}
+                                    alt={images[current]?.alt || ''}
+                                    className="gallery-modal-image"
                                 />
+
                             </div>
                         )
-                    })
-                }
-            </div>
+                    }
 
-            <div className="modal_close">
-                <Button text={'x'} click={close} />
+                    {
+                        images.length > 1 && (
+                            <>
+                                <button
+                                    type="button"
+                                    className="gallery-modal-arrow gallery-modal-arrow-left"
+                                    onClick={prevImage}
+                                    aria-label="Imagem anterior"
+                                >
+                                    <FaChevronLeft />
+                                </button>
+
+                                <button
+                                    type="button"
+                                    className="gallery-modal-arrow gallery-modal-arrow-right"
+                                    onClick={nextImage}
+                                    aria-label="Próxima imagem"
+                                >
+                                    <FaChevronRight />
+                                </button>
+                            </>
+                        )
+                    }
+
+                    <div className="gallery-modal-counter">
+                        {current + 1} / {images.length}
+                    </div>
+
+                </main>
+
+                <button
+                    type="button"
+                    className="gallery-modal-close"
+                    onClick={close}
+                    aria-label="Fechar galeria"
+                >
+                    <FaTimes />
+                </button>
+
             </div>
 
         </div>
     );
-}
+};
 
 export default GalleryModal;

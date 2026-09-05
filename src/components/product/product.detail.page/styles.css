@@ -1,166 +1,274 @@
-.pd-content{
-    background-color:var(--bg-default);
-    flex: 1;
-    max-width:1200px;
+.pd-content {
+    width: min(1220px, calc(100% - 32px));
     max-height: 88vh;
-    padding: 10px 5px;
 
     margin: 0 auto;
-    padding: 0 5px;
+    padding: 24px;
 
     display: flex;
     flex-direction: column;
+
+    gap: 32px;
+
     position: relative;
 
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
-    gap: 25px;
+
+    background-color: var(--bg-default);
+
+    box-sizing: border-box;
 }
 
-.pd-content.active{
-    overflow-y: hidden;
+.pd-content.active {
+    overflow: hidden;
 }
 
-.product_header_mobile{
+
+/* =========================
+   HEADER
+========================= */
+
+.pd-preview-header {
     width: 100%;
-    
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 
-    gap: 10px;
-}
-
-.product_header_mobile .pricing{
-    font-size: 24pt;
-    font-weight: 900;
-    margin-left:  auto;
-    
-    height: 100%;
-    padding-right: 25px;
-    display: flex;
-    justify-content: end;
-    align-items: end;
-}
-
-.pd-main{
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     justify-content: space-between;
-    gap: 10px;
-    position: relative;
+
+    gap: 20px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid var(--borderCard);
 }
 
-.pd-title{
-    text-align: center;
-}
-.pd-media{
-    position: relative;
-
-    margin:  0 auto;
-
-    width: 100%;
-    max-width: 500px;
-
+.pd-preview-heading {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    text-align: center;
 
+    gap: 4px;
+}
+
+.pd-preview-label {
+    font-size: .72rem;
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+
+    color: var(--textColorSecondary);
+}
+
+.pd-preview-header h2 {
+    margin: 0;
+
+    font-size: 1.2rem;
+}
+
+.pd-preview-close {
+    min-height: 40px;
+
+    padding: 0 16px;
+
+    border: 1px solid var(--borderCard);
+    border-radius: 8px;
 
     background-color: var(--bgCardSubITem);
+
+    color: inherit;
+
+    cursor: pointer;
+
+    transition:
+        background-color .2s ease,
+        border-color .2s ease;
+}
+
+.pd-preview-close:hover {
+    background-color: var(--bgCardItem);
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.pd-main {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(320px, 380px);
+
+    align-items: start;
+
+    gap: 28px;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.pd-description,
+.pd-marketing-section {
+    width: 100%;
+
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+
+    border: 1px solid var(--borderCard);
     border-radius: 12px;
+
+    background-color: var(--bgCardSubITem);
+
+    box-sizing: border-box;
 }
-.pd-media .showMovieDetails{
-    position: absolute;
-    background-color: transparent;
-    color: var(--bgYtb);
-    border: none;
 
-    height: 100px;
-    width: 100px;
-
+.pd-section-heading {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 45px;
+    align-items: flex-end;
+    justify-content: space-between;
 
-    margin: 0 auto;
+    gap: 20px;
+}
+
+.pd-section-heading h2 {
+    margin: 0;
+
+    font-size: 1.05rem;
+}
+
+.pd-section-heading span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: .8rem;
+
+    color: var(--textColorSecondary);
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.pd-d {
+    width: 100%;
+
     padding: 0;
-}
-.pd-media .showMovieDetails svg{
-    width: 100%;
-    height: 100%;
+
+    line-height: 1.7;
+
+    color: var(--textColorSecondary);
+
+    box-sizing: border-box;
 }
 
-.pd-market{
-    margin:  0 auto;
-    flex: 1;
+.pd-d p {
+    margin: 0 0 14px;
 }
-.pd-description{
-    margin: 25px 10px;
+
+.pd-d p:last-child {
+    margin-bottom: 0;
+}
+
+.pd-d ul,
+.pd-d ol {
+    padding-left: 22px;
+}
+
+.pd-d img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* =========================
+   MARKETING
+========================= */
+
+.pd-marketing-images {
+    width: 100%;
+
     display: flex;
     flex-direction: column;
-    gap: 10px;
+
+    gap: 16px;
+}
+
+.pd-marketing-images img {
+    display: block;
+
     width: 100%;
-}
-.pd-description .pd-d{
-    padding: 5px 25px;
-}
-.pd-marketing-images{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-}
-.pd-marketing-images img{
-    width: 100%;
-    height: 100%;
-    border:  1px solid var(--borderCard);
-    height: 100%;
+    height: auto;
+
     object-fit: contain;
+
+    border: 1px solid var(--borderCard);
+    border-radius: 10px;
 }
 
-.button-larger{
-    background-color: var(--bt-primary);
-    color: white;
-    max-width: 400px;
-    width: 100%;
-}
-.closeDetail{
-    position: sticky;
-    bottom: 5px ;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width:100%;
-    z-index: 20;
-}
-.product_header{
-    display: flex;
-    flex-wrap: wrap;
+
+/* =========================
+   TABLET
+========================= */
+
+@media screen and (max-width: 900px) {
+
+    .pd-content {
+        width: 100%;
+
+        padding: 18px;
+
+        gap: 24px;
+    }
+
+    .pd-main {
+        grid-template-columns: 1fr;
+    }
+
 }
 
-.product_header .pricing{
-    font-weight: 900;
-    font-size: 14pt;
-    align-items: end;
-    flex: 1;
-    text-align: end;
-}
-@media screen  and (max-width:1200px) {
-    .product_header_mobile{
-        display: flex;
-        margin-top: 75px;
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 600px) {
+
+    .pd-content {
+        padding: 12px;
+
+        gap: 18px;
     }
-}
-@media screen  and (max-width:425px) {
-    .product_header_mobile .pricing{
-        font-size: 20pt;
+
+    .pd-preview-header {
+        align-items: flex-start;
     }
+
+    .pd-preview-header h2 {
+        font-size: 1rem;
+    }
+
+    .pd-preview-close {
+        min-height: 36px;
+
+        padding: 0 12px;
+    }
+
+    .pd-description,
+    .pd-marketing-section {
+        padding: 18px;
+    }
+
 }

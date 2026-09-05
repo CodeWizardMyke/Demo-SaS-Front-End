@@ -36,7 +36,7 @@ const CatalogCardCategory = ({
                                 <div className="ds-progress">
                                     <div 
                                         className="ds-bar"
-                                        style={{width:`${percentage}`}}
+                                        style={{width: `${percentage}%`}}
                                     />
                                 </div>
 

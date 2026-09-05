@@ -1,0 +1,126 @@
+.brand-create-content {
+    width: 100%;
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding: 32px 24px 60px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 26px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.brand-create-card {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 26px;
+
+    padding: 26px;
+
+    background-color: var(--bgCardSubITem);
+
+    border: 1px solid var(--borderCard);
+    border-radius: 12px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   FIELD
+========================= */
+
+.brand-create-field {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.brand-create-field label {
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.brand-create-helper {
+    font-size: .72rem;
+    line-height: 1.5;
+
+    color: var(--textColorSecondary);
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.brand-create-field .xl-input {
+    width: 100%;
+}
+
+.brand-create-field .xl-input input {
+    width: 100%;
+    min-height: 44px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.brand-create-actions {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--borderCard);
+}
+
+.brand-create-actions .bt-l-accept {
+    width: auto;
+    min-width: 180px;
+
+    min-height: 42px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 600px) {
+
+    .brand-create-content {
+        padding: 22px 14px 40px;
+
+        gap: 20px;
+    }
+
+    .brand-create-card {
+        padding: 18px;
+    }
+
+    .brand-create-actions .bt-l-accept {
+        width: 100%;
+    }
+
+}
