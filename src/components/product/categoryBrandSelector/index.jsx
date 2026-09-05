@@ -83,9 +83,7 @@ const CategoryBrandSelector = ({type, createForm }) => {
     }
 
     useEffect(() => {
-                
         const cache = load(type);
-        console.log(type)
 
         if(cache){
             setResData(cache.rows);

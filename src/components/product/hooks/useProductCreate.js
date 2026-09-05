@@ -9,7 +9,6 @@ import { remove } from "cache/cache";
 export default function useProductCreate () {
     const {formData, dispatch} = useContext(ProductFormContext);
     const { setValidationErrors, setLoading,  setModalSucess } = useContext(WorkspaceContext);
-    
 
     const data = new FormData();
 

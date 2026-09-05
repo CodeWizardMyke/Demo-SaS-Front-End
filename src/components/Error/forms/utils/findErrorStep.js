@@ -3,11 +3,11 @@ import productForm from "configs/product";
 const normalizePath = (path) => {
 
     if(path === 'fk_category_id'){
-        return 'category';
+        return 'categoryProduct';
     }
 
     if(path === 'fk_brand_id'){
-        return 'brand';
+        return 'brandProduct';
     }
 
     return path;

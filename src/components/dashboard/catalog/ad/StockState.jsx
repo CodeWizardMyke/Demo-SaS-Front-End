@@ -1,7 +1,6 @@
 import React from "react";
 
 const StockState = ({ data = [] }) => {
-    console.log(data)
 
     return (
         <div className="ds-card">

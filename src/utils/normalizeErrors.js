@@ -10,7 +10,7 @@ export function normalizeErrors(errors = []) {
             acc[error.path].push(
                 error.msg
             );
-
+            
             return acc;
 
         },

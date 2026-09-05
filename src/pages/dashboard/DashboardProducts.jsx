@@ -44,8 +44,6 @@ const DashboardProducts = () => {
 
                 setData(response.data);
 
-                console.log(response?.data);
-
             } catch (error) {
                 console.log(error);
             }
@@ -90,7 +88,7 @@ const DashboardProducts = () => {
 
                 <StatCard
                     title="Estoque"
-                    value={`${data?.stock?.total} un.`}
+                    value={`${data?.stock?.total || 0 } un.`}
                     icon={<TbBuildingStore />}
                     description={`${data?.stock?.outOfStock} Produtos sem estoque.`}
                 />
@@ -101,10 +99,10 @@ const DashboardProducts = () => {
             <div className="stats-catalog">
                 <CatalogState>
                     <CatalogCardCategory 
-                        data={data.distribution}
+                        data={data?.distribution}
                     />
                     <PercentageProducts
-                        products={data.products}
+                        products={data?.products}
                     />
                 </CatalogState>
             </div>

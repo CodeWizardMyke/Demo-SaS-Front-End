@@ -1,23 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiClock, FiMail } from 'react-icons/fi';
 import userInitials from '../utils/userInitials';
 
 import './style.css';
 
 const UserProfileAside = ({user}) => {
-
+    const [userLastUpdated, setUserLastUpdated] = useState(user?.updatedAt || '-');
+        
     const userInitialData = userInitials({userName:user?.name});
 
     const role = user?.role === 'admin'
         ? 'Administrador'
         : 'Usuário padrão';
 
-    const lastUpdate = user?.updatedAt
-        ? new Date(user.updatedAt).toLocaleString('pt-BR', {
+    useEffect(()=> {
+        if(user.updatedAt){
+            let dateFormated = new Date(user.updatedAt).toLocaleString('pt-BR', {
               timeZone: 'America/Sao_Paulo',
           })
-        : '-';
-        
+
+            setUserLastUpdated(dateFormated)
+        }
+
+    },[user])
 
     return (
         <aside className='userAside'>
@@ -36,7 +41,7 @@ const UserProfileAside = ({user}) => {
 
                 <div>
                     <FiClock />
-                    <span>{lastUpdate}</span>
+                    <span>{userLastUpdated}</span>
                 </div>
             </div>
         </aside>
